@@ -1,20 +1,40 @@
 #include <stdio.h>
 #include <mpi.h>
 
-/*
- * Computes which processor is entitled to compute or store
- * the lcs lenght at the given 2D vector coordinates.
- * @param a: index of first string character.
- * @param b: index of second string character.
- * @param n: length of first string.
- * @param m: length of second string.
- * @param P: number of processors.
- * 
-*/
-int proc(int a, int b, int n, int m, int P){
+int N, M, P;
 
+struct pair {
+    int i;
+    int j;
+};
+
+int min(int a, int b){
+    return (a>b)*b+(b>=a)*a;
 }
 
+/**
+ * @param d index of the diagonal.
+ * @returns Length of the given diagonal.
+ */
+int diagLength(int d){
+    return min(d+1, min(N, min(M, M+N-1-d)));
+}
+
+/**
+ * @param c coordinates of a matrix cell
+ * @returns Index of the diagonal where the cell belongs
+ */
+int cell_diag(pair c){
+	return c.i+c.j
+}
+
+/**
+ * @param c coordinates of a matrix cell
+ * @returns The index of the cell w.r.t. the diagonal it belongs to.
+ */
+int cell_diag_index(pair c){
+	return min(c.i, N-c.j-1)
+}
 
 int main(int argc, char **argv)
 {
@@ -29,8 +49,6 @@ int main(int argc, char **argv)
     printf("Hello world from process %d of %d\n", rank, P);
 
     // TODO: inizializza la matrice con la prima riga e colonna a 0
-
-    // TODO: se è il processo master parti a calcolare matrice[1][1] e spediscilo a chi di dovere
 
     // TODO: calcola la lista di coppie di indici della matrice che questo processo deve calcolare
 
