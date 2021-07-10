@@ -9,7 +9,7 @@ int N, M, P;
  * @param d index of the diagonal.
  * @returns Length of the given diagonal.
  */
-int diag_length(int d, int M, int N){
+int get_diag_len(int d, int M, int N){
     int arr[] = {d+1, M, N, M+N-1-d};
     return *min_element(arr, arr + 3);
 }
@@ -18,7 +18,7 @@ int diag_length(int d, int M, int N){
  * @param c coordinates of a matrix cell
  * @returns Index of the diagonal where the cell belongs
  */
-int cell_diag(pair<int, int> c){
+int cell_2_diag(pair<int, int> c){
     return c.first + c.second;
 }
 
