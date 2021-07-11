@@ -35,8 +35,9 @@ s =\begin{cases}i \Bigl \lfloor \frac{L(d)}{P}\Bigr\rfloor  \text
 
 $$
 e =\begin{cases} s + \Bigl \lfloor  \frac{L(d)}{P}\Bigr\rfloor - 1& \text
-{if $i < L(d) \mod P$}  \\\\s+ \Bigl\lceil \frac{L(d)}{P} \Bigr\rceil -1& \text{otherwise} \end{cases}$$
-
+{if $i < L(d) \mod P$}  \\\\s+ \Bigl\lceil \frac{L(d)}{P} \Bigr\rceil -1& \text{otherwise} \end{cases}
+\end{align}
+$$
 
 - otherwise compute entries from 
 	- from $(L_d \mod P) \cdot \Bigl \lfloor  \frac{L_d}{P} \rfloor + (i - (L_d \mod P)) * \lceil \frac{L_d}{P} \rceil$
@@ -196,9 +197,9 @@ def send(x: int, y: int, i: int):
 				MPI_SEND(p_below)
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTQ2MDU5NjEzMywtMzg1MDA1NDc3LC02Nz
-gwMzk1NzEsODg4MjgyMzcwLC0yNzk4MzM3NTEsMTUzMjE2NDk5
-OSw0MDMwNDUzNzgsLTgwOTc4ODk1NCw1Mzk5MTcxNjQsNzA3NT
-IzODE1LC04MzUwNDQyMjMsMTAzMjIwNjQxMiwtMTE5OTI1NDQ2
-OSwtMzM0NTk5MDA5XX0=
+eyJoaXN0b3J5IjpbLTIwMjY0MTEzMzMsLTM4NTAwNTQ3NywtNj
+c4MDM5NTcxLDg4ODI4MjM3MCwtMjc5ODMzNzUxLDE1MzIxNjQ5
+OTksNDAzMDQ1Mzc4LC04MDk3ODg5NTQsNTM5OTE3MTY0LDcwNz
+UyMzgxNSwtODM1MDQ0MjIzLDEwMzIyMDY0MTIsLTExOTkyNTQ0
+NjksLTMzNDU5OTAwOV19
 -->
