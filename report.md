@@ -31,15 +31,11 @@ To maximize concurrent computation we can look at the CDAG of the matrix, where 
 We now focus on the permutations of this sequence, in order to minimize the communication between processors. The intuitive way to achieve this is by having processors assigned to contiguous cells of the diagonal of the matrix and in the same order for each diagonal: this way we increase the probability for each processor to have the required variables from the previous diagonal already stored in its memory. Let $D$ be the principal diagonal of index $d$; processor $i$ will have to compute entries from $D[s]$ to $D[e]$, where:
 $$\begin{align}
 s &=\begin{cases}i \Bigl \lfloor \frac{L(d)}{P}\Bigr\rfloor  \text
-{\quad if $i < L(d) \mod P$}  \\\\(L(d) \mod P) \cdot\Bigl \lfloor  \frac{L(d)}{P} \Bigr\rfloor + (i - (L(d) \mod P)) \cdot \Bigl \lceil  \frac{L(d)}{P} \Bigr\rceil & \text{otherwise} \end{cases}\\
+{\quad if $i < L(d) \mod P$}  \\\\(L(d) \mod P) \cdot\Bigl \lfloor  \frac{L(d)}{P} \Bigr\rfloor + (i - (L(d) \mod P)) \cdot \Bigl \lceil  \frac{L(d)}{P} \Bigr\rceil & \text{otherwise} \end{cases}\\\\
 e &=\begin{cases} s + \Bigl \lfloor  \frac{L(d)}{P}\Bigr\rfloor - 1& \text
 {if $i < L(d) \mod P$}  \\\\s+ \Bigl\lceil \frac{L(d)}{P} \Bigr\rceil -1& \text{otherwise} \end{cases}
 \end{align}
 $$
-
-- otherwise compute entries from 
-	- from $(L_d \mod P) \cdot \Bigl \lfloor  \frac{L_d}{P} \rfloor + (i - (L_d \mod P)) * \lceil \frac{L_d}{P} \rceil$
-	- to $($
 
 Or more intuitively using an algorithm
 
@@ -195,7 +191,7 @@ def send(x: int, y: int, i: int):
 				MPI_SEND(p_below)
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIxMTk0MDM1NywtMzg1MDA1NDc3LC02Nz
+eyJoaXN0b3J5IjpbMTY4Mzk4NzMyNiwtMzg1MDA1NDc3LC02Nz
 gwMzk1NzEsODg4MjgyMzcwLC0yNzk4MzM3NTEsMTUzMjE2NDk5
 OSw0MDMwNDUzNzgsLTgwOTc4ODk1NCw1Mzk5MTcxNjQsNzA3NT
 IzODE1LC04MzUwNDQyMjMsMTAzMjIwNjQxMiwtMTE5OTI1NDQ2
