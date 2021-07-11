@@ -5,7 +5,7 @@ Let $X = (x_1, \ldots, x_m)$ and $Y = (y_1, \ldots, y_n)$ be two sequences, wher
 Without loss of generality, we assume $m \le n$ in the following. We first describe a sequential algorithm for the LCS problem, and then we move to the more interesting parallel case, for which we propose an algorithm that borrows its structure from the sequential one.
 ## Sequential algorithm
 There's a well-known algorithm based on dynamic programming, that we propose here for the sequential case, which exploits the optimal substructure of the problem. Let $M$ be an $m \times n$ matrix, where entry $M[i, j]$ represents the length of an LCS of the sequences $X_i$ and $Y_j$, where $X_i$ is the $i$-th prefix of $X$, and similarly for $Y_j$. It holds that: $$M[i, j] = \begin{cases}0 & \text
-{if $i = 0$ or $j = 0$}  \\M[i-1, j-1] & \text{if $i, j > 0$ and $x_i = y_j$}\end{cases}$$
+{if $i = 0$ or $j = 0$}  \\M[i-1, j-1] & \text{if $i, j > 0$ and $x_i = y_j$} \\\max(M[i, j-1], M[i-1, j])  & \text{if $i, j > 0 and }\end{cases}$$
 
 ## Parallel algorithm
 
@@ -186,6 +186,6 @@ def send(x: int, y: int, i: int):
 				MPI_SEND(p_below)
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTExNzk4OTczOTgsMTAzMjIwNjQxMiwtMT
-E5OTI1NDQ2OSwtMzM0NTk5MDA5XX0=
+eyJoaXN0b3J5IjpbNjEwNDQ5OTA3LDEwMzIyMDY0MTIsLTExOT
+kyNTQ0NjksLTMzNDU5OTAwOV19
 -->
