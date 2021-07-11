@@ -61,7 +61,7 @@ def diagonal_start_end(d: int, i: int):
 	# Number of cells for the first L_d % p processors
 	ceil_size = math.ceil(L_d / p)
 	# Number of cells for the other p - L_d % p processors
-	floor_size = math.floor(L_d / p) # or ceil_size - 1
+	floor_size = math.floor(L_d / p) # or ceil_size
 	rem = L_d % p
 	if i < rem:
 		start = i * ceil_size 
@@ -191,7 +191,7 @@ def send(x: int, y: int, i: int):
 				MPI_SEND(p_below)
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTgxMjAxMDc2NywxNjgzOTg3MzI2LC0zOD
+eyJoaXN0b3J5IjpbLTEwMjgzMjcyMywxNjgzOTg3MzI2LC0zOD
 UwMDU0NzcsLTY3ODAzOTU3MSw4ODgyODIzNzAsLTI3OTgzMzc1
 MSwxNTMyMTY0OTk5LDQwMzA0NTM3OCwtODA5Nzg4OTU0LDUzOT
 kxNzE2NCw3MDc1MjM4MTUsLTgzNTA0NDIyMywxMDMyMjA2NDEy
