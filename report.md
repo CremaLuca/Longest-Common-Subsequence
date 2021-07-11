@@ -11,7 +11,7 @@ From this simple recurrence relation, it's easy to design a sequential algorithm
 ## Parallel algorithm
 
 We will exploit the previous recurrence relation, trying to find a way to parallelize the computation. Let us first define what we mean by principal diagonal of $M$.
-**Definition:** The $M$'s principal diagonal of index $d$, for $0 \le d \le m + n -2$, is the set of entries$$L(d) =\begin{cases}\{M[0, d], M[1, d-1], \ldots,  M[d, 0])\} & \text
+**Definition:** The $M$'s principal diagonal of index $d$, for $0 \le d \le m + n -2$, is the set of entries$$D(d) =\begin{cases}\{M[0, d], M[1, d-1], \ldots,  M[d, 0])\} & \text
 {if $0\le d < m$}  \\\{M[0, d], M[1, d-1], \ldots,  M[m-1, d-m+1])\} & \text{if $m \le d < n$} \\\{M[d-n + 1, n-1], M[N-d+2, n-2], \ldots,  M[m-1, d-m+1])\}  & \text{if $d \ge n$}\end{cases}$$
 Each entry in $L(d)$ will depend only on entries belonging to $L(d-1)$ and L($d-2)$. In fact each element depends only on three elements from the two previous principal diagonals. This suggests a way to parallelize our initial algorithm: by looking at the CDAG of the computation, each diagonal is a level of the greedy schedule. Hence each entry in each diagonal can be computed in parallel, as long as entries from the previous diagonals have already been computed. From the previous definition, we have $$|L(d)| =\begin{cases}d+1 & \text
 {if $0\le d < m$}  \\m & \text{if $m \le d < n$} \\m+n-1-d & \text{if $d \ge n$}\end{cases}$$
@@ -23,7 +23,7 @@ We have to assign an order of execution to compute every entry in the LCS matrix
 - maximize concurrent computation
 - minimize communication costs
 
-To maximize concurrent computation we can look at the CDAG of the matrix, where we compute each cell that has required variables ready as soon as possible; given that we have $P > 0$ processors at our disposal, we could assign the following processors to 
+To maximize concurrent computation we can look at the CDAG of the matrix, where we compute each cell that has required variables ready as soon as possible; given that we have $P > 0$ processors at our disposal, we could assign the following processors to a given principal 
 
 - $\lceil L/P \rceil$ of processor i for  $0 \leq i < L \mod P$
 - $\lfloor L/P \rfloor$ of processor j for $L \mod P \leq j < P$
@@ -192,7 +192,7 @@ def send(x: int, y: int, i: int):
 				MPI_SEND(p_below)
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE3MDE1MjIwNDMsLTgwOTc4ODk1NCw1Mz
-k5MTcxNjQsNzA3NTIzODE1LC04MzUwNDQyMjMsMTAzMjIwNjQx
-MiwtMTE5OTI1NDQ2OSwtMzM0NTk5MDA5XX0=
+eyJoaXN0b3J5IjpbMTIyMTk2NjUsLTgwOTc4ODk1NCw1Mzk5MT
+cxNjQsNzA3NTIzODE1LC04MzUwNDQyMjMsMTAzMjIwNjQxMiwt
+MTE5OTI1NDQ2OSwtMzM0NTk5MDA5XX0=
 -->
