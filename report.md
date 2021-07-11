@@ -1,4 +1,4 @@
-# Longest common subsequence problem
+# Longest Common Subsequence problem
 
 ### Definition:
 Let $X = (x_1, \ldots, x_m)$ and $Y = (y_1, \ldots, y_n)$ be two sequences, where each $x_i, y_i \in$ alphabet $\Sigma$. We say that a sequence $Z = (z_1, \ldots, z_t)$ is a subsequence of $X$ if $z_i = y_{i+s}$, for all $1 \le i \le t$ and some $0 \le s \le n-t$. The Longest Common Subsequence (LCS) problem consists in finding a common subsequence $Z$ of *both* $X$ and $Y$, of maximum length.
@@ -184,6 +184,6 @@ def send(x: int, y: int, i: int):
 				MPI_SEND(p_below)
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTc4NjE3MzE3NiwtMTE5OTI1NDQ2OSwtMz
+eyJoaXN0b3J5IjpbMjA2OTM2MTQwMCwtMTE5OTI1NDQ2OSwtMz
 M0NTk5MDA5XX0=
 -->
