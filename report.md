@@ -6,7 +6,7 @@ Without loss of generality, we assume $m \le n$ in the following. We first descr
 ## Sequential algorithm
 There's a well-known algorithm based on dynamic programming, that we propose here for the sequential case, which exploits the optimal substructure of the problem. Let $M$ be an $m \times n$ matrix, where entry $M[i, j]$ represents the length of an LCS of the sequences $X_i$ and $Y_j$, where $X_i$ is the $i$-th prefix of $X$, and similarly for $Y_j$. It holds that: $$M[i, j] = \begin{cases}0 & \text
 {if $i = 0$ or $j = 0$}  \\M[i-1, j-1] & \text{if $i, j > 0$ and $x_i = y_j$} \\\max(M[i, j-1], M[i-1, j])  & \text{if $i, j > 0$ and $x_i \ne y_j$}\end{cases}$$
-From this simple recurrence relation, it's easy to design a sequential algorithm that solves the LCS problem, scanning each row of $M$ one at a time and filling the . It follows that the length of a LCS is saved in $M[m-1, n-1]$. 
+From this simple recurrence relation, it's easy to design a sequential algorithm that solves the LCS problem, filling each row one at a time. It follows that the length of a LCS is saved in $M[m-1, n-1]$. To construct the actual LCS from matrix $M$ it's enough to start from entry $)$
 
 ## Parallel algorithm
 
@@ -187,6 +187,6 @@ def send(x: int, y: int, i: int):
 				MPI_SEND(p_below)
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTYyNDI5NjIxNywxMDMyMjA2NDEyLC0xMT
+eyJoaXN0b3J5IjpbLTMxMDA0OTg3MiwxMDMyMjA2NDEyLC0xMT
 k5MjU0NDY5LC0zMzQ1OTkwMDldfQ==
 -->
