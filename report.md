@@ -1,7 +1,7 @@
 # Longest common subsequence problem
 
 ### Definition:
-Let $X = (x_1, \ldots, x_m)$ and $Y = (y_1, \ldots, y_n)$ be two sequences, where each $x_i, y_i \in$ alphabet $\Sigma$. We say that a sequence $Z = (z_1, \ldots, z_t)$ is a subsequence of $X$ if $z_i = y_{i+}$
+Let $X = (x_1, \ldots, x_m)$ and $Y = (y_1, \ldots, y_n)$ be two sequences, where each $x_i, y_i \in$ alphabet $\Sigma$. We say that a sequence $Z = (z_1, \ldots, z_t)$ is a subsequence of $X$ if $z_i = y_{i+s}$, for all $1 \le i \le t$
 ## Sequential algorith
 
 ## Parallel algorithm
@@ -183,6 +183,6 @@ def send(x: int, y: int, i: int):
 				MPI_SEND(p_below)
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIxMTk0MDc1NjMsLTExOTkyNTQ0NjksLT
-MzNDU5OTAwOV19
+eyJoaXN0b3J5IjpbLTkxMzQ4NDI2LC0xMTk5MjU0NDY5LC0zMz
+Q1OTkwMDldfQ==
 -->
