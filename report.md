@@ -37,7 +37,7 @@ e &=\begin{cases} s + \Bigl \lfloor  \frac{L(d)}{P}\Bigr\rfloor - 1& \text
 \end{align}
 $$
 
-Or more intuitively using an algorithm
+Or more intuitively using an algorithm:
 
 ```py
 def diag_length(d: int):
@@ -191,9 +191,9 @@ def send(x: int, y: int, i: int):
 				MPI_SEND(p_below)
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTY4Mzk4NzMyNiwtMzg1MDA1NDc3LC02Nz
-gwMzk1NzEsODg4MjgyMzcwLC0yNzk4MzM3NTEsMTUzMjE2NDk5
-OSw0MDMwNDUzNzgsLTgwOTc4ODk1NCw1Mzk5MTcxNjQsNzA3NT
-IzODE1LC04MzUwNDQyMjMsMTAzMjIwNjQxMiwtMTE5OTI1NDQ2
-OSwtMzM0NTk5MDA5XX0=
+eyJoaXN0b3J5IjpbLTI5Mjc4OTYzNiwxNjgzOTg3MzI2LC0zOD
+UwMDU0NzcsLTY3ODAzOTU3MSw4ODgyODIzNzAsLTI3OTgzMzc1
+MSwxNTMyMTY0OTk5LDQwMzA0NTM3OCwtODA5Nzg4OTU0LDUzOT
+kxNzE2NCw3MDc1MjM4MTUsLTgzNTA0NDIyMywxMDMyMjA2NDEy
+LC0xMTk5MjU0NDY5LC0zMzQ1OTkwMDldfQ==
 -->
