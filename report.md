@@ -23,7 +23,7 @@ We have to assign an order of execution to compute every entry in the LCS matrix
 - maximize concurrent computation
 - minimize communication costs
 
-To maximize concurrent computation we can look at the CDAG of the matrix, where we compute each cell that has required variables ready as soon as possible; we'll notice how every diagonal is a level of the greedy schedule because every element is dependent from two elements of the previous diagonal. We can deduce that the best assignment for parallelism is some permutation of the sequence of
+To maximize concurrent computation we can look at the CDAG of the matrix, where we compute each cell that has required variables ready as soon as possible; we can deduce that the best assignment for parallelism is some permutation of the sequence of
 
 - $\lceil L/P \rceil$ of processor i for  $0 \leq i < L \mod P$
 - $\lfloor L/P \rfloor$ of processor j for $L \mod P \leq j < P$
@@ -192,7 +192,7 @@ def send(x: int, y: int, i: int):
 				MPI_SEND(p_below)
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTUwMzI1MDY3NCw1Mzk5MTcxNjQsNzA3NT
+eyJoaXN0b3J5IjpbLTgwOTc4ODk1NCw1Mzk5MTcxNjQsNzA3NT
 IzODE1LC04MzUwNDQyMjMsMTAzMjIwNjQxMiwtMTE5OTI1NDQ2
 OSwtMzM0NTk5MDA5XX0=
 -->
