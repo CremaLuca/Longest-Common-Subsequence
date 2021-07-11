@@ -35,14 +35,12 @@ s =\begin{cases}i \lfloor \frac{L(d)}{P}\rfloor & \text
 
 $$
 e =\begin{cases} (i +1)\lfloor \frac{L(d)}{P}\rfloor - 1& \text
-{if $i < L(d) \mod P$}  \\(L(d) \mod P) \cdot \lfloor \frac{L(d)}{P} \rfloor + (i - (L(d) \mod P)) \cdot \lceil \frac{L(d)}{P} \rceil & \text{otherwise} \end{cases}$$
+{if $i < L(d) \mod P$}  \\L_d \mod P) \cdot \lfloor \frac{L_d}{P} \rfloor + ((i+1) - (L_d \mod P) ) * \lceil \frac{L_d}{P} \rceil & \text{otherwise} \end{cases}$$
 
 
-
-- if $i < L(d) \mod P$, compute entries from $D[s]$ to $D[e]$ where $s=i \lfloor \frac{L(d)}{P}\rfloor$, $e = (i +1)\lfloor \frac{L(d)}{P} \rfloor-1$
 - otherwise compute entries from 
 	- from $(L_d \mod P) \cdot \lfloor \frac{L_d}{P} \rfloor + (i - (L_d \mod P)) * \lceil \frac{L_d}{P} \rceil$
-	- to $(L_d \mod P) \cdot \lfloor \frac{L_d}{P} \rfloor + ((i+1) - (L_d \mod P) ) * \lceil \frac{L_d}{P} \rceil$
+	- to $($
 
 Or more intuitively using an algorithm
 
@@ -198,7 +196,7 @@ def send(x: int, y: int, i: int):
 				MPI_SEND(p_below)
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE4NjQzNjYzNzQsLTI3OTgzMzc1MSwxNT
+eyJoaXN0b3J5IjpbLTE4NjMzOTY0NTAsLTI3OTgzMzc1MSwxNT
 MyMTY0OTk5LDQwMzA0NTM3OCwtODA5Nzg4OTU0LDUzOTkxNzE2
 NCw3MDc1MjM4MTUsLTgzNTA0NDIyMywxMDMyMjA2NDEyLC0xMT
 k5MjU0NDY5LC0zMzQ1OTkwMDldfQ==
