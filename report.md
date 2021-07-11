@@ -4,6 +4,7 @@
 Let $X = (x_1, \ldots, x_m)$ and $Y = (y_1, \ldots, y_n)$ be two sequences, where each $x_i, y_i \in$ alphabet $\Sigma$. We say that a sequence $Z = (z_1, \ldots, z_t)$ is a subsequence of $X$ if $z_i = y_{i+s}$, for all $1 \le i \le t$ and some $0 \le s \le n-t$. The Longest Common Subsequence (LCS) problem consists in finding a common subsequence $Z$ of *both* $X$ and $Y$, of maximum length.
 Without loss of generality, we assume $m \le n$ in the following. We first describe a sequential algorithm for the LCS problem, and then we move to the more interesting parallel case, for which we propose an algorithm that borrows its structure from the sequential one.
 ## Sequential algorithm
+There's a well-known algorithm based on dynamic programming, that we propose here for the sequential case.
 
 ## Parallel algorithm
 
@@ -184,6 +185,6 @@ def send(x: int, y: int, i: int):
 				MPI_SEND(p_below)
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjA2OTM2MTQwMCwtMTE5OTI1NDQ2OSwtMz
+eyJoaXN0b3J5IjpbMTAzMjIwNjQxMiwtMTE5OTI1NDQ2OSwtMz
 M0NTk5MDA5XX0=
 -->
