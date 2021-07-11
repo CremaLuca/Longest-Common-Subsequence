@@ -180,3 +180,6 @@ def send(x: int, y: int, i: int):
 			if p_below != i:
 				MPI_SEND(p_below)
 ```
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbLTMzNDU5OTAwOV19
+-->
