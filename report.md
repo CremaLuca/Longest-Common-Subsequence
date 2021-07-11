@@ -32,8 +32,8 @@ We now focus on the permutations of this sequence, in order to minimize the comm
 $$\begin{align}
 s &=\begin{cases}i \Bigl \lfloor \frac{L(d)}{P}\Bigr\rfloor  \text
 {\quad if $i < L(d) \mod P$}  \\\\(L(d) \mod P) \cdot\Bigl \lfloor  \frac{L(d)}{P} \Bigr\rfloor + (i - (L(d) \mod P)) \cdot \Bigl \lceil  \frac{L(d)}{P} \Bigr\rceil & \text{otherwise} \end{cases}\\\\
-e &=\begin{cases} s + \Bigl \lfloor  \frac{L(d)}{P}\Bigr\rfloor - 1& \text
-{if $i < L(d) \mod P$}  \\\\s+ \Bigl\lceil \frac{L(d)}{P} \Bigr\rceil -1& \text{otherwise} \end{cases}
+e &=\begin{cases} s + \Bigl \lfloor  \frac{L(d)}{P}\Bigr\rfloor & \text
+{if $i < L(d) \mod P$}  \\\\s+ \Bigl\lceil \frac{L(d)}{P} \Bigr\rceil & \text{otherwise} \end{cases}
 \end{align}
 $$
 
@@ -191,9 +191,9 @@ def send(x: int, y: int, i: int):
 				MPI_SEND(p_below)
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIxNDY4NDE5MTEsMTY4Mzk4NzMyNiwtMz
-g1MDA1NDc3LC02NzgwMzk1NzEsODg4MjgyMzcwLC0yNzk4MzM3
-NTEsMTUzMjE2NDk5OSw0MDMwNDUzNzgsLTgwOTc4ODk1NCw1Mz
-k5MTcxNjQsNzA3NTIzODE1LC04MzUwNDQyMjMsMTAzMjIwNjQx
-MiwtMTE5OTI1NDQ2OSwtMzM0NTk5MDA5XX0=
+eyJoaXN0b3J5IjpbNzI4NDI1OTk5LDE2ODM5ODczMjYsLTM4NT
+AwNTQ3NywtNjc4MDM5NTcxLDg4ODI4MjM3MCwtMjc5ODMzNzUx
+LDE1MzIxNjQ5OTksNDAzMDQ1Mzc4LC04MDk3ODg5NTQsNTM5OT
+E3MTY0LDcwNzUyMzgxNSwtODM1MDQ0MjIzLDEwMzIyMDY0MTIs
+LTExOTkyNTQ0NjksLTMzNDU5OTAwOV19
 -->
