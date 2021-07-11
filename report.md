@@ -1,5 +1,7 @@
 # Longest common subsequence problem
 
+Definition:
+
 ## Sequential algorithm
 
 ## Parallel algorithm
@@ -181,6 +183,6 @@ def send(x: int, y: int, i: int):
 				MPI_SEND(p_below)
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTkyNzQ5Nzk5MywtMTE5OTI1NDQ2OSwtMz
+eyJoaXN0b3J5IjpbMTkwNjQwNjk0MiwtMTE5OTI1NDQ2OSwtMz
 M0NTk5MDA5XX0=
 -->
