@@ -74,7 +74,7 @@ def diagonal_start_end(d: int, i: int):
 ---
 ### Number of messages
 
-A performance metric we use for the assignment is the number of messages exchanged by the processors. The exact measure for variable N, M and P is hard to obtain from an analytical point, so we give an upper bound, P = min{N, M}.
+A performance metric we use for the assignment is the number of messages exchanged by the processors. The exact measure for variable N, M and P is hard to obtain from analytical considerations, so we give an upper bound, P = min{N, M}.
 
 When P=min{N, M} every cell of each diagonal is assigned to a different processor.
 
@@ -191,7 +191,7 @@ def send(x: int, y: int, i: int):
 				MPI_SEND(p_below)
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE3NDczMTE5MCwxNjgzOTg3MzI2LC0zOD
+eyJoaXN0b3J5IjpbLTEzOTEyMDU3MCwxNjgzOTg3MzI2LC0zOD
 UwMDU0NzcsLTY3ODAzOTU3MSw4ODgyODIzNzAsLTI3OTgzMzc1
 MSwxNTMyMTY0OTk5LDQwMzA0NTM3OCwtODA5Nzg4OTU0LDUzOT
 kxNzE2NCw3MDc1MjM4MTUsLTgzNTA0NDIyMywxMDMyMjA2NDEy
