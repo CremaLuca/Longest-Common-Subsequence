@@ -33,6 +33,12 @@ $$
 s =\begin{cases}i \lfloor \frac{L(d)}{P}\rfloor & \text
 {if $i < L(d) \mod P$}  \\(L(d) \mod P) \cdot \lfloor \frac{L(d)}{P} \rfloor + (i - (L(d) \mod P)) \cdot \lceil \frac{L(d)}{P} \rceil & \text{otherwise} \end{cases}$$
 
+$$
+e =\begin{cases} (i +1)\lfloor \frac{L(d)}{P}\rfloor& \text
+{if $i < L(d) \mod P$}  \\(L(d) \mod P) \cdot \lfloor \frac{L(d)}{P} \rfloor + (i - (L(d) \mod P)) \cdot \lceil \frac{L(d)}{P} \rceil & \text{otherwise} \end{cases}$$
+
+
+
 - if $i < L(d) \mod P$, compute entries from $D[s]$ to $D[e]$ where $s=i \lfloor \frac{L(d)}{P}\rfloor$, $e = (i +1)\lfloor \frac{L(d)}{P} \rfloor-1$
 - otherwise compute entries from 
 	- from $(L_d \mod P) \cdot \lfloor \frac{L_d}{P} \rfloor + (i - (L_d \mod P)) * \lceil \frac{L_d}{P} \rceil$
@@ -192,8 +198,8 @@ def send(x: int, y: int, i: int):
 				MPI_SEND(p_below)
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIzNjUxMjk4NiwtMjc5ODMzNzUxLDE1Mz
-IxNjQ5OTksNDAzMDQ1Mzc4LC04MDk3ODg5NTQsNTM5OTE3MTY0
-LDcwNzUyMzgxNSwtODM1MDQ0MjIzLDEwMzIyMDY0MTIsLTExOT
-kyNTQ0NjksLTMzNDU5OTAwOV19
+eyJoaXN0b3J5IjpbODQzNTI5NDY4LC0yNzk4MzM3NTEsMTUzMj
+E2NDk5OSw0MDMwNDUzNzgsLTgwOTc4ODk1NCw1Mzk5MTcxNjQs
+NzA3NTIzODE1LC04MzUwNDQyMjMsMTAzMjIwNjQxMiwtMTE5OT
+I1NDQ2OSwtMzM0NTk5MDA5XX0=
 -->
