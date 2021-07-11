@@ -56,7 +56,7 @@ def diagonal_start_end(d: int, i: int):
     """
     # Calc length of the diagonal
 	L_d = diag_length(d)
-	# Avoid assigning a cell to more than one proecessor
+	# Avoid unnecessary processors
 	p = min(P, L_d)
 	# Number of cells for the first L_d % p processors
 	ceil_size = math.ceil(L_d / p)
@@ -191,7 +191,7 @@ def send(x: int, y: int, i: int):
 				MPI_SEND(p_below)
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTI5Mjc4OTYzNiwxNjgzOTg3MzI2LC0zOD
+eyJoaXN0b3J5IjpbMTgxMjAxMDc2NywxNjgzOTg3MzI2LC0zOD
 UwMDU0NzcsLTY3ODAzOTU3MSw4ODgyODIzNzAsLTI3OTgzMzc1
 MSwxNTMyMTY0OTk5LDQwMzA0NTM3OCwtODA5Nzg4OTU0LDUzOT
 kxNzE2NCw3MDc1MjM4MTUsLTgzNTA0NDIyMywxMDMyMjA2NDEy
