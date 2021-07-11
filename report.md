@@ -23,7 +23,7 @@ We have to assign an order of execution to compute every entry in the LCS matrix
 - maximize concurrent computation
 - minimize communication costs
 
-To maximize concurrent computation we can look at the CDAG of the matrix, where we compute each cell that has required variables ready as soon as possible; given that we have $P > 0$ processors at our disposal, we could assign the following processors to a given principal 
+To maximize concurrent computation we can look at the CDAG of the matrix, where we compute each cell that has required variables ready as soon as possible; given that we have $P > 0$ processors at our disposal, we could assign the following processors to a given principal diagonal $d$ whose length is $L= $L(d)$$.
 
 - $\lceil L/P \rceil$ of processor i for  $0 \leq i < L \mod P$
 - $\lfloor L/P \rfloor$ of processor j for $L \mod P \leq j < P$
@@ -192,7 +192,7 @@ def send(x: int, y: int, i: int):
 				MPI_SEND(p_below)
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTY4NTQwNjkzLC04MDk3ODg5NTQsNTM5OT
-E3MTY0LDcwNzUyMzgxNSwtODM1MDQ0MjIzLDEwMzIyMDY0MTIs
-LTExOTkyNTQ0NjksLTMzNDU5OTAwOV19
+eyJoaXN0b3J5IjpbMTM0NTA2MDM2OCwtODA5Nzg4OTU0LDUzOT
+kxNzE2NCw3MDc1MjM4MTUsLTgzNTA0NDIyMywxMDMyMjA2NDEy
+LC0xMTk5MjU0NDY5LC0zMzQ1OTkwMDldfQ==
 -->
