@@ -34,7 +34,7 @@ s =\begin{cases}i \lfloor \frac{L(d)}{P}\rfloor & \text
 {if $i < L(d) \mod P$}  \\(L(d) \mod P) \cdot \lfloor \frac{L(d)}{P} \rfloor + (i - (L(d) \mod P)) \cdot \lceil \frac{L(d)}{P} \rceil & \text{otherwise} \end{cases}$$
 
 $$
-e =\begin{cases} (i +1)\lfloor \frac{L(d)}{P}\rfloor - 1& \text
+e =\begin{cases}s + \lfloor \frac{L(d)}{P}\rfloor - 1& \text
 {if $i < L(d) \mod P$}  \\L_d \mod P) \cdot \lfloor \frac{L_d}{P} \rfloor + ((i+1) - (L_d \mod P) ) * \lceil \frac{L_d}{P} \rceil & \text{otherwise} \end{cases}$$
 
 
@@ -196,8 +196,8 @@ def send(x: int, y: int, i: int):
 				MPI_SEND(p_below)
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE4NjMzOTY0NTAsLTI3OTgzMzc1MSwxNT
-MyMTY0OTk5LDQwMzA0NTM3OCwtODA5Nzg4OTU0LDUzOTkxNzE2
-NCw3MDc1MjM4MTUsLTgzNTA0NDIyMywxMDMyMjA2NDEyLC0xMT
-k5MjU0NDY5LC0zMzQ1OTkwMDldfQ==
+eyJoaXN0b3J5IjpbLTE0NTUzMjg4MCwtMjc5ODMzNzUxLDE1Mz
+IxNjQ5OTksNDAzMDQ1Mzc4LC04MDk3ODg5NTQsNTM5OTE3MTY0
+LDcwNzUyMzgxNSwtODM1MDQ0MjIzLDEwMzIyMDY0MTIsLTExOT
+kyNTQ0NjksLTMzNDU5OTAwOV19
 -->
