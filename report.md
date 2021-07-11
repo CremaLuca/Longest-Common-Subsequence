@@ -13,6 +13,7 @@ From this simple recurrence relation, it's easy to design a sequential algorithm
 We will exploit the previous recurrence relation, trying to find a way to parallelize the computation. Let us first define what we mean by principal diagonal of $M$.
 **Definition:** The $M$'s principal diagonal of index $d$, for $0 \le d \le m + n -2$, is the set of entries$$L(d) =\begin{cases}\{M[0, d], M[1, d-1], \ldots,  M[d, 0])\} & \text
 {if $0\le d < m$}  \\\{M[0, d], M[1, d-1], \ldots,  M[m-1, d-m])\} & \text{if $m \le d < n$} \\\{M[d-n + 1, n-1], M[N-d+2, n-2], \ldots,  M[m-1, d-m+1])\}  & \text{if $d \ge n$}\end{cases}$$
+Each entry in $L(d)$ will depend only on entries belonging to $L(d-1)$ and L($d-2)$
 
 ### Optimal execution order
 
@@ -189,7 +190,7 @@ def send(x: int, y: int, i: int):
 				MPI_SEND(p_below)
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE4OTgwMzk4MjgsNTM5OTE3MTY0LDcwNz
-UyMzgxNSwtODM1MDQ0MjIzLDEwMzIyMDY0MTIsLTExOTkyNTQ0
-NjksLTMzNDU5OTAwOV19
+eyJoaXN0b3J5IjpbMTE4ODc2NzkwNiw1Mzk5MTcxNjQsNzA3NT
+IzODE1LC04MzUwNDQyMjMsMTAzMjIwNjQxMiwtMTE5OTI1NDQ2
+OSwtMzM0NTk5MDA5XX0=
 -->
