@@ -1,7 +1,7 @@
 # Longest common subsequence problem
 
 ### Definition:
-Let $X = (x_1, \ldots, x_m)$ and $Y = (y_1, \ldots, y_n)$ be 
+Let $X = (x_1, \ldots, x_m)$ and $Y = (y_1, \ldots, y_n)$ be two sequences, where each $x_i, y_i \in$ alphabet $\Sigma$.
 ## Sequential algorithm
 
 ## Parallel algorithm
@@ -183,6 +183,6 @@ def send(x: int, y: int, i: int):
 				MPI_SEND(p_below)
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTAyNjc2OTM1NCwtMTE5OTI1NDQ2OSwtMz
+eyJoaXN0b3J5IjpbMTA5NTgyMjAzMiwtMTE5OTI1NDQ2OSwtMz
 M0NTk5MDA5XX0=
 -->
