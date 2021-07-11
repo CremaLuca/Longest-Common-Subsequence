@@ -15,7 +15,7 @@ We will exploit the previous recurrence relation, trying to find a way to parall
 {if $0\le d < m$}  \\\{M[0, d], M[1, d-1], \ldots,  M[m-1, d-m+1])\} & \text{if $m \le d < n$} \\\{M[d-n + 1, n-1], M[N-d+2, n-2], \ldots,  M[m-1, d-m+1])\}  & \text{if $d \ge n$}\end{cases}$$
 Each entry in $D(d)$ will depend only on entries belonging to $D(d-1)$ and D($d-2)$. In fact each element depends only on three elements from the two previous principal diagonals. This suggests a way to parallelize our initial algorithm: by looking at the CDAG of the computation, each diagonal is a level of the greedy schedule. Hence each entry in each diagonal can be computed in parallel, as long as entries from the previous diagonals have already been computed. From the previous definition, we have $$|D(d)| =\begin{cases}d+1 & \text
 {if $0\le d < m$}  \\m & \text{if $m \le d < n$} \\m+n-1-d & \text{if $d \ge n$}\end{cases}$$
-or, more concisely, $|L(d)| = \min\{d+1, m, m+n-1-d\}$. 
+or, more concisely, $|D(d)| = \min\{d+1, m, m+n-1-d\}$. 
 
 ### Optimal execution order
 
@@ -192,7 +192,7 @@ def send(x: int, y: int, i: int):
 				MPI_SEND(p_below)
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTcwOTg3MDg2MywtODA5Nzg4OTU0LDUzOT
-kxNzE2NCw3MDc1MjM4MTUsLTgzNTA0NDIyMywxMDMyMjA2NDEy
-LC0xMTk5MjU0NDY5LC0zMzQ1OTkwMDldfQ==
+eyJoaXN0b3J5IjpbOTI0Njc0NzkzLC04MDk3ODg5NTQsNTM5OT
+E3MTY0LDcwNzUyMzgxNSwtODM1MDQ0MjIzLDEwMzIyMDY0MTIs
+LTExOTkyNTQ0NjksLTMzNDU5OTAwOV19
 -->
