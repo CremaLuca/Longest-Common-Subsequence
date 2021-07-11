@@ -28,7 +28,7 @@ To maximize concurrent computation we can look at the CDAG of the matrix, where 
 - $\lceil L/P \rceil$ cells to  processor $i$ for  $0 \leq i < L \mod P$
 - $\lfloor L/P \rfloor$ cells to processor $j$ for $L \mod P \leq j < P$
 
-We now focus on the permutations of this sequence to minimize the communcation between processors. The intuitive way to achieve this is by having processors assigned to contiguous cells of the diagonal of the matrix and in the same order for each diagonal, this way we increase the probability for each processor to have the required variables from the previous diagonal already stored in its memory. Each processor will then have assigned the cells:
+We now focus on the permutations of this sequence, in order to minimize the communcation between processors. The intuitive way to achieve this is by having processors assigned to contiguous cells of the diagonal of the matrix and in the same order for each diagonal, this way we increase the probability for each processor to have the required variables from the previous diagonal already stored in its memory. Each processor will then have assigned the cells:
 - if $i < L_d \mod P$
 	- from $i \lfloor \frac{L_d}{P} \rfloor$
 	- to $(i +1)\lfloor \frac{L_d}{P} \rfloor$
@@ -190,8 +190,8 @@ def send(x: int, y: int, i: int):
 				MPI_SEND(p_below)
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE5OTczMjYyOTQsMTUzMjE2NDk5OSw0MD
-MwNDUzNzgsLTgwOTc4ODk1NCw1Mzk5MTcxNjQsNzA3NTIzODE1
-LC04MzUwNDQyMjMsMTAzMjIwNjQxMiwtMTE5OTI1NDQ2OSwtMz
-M0NTk5MDA5XX0=
+eyJoaXN0b3J5IjpbLTQ3Mjk4MTUxOSwxNTMyMTY0OTk5LDQwMz
+A0NTM3OCwtODA5Nzg4OTU0LDUzOTkxNzE2NCw3MDc1MjM4MTUs
+LTgzNTA0NDIyMywxMDMyMjA2NDEyLC0xMTk5MjU0NDY5LC0zMz
+Q1OTkwMDldfQ==
 -->
