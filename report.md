@@ -10,7 +10,7 @@ From this simple recurrence relation, it's easy to design a sequential algorithm
 
 ## Parallel algorithm
 
-Based on independence of data between diagonals.
+We will exploit the previous recurrence relation, trying to find a way to parallelize the computation. We begin by noting that each entry belonging to the principal diagonals
 
 ### Optimal execution order
 
@@ -187,6 +187,7 @@ def send(x: int, y: int, i: int):
 				MPI_SEND(p_below)
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNzA3NTIzODE1LC04MzUwNDQyMjMsMTAzMj
-IwNjQxMiwtMTE5OTI1NDQ2OSwtMzM0NTk5MDA5XX0=
+eyJoaXN0b3J5IjpbLTE3MzIzMjU3NjgsNzA3NTIzODE1LC04Mz
+UwNDQyMjMsMTAzMjIwNjQxMiwtMTE5OTI1NDQ2OSwtMzM0NTk5
+MDA5XX0=
 -->
