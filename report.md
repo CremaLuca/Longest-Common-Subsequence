@@ -11,7 +11,7 @@ From this simple recurrence relation, it's easy to design a sequential algorithm
 ## Parallel algorithm
 
 We will exploit the previous recurrence relation, trying to find a way to parallelize the computation. Let us first define what we mean by principal diagonal of $M$.
-**Definition:** The $M$'s principal diagonal of index $d$, for $0 \le d \le m + n -2$, is the set of entries$$D(d) =\begin{cases}\{M[0, d], M[1, d-1], \ldots,  M[d, 0])\} & \text
+**Definition:** The $M$'s principal diagonal of index $d$, for $0 \le d \le m + n -2$, is the ordered set of entries$$D(d) =\begin{cases}\{M[0, d], M[1, d-1], \ldots,  M[d, 0])\} & \text
 {if $0\le d < m$}  \\\{M[0, d], M[1, d-1], \ldots,  M[m-1, d-m+1])\} & \text{if $m \le d < n$} \\\{M[d-n + 1, n-1], M[N-d+2, n-2], \ldots,  M[m-1, d-m+1])\}  & \text{if $d \ge n$}\end{cases}$$
 Each entry in $D(d)$ will depend only on entries belonging to $D(d-1)$ and D($d-2)$. In fact each element depends only on three elements from the two previous principal diagonals. This suggests a way to parallelize our initial algorithm: by looking at the CDAG of the computation, each diagonal is a level of the greedy schedule. Hence each entry in each diagonal can be computed in parallel, as long as entries from the previous diagonals have already been computed. From the previous definition, we have $$L(d) = |D(d)| =\begin{cases}d+1 & \text
 {if $0\le d < m$}  \\m & \text{if $m \le d < n$} \\m+n-1-d & \text{if $d \ge n$}\end{cases}$$
@@ -28,8 +28,8 @@ To maximize concurrent computation we can look at the CDAG of the matrix, where 
 - $\lceil L/P \rceil$ cells to  processor $i$ for  $0 \leq i < L \mod P$
 - $\lfloor L/P \rfloor$ cells to processor $j$ for $L \mod P \leq j < P$
 
-We now focus on the permutations of this sequence, in order to minimize the communication between processors. The intuitive way to achieve this is by having processors assigned to contiguous cells of the diagonal of the matrix and in the same order for each diagonal: this way we increase the probability for each processor to have the required variables from the previous diagonal already stored in its memory. Processor $i$ will have to compute entries in the following manner:
-- if $i < L \mod P$
+We now focus on the permutations of this sequence, in order to minimize the communication between processors. The intuitive way to achieve this is by having processors assigned to contiguous cells of the diagonal of the matrix and in the same order for each diagonal: this way we increase the probability for each processor to have the required variables from the previous diagonal already stored in its memory. Say all elements are Processor $i$ will have to compute entries in the following manner:
+- if $i < L \mod P$, compute entries from D
 	- from $i \lfloor \frac{L_d}{P} \rfloor$
 	- to $(i +1)\lfloor \frac{L_d}{P} \rfloor$
 - otherwise
@@ -190,7 +190,7 @@ def send(x: int, y: int, i: int):
 				MPI_SEND(p_below)
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTQxNDY1NTUwMCwxNTMyMTY0OTk5LDQwMz
+eyJoaXN0b3J5IjpbMjA3Nzc3OTgyNywxNTMyMTY0OTk5LDQwMz
 A0NTM3OCwtODA5Nzg4OTU0LDUzOTkxNzE2NCw3MDc1MjM4MTUs
 LTgzNTA0NDIyMywxMDMyMjA2NDEyLC0xMTk5MjU0NDY5LC0zMz
 Q1OTkwMDldfQ==
