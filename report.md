@@ -19,7 +19,7 @@ or, more concisely, $|L(d)| = \min\{d+1, m, m+n-1-d\}$.
 
 ### Optimal execution order
 
-We have to assign an order of execution for every cell in the LCS matrix. The assignment we are looking for has to:
+We have to assign an order of execution to compute every cell in the LCS matrix. The assignment we are looking for has to:
 - maximize concurrent computation
 - minimize communication costs
 
@@ -192,7 +192,7 @@ def send(x: int, y: int, i: int):
 				MPI_SEND(p_below)
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIxNjM3MzAxMSw1Mzk5MTcxNjQsNzA3NT
+eyJoaXN0b3J5IjpbLTIzOTUwMjIwNCw1Mzk5MTcxNjQsNzA3NT
 IzODE1LC04MzUwNDQyMjMsMTAzMjIwNjQxMiwtMTE5OTI1NDQ2
 OSwtMzM0NTk5MDA5XX0=
 -->
