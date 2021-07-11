@@ -28,8 +28,8 @@ To maximize concurrent computation we can look at the CDAG of the matrix, where 
 - $\lceil L/P \rceil$ cells to  processor $i$ for  $0 \leq i < L \mod P$
 - $\lfloor L/P \rfloor$ cells to processor $j$ for $L \mod P \leq j < P$
 
-We now focus on the permutations of this sequence, in order to minimize the communication between processors. The intuitive way to achieve this is by having processors assigned to contiguous cells of the diagonal of the matrix and in the same order for each diagonal: this way we increase the probability for each processor to have the required variables from the previous diagonal already stored in its memory. Let $D$ be the principal diagonal of index $d$; processor $i$ will have to compute entries in the following manner:
-- if $i < L(d) \mod P$, compute entries from $D[s]$ to $D[]$ where $s=i \lfloor \frac{L(d)}{P}\rfloor$, $e = $
+We now focus on the permutations of this sequence, in order to minimize the communication between processors. The intuitive way to achieve this is by having processors assigned to contiguous cells of the diagonal of the matrix and in the same order for each diagonal: this way we increase the probability for each processor to have the required variables from the previous diagonal already stored in its memory. Let $D$ be the principal diagonal of index $d$; processor $i$ will have to compute entries from $D[s]$ to $D[e]$ in the following manner:
+- if $i < L(d) \mod P$, compute entries from $D[s]$ to $D[e]$ where $s=i \lfloor \frac{L(d)}{P}\rfloor$, $e = (i +1)\lfloor \frac{L(d)}{P} \rfloor-1$
 - otherwise compute entries from 
 	- from $(L_d \mod P) \cdot \lfloor \frac{L_d}{P} \rfloor + (i - (L_d \mod P)) * \lceil \frac{L_d}{P} \rceil$
 	- to $(L_d \mod P) \cdot \lfloor \frac{L_d}{P} \rfloor + ((i+1) - (L_d \mod P) ) * \lceil \frac{L_d}{P} \rceil$
@@ -188,8 +188,8 @@ def send(x: int, y: int, i: int):
 				MPI_SEND(p_below)
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbODI2NTI5Mjk3LDE1MzIxNjQ5OTksNDAzMD
-Q1Mzc4LC04MDk3ODg5NTQsNTM5OTE3MTY0LDcwNzUyMzgxNSwt
-ODM1MDQ0MjIzLDEwMzIyMDY0MTIsLTExOTkyNTQ0NjksLTMzND
-U5OTAwOV19
+eyJoaXN0b3J5IjpbMjEwMDkzMjM0NCwxNTMyMTY0OTk5LDQwMz
+A0NTM3OCwtODA5Nzg4OTU0LDUzOTkxNzE2NCw3MDc1MjM4MTUs
+LTgzNTA0NDIyMywxMDMyMjA2NDEyLC0xMTk5MjU0NDY5LC0zMz
+Q1OTkwMDldfQ==
 -->
