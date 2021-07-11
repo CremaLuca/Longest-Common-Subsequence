@@ -159,7 +159,7 @@ def cell_proc(i: int, j: int):
 
 Instead of keeping the matrix of whom is what we can devise a constant-time algorithm to find where to send the computed values. Easily enough there are only two cases of a value sent to the next diagonal: from (i, j) to (i+1, j) and to (i, j+1). The case from (i, j) to (i+1, j+1) never happens because (i+1, j+1) does not belong to the next diagonal $(d_{(i+1, j+1)}=d_{(i,j)}+2)$.
 
-We can use the previous algorithm `cell_proc(i, j)` to check whether the cells (i+1, j) and (i, j+1) belong to current processor and in case of a negative answer we send it to the respective process.
+We can use the previous algorithm `cell_proc(i, j)` to check whether the cells $(i+1, j)$ and $(i, j+1)$belong to current processor and in case of a negative answer we send it to the respective process.
 
 We know for sure that the cell on the right can belong either to the current processor or the previous one, and the one below to the next one, but we couldn't find an usage of this information to improve the algorithm speed.
 
@@ -181,5 +181,5 @@ def send(x: int, y: int, i: int):
 				MPI_SEND(p_below)
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTMzNDU5OTAwOV19
+eyJoaXN0b3J5IjpbLTExOTkyNTQ0NjksLTMzNDU5OTAwOV19
 -->
