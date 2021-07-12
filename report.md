@@ -137,7 +137,7 @@ def cell_diag_index(i: int, j: int):
 
 Another useful function is needed to compute which processor is assigned to entry $(i, j)$, i.e. $P(i, j)$.
 It's easy to derive a formula from the previous assignment of processors to each diagonal; we have:$$P(i, j)=\begin{cases}\bigl\lfloor\frac{\text{pos}(i, j)}{q+1}\bigr\rfloor& \text
-{if $0\le d < m$}  \\b & \text{if $m \le d < n$} \\c  & \text{if $d \ge n$}\end{cases}$$
+{if pos(i, j)}  \\b & \text{if $m \le d < n$} \\c  & \text{if $d \ge n$}\end{cases}$$
 
 ```py
 def cell_proc(i: int, j: int):
@@ -187,11 +187,11 @@ def send(x: int, y: int, i: int):
 				MPI_SEND(p_below)
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbODg2NTczOTAwLDUzODcyMzQ0MSw1ODc2MT
-c3OTIsLTkyNjc5ODEzNCwtMTQwMjQ2MTcyLDE3NDE5OTUxMTEs
-LTE4ODMxMDc1NjUsMzEzMDI4NzIwLC04NzkyNTkyNTAsLTIwOD
-UyNTgyNDIsLTEwMTUwNTAxMDMsLTMxNTg0NDc2MywtMTA5Mzgz
-MzAxLC0xMDEwNDQxOTUzLDE3MzQ3MjExNTMsLTEzOTEyMDU3MC
-wxNjgzOTg3MzI2LC0zODUwMDU0NzcsLTY3ODAzOTU3MSw4ODgy
-ODIzNzBdfQ==
+eyJoaXN0b3J5IjpbMTQ2NjYzMTU0Miw1Mzg3MjM0NDEsNTg3Nj
+E3NzkyLC05MjY3OTgxMzQsLTE0MDI0NjE3MiwxNzQxOTk1MTEx
+LC0xODgzMTA3NTY1LDMxMzAyODcyMCwtODc5MjU5MjUwLC0yMD
+g1MjU4MjQyLC0xMDE1MDUwMTAzLC0zMTU4NDQ3NjMsLTEwOTM4
+MzMwMSwtMTAxMDQ0MTk1MywxNzM0NzIxMTUzLC0xMzkxMjA1Nz
+AsMTY4Mzk4NzMyNiwtMzg1MDA1NDc3LC02NzgwMzk1NzEsODg4
+MjgyMzcwXX0=
 -->
