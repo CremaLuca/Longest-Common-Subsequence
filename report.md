@@ -81,8 +81,6 @@ A performance metric we use for the assignment is the number of messages exchang
 In this case *every* cell of *each* diagonal is assigned to a *different* processor. By the remark, it's easy to prove that $P(i, j) = P(i, j-1) \ne P(i-1, j)$ if $i+j \le n-1$ and $P(i, j) = P(i-1, j) \ne P(i, j-1)$  if $i+j \ge n$.  Hence: $$\text{messages exchanged} = \sum_{i = 1}^{m-1}\sum_{j=1}^{n-1}1 + \underbrace{m-1}_{\text{first column}} = n(m-1) = \theta(nm)$$
 
 ### Computing the list of entries assigned to a given processor
-
-# TODO (X marco)
 Each processor needs to know which entries to compute. We make use of the observations above, i.e. the procedure $\text{diagonal\_start\_end()}$. Notice that processor $i$ will never appear on principal diagonals $d$ s.t. $d < i$ or $d \ge n+m-1-i$, since in both cases the length of the diagonal is $\le i$. Also since no diagonal has length $\ge\min\{m, n\} = m$, we need $i < m$.
 The algorithm to determine the list of elements of the whole matrix then is:
 ```py
@@ -187,11 +185,11 @@ def send(x: int, y: int, i: int):
 				MPI_SEND(p_below)
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTkyNjc5ODEzNCwtMTQwMjQ2MTcyLDE3ND
-E5OTUxMTEsLTE4ODMxMDc1NjUsMzEzMDI4NzIwLC04NzkyNTky
-NTAsLTIwODUyNTgyNDIsLTEwMTUwNTAxMDMsLTMxNTg0NDc2My
-wtMTA5MzgzMzAxLC0xMDEwNDQxOTUzLDE3MzQ3MjExNTMsLTEz
-OTEyMDU3MCwxNjgzOTg3MzI2LC0zODUwMDU0NzcsLTY3ODAzOT
-U3MSw4ODgyODIzNzAsLTI3OTgzMzc1MSwxNTMyMTY0OTk5LDQw
-MzA0NTM3OF19
+eyJoaXN0b3J5IjpbNTg3NjE3NzkyLC05MjY3OTgxMzQsLTE0MD
+I0NjE3MiwxNzQxOTk1MTExLC0xODgzMTA3NTY1LDMxMzAyODcy
+MCwtODc5MjU5MjUwLC0yMDg1MjU4MjQyLC0xMDE1MDUwMTAzLC
+0zMTU4NDQ3NjMsLTEwOTM4MzMwMSwtMTAxMDQ0MTk1MywxNzM0
+NzIxMTUzLC0xMzkxMjA1NzAsMTY4Mzk4NzMyNiwtMzg1MDA1ND
+c3LC02NzgwMzk1NzEsODg4MjgyMzcwLC0yNzk4MzM3NTEsMTUz
+MjE2NDk5OV19
 -->
