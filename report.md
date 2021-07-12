@@ -94,9 +94,9 @@ def matrix_elements(i:int):
 	Returns:
 		A list of cells of the LCS matrix assigned to processor i.
 	"""
-	elements = []
+	
 	# If there are too many processor this one doesn't do anything
-	if i > N or i > M:
+	if :
 		return elements
 	# Eg. Processor 1 (starting from 0) will never be in the first and last diagonal
 	for d in range(i, N+M-1-i):
@@ -186,11 +186,11 @@ def send(x: int, y: int, i: int):
 				MPI_SEND(p_below)
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE4MjEzMTk1NDksMTc0MTk5NTExMSwtMT
-g4MzEwNzU2NSwzMTMwMjg3MjAsLTg3OTI1OTI1MCwtMjA4NTI1
-ODI0MiwtMTAxNTA1MDEwMywtMzE1ODQ0NzYzLC0xMDkzODMzMD
-EsLTEwMTA0NDE5NTMsMTczNDcyMTE1MywtMTM5MTIwNTcwLDE2
-ODM5ODczMjYsLTM4NTAwNTQ3NywtNjc4MDM5NTcxLDg4ODI4Mj
-M3MCwtMjc5ODMzNzUxLDE1MzIxNjQ5OTksNDAzMDQ1Mzc4LC04
-MDk3ODg5NTRdfQ==
+eyJoaXN0b3J5IjpbMTI5MDM3OTgxMywxNzQxOTk1MTExLC0xOD
+gzMTA3NTY1LDMxMzAyODcyMCwtODc5MjU5MjUwLC0yMDg1MjU4
+MjQyLC0xMDE1MDUwMTAzLC0zMTU4NDQ3NjMsLTEwOTM4MzMwMS
+wtMTAxMDQ0MTk1MywxNzM0NzIxMTUzLC0xMzkxMjA1NzAsMTY4
+Mzk4NzMyNiwtMzg1MDA1NDc3LC02NzgwMzk1NzEsODg4MjgyMz
+cwLC0yNzk4MzM3NTEsMTUzMjE2NDk5OSw0MDMwNDUzNzgsLTgw
+OTc4ODk1NF19
 -->
