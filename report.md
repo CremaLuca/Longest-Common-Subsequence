@@ -198,10 +198,10 @@ Once the $M$ matrix has been computed by the parallel algorithm, process $P(m-1,
  2. $M[i, j] = M[i, j-1]$
  3. $M[i, j] = M[i-1, j]$
 
-If $1.$ is true, then $p$ sends $ex_i$ to $p' = P(i-1, j-1)$, where $e$ is a marker $\notin\Sigma$. Similarly $p'$ checks the above conditions with the correct indices, 
+If $1.$ is true, then $p$ sends $ex_i$ to $p' = P(i-1, j-1)$, where $e$ is a marker $\notin\Sigma$. 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTYwNjIwODUwNiwxNDM5NjIxMTQyLDE1MT
+eyJoaXN0b3J5IjpbMTk4MzU5NjczNCwxNDM5NjIxMTQyLDE1MT
 kyOTUxNzgsMTA3OTgxNTUwOSwtOTg5MjUwOTA5LDEzMjA5NjEz
 NzYsLTE5NTIyMTQ2ODUsLTEyMjY0NjEzNjUsLTExNjgxNDMwOS
 wyNzE1NzEzMTgsLTkzMzkwNzQ1NiwtNTAzMTk5NTY0LC04MDcy
