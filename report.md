@@ -108,7 +108,7 @@ def matrix_elements(i:int):
 			elements.append((x,y))
 ```
 ---
-### Index of cell in diagonal
+### Some useful procedures
 
 It will be useful later to know in which diagonal and which index a given cell is.
 Given a cell coordinates (i, j) the diagonal is given by `i+j`, while the index in the diagonal is given by the row `i`if  d < N and `(N-d-1)+i` otherwise (or `(N-i-j-1)+i`=`N-j-1`).
@@ -185,11 +185,11 @@ def send(x: int, y: int, i: int):
 				MPI_SEND(p_below)
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNTg3NjE3NzkyLC05MjY3OTgxMzQsLTE0MD
-I0NjE3MiwxNzQxOTk1MTExLC0xODgzMTA3NTY1LDMxMzAyODcy
-MCwtODc5MjU5MjUwLC0yMDg1MjU4MjQyLC0xMDE1MDUwMTAzLC
-0zMTU4NDQ3NjMsLTEwOTM4MzMwMSwtMTAxMDQ0MTk1MywxNzM0
-NzIxMTUzLC0xMzkxMjA1NzAsMTY4Mzk4NzMyNiwtMzg1MDA1ND
-c3LC02NzgwMzk1NzEsODg4MjgyMzcwLC0yNzk4MzM3NTEsMTUz
-MjE2NDk5OV19
+eyJoaXN0b3J5IjpbMTMzNDgxODQ0NSw1ODc2MTc3OTIsLTkyNj
+c5ODEzNCwtMTQwMjQ2MTcyLDE3NDE5OTUxMTEsLTE4ODMxMDc1
+NjUsMzEzMDI4NzIwLC04NzkyNTkyNTAsLTIwODUyNTgyNDIsLT
+EwMTUwNTAxMDMsLTMxNTg0NDc2MywtMTA5MzgzMzAxLC0xMDEw
+NDQxOTUzLDE3MzQ3MjExNTMsLTEzOTEyMDU3MCwxNjgzOTg3Mz
+I2LC0zODUwMDU0NzcsLTY3ODAzOTU3MSw4ODgyODIzNzAsLTI3
+OTgzMzc1MV19
 -->
