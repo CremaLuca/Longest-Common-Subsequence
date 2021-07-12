@@ -175,8 +175,7 @@ def send(x: int, y: int, i: int):
 	Parameters:
 		- i, j: int
 			Coordinates of a matrix cell.
-	Returns:
-		The processor assigned to the given cell.
+		- i, 
 	"""
 	# Send the value right if needed
 	if i != 0: # p_0 never sends right
@@ -194,11 +193,11 @@ def send(x: int, y: int, i: int):
 				MPI_SEND(p_below)
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTUwMzE5OTU2NCwtODA3MjA1NTU1LDg2OD
-k1NTQ2NSwxNjUxNDA3MzMwLDUzODcyMzQ0MSw1ODc2MTc3OTIs
-LTkyNjc5ODEzNCwtMTQwMjQ2MTcyLDE3NDE5OTUxMTEsLTE4OD
-MxMDc1NjUsMzEzMDI4NzIwLC04NzkyNTkyNTAsLTIwODUyNTgy
-NDIsLTEwMTUwNTAxMDMsLTMxNTg0NDc2MywtMTA5MzgzMzAxLC
-0xMDEwNDQxOTUzLDE3MzQ3MjExNTMsLTEzOTEyMDU3MCwxNjgz
-OTg3MzI2XX0=
+eyJoaXN0b3J5IjpbMjExNTcxNjcyMywtNTAzMTk5NTY0LC04MD
+cyMDU1NTUsODY4OTU1NDY1LDE2NTE0MDczMzAsNTM4NzIzNDQx
+LDU4NzYxNzc5MiwtOTI2Nzk4MTM0LC0xNDAyNDYxNzIsMTc0MT
+k5NTExMSwtMTg4MzEwNzU2NSwzMTMwMjg3MjAsLTg3OTI1OTI1
+MCwtMjA4NTI1ODI0MiwtMTAxNTA1MDEwMywtMzE1ODQ0NzYzLC
+0xMDkzODMzMDEsLTEwMTA0NDE5NTMsMTczNDcyMTE1MywtMTM5
+MTIwNTcwXX0=
 -->
