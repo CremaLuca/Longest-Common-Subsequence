@@ -163,7 +163,7 @@ def cell_proc(i: int, j: int):
 	else:
 		return math.floor((pos - rem)/ floor_size)
 ```
-
+---
 ### Send computed values
 Each processor doesn't need to keep a copy of the matrix $P(i, j)$: to find where to send the computed values, the previous formula can be used. As we already mentioned in a remark, each processor needs to send at most one value to a different neighbor: we can use the previous algorithm `cell_proc(i, j)` to check whether the cells $(i+1, j)$ and $(i, j+1)$ belong to the current processor and in case of a negative answer we send their values to the proper processes.
 
@@ -194,11 +194,11 @@ def send(x: int, y: int, p: int):
 				MPI_SEND(p_below)
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEyMjY0NjEzNjUsLTExNjgxNDMwOSwyNz
-E1NzEzMTgsLTkzMzkwNzQ1NiwtNTAzMTk5NTY0LC04MDcyMDU1
-NTUsODY4OTU1NDY1LDE2NTE0MDczMzAsNTM4NzIzNDQxLDU4Nz
-YxNzc5MiwtOTI2Nzk4MTM0LC0xNDAyNDYxNzIsMTc0MTk5NTEx
-MSwtMTg4MzEwNzU2NSwzMTMwMjg3MjAsLTg3OTI1OTI1MCwtMj
-A4NTI1ODI0MiwtMTAxNTA1MDEwMywtMzE1ODQ0NzYzLC0xMDkz
-ODMzMDFdfQ==
+eyJoaXN0b3J5IjpbMjA2NzI5MjI1MiwtMTIyNjQ2MTM2NSwtMT
+E2ODE0MzA5LDI3MTU3MTMxOCwtOTMzOTA3NDU2LC01MDMxOTk1
+NjQsLTgwNzIwNTU1NSw4Njg5NTU0NjUsMTY1MTQwNzMzMCw1Mz
+g3MjM0NDEsNTg3NjE3NzkyLC05MjY3OTgxMzQsLTE0MDI0NjE3
+MiwxNzQxOTk1MTExLC0xODgzMTA3NTY1LDMxMzAyODcyMCwtOD
+c5MjU5MjUwLC0yMDg1MjU4MjQyLC0xMDE1MDUwMTAzLC0zMTU4
+NDQ3NjNdfQ==
 -->
