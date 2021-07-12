@@ -187,13 +187,13 @@ def send(x: int, y: int, p: int):
 			return # No need to send it below too
 	# Send the value below if needed
 	if p != P-1: # p_P-1 never sends below
-		if (x + 1 < N): # Avoid out of bounds
-			p_below = cell_proc(x+1, y)
+		if (i + 1 < N): # Avoid out of bounds
+			p_below = cell_proc(i+1, j)
 			if p_below != p:
 				MPI_SEND(p_below)
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTM3NzQ3MDY4MiwtNTAzMTk5NTY0LC04MD
+eyJoaXN0b3J5IjpbMTU4OTI5MjM5NSwtNTAzMTk5NTY0LC04MD
 cyMDU1NTUsODY4OTU1NDY1LDE2NTE0MDczMzAsNTM4NzIzNDQx
 LDU4NzYxNzc5MiwtOTI2Nzk4MTM0LC0xNDAyNDYxNzIsMTc0MT
 k5NTExMSwtMTg4MzEwNzU2NSwzMTMwMjg3MjAsLTg3OTI1OTI1
