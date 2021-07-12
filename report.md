@@ -208,8 +208,8 @@ def get_LCS(i: int, j: int):
 			Coordinates of a matrix cell.
 	It's assumed P(i, j) is calling this function.
 	"""
-		
-	
+	#M[i, j], M[i-1, j], M[i, j-1], M[i-1, j-1] are stored in the local
+	# memory	
 	
 	# Send the value right if needed
 	if p != 0: # process 0 never sends right
@@ -228,7 +228,7 @@ def get_LCS(i: int, j: int):
 ```
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTgwMDEwNzU2OSwtMTA4MTU5NjY4OCwyMD
+eyJoaXN0b3J5IjpbLTgwNjAxNTkzMiwtMTA4MTU5NjY4OCwyMD
 k1NDg3OTg2LC0xMTU3NTUzODgyLC04OTA2OTA2MTYsMTk4MzU5
 NjczNCwxNDM5NjIxMTQyLDE1MTkyOTUxNzgsMTA3OTgxNTUwOS
 wtOTg5MjUwOTA5LDEzMjA5NjEzNzYsLTE5NTIyMTQ2ODUsLTEy
