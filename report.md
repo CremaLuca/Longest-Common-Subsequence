@@ -198,10 +198,10 @@ Once the $M$ matrix has been computed by the parallel algorithm, process $P(m-1,
  2. $M[i, j] = M[i, j-1]$
  3. $M[i, j] = M[i-1, j]$
 
-If $1.$ is true, then $p$ sends $x_i$ to $p' = P(i-1, j-1)$. If $2.$ or $3.$ is true, then $p$ sends $e$ to $p' = P(i, j-1)$ or $p' = P(i-1, j)$ respectively, where $e$ is the null string. The same procedure applies $p'$, which will prepend its message to the one it just received from $p$. Once a processor assigned to a cell $(0, j$) or $(i, 0)$ is reached
+If $1.$ is true, then $p$ sends $x_i$ to $p' = P(i-1, j-1)$. If $2.$ or $3.$ is true, then $p$ sends $e$ to $p' = P(i, j-1)$ or $p' = P(i-1, j)$ respectively, where $e$ is the null string. The same procedure applies $p'$, which will prepend its message to the one it just received from $p$. Once a processor assigned to a cell $(0, j$) or $(i, 0)$ is reached, the resulting message is the required LCS, which can then be sent in case to the starting process, i.e. $0$.
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE4NTA2NTQ5MzQsLTg5MDY5MDYxNiwxOT
+eyJoaXN0b3J5IjpbLTExNTc1NTM4ODIsLTg5MDY5MDYxNiwxOT
 gzNTk2NzM0LDE0Mzk2MjExNDIsMTUxOTI5NTE3OCwxMDc5ODE1
 NTA5LC05ODkyNTA5MDksMTMyMDk2MTM3NiwtMTk1MjIxNDY4NS
 wtMTIyNjQ2MTM2NSwtMTE2ODE0MzA5LDI3MTU3MTMxOCwtOTMz
