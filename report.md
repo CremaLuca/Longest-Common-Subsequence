@@ -187,18 +187,18 @@ def send(i: int, j: int, p: int):
 			MPI_SEND(p_right)
 			return # No need to send it below too
 	# Send the value below if needed
-	if p != P-1: # process P-1 never sends below
+	if p != P-1: # process p-1 never sends below
 		if (i + 1 < N): # Avoid out of bounds
 			p_below = cell_proc(i+1, j)
 			if p_below != p:
 				MPI_SEND(p_below)
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTI0MDI5MDY5MSwtMTIyNjQ2MTM2NSwtMT
-E2ODE0MzA5LDI3MTU3MTMxOCwtOTMzOTA3NDU2LC01MDMxOTk1
-NjQsLTgwNzIwNTU1NSw4Njg5NTU0NjUsMTY1MTQwNzMzMCw1Mz
-g3MjM0NDEsNTg3NjE3NzkyLC05MjY3OTgxMzQsLTE0MDI0NjE3
-MiwxNzQxOTk1MTExLC0xODgzMTA3NTY1LDMxMzAyODcyMCwtOD
-c5MjU5MjUwLC0yMDg1MjU4MjQyLC0xMDE1MDUwMTAzLC0zMTU4
-NDQ3NjNdfQ==
+eyJoaXN0b3J5IjpbLTE5NTIyMTQ2ODUsLTEyMjY0NjEzNjUsLT
+ExNjgxNDMwOSwyNzE1NzEzMTgsLTkzMzkwNzQ1NiwtNTAzMTk5
+NTY0LC04MDcyMDU1NTUsODY4OTU1NDY1LDE2NTE0MDczMzAsNT
+M4NzIzNDQxLDU4NzYxNzc5MiwtOTI2Nzk4MTM0LC0xNDAyNDYx
+NzIsMTc0MTk5NTExMSwtMTg4MzEwNzU2NSwzMTMwMjg3MjAsLT
+g3OTI1OTI1MCwtMjA4NTI1ODI0MiwtMTAxNTA1MDEwMywtMzE1
+ODQ0NzYzXX0=
 -->
