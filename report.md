@@ -167,7 +167,7 @@ def cell_proc(i: int, j: int):
 ### Send computed values
 Each processor doesn't need to keep a copy of the matrix $P(i, j)$: to find where to send the computed values, the previous formula can be used. As we already mentioned in a remark, each processor needs to send at most $2$ values to different neighbors: we can use the previous algorithm `cell_proc(i, j)` to check whether the cells $(i+1, j)$ and $(i, j+1)$ belong to the current processor and in case of a negative answer we send their values to the proper processes.
 
-We know for sure that the cell on the right can belong either to the current processor or the previous one, while, similarly, the one below either to the current or to the next one, but we couldn't find an usage of this information to improve the algorithm speed.
+We know for sure that the cell on the right can belong either to the current processor or the previous one, while, similarly, the one below either to the current or to the next one, but we couldn't find an usage of this information to improve the algorithm speed. With a litte abuse of notation for MPI singature of send
 
 ```py
 def send(x: int, y: int, p: int):
@@ -194,11 +194,11 @@ def send(x: int, y: int, p: int):
 				MPI_SEND(p_below)
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTkzMzkwNzQ1NiwtNTAzMTk5NTY0LC04MD
-cyMDU1NTUsODY4OTU1NDY1LDE2NTE0MDczMzAsNTM4NzIzNDQx
-LDU4NzYxNzc5MiwtOTI2Nzk4MTM0LC0xNDAyNDYxNzIsMTc0MT
-k5NTExMSwtMTg4MzEwNzU2NSwzMTMwMjg3MjAsLTg3OTI1OTI1
-MCwtMjA4NTI1ODI0MiwtMTAxNTA1MDEwMywtMzE1ODQ0NzYzLC
-0xMDkzODMzMDEsLTEwMTA0NDE5NTMsMTczNDcyMTE1MywtMTM5
-MTIwNTcwXX0=
+eyJoaXN0b3J5IjpbLTE4NTE3MTAyNDAsLTkzMzkwNzQ1NiwtNT
+AzMTk5NTY0LC04MDcyMDU1NTUsODY4OTU1NDY1LDE2NTE0MDcz
+MzAsNTM4NzIzNDQxLDU4NzYxNzc5MiwtOTI2Nzk4MTM0LC0xND
+AyNDYxNzIsMTc0MTk5NTExMSwtMTg4MzEwNzU2NSwzMTMwMjg3
+MjAsLTg3OTI1OTI1MCwtMjA4NTI1ODI0MiwtMTAxNTA1MDEwMy
+wtMzE1ODQ0NzYzLC0xMDkzODMzMDEsLTEwMTA0NDE5NTMsMTcz
+NDcyMTE1M119
 -->
