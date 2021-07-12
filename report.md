@@ -208,7 +208,7 @@ def get_LCS(i: int, j: int, m: string):
 			Coordinates of a matrix cell.
 		- m:
 			Message received from a previous process, which
-			signals this process to start computing some LCS
+			signals this process to call this function
 	It's assumed P(i, j) is calling this function.
 	"""
 	# M[i, j], M[i-1, j], M[i, j-1], M[i-1, j-1] are all stored in the local
@@ -232,11 +232,11 @@ def get_LCS(i: int, j: int, m: string):
 ```
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE0NzgyNzgzMzIsLTEwODE1OTY2ODgsMj
-A5NTQ4Nzk4NiwtMTE1NzU1Mzg4MiwtODkwNjkwNjE2LDE5ODM1
-OTY3MzQsMTQzOTYyMTE0MiwxNTE5Mjk1MTc4LDEwNzk4MTU1MD
-ksLTk4OTI1MDkwOSwxMzIwOTYxMzc2LC0xOTUyMjE0Njg1LC0x
-MjI2NDYxMzY1LC0xMTY4MTQzMDksMjcxNTcxMzE4LC05MzM5MD
-c0NTYsLTUwMzE5OTU2NCwtODA3MjA1NTU1LDg2ODk1NTQ2NSwx
-NjUxNDA3MzMwXX0=
+eyJoaXN0b3J5IjpbODE1MTc5OTM4LC0xMDgxNTk2Njg4LDIwOT
+U0ODc5ODYsLTExNTc1NTM4ODIsLTg5MDY5MDYxNiwxOTgzNTk2
+NzM0LDE0Mzk2MjExNDIsMTUxOTI5NTE3OCwxMDc5ODE1NTA5LC
+05ODkyNTA5MDksMTMyMDk2MTM3NiwtMTk1MjIxNDY4NSwtMTIy
+NjQ2MTM2NSwtMTE2ODE0MzA5LDI3MTU3MTMxOCwtOTMzOTA3ND
+U2LC01MDMxOTk1NjQsLTgwNzIwNTU1NSw4Njg5NTU0NjUsMTY1
+MTQwNzMzMF19
 -->
