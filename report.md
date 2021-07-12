@@ -198,14 +198,14 @@ Once the $M$ matrix has been computed by the parallel algorithm, process $P(m-1,
  2. $M[i, j] = M[i, j-1]$
  3. $M[i, j] = M[i-1, j]$
 
-If $1.$ is true, then $p$ sends $x_i$ to $p' = P(i-1, j-1)$. Otherwise it just 
+If $1.$ is true, then $p$ sends $x_i$ to $p' = P(i-1, j-1)$. If $1.$ is true, then $p$ sends $x_i$ to $p' = P(i-1, j-1)$
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE3OTA1NjQzMDIsMTk4MzU5NjczNCwxND
-M5NjIxMTQyLDE1MTkyOTUxNzgsMTA3OTgxNTUwOSwtOTg5MjUw
-OTA5LDEzMjA5NjEzNzYsLTE5NTIyMTQ2ODUsLTEyMjY0NjEzNj
-UsLTExNjgxNDMwOSwyNzE1NzEzMTgsLTkzMzkwNzQ1NiwtNTAz
-MTk5NTY0LC04MDcyMDU1NTUsODY4OTU1NDY1LDE2NTE0MDczMz
-AsNTM4NzIzNDQxLDU4NzYxNzc5MiwtOTI2Nzk4MTM0LC0xNDAy
-NDYxNzJdfQ==
+eyJoaXN0b3J5IjpbNzY1MzQ5NDEwLDE5ODM1OTY3MzQsMTQzOT
+YyMTE0MiwxNTE5Mjk1MTc4LDEwNzk4MTU1MDksLTk4OTI1MDkw
+OSwxMzIwOTYxMzc2LC0xOTUyMjE0Njg1LC0xMjI2NDYxMzY1LC
+0xMTY4MTQzMDksMjcxNTcxMzE4LC05MzM5MDc0NTYsLTUwMzE5
+OTU2NCwtODA3MjA1NTU1LDg2ODk1NTQ2NSwxNjUxNDA3MzMwLD
+UzODcyMzQ0MSw1ODc2MTc3OTIsLTkyNjc5ODEzNCwtMTQwMjQ2
+MTcyXX0=
 -->
