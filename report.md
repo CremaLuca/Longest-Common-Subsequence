@@ -82,12 +82,7 @@ In this case *every* cell of *each* diagonal is assigned to a *different* proces
 
 ### Computing the list of entries assigned to a given processor
 Each processor needs to know which entries to compute.
-
-Remember that:
-- In an NxM matrix there are N+M-1 diagonals.
-- The diagonal $d$ has length $L_d = min(d, N, M, N+M-1-d)$
-
-On the diagonal $d$ the i-th element is 
+On the diagonal $d$ the $i$-th element is 
 - if d < N: `(x: i, y: d-i)`
 - else the diagonal starts from another row so `(x: d-N+1-i, y: N-1-e)`
 
@@ -193,11 +188,11 @@ def send(x: int, y: int, i: int):
 				MPI_SEND(p_below)
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE3MjI0OTQ2NDksLTIwODUyNTgyNDIsLT
-EwMTUwNTAxMDMsLTMxNTg0NDc2MywtMTA5MzgzMzAxLC0xMDEw
-NDQxOTUzLDE3MzQ3MjExNTMsLTEzOTEyMDU3MCwxNjgzOTg3Mz
-I2LC0zODUwMDU0NzcsLTY3ODAzOTU3MSw4ODgyODIzNzAsLTI3
-OTgzMzc1MSwxNTMyMTY0OTk5LDQwMzA0NTM3OCwtODA5Nzg4OT
-U0LDUzOTkxNzE2NCw3MDc1MjM4MTUsLTgzNTA0NDIyMywxMDMy
-MjA2NDEyXX0=
+eyJoaXN0b3J5IjpbNjY1MTI2OTgwLC0yMDg1MjU4MjQyLC0xMD
+E1MDUwMTAzLC0zMTU4NDQ3NjMsLTEwOTM4MzMwMSwtMTAxMDQ0
+MTk1MywxNzM0NzIxMTUzLC0xMzkxMjA1NzAsMTY4Mzk4NzMyNi
+wtMzg1MDA1NDc3LC02NzgwMzk1NzEsODg4MjgyMzcwLC0yNzk4
+MzM3NTEsMTUzMjE2NDk5OSw0MDMwNDUzNzgsLTgwOTc4ODk1NC
+w1Mzk5MTcxNjQsNzA3NTIzODE1LC04MzUwNDQyMjMsMTAzMjIw
+NjQxMl19
 -->
