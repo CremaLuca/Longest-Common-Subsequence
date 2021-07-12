@@ -81,6 +81,7 @@ A performance metric we use for the assignment is the number of messages exchang
 In this case *every* cell of *each* diagonal is assigned to a *different* processor. By the remark, it's easy to prove that $P(i, j) = P(i, j-1) \ne P(i-1, j)$ if $i+j \le n-1$ and $P(i, j) = P(i-1, j) \ne P(i, j-1)$  if $i+j \ge n$.  Hence: $$\text{messages exchanged} = \sum_{i = 1}^{m-1}\sum_{j=1}^{n-1}1 + \underbrace{m-1}_{\text{first column}} = n(m-1) = \theta(nm)$$
 
 ### Computing the list of entries assigned to a given processor
+Each processor needs to know which entries to compute.
 
 Remember that:
 - In an NxM matrix there are N+M-1 diagonals.
@@ -192,7 +193,7 @@ def send(x: int, y: int, i: int):
 				MPI_SEND(p_below)
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE3OTY2MTIzODIsLTIwODUyNTgyNDIsLT
+eyJoaXN0b3J5IjpbLTE3MjI0OTQ2NDksLTIwODUyNTgyNDIsLT
 EwMTUwNTAxMDMsLTMxNTg0NDc2MywtMTA5MzgzMzAxLC0xMDEw
 NDQxOTUzLDE3MzQ3MjExNTMsLTEzOTEyMDU3MCwxNjgzOTg3Mz
 I2LC0zODUwMDU0NzcsLTY3ODAzOTU3MSw4ODgyODIzNzAsLTI3
