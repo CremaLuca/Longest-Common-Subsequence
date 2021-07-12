@@ -203,6 +203,7 @@ If $1.$ is true, then $p$ sends $x_i$ to $p' = P(i-1, j-1)$. If $2.$ or $3.$ is 
 ```py
 def get_LCS(i: int, j: int):
 	"""
+	It's assumed P(i, j) is calling this function.
 	Parameters:
 		- i, j: int
 			Coordinates of a matrix cell.
@@ -224,7 +225,7 @@ def get_LCS(i: int, j: int):
 ```
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTUxMDczMDM3OCwtMTA4MTU5NjY4OCwyMD
+eyJoaXN0b3J5IjpbMTAxNjgwNjgyOSwtMTA4MTU5NjY4OCwyMD
 k1NDg3OTg2LC0xMTU3NTUzODgyLC04OTA2OTA2MTYsMTk4MzU5
 NjczNCwxNDM5NjIxMTQyLDE1MTkyOTUxNzgsMTA3OTgxNTUwOS
 wtOTg5MjUwOTA5LDEzMjA5NjEzNzYsLTE5NTIyMTQ2ODUsLTEy
