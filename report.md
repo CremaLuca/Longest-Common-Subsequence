@@ -216,7 +216,7 @@ def get_LCS(i: int, j: int, m: string):
 	
 	if M[i, j] == M[i-1,j-1] + 1:
 		MPI_SEND(cell_proc(i-1,m j-1), x_i + m)
-	elif M[i, j] == M[i,j-1] + 1:
+	elif M[i, j] == M[i,j-1]:
 		
 	# Send the value right if needed
 	if p != 0: # process 0 never sends right
@@ -235,11 +235,11 @@ def get_LCS(i: int, j: int, m: string):
 ```
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTExMTA3MTAxODMsLTEwODE1OTY2ODgsMj
-A5NTQ4Nzk4NiwtMTE1NzU1Mzg4MiwtODkwNjkwNjE2LDE5ODM1
-OTY3MzQsMTQzOTYyMTE0MiwxNTE5Mjk1MTc4LDEwNzk4MTU1MD
-ksLTk4OTI1MDkwOSwxMzIwOTYxMzc2LC0xOTUyMjE0Njg1LC0x
-MjI2NDYxMzY1LC0xMTY4MTQzMDksMjcxNTcxMzE4LC05MzM5MD
-c0NTYsLTUwMzE5OTU2NCwtODA3MjA1NTU1LDg2ODk1NTQ2NSwx
-NjUxNDA3MzMwXX0=
+eyJoaXN0b3J5IjpbLTE4MTg1OTcxNSwtMTA4MTU5NjY4OCwyMD
+k1NDg3OTg2LC0xMTU3NTUzODgyLC04OTA2OTA2MTYsMTk4MzU5
+NjczNCwxNDM5NjIxMTQyLDE1MTkyOTUxNzgsMTA3OTgxNTUwOS
+wtOTg5MjUwOTA5LDEzMjA5NjEzNzYsLTE5NTIyMTQ2ODUsLTEy
+MjY0NjEzNjUsLTExNjgxNDMwOSwyNzE1NzEzMTgsLTkzMzkwNz
+Q1NiwtNTAzMTk5NTY0LC04MDcyMDU1NTUsODY4OTU1NDY1LDE2
+NTE0MDczMzBdfQ==
 -->
