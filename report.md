@@ -75,7 +75,7 @@ def diagonal_start_end(d: int, i: int):
 ### Bound on the number of messages
 
 A performance metric we use for the assignment is the number of messages exchanged by the processors. 
-It's quite easy to see that every processor $p$ assigned to cell $(i, j)$, during the computation of this entry,  already has the value of cell $(i-1, j-1)$ stored in its memory: in fact, let's say cell $(i, j)$ lies on diagonal $d$; then 
+It's quite easy to see that every processor $p$ assigned to cell $(i, j)$, during the computation of this entry,  already has the value of cell $(i-1, j-1)$ stored in its memory: in fact, let's say cell $(i, j)$ lies on diagonal $d$; then at least one of $(i, j-1)$ or $(i-1, j)$ is assigned to $p$.
 The exact measure for variable $n, m$ and $P_{\text{max}}$ is hard to obtain from analytical considerations, but we can give an upper bound: clearly we can assume $P_{\text{max}} = \min\{n, m\} = m$ since no diagonal will be longer than $m$.
 In this case *every* cell of *each* diagonal is assigned to a *different* processor.
 
@@ -194,7 +194,7 @@ def send(x: int, y: int, i: int):
 				MPI_SEND(p_below)
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE4NzI1NDEzMTksLTEwOTM4MzMwMSwtMT
+eyJoaXN0b3J5IjpbLTExMzg4NTQ1NjYsLTEwOTM4MzMwMSwtMT
 AxMDQ0MTk1MywxNzM0NzIxMTUzLC0xMzkxMjA1NzAsMTY4Mzk4
 NzMyNiwtMzg1MDA1NDc3LC02NzgwMzk1NzEsODg4MjgyMzcwLC
 0yNzk4MzM3NTEsMTUzMjE2NDk5OSw0MDMwNDUzNzgsLTgwOTc4
