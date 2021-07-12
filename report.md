@@ -135,7 +135,7 @@ def cell_diag_index(i: int, j: int):
 	return min(i, N-j-1)
 ```
 
-### Find which processor a cell is assigned to
+Another useful function is needed to compute which processor is assigned to entry $(i, j)$, i.e. P(i, j)
 
 ```py
 def cell_proc(i: int, j: int):
@@ -185,11 +185,11 @@ def send(x: int, y: int, i: int):
 				MPI_SEND(p_below)
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNjMxMjM1MTc2LDUzODcyMzQ0MSw1ODc2MT
-c3OTIsLTkyNjc5ODEzNCwtMTQwMjQ2MTcyLDE3NDE5OTUxMTEs
-LTE4ODMxMDc1NjUsMzEzMDI4NzIwLC04NzkyNTkyNTAsLTIwOD
-UyNTgyNDIsLTEwMTUwNTAxMDMsLTMxNTg0NDc2MywtMTA5Mzgz
-MzAxLC0xMDEwNDQxOTUzLDE3MzQ3MjExNTMsLTEzOTEyMDU3MC
-wxNjgzOTg3MzI2LC0zODUwMDU0NzcsLTY3ODAzOTU3MSw4ODgy
-ODIzNzBdfQ==
+eyJoaXN0b3J5IjpbLTEwOTM2Njg0MSw1Mzg3MjM0NDEsNTg3Nj
+E3NzkyLC05MjY3OTgxMzQsLTE0MDI0NjE3MiwxNzQxOTk1MTEx
+LC0xODgzMTA3NTY1LDMxMzAyODcyMCwtODc5MjU5MjUwLC0yMD
+g1MjU4MjQyLC0xMDE1MDUwMTAzLC0zMTU4NDQ3NjMsLTEwOTM4
+MzMwMSwtMTAxMDQ0MTk1MywxNzM0NzIxMTUzLC0xMzkxMjA1Nz
+AsMTY4Mzk4NzMyNiwtMzg1MDA1NDc3LC02NzgwMzk1NzEsODg4
+MjgyMzcwXX0=
 -->
