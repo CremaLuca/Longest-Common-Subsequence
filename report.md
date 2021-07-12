@@ -165,7 +165,7 @@ def cell_proc(i: int, j: int):
 ```
 
 ### Send computed values
-
+Each processor doesn't need to keep a copy of the matrix $P(i, j)$, it can simply 
 Instead of keeping the matrix of whom is what we can devise a constant-time algorithm to find where to send the computed values. Easily enough there are only two cases of a value sent to the next diagonal: from (i, j) to (i+1, j) and to (i, j+1). The case from (i, j) to (i+1, j+1) never happens because (i+1, j+1) does not belong to the next diagonal $(d_{(i+1, j+1)}=d_{(i,j)}+2)$.
 
 We can use the previous algorithm `cell_proc(i, j)` to check whether the cells $(i+1, j)$ and $(i, j+1)$belong to current processor and in case of a negative answer we send it to the respective process.
@@ -190,11 +190,11 @@ def send(x: int, y: int, i: int):
 				MPI_SEND(p_below)
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbODY4OTU1NDY1LDE2NTE0MDczMzAsNTM4Nz
-IzNDQxLDU4NzYxNzc5MiwtOTI2Nzk4MTM0LC0xNDAyNDYxNzIs
-MTc0MTk5NTExMSwtMTg4MzEwNzU2NSwzMTMwMjg3MjAsLTg3OT
-I1OTI1MCwtMjA4NTI1ODI0MiwtMTAxNTA1MDEwMywtMzE1ODQ0
-NzYzLC0xMDkzODMzMDEsLTEwMTA0NDE5NTMsMTczNDcyMTE1My
-wtMTM5MTIwNTcwLDE2ODM5ODczMjYsLTM4NTAwNTQ3NywtNjc4
-MDM5NTcxXX0=
+eyJoaXN0b3J5IjpbMTAwMjQxOTE2MCw4Njg5NTU0NjUsMTY1MT
+QwNzMzMCw1Mzg3MjM0NDEsNTg3NjE3NzkyLC05MjY3OTgxMzQs
+LTE0MDI0NjE3MiwxNzQxOTk1MTExLC0xODgzMTA3NTY1LDMxMz
+AyODcyMCwtODc5MjU5MjUwLC0yMDg1MjU4MjQyLC0xMDE1MDUw
+MTAzLC0zMTU4NDQ3NjMsLTEwOTM4MzMwMSwtMTAxMDQ0MTk1My
+wxNzM0NzIxMTUzLC0xMzkxMjA1NzAsMTY4Mzk4NzMyNiwtMzg1
+MDA1NDc3XX0=
 -->
