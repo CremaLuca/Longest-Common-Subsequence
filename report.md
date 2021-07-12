@@ -81,7 +81,7 @@ A performance metric we use for the assignment is the number of messages exchang
 In this case *every* cell of *each* diagonal is assigned to a *different* processor. By the remark, it's easy to prove that $P(i, j) = P(i, j-1) \ne P(i-1, j)$ if $i+j \le n-1$ and $P(i, j) = P(i-1, j) \ne P(i, j-1)$  if $i+j \ge n$.  Hence: $$\text{messages exchanged} = \sum_{i = 1}^{m-1}\sum_{j=1}^{n-1}1 + \underbrace{m-1}_{\text{first column}} = n(m-1) = \theta(nm)$$
 
 ### Computing the list of entries assigned to a given processor
-Each processor needs to know which entries to compute. We make use of the observations above, i.e. the procedure $\text{diagonal\_start\_end()}$. Notice that processor $i$ will never appear on principal diagonals $d$ s.t. $d < i$ or $d \ge n+m-1-i$, since in both cases the length of the diagonal is $\le i$. Also since no diagonal has length $\ge\min\{m, n\} = m$, we need $i < m$.
+Each processor needs to know which entries to compute. We make use of the observations above, i.e. the procedure `diagonal_start_end`. Notice that processor $i$ will never appear on principal diagonals $d$ s.t. $d < i$ or $d \ge n+m-1-i$, since in both cases the length of the diagonal is $\le i$. Also since no diagonal has length $\ge\min\{m, n\} = m$, we need $i < m$.
 The algorithm to determine the list of elements of the whole matrix then is:
 ```py
 def matrix_elements(i:int):
@@ -188,11 +188,11 @@ def send(x: int, y: int, i: int):
 				MPI_SEND(p_below)
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNDQyOTAzNTA3LDg2ODk1NTQ2NSwxNjUxND
-A3MzMwLDUzODcyMzQ0MSw1ODc2MTc3OTIsLTkyNjc5ODEzNCwt
-MTQwMjQ2MTcyLDE3NDE5OTUxMTEsLTE4ODMxMDc1NjUsMzEzMD
-I4NzIwLC04NzkyNTkyNTAsLTIwODUyNTgyNDIsLTEwMTUwNTAx
-MDMsLTMxNTg0NDc2MywtMTA5MzgzMzAxLC0xMDEwNDQxOTUzLD
-E3MzQ3MjExNTMsLTEzOTEyMDU3MCwxNjgzOTg3MzI2LC0zODUw
-MDU0NzddfQ==
+eyJoaXN0b3J5IjpbLTgwNzIwNTU1NSw4Njg5NTU0NjUsMTY1MT
+QwNzMzMCw1Mzg3MjM0NDEsNTg3NjE3NzkyLC05MjY3OTgxMzQs
+LTE0MDI0NjE3MiwxNzQxOTk1MTExLC0xODgzMTA3NTY1LDMxMz
+AyODcyMCwtODc5MjU5MjUwLC0yMDg1MjU4MjQyLC0xMDE1MDUw
+MTAzLC0zMTU4NDQ3NjMsLTEwOTM4MzMwMSwtMTAxMDQ0MTk1My
+wxNzM0NzIxMTUzLC0xMzkxMjA1NzAsMTY4Mzk4NzMyNiwtMzg1
+MDA1NDc3XX0=
 -->
