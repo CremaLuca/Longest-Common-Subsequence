@@ -206,8 +206,6 @@ def get_LCS(i: int, j: int):
 	Parameters:
 		- i, j: int
 			Coordinates of a matrix cell.
-		- p: int
-			Process that makes a send
 	"""
 	# Send the value right if needed
 	if p != 0: # process 0 never sends right
@@ -226,11 +224,11 @@ def get_LCS(i: int, j: int):
 ```
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEwODE1OTY2ODgsMjA5NTQ4Nzk4NiwtMT
-E1NzU1Mzg4MiwtODkwNjkwNjE2LDE5ODM1OTY3MzQsMTQzOTYy
-MTE0MiwxNTE5Mjk1MTc4LDEwNzk4MTU1MDksLTk4OTI1MDkwOS
-wxMzIwOTYxMzc2LC0xOTUyMjE0Njg1LC0xMjI2NDYxMzY1LC0x
-MTY4MTQzMDksMjcxNTcxMzE4LC05MzM5MDc0NTYsLTUwMzE5OT
-U2NCwtODA3MjA1NTU1LDg2ODk1NTQ2NSwxNjUxNDA3MzMwLDUz
-ODcyMzQ0MV19
+eyJoaXN0b3J5IjpbMTUxMDczMDM3OCwtMTA4MTU5NjY4OCwyMD
+k1NDg3OTg2LC0xMTU3NTUzODgyLC04OTA2OTA2MTYsMTk4MzU5
+NjczNCwxNDM5NjIxMTQyLDE1MTkyOTUxNzgsMTA3OTgxNTUwOS
+wtOTg5MjUwOTA5LDEzMjA5NjEzNzYsLTE5NTIyMTQ2ODUsLTEy
+MjY0NjEzNjUsLTExNjgxNDMwOSwyNzE1NzEzMTgsLTkzMzkwNz
+Q1NiwtNTAzMTk5NTY0LC04MDcyMDU1NTUsODY4OTU1NDY1LDE2
+NTE0MDczMzBdfQ==
 -->
