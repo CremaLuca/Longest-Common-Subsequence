@@ -111,7 +111,7 @@ def matrix_elements(i:int):
 ### Some useful functions
 
 Given entry $(i, j)$, it will be useful for the following to know which diagonal index $d$ it corresponds, as well as its position relative to $D(d)$.
-Given the coordinates $(i, j)$ the diagonal is given by `i+j`, while the index in the diagonal is given by the row `i`if  d < N and `(N-d-1)+i` otherwise (or `(N-i-j-1)+i`=`N-j-1`).
+Given the coordinates $(i, j)$ the diagonal is clearly `i+j`, while the index in the diagonal is given by the row `i`if  d < N and `(N-d-1)+i` otherwise (or `(N-i-j-1)+i`=`N-j-1`).
 
 ```py
 def cell_diag(i: int, j: int):
@@ -185,7 +185,7 @@ def send(x: int, y: int, i: int):
 				MPI_SEND(p_below)
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIxMDk3Mjg0OTMsNTM4NzIzNDQxLDU4Nz
+eyJoaXN0b3J5IjpbLTExMjc2MDkyNjcsNTM4NzIzNDQxLDU4Nz
 YxNzc5MiwtOTI2Nzk4MTM0LC0xNDAyNDYxNzIsMTc0MTk5NTEx
 MSwtMTg4MzEwNzU2NSwzMTMwMjg3MjAsLTg3OTI1OTI1MCwtMj
 A4NTI1ODI0MiwtMTAxNTA1MDEwMywtMzE1ODQ0NzYzLC0xMDkz
