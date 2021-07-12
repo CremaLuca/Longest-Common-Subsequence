@@ -171,6 +171,13 @@ We know for sure that the cell on the right can belong either to the current pro
 
 ```py
 def send(x: int, y: int, i: int):
+	"""
+	Parameters:
+		- i, j: int
+			Coordinates of a matrix cell.
+	Returns:
+		The processor assigned to the given cell.
+	"""
 	# Send the value right if needed
 	if i != 0: # p_0 never sends right
 		# No need to check whether y+1 < N because only p_0 would do that
@@ -187,11 +194,11 @@ def send(x: int, y: int, i: int):
 				MPI_SEND(p_below)
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTMyODk0MzgsLTgwNzIwNTU1NSw4Njg5NT
-U0NjUsMTY1MTQwNzMzMCw1Mzg3MjM0NDEsNTg3NjE3NzkyLC05
-MjY3OTgxMzQsLTE0MDI0NjE3MiwxNzQxOTk1MTExLC0xODgzMT
-A3NTY1LDMxMzAyODcyMCwtODc5MjU5MjUwLC0yMDg1MjU4MjQy
-LC0xMDE1MDUwMTAzLC0zMTU4NDQ3NjMsLTEwOTM4MzMwMSwtMT
-AxMDQ0MTk1MywxNzM0NzIxMTUzLC0xMzkxMjA1NzAsMTY4Mzk4
-NzMyNl19
+eyJoaXN0b3J5IjpbLTUwMzE5OTU2NCwtODA3MjA1NTU1LDg2OD
+k1NTQ2NSwxNjUxNDA3MzMwLDUzODcyMzQ0MSw1ODc2MTc3OTIs
+LTkyNjc5ODEzNCwtMTQwMjQ2MTcyLDE3NDE5OTUxMTEsLTE4OD
+MxMDc1NjUsMzEzMDI4NzIwLC04NzkyNTkyNTAsLTIwODUyNTgy
+NDIsLTEwMTUwNTAxMDMsLTMxNTg0NDc2MywtMTA5MzgzMzAxLC
+0xMDEwNDQxOTUzLDE3MzQ3MjExNTMsLTEzOTEyMDU3MCwxNjgz
+OTg3MzI2XX0=
 -->
