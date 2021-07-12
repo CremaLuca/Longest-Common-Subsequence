@@ -213,8 +213,10 @@ def get_LCS(i: int, j: int, m: string):
 	"""
 	# M[i, j], M[i-1, j], M[i, j-1], M[i-1, j-1] are all stored in the local
 	# memory of the calling process, as well as x_i, y_j
+	# let p_curr be global variable s.t. 
 	
 	if i == 0 or j == 0:
+		if 
 	
 	if M[i, j] == M[i-1,j-1] + 1:
 		MPI_SEND(cell_proc(i-1, j-1), x_i + m)
@@ -226,11 +228,11 @@ def get_LCS(i: int, j: int, m: string):
 ```
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTU0MTU0NjAyNCwtMTA4MTU5NjY4OCwyMD
-k1NDg3OTg2LC0xMTU3NTUzODgyLC04OTA2OTA2MTYsMTk4MzU5
-NjczNCwxNDM5NjIxMTQyLDE1MTkyOTUxNzgsMTA3OTgxNTUwOS
-wtOTg5MjUwOTA5LDEzMjA5NjEzNzYsLTE5NTIyMTQ2ODUsLTEy
-MjY0NjEzNjUsLTExNjgxNDMwOSwyNzE1NzEzMTgsLTkzMzkwNz
-Q1NiwtNTAzMTk5NTY0LC04MDcyMDU1NTUsODY4OTU1NDY1LDE2
-NTE0MDczMzBdfQ==
+eyJoaXN0b3J5IjpbLTEwNjE2OTU0MjEsLTEwODE1OTY2ODgsMj
+A5NTQ4Nzk4NiwtMTE1NzU1Mzg4MiwtODkwNjkwNjE2LDE5ODM1
+OTY3MzQsMTQzOTYyMTE0MiwxNTE5Mjk1MTc4LDEwNzk4MTU1MD
+ksLTk4OTI1MDkwOSwxMzIwOTYxMzc2LC0xOTUyMjE0Njg1LC0x
+MjI2NDYxMzY1LC0xMTY4MTQzMDksMjcxNTcxMzE4LC05MzM5MD
+c0NTYsLTUwMzE5OTU2NCwtODA3MjA1NTU1LDg2ODk1NTQ2NSwx
+NjUxNDA3MzMwXX0=
 -->
