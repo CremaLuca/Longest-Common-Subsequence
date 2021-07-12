@@ -82,7 +82,7 @@ In this case *every* cell of *each* diagonal is assigned to a *different* proces
 
 ### Computing the list of entries assigned to a given processor
 
-## TODO (marco check)
+## TODO (marco)
 
 Each processor needs to know which entries to compute.
 On the diagonal $d$ the $i$-th element is 
@@ -191,11 +191,11 @@ def send(x: int, y: int, i: int):
 				MPI_SEND(p_below)
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE4Nzk4MzExNTMsLTIwODUyNTgyNDIsLT
-EwMTUwNTAxMDMsLTMxNTg0NDc2MywtMTA5MzgzMzAxLC0xMDEw
-NDQxOTUzLDE3MzQ3MjExNTMsLTEzOTEyMDU3MCwxNjgzOTg3Mz
-I2LC0zODUwMDU0NzcsLTY3ODAzOTU3MSw4ODgyODIzNzAsLTI3
-OTgzMzc1MSwxNTMyMTY0OTk5LDQwMzA0NTM3OCwtODA5Nzg4OT
-U0LDUzOTkxNzE2NCw3MDc1MjM4MTUsLTgzNTA0NDIyMywxMDMy
-MjA2NDEyXX0=
+eyJoaXN0b3J5IjpbLTY2NzYwODA4OSwtMjA4NTI1ODI0MiwtMT
+AxNTA1MDEwMywtMzE1ODQ0NzYzLC0xMDkzODMzMDEsLTEwMTA0
+NDE5NTMsMTczNDcyMTE1MywtMTM5MTIwNTcwLDE2ODM5ODczMj
+YsLTM4NTAwNTQ3NywtNjc4MDM5NTcxLDg4ODI4MjM3MCwtMjc5
+ODMzNzUxLDE1MzIxNjQ5OTksNDAzMDQ1Mzc4LC04MDk3ODg5NT
+QsNTM5OTE3MTY0LDcwNzUyMzgxNSwtODM1MDQ0MjIzLDEwMzIy
+MDY0MTJdfQ==
 -->
