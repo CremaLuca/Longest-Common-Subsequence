@@ -209,7 +209,7 @@ def get_LCS(i: int, j: int):
 	It's assumed P(i, j) is calling this function.
 	"""
 	# M[i, j], M[i-1, j], M[i, j-1], M[i-1, j-1] are stored in the local
-	# memory	
+	# memory of the calling process
 	
 	# Send the value right if needed
 	if p != 0: # process 0 never sends right
@@ -228,11 +228,11 @@ def get_LCS(i: int, j: int):
 ```
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNzQ2MTU0OTYwLC0xMDgxNTk2Njg4LDIwOT
-U0ODc5ODYsLTExNTc1NTM4ODIsLTg5MDY5MDYxNiwxOTgzNTk2
-NzM0LDE0Mzk2MjExNDIsMTUxOTI5NTE3OCwxMDc5ODE1NTA5LC
-05ODkyNTA5MDksMTMyMDk2MTM3NiwtMTk1MjIxNDY4NSwtMTIy
-NjQ2MTM2NSwtMTE2ODE0MzA5LDI3MTU3MTMxOCwtOTMzOTA3ND
-U2LC01MDMxOTk1NjQsLTgwNzIwNTU1NSw4Njg5NTU0NjUsMTY1
-MTQwNzMzMF19
+eyJoaXN0b3J5IjpbLTYxNzI5MDI0MywtMTA4MTU5NjY4OCwyMD
+k1NDg3OTg2LC0xMTU3NTUzODgyLC04OTA2OTA2MTYsMTk4MzU5
+NjczNCwxNDM5NjIxMTQyLDE1MTkyOTUxNzgsMTA3OTgxNTUwOS
+wtOTg5MjUwOTA5LDEzMjA5NjEzNzYsLTE5NTIyMTQ2ODUsLTEy
+MjY0NjEzNjUsLTExNjgxNDMwOSwyNzE1NzEzMTgsLTkzMzkwNz
+Q1NiwtNTAzMTk5NTY0LC04MDcyMDU1NTUsODY4OTU1NDY1LDE2
+NTE0MDczMzBdfQ==
 -->
