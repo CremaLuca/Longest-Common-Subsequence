@@ -214,6 +214,8 @@ def get_LCS(i: int, j: int, m: string):
 	# M[i, j], M[i-1, j], M[i, j-1], M[i-1, j-1] are all stored in the local
 	# memory of the calling process, as well as x_i, y_j
 	
+	if i == 0 or j == 0:
+	
 	if M[i, j] == M[i-1,j-1] + 1:
 		MPI_SEND(cell_proc(i-1, j-1), x_i + m)
 	elif M[i, j] == M[i,j-1]:
@@ -238,7 +240,7 @@ def get_LCS(i: int, j: int, m: string):
 ```
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTc5MDUwMTczMywtMTA4MTU5NjY4OCwyMD
+eyJoaXN0b3J5IjpbMTAxNDQ3NTUxNiwtMTA4MTU5NjY4OCwyMD
 k1NDg3OTg2LC0xMTU3NTUzODgyLC04OTA2OTA2MTYsMTk4MzU5
 NjczNCwxNDM5NjIxMTQyLDE1MTkyOTUxNzgsMTA3OTgxNTUwOS
 wtOTg5MjUwOTA5LDEzMjA5NjEzNzYsLTE5NTIyMTQ2ODUsLTEy
