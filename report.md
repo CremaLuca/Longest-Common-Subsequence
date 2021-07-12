@@ -1,7 +1,6 @@
 # Longest Common Subsequence problem
 
-### Definition:
-Let $X = (x_1, \ldots, x_m)$ and $Y = (y_1, \ldots, y_n)$ be two sequences, where each $x_i, y_i \in$ alphabet $\Sigma$. We say that a sequence $Z = (z_1, \ldots, z_t)$ is a subsequence of $X$ if there exists a strictly increasing sequence $(i_1, \ldots, i_t)$ of indices of $X$ such that $z_j = x_{i_j}$, for all $1 \le j \le t$. The Longest Common Subsequence (LCS) problem consists in finding a common subsequence $Z$ of *both* $X$ and $Y$, of maximum length.
+ **Definition:** Let $X = (x_1, \ldots, x_m)$ and $Y = (y_1, \ldots, y_n)$ be two sequences, where each $x_i, y_i \in$ alphabet $\Sigma$. We say that a sequence $Z = (z_1, \ldots, z_t)$ is a subsequence of $X$ if there exists a strictly increasing sequence $(i_1, \ldots, i_t)$ of indices of $X$ such that $z_j = x_{i_j}$, for all $1 \le j \le t$. The Longest Common Subsequence (LCS) problem consists in finding a common subsequence $Z$ of *both* $X$ and $Y$, of maximum length.
 Without loss of generality, we assume $m \le n$ in the following. We first describe a sequential algorithm for the LCS problem, and then we move to the more interesting parallel case, for which we propose an algorithm that borrows its structure from the sequential one.
 ## Sequential algorithm
 There's a well-known algorithm based on dynamic programming, that we propose here for the sequential case, which exploits the optimal substructure of the problem. Let $M$ be an $m \times n$ matrix, where entry $M[i, j]$ represents the length of an LCS of the sequences $X_i$ and $Y_j$, where $X_i$ is the $i$-th prefix of $X$, and similarly for $Y_j$. It holds that: $$M[i, j] = \begin{cases}0 & \text
@@ -195,11 +194,11 @@ def send(i: int, j: int, p: int):
 ```
 ## Reconstruction of an LCS  from the M matrix
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTMyMDk2MTM3NiwtMTk1MjIxNDY4NSwtMT
-IyNjQ2MTM2NSwtMTE2ODE0MzA5LDI3MTU3MTMxOCwtOTMzOTA3
-NDU2LC01MDMxOTk1NjQsLTgwNzIwNTU1NSw4Njg5NTU0NjUsMT
-Y1MTQwNzMzMCw1Mzg3MjM0NDEsNTg3NjE3NzkyLC05MjY3OTgx
-MzQsLTE0MDI0NjE3MiwxNzQxOTk1MTExLC0xODgzMTA3NTY1LD
-MxMzAyODcyMCwtODc5MjU5MjUwLC0yMDg1MjU4MjQyLC0xMDE1
-MDUwMTAzXX0=
+eyJoaXN0b3J5IjpbLTk4OTI1MDkwOSwxMzIwOTYxMzc2LC0xOT
+UyMjE0Njg1LC0xMjI2NDYxMzY1LC0xMTY4MTQzMDksMjcxNTcx
+MzE4LC05MzM5MDc0NTYsLTUwMzE5OTU2NCwtODA3MjA1NTU1LD
+g2ODk1NTQ2NSwxNjUxNDA3MzMwLDUzODcyMzQ0MSw1ODc2MTc3
+OTIsLTkyNjc5ODEzNCwtMTQwMjQ2MTcyLDE3NDE5OTUxMTEsLT
+E4ODMxMDc1NjUsMzEzMDI4NzIwLC04NzkyNTkyNTAsLTIwODUy
+NTgyNDJdfQ==
 -->
