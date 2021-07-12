@@ -108,7 +108,7 @@ def matrix_elements(i:int):
 			elements.append((x,y))
 ```
 ---
-### Some useful procedures
+### Some useful properties
 
 It will be useful later to know in which diagonal and which index a given cell is.
 Given a cell coordinates (i, j) the diagonal is given by `i+j`, while the index in the diagonal is given by the row `i`if  d < N and `(N-d-1)+i` otherwise (or `(N-i-j-1)+i`=`N-j-1`).
@@ -185,7 +185,7 @@ def send(x: int, y: int, i: int):
 				MPI_SEND(p_below)
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTMzNDgxODQ0NSw1ODc2MTc3OTIsLTkyNj
+eyJoaXN0b3J5IjpbMTI0NzA1Nzg1MCw1ODc2MTc3OTIsLTkyNj
 c5ODEzNCwtMTQwMjQ2MTcyLDE3NDE5OTUxMTEsLTE4ODMxMDc1
 NjUsMzEzMDI4NzIwLC04NzkyNTkyNTAsLTIwODUyNTgyNDIsLT
 EwMTUwNTAxMDMsLTMxNTg0NDc2MywtMTA5MzgzMzAxLC0xMDEw
