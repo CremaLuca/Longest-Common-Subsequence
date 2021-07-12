@@ -198,10 +198,10 @@ Once the $M$ matrix has been computed by the parallel algorithm, process $P(m-1,
  2. $M[i, j] = M[i, j-1]$
  3. $M[i, j] = M[i-1, j]$
 
-If $1.$ is true, then $p$ sends $ex_i$ to $P[i-1, j-1]$ 
+If $1.$ is true, then $p$ sends $ex_i$ to $P[i-1, j-1]$, where $e$ is a marked $\notin$ 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjEyODE4MTkyOSwxNDM5NjIxMTQyLDE1MT
+eyJoaXN0b3J5IjpbMTM5NzM1MDI4NiwxNDM5NjIxMTQyLDE1MT
 kyOTUxNzgsMTA3OTgxNTUwOSwtOTg5MjUwOTA5LDEzMjA5NjEz
 NzYsLTE5NTIyMTQ2ODUsLTEyMjY0NjEzNjUsLTExNjgxNDMwOS
 wyNzE1NzEzMTgsLTkzMzkwNzQ1NiwtNTAzMTk5NTY0LC04MDcy
