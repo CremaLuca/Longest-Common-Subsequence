@@ -193,7 +193,7 @@ def send(i: int, j: int, p: int):
 				MPI_SEND(p_below)
 ```
 ## Reconstruction of an LCS  from the M matrix
-Once the $M$ matrix has been computed by the parallel algorithm, process $P(m-1, n-1) = 0$ knows entry $M[m-1, n-1]$, i.e. the length of an LCS. We show how to compute an LCS of $X_i$ and $Y_j$ starting at entry $(i, j)$: if $x_i = y_j$ then process $p = P(i, j)$ checks whether 
+Once the $M$ matrix has been computed by the parallel algorithm, process $P(m-1, n-1) = 0$ knows entry $M[m-1, n-1]$, i.e. the length of an LCS. We show how to compute an LCS of $X_i$ and $Y_j$ starting at entry $(i, j)$: if $x_i = y_j$ then process $p = P(i, j)$ checks whether :
  1. $M[i, j] = M[i-1, j-1]+1$
  2. $M[i, j] = M[i, j-1]$
  3. $M[i, j] = M[i-1, j]$
@@ -201,11 +201,11 @@ Once the $M$ matrix has been computed by the parallel algorithm, process $P(m-1,
 If $1.$ is true, then $p$ sends $x_i$ to $p' = P(i-1, j-1)$. If $2.$ or $3.$ is true, then $p$ sends $e$ to $p' = P(i, j-1)$ or $p' = P(i-1, j)$ respectively, where $e$ is the null string. The same procedure applies $p'$, which will prepend its message to the one it just received from $p$. Once a processor assigned to a cell $(0, j$) or $(i, 0)$ is reached, the resulting message is the required LCS, which can then be sent in case to the starting process, i.e. $0$. Here the number of messages exchanged is at most $\min\{m, n\} = m$, i.e. the maximum length of an LCS.
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE0MTM2MjAwMTgsLTExNTc1NTM4ODIsLT
-g5MDY5MDYxNiwxOTgzNTk2NzM0LDE0Mzk2MjExNDIsMTUxOTI5
-NTE3OCwxMDc5ODE1NTA5LC05ODkyNTA5MDksMTMyMDk2MTM3Ni
-wtMTk1MjIxNDY4NSwtMTIyNjQ2MTM2NSwtMTE2ODE0MzA5LDI3
-MTU3MTMxOCwtOTMzOTA3NDU2LC01MDMxOTk1NjQsLTgwNzIwNT
-U1NSw4Njg5NTU0NjUsMTY1MTQwNzMzMCw1Mzg3MjM0NDEsNTg3
-NjE3NzkyXX0=
+eyJoaXN0b3J5IjpbMjA5NTQ4Nzk4NiwtMTE1NzU1Mzg4MiwtOD
+kwNjkwNjE2LDE5ODM1OTY3MzQsMTQzOTYyMTE0MiwxNTE5Mjk1
+MTc4LDEwNzk4MTU1MDksLTk4OTI1MDkwOSwxMzIwOTYxMzc2LC
+0xOTUyMjE0Njg1LC0xMjI2NDYxMzY1LC0xMTY4MTQzMDksMjcx
+NTcxMzE4LC05MzM5MDc0NTYsLTUwMzE5OTU2NCwtODA3MjA1NT
+U1LDg2ODk1NTQ2NSwxNjUxNDA3MzMwLDUzODcyMzQ0MSw1ODc2
+MTc3OTJdfQ==
 -->
