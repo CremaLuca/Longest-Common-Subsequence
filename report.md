@@ -196,14 +196,14 @@ def send(i: int, j: int, p: int):
 Once the $M$ matrix has been computed by the parallel algorithm, process $P(m-1, n-1) = 0$ knows entry $M[m-1, n-1]$, i.e. the length of an LCS. We show how to compute an LCS of $X_i$ and $Y_j$ starting at entry $(i, j)$: if $x_i = y_j$ then process $P(i, j)$ checks whether 
  1. $M[i, j] = M[i-1, j-1]+1$
  2. $M[i, j] = M[i, j-1]$
- 3. $M[i, j] = M[i-1, j-1]+1$
+ 3. $M[i, j] = M[i-1, j]$
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNjkwNzYzMjY3LDE0Mzk2MjExNDIsMTUxOT
-I5NTE3OCwxMDc5ODE1NTA5LC05ODkyNTA5MDksMTMyMDk2MTM3
-NiwtMTk1MjIxNDY4NSwtMTIyNjQ2MTM2NSwtMTE2ODE0MzA5LD
-I3MTU3MTMxOCwtOTMzOTA3NDU2LC01MDMxOTk1NjQsLTgwNzIw
-NTU1NSw4Njg5NTU0NjUsMTY1MTQwNzMzMCw1Mzg3MjM0NDEsNT
-g3NjE3NzkyLC05MjY3OTgxMzQsLTE0MDI0NjE3MiwxNzQxOTk1
-MTExXX0=
+eyJoaXN0b3J5IjpbMjA0MTAwMjQ5NywxNDM5NjIxMTQyLDE1MT
+kyOTUxNzgsMTA3OTgxNTUwOSwtOTg5MjUwOTA5LDEzMjA5NjEz
+NzYsLTE5NTIyMTQ2ODUsLTEyMjY0NjEzNjUsLTExNjgxNDMwOS
+wyNzE1NzEzMTgsLTkzMzkwNzQ1NiwtNTAzMTk5NTY0LC04MDcy
+MDU1NTUsODY4OTU1NDY1LDE2NTE0MDczMzAsNTM4NzIzNDQxLD
+U4NzYxNzc5MiwtOTI2Nzk4MTM0LC0xNDAyNDYxNzIsMTc0MTk5
+NTExMV19
 -->
