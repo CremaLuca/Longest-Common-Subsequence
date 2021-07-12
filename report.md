@@ -206,8 +206,9 @@ def get_LCS(i: int, j: int):
 	Parameters:
 		- i, j: int
 			Coordinates of a matrix cell.
+	It's assumed P(i, j) is calling this function.
 	"""
-		It's assumed P(i, j) is calling this function.
+		
 	
 	
 	# Send the value right if needed
@@ -227,7 +228,7 @@ def get_LCS(i: int, j: int):
 ```
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjEyOTY3ODQ5MSwtMTA4MTU5NjY4OCwyMD
+eyJoaXN0b3J5IjpbMTgwMDEwNzU2OSwtMTA4MTU5NjY4OCwyMD
 k1NDg3OTg2LC0xMTU3NTUzODgyLC04OTA2OTA2MTYsMTk4MzU5
 NjczNCwxNDM5NjIxMTQyLDE1MTkyOTUxNzgsMTA3OTgxNTUwOS
 wtOTg5MjUwOTA5LDEzMjA5NjEzNzYsLTE5NTIyMTQ2ODUsLTEy
