@@ -180,7 +180,7 @@ def send(i: int, j: int, p: int):
 	"""
 	# Send the value right if needed
 	if p != 0: # p_0 never sends right
-		# No need to check whether y+1 < N because only process 0 would do that
+		# No need to check whether j+1 < N because only process 0 would do that
 		# Can either be process p or p-1
 		p_right = cell_proc(i, j+1)
 		if p_right != p:
@@ -194,11 +194,11 @@ def send(i: int, j: int, p: int):
 				MPI_SEND(p_below)
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjgzODc4OTYyLC0xMjI2NDYxMzY1LC0xMT
-Y4MTQzMDksMjcxNTcxMzE4LC05MzM5MDc0NTYsLTUwMzE5OTU2
-NCwtODA3MjA1NTU1LDg2ODk1NTQ2NSwxNjUxNDA3MzMwLDUzOD
-cyMzQ0MSw1ODc2MTc3OTIsLTkyNjc5ODEzNCwtMTQwMjQ2MTcy
-LDE3NDE5OTUxMTEsLTE4ODMxMDc1NjUsMzEzMDI4NzIwLC04Nz
-kyNTkyNTAsLTIwODUyNTgyNDIsLTEwMTUwNTAxMDMsLTMxNTg0
-NDc2M119
+eyJoaXN0b3J5IjpbLTE3NDY1ODA1MTEsLTEyMjY0NjEzNjUsLT
+ExNjgxNDMwOSwyNzE1NzEzMTgsLTkzMzkwNzQ1NiwtNTAzMTk5
+NTY0LC04MDcyMDU1NTUsODY4OTU1NDY1LDE2NTE0MDczMzAsNT
+M4NzIzNDQxLDU4NzYxNzc5MiwtOTI2Nzk4MTM0LC0xNDAyNDYx
+NzIsMTc0MTk5NTExMSwtMTg4MzEwNzU2NSwzMTMwMjg3MjAsLT
+g3OTI1OTI1MCwtMjA4NTI1ODI0MiwtMTAxNTA1MDEwMywtMzE1
+ODQ0NzYzXX0=
 -->
