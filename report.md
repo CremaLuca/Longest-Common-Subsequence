@@ -194,12 +194,12 @@ def send(i: int, j: int, p: int):
 				MPI_SEND(p_below)
 ```
 
-### Parallel algorithm
+### Final parallel algorithm
 
 
 ## Reconstruction of an LCS  from the M matrix
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTczODE4MjcwMSwtMTk1MjIxNDY4NSwtMT
+eyJoaXN0b3J5IjpbMTcyMjU3Mjg0MSwtMTk1MjIxNDY4NSwtMT
 IyNjQ2MTM2NSwtMTE2ODE0MzA5LDI3MTU3MTMxOCwtOTMzOTA3
 NDU2LC01MDMxOTk1NjQsLTgwNzIwNTU1NSw4Njg5NTU0NjUsMT
 Y1MTQwNzMzMCw1Mzg3MjM0NDEsNTg3NjE3NzkyLC05MjY3OTgx
