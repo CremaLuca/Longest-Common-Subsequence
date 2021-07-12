@@ -198,10 +198,10 @@ Once the $M$ matrix has been computed by the parallel algorithm, process $P(m-1,
  2. $M[i, j] = M[i, j-1]$
  3. $M[i, j] = M[i-1, j]$
 
-If $1.$ is true, then $p$ sends $x_i$ to $p' = P(i-1, j-1)$. If $2.$ or $3.$ is true, then $p$ sends $e$ to $p' = P(i, j-1)$ or $p' = P(i-1, j)$ respectively, where $e$ is the null string. The same procedure applies $p'$,
+If $1.$ is true, then $p$ sends $x_i$ to $p' = P(i-1, j-1)$. If $2.$ or $3.$ is true, then $p$ sends $e$ to $p' = P(i, j-1)$ or $p' = P(i-1, j)$ respectively, where $e$ is the null string. The same procedure applies $p'$, which will prepend its message to the one it just received from $p$.
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTQ5NzA2MzEwMCwxOTgzNTk2NzM0LDE0Mz
+eyJoaXN0b3J5IjpbLTg5MDY5MDYxNiwxOTgzNTk2NzM0LDE0Mz
 k2MjExNDIsMTUxOTI5NTE3OCwxMDc5ODE1NTA5LC05ODkyNTA5
 MDksMTMyMDk2MTM3NiwtMTk1MjIxNDY4NSwtMTIyNjQ2MTM2NS
 wtMTE2ODE0MzA5LDI3MTU3MTMxOCwtOTMzOTA3NDU2LC01MDMx
