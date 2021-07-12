@@ -194,9 +194,12 @@ def send(i: int, j: int, p: int):
 				MPI_SEND(p_below)
 ```
 
-### Reconstruction of an LCS from the M matrix
+### Reconstruction of an LCS
+
+
+## Reconstruction of an LCS  from the M matrix
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTcxMTUyMTE1LC0xOTUyMjE0Njg1LC0xMj
+eyJoaXN0b3J5IjpbOTMxNzM1MTIzLC0xOTUyMjE0Njg1LC0xMj
 I2NDYxMzY1LC0xMTY4MTQzMDksMjcxNTcxMzE4LC05MzM5MDc0
 NTYsLTUwMzE5OTU2NCwtODA3MjA1NTU1LDg2ODk1NTQ2NSwxNj
 UxNDA3MzMwLDUzODcyMzQ0MSw1ODc2MTc3OTIsLTkyNjc5ODEz
