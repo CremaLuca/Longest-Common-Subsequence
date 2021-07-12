@@ -211,7 +211,7 @@ def get_LCS(i: int, j: int):
 	# M[i, j], M[i-1, j], M[i, j-1], M[i-1, j-1] are all stored in the local
 	# memory of the calling process
 	
-	if M[i, j] == M[i-1,j-1] + 1	
+	if M[i, j] == M[i-1,j-1] + 1:	
 
 	# Send the value right if needed
 	if p != 0: # process 0 never sends right
@@ -230,7 +230,7 @@ def get_LCS(i: int, j: int):
 ```
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNzYzNTQ2MjkxLC0xMDgxNTk2Njg4LDIwOT
+eyJoaXN0b3J5IjpbNDk3NTEwMTMxLC0xMDgxNTk2Njg4LDIwOT
 U0ODc5ODYsLTExNTc1NTM4ODIsLTg5MDY5MDYxNiwxOTgzNTk2
 NzM0LDE0Mzk2MjExNDIsMTUxOTI5NTE3OCwxMDc5ODE1NTA5LC
 05ODkyNTA5MDksMTMyMDk2MTM3NiwtMTk1MjIxNDY4NSwtMTIy
