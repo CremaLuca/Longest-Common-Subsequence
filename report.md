@@ -170,30 +170,30 @@ Each processor doesn't need to keep a copy of the matrix $P(i, j)$: to find wher
 We know for sure that the cell on the right can belong either to the current processor or the previous one, while, similarly, the one below either to the current or to the next one, but we couldn't find an usage of this information to improve the algorithm speed.
 
 ```py
-def send(x: int, y: int, i: int):
+def send(x: int, y: int, p: int):
 	"""
 	Parameters:
-		- i, j: int
+		- x, j: int
 			Coordinates of a matrix cell.
 		- i, 
 	"""
 	# Send the value right if needed
-	if i != 0: # p_0 never sends right
+	if p != 0: # p_0 never sends right
 		# No need to check whether y+1 < N because only p_0 would do that
 		# Can either be i or i-1
 		p_right = cell_proc(x, y+1)
-		if p_right != i:
+		if p_right != p:
 			MPI_SEND(p_right)
 			return # No need to send it below too
 	# Send the value below if needed
-	if i != P-1: # p_P-1 never sends below
+	if p != P-1: # p_P-1 never sends below
 		if (x + 1 < N): # Avoid out of bounds
 			p_below = cell_proc(x+1, y)
-			if p_below != i:
+			if p_below != p:
 				MPI_SEND(p_below)
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjExNTcxNjcyMywtNTAzMTk5NTY0LC04MD
+eyJoaXN0b3J5IjpbLTEzNDAzMzAxMywtNTAzMTk5NTY0LC04MD
 cyMDU1NTUsODY4OTU1NDY1LDE2NTE0MDczMzAsNTM4NzIzNDQx
 LDU4NzYxNzc5MiwtOTI2Nzk4MTM0LC0xNDAyNDYxNzIsMTc0MT
 k5NTExMSwtMTg4MzEwNzU2NSwzMTMwMjg3MjAsLTg3OTI1OTI1
