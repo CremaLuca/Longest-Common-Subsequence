@@ -110,7 +110,7 @@ def matrix_elements(i:int):
 ---
 ### Some useful functions
 
-Given entry $(i, j)$, it will be useful for the following to know which diagonal index $d$ it corresponds, as well as its position relative to $D(d)$.
+Given entry $(i, j)$, it will be useful for the following to know which diagonal index $d$ it corresponds, as well as its position relative to $D(d)$, which we call $pos(i, j)$
 Given the coordinates $(i, j)$ the diagonal is clearly  $i+j$, while the index in the diagonal is given by the row `i`if  d < N and `(N-d-1)+i` otherwise (or `(N-i-j-1)+i`=`N-j-1`).
 
 ```py
@@ -185,11 +185,11 @@ def send(x: int, y: int, i: int):
 				MPI_SEND(p_below)
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjUyMjg0MTkxLDUzODcyMzQ0MSw1ODc2MT
-c3OTIsLTkyNjc5ODEzNCwtMTQwMjQ2MTcyLDE3NDE5OTUxMTEs
-LTE4ODMxMDc1NjUsMzEzMDI4NzIwLC04NzkyNTkyNTAsLTIwOD
-UyNTgyNDIsLTEwMTUwNTAxMDMsLTMxNTg0NDc2MywtMTA5Mzgz
-MzAxLC0xMDEwNDQxOTUzLDE3MzQ3MjExNTMsLTEzOTEyMDU3MC
-wxNjgzOTg3MzI2LC0zODUwMDU0NzcsLTY3ODAzOTU3MSw4ODgy
-ODIzNzBdfQ==
+eyJoaXN0b3J5IjpbLTQ3NTIzNjI3OCw1Mzg3MjM0NDEsNTg3Nj
+E3NzkyLC05MjY3OTgxMzQsLTE0MDI0NjE3MiwxNzQxOTk1MTEx
+LC0xODgzMTA3NTY1LDMxMzAyODcyMCwtODc5MjU5MjUwLC0yMD
+g1MjU4MjQyLC0xMDE1MDUwMTAzLC0zMTU4NDQ3NjMsLTEwOTM4
+MzMwMSwtMTAxMDQ0MTk1MywxNzM0NzIxMTUzLC0xMzkxMjA1Nz
+AsMTY4Mzk4NzMyNiwtMzg1MDA1NDc3LC02NzgwMzk1NzEsODg4
+MjgyMzcwXX0=
 -->
