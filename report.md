@@ -198,14 +198,14 @@ Once the $M$ matrix has been computed by the parallel algorithm, process $P(m-1,
  2. $M[i, j] = M[i, j-1]$
  3. $M[i, j] = M[i-1, j]$
 
-If $1.$ is true, then $p$ sends $x_i$ to $p' = P(i-1, j-1)$. If $2.$ or $3.$ is true, then $p$ sends $e$ to $p' = P(i, j-1)$ or $p' = P(i-1, j)$ respectively, where $e$ is a marker $\notin \Sigma$
+If $1.$ is true, then $p$ sends $x_i$ to $p' = P(i-1, j-1)$. If $2.$ or $3.$ is true, then $p$ sends $e$ to $p' = P(i, j-1)$ or $p' = P(i-1, j)$ respectively, where $e$ is a marker $\notin \Sigma$. The same procedure applies $p'$ by prepending
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTc2ODI4OTc0OCwxOTgzNTk2NzM0LDE0Mz
-k2MjExNDIsMTUxOTI5NTE3OCwxMDc5ODE1NTA5LC05ODkyNTA5
-MDksMTMyMDk2MTM3NiwtMTk1MjIxNDY4NSwtMTIyNjQ2MTM2NS
-wtMTE2ODE0MzA5LDI3MTU3MTMxOCwtOTMzOTA3NDU2LC01MDMx
-OTk1NjQsLTgwNzIwNTU1NSw4Njg5NTU0NjUsMTY1MTQwNzMzMC
-w1Mzg3MjM0NDEsNTg3NjE3NzkyLC05MjY3OTgxMzQsLTE0MDI0
-NjE3Ml19
+eyJoaXN0b3J5IjpbLTE0MTY0NjkyNDQsMTk4MzU5NjczNCwxND
+M5NjIxMTQyLDE1MTkyOTUxNzgsMTA3OTgxNTUwOSwtOTg5MjUw
+OTA5LDEzMjA5NjEzNzYsLTE5NTIyMTQ2ODUsLTEyMjY0NjEzNj
+UsLTExNjgxNDMwOSwyNzE1NzEzMTgsLTkzMzkwNzQ1NiwtNTAz
+MTk5NTY0LC04MDcyMDU1NTUsODY4OTU1NDY1LDE2NTE0MDczMz
+AsNTM4NzIzNDQxLDU4NzYxNzc5MiwtOTI2Nzk4MTM0LC0xNDAy
+NDYxNzJdfQ==
 -->
