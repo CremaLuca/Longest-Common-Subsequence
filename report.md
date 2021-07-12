@@ -193,13 +193,13 @@ def send(i: int, j: int, p: int):
 				MPI_SEND(p_below)
 ```
 ## Reconstruction of an LCS  from the M matrix
-Once the $M$ matrix has been computed by the parallel algorithm, process $P(m-1, n-1) = 0$ knows entry $M[m-1, n-1]$, i.e. the length of an LCS. We show how to compute an LCS of $X_i$ and $Y_j$ starting at entry $(i, j)$: if $x_i = y_j$ then process $P(i, j)$ sends $Ex_i$
+Once the $M$ matrix has been computed by the parallel algorithm, process $P(m-1, n-1) = 0$ knows entry $M[m-1, n-1]$, i.e. the length of an LCS. We show how to compute an LCS of $X_i$ and $Y_j$ starting at entry $(i, j)$: if $x_i = y_j$ then process $P(i, j)$ sends $ex_i$
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbOTg5MDE2ODMwLC05ODkyNTA5MDksMTMyMD
-k2MTM3NiwtMTk1MjIxNDY4NSwtMTIyNjQ2MTM2NSwtMTE2ODE0
-MzA5LDI3MTU3MTMxOCwtOTMzOTA3NDU2LC01MDMxOTk1NjQsLT
-gwNzIwNTU1NSw4Njg5NTU0NjUsMTY1MTQwNzMzMCw1Mzg3MjM0
-NDEsNTg3NjE3NzkyLC05MjY3OTgxMzQsLTE0MDI0NjE3MiwxNz
-QxOTk1MTExLC0xODgzMTA3NTY1LDMxMzAyODcyMCwtODc5MjU5
-MjUwXX0=
+eyJoaXN0b3J5IjpbMTk4MTY1MDY1NCwtOTg5MjUwOTA5LDEzMj
+A5NjEzNzYsLTE5NTIyMTQ2ODUsLTEyMjY0NjEzNjUsLTExNjgx
+NDMwOSwyNzE1NzEzMTgsLTkzMzkwNzQ1NiwtNTAzMTk5NTY0LC
+04MDcyMDU1NTUsODY4OTU1NDY1LDE2NTE0MDczMzAsNTM4NzIz
+NDQxLDU4NzYxNzc5MiwtOTI2Nzk4MTM0LC0xNDAyNDYxNzIsMT
+c0MTk5NTExMSwtMTg4MzEwNzU2NSwzMTMwMjg3MjAsLTg3OTI1
+OTI1MF19
 -->
