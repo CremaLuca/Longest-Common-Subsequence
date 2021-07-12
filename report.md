@@ -173,7 +173,7 @@ We know for sure that the cell on the right can belong either to the current pro
 def send(x: int, y: int, p: int):
 	"""
 	Parameters:
-		- x, j: int
+		- i, j: int
 			Coordinates of a matrix cell.
 		- i, 
 	"""
@@ -181,7 +181,7 @@ def send(x: int, y: int, p: int):
 	if p != 0: # p_0 never sends right
 		# No need to check whether y+1 < N because only p_0 would do that
 		# Can either be i or i-1
-		p_right = cell_proc(x, y+1)
+		p_right = cell_proc(i, j+1)
 		if p_right != p:
 			MPI_SEND(p_right)
 			return # No need to send it below too
@@ -193,7 +193,7 @@ def send(x: int, y: int, p: int):
 				MPI_SEND(p_below)
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEzNDAzMzAxMywtNTAzMTk5NTY0LC04MD
+eyJoaXN0b3J5IjpbMTM3NzQ3MDY4MiwtNTAzMTk5NTY0LC04MD
 cyMDU1NTUsODY4OTU1NDY1LDE2NTE0MDczMzAsNTM4NzIzNDQx
 LDU4NzYxNzc5MiwtOTI2Nzk4MTM0LC0xNDAyNDYxNzIsMTc0MT
 k5NTExMSwtMTg4MzEwNzU2NSwzMTMwMjg3MjAsLTg3OTI1OTI1
