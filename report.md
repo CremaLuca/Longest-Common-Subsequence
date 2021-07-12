@@ -198,14 +198,14 @@ Once the $M$ matrix has been computed by the parallel algorithm, process $P(m-1,
  2. $M[i, j] = M[i, j-1]$
  3. $M[i, j] = M[i-1, j]$
 
-If $1.$ is true, then $p$ sends $ex_i$ to $P[i-1, j-1]$, where $e$ is a marker $\notin\Sigma$.
+If $1.$ is true, then $p$ sends $ex_i$ to $P[i-1, j-1]$, where $e$ is a marker $\notin\Sigma$. Similarly
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTQxMjgwMjYwMSwxNDM5NjIxMTQyLDE1MT
-kyOTUxNzgsMTA3OTgxNTUwOSwtOTg5MjUwOTA5LDEzMjA5NjEz
-NzYsLTE5NTIyMTQ2ODUsLTEyMjY0NjEzNjUsLTExNjgxNDMwOS
-wyNzE1NzEzMTgsLTkzMzkwNzQ1NiwtNTAzMTk5NTY0LC04MDcy
-MDU1NTUsODY4OTU1NDY1LDE2NTE0MDczMzAsNTM4NzIzNDQxLD
-U4NzYxNzc5MiwtOTI2Nzk4MTM0LC0xNDAyNDYxNzIsMTc0MTk5
-NTExMV19
+eyJoaXN0b3J5IjpbLTEyNDI2MzY0MzEsMTQzOTYyMTE0MiwxNT
+E5Mjk1MTc4LDEwNzk4MTU1MDksLTk4OTI1MDkwOSwxMzIwOTYx
+Mzc2LC0xOTUyMjE0Njg1LC0xMjI2NDYxMzY1LC0xMTY4MTQzMD
+ksMjcxNTcxMzE4LC05MzM5MDc0NTYsLTUwMzE5OTU2NCwtODA3
+MjA1NTU1LDg2ODk1NTQ2NSwxNjUxNDA3MzMwLDUzODcyMzQ0MS
+w1ODc2MTc3OTIsLTkyNjc5ODEzNCwtMTQwMjQ2MTcyLDE3NDE5
+OTUxMTFdfQ==
 -->
