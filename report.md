@@ -80,7 +80,7 @@ Let us define $P(i, j)$ as the index of the processor assigned to entry $(i, j)$
 A performance metric we use for the assignment is the number of messages exchanged by the processors. The exact measure for variable $n, m$ and $P_{\text{max}}$ is hard to obtain from analytical considerations, but we can give an upper bound: clearly we can assume $P_{\text{max}} = \min\{n, m\} = m$ since no diagonal will be longer than $m$.
 In this case *every* cell of *each* diagonal is assigned to a *different* processor. By the remark, it's easy to prove that $P(i, j) = P(i, j-1) \ne P(i-1, j)$ if $i+j \le n-1$ and $P(i, j) = P(i-1, j) \ne P(i, j-1)$  if $i+j \ge n$.  Hence: $$\text{messages exchanged} = \sum_{i = 1}^{m-1}\sum_{j=1}^{n-1}1 + \underbrace{m-1}_{\text{first column}} = n(m-1) = \theta(nm)$$
 
-### List of entries assigned to a given processor
+### Computing the list of entries assigned to a given processor
 
 Remember that:
 - In an NxM matrix there are N+M-1 diagonals.
@@ -192,11 +192,11 @@ def send(x: int, y: int, i: int):
 				MPI_SEND(p_below)
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTY2NjM3NDM2MSwtMjA4NTI1ODI0MiwtMT
-AxNTA1MDEwMywtMzE1ODQ0NzYzLC0xMDkzODMzMDEsLTEwMTA0
-NDE5NTMsMTczNDcyMTE1MywtMTM5MTIwNTcwLDE2ODM5ODczMj
-YsLTM4NTAwNTQ3NywtNjc4MDM5NTcxLDg4ODI4MjM3MCwtMjc5
-ODMzNzUxLDE1MzIxNjQ5OTksNDAzMDQ1Mzc4LC04MDk3ODg5NT
-QsNTM5OTE3MTY0LDcwNzUyMzgxNSwtODM1MDQ0MjIzLDEwMzIy
-MDY0MTJdfQ==
+eyJoaXN0b3J5IjpbLTE3OTY2MTIzODIsLTIwODUyNTgyNDIsLT
+EwMTUwNTAxMDMsLTMxNTg0NDc2MywtMTA5MzgzMzAxLC0xMDEw
+NDQxOTUzLDE3MzQ3MjExNTMsLTEzOTEyMDU3MCwxNjgzOTg3Mz
+I2LC0zODUwMDU0NzcsLTY3ODAzOTU3MSw4ODgyODIzNzAsLTI3
+OTgzMzc1MSwxNTMyMTY0OTk5LDQwMzA0NTM3OCwtODA5Nzg4OT
+U0LDUzOTkxNzE2NCw3MDc1MjM4MTUsLTgzNTA0NDIyMywxMDMy
+MjA2NDEyXX0=
 -->
