@@ -73,7 +73,7 @@ def diagonal_start_end(d: int, i: int):
 ```
 
 ### Bound on the number of messages
-Let us define $P(i, j)$ as the index of the processor assigned to 
+Let us define $P(i, j)$ as the index of the processor assigned to entry $(i, j)$, according to the previous scheme.
 
 **Remark:** It's quite easy to see that every processor $p$ assigned to cell $(i, j)$, during the computation of this entry,  already has the value of cell $(i-1, j-1)$ stored in its memory. First notice that at least one of $(i, j-1)$ or $(i-1, j)$ is assigned to $p$:  in fact, let's say cell $(i, j)$ lies on diagonal $d$; then if diagonal $d-1$ has the same length as diagonal $d$, it follows that processor
 
@@ -197,10 +197,10 @@ def send(x: int, y: int, i: int):
 				MPI_SEND(p_below)
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTM0NTM5OTY3NywtMTA5MzgzMzAxLC0xMD
-EwNDQxOTUzLDE3MzQ3MjExNTMsLTEzOTEyMDU3MCwxNjgzOTg3
-MzI2LC0zODUwMDU0NzcsLTY3ODAzOTU3MSw4ODgyODIzNzAsLT
-I3OTgzMzc1MSwxNTMyMTY0OTk5LDQwMzA0NTM3OCwtODA5Nzg4
-OTU0LDUzOTkxNzE2NCw3MDc1MjM4MTUsLTgzNTA0NDIyMywxMD
-MyMjA2NDEyLC0xMTk5MjU0NDY5LC0zMzQ1OTkwMDldfQ==
+eyJoaXN0b3J5IjpbMjM4ODIzODUsLTEwOTM4MzMwMSwtMTAxMD
+Q0MTk1MywxNzM0NzIxMTUzLC0xMzkxMjA1NzAsMTY4Mzk4NzMy
+NiwtMzg1MDA1NDc3LC02NzgwMzk1NzEsODg4MjgyMzcwLC0yNz
+k4MzM3NTEsMTUzMjE2NDk5OSw0MDMwNDUzNzgsLTgwOTc4ODk1
+NCw1Mzk5MTcxNjQsNzA3NTIzODE1LC04MzUwNDQyMjMsMTAzMj
+IwNjQxMiwtMTE5OTI1NDQ2OSwtMzM0NTk5MDA5XX0=
 -->
