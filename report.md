@@ -164,7 +164,7 @@ def cell_proc(i: int, j: int):
 		return math.floor((pos - rem)/ floor_size)
 ```
 
-### Send computed values
+### Sending the computed values to the proper processes
 Each processor doesn't need to keep a copy of the matrix $P(i, j)$: to find where to send the computed values, the previous formula can be used. As we already mentioned in a remark, each processor needs to send at most one value to a different neighbor: we can use the previous algorithm `cell_proc(i, j)` to check whether the cells $(i+1, j)$ and $(i, j+1)$ belong to the current processor and in case of a negative answer we send their values to the proper processes.
 
 We know for sure that the cell on the right can belong either to the current processor or the previous one, while, similarly, the one below either to the current or to the next one, but we couldn't find an usage of this information to improve the algorithm speed. With a litte abuse of notation for MPI signature of  `send`, we can write the following pseudocode:
@@ -195,11 +195,11 @@ def send(i: int, j: int, p: int):
 ```
 ## Reconstruction of an LCS  from the M matrix
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNTIxNTIyODYyLC0xOTUyMjE0Njg1LC0xMj
-I2NDYxMzY1LC0xMTY4MTQzMDksMjcxNTcxMzE4LC05MzM5MDc0
-NTYsLTUwMzE5OTU2NCwtODA3MjA1NTU1LDg2ODk1NTQ2NSwxNj
-UxNDA3MzMwLDUzODcyMzQ0MSw1ODc2MTc3OTIsLTkyNjc5ODEz
-NCwtMTQwMjQ2MTcyLDE3NDE5OTUxMTEsLTE4ODMxMDc1NjUsMz
-EzMDI4NzIwLC04NzkyNTkyNTAsLTIwODUyNTgyNDIsLTEwMTUw
-NTAxMDNdfQ==
+eyJoaXN0b3J5IjpbMTMyMDk2MTM3NiwtMTk1MjIxNDY4NSwtMT
+IyNjQ2MTM2NSwtMTE2ODE0MzA5LDI3MTU3MTMxOCwtOTMzOTA3
+NDU2LC01MDMxOTk1NjQsLTgwNzIwNTU1NSw4Njg5NTU0NjUsMT
+Y1MTQwNzMzMCw1Mzg3MjM0NDEsNTg3NjE3NzkyLC05MjY3OTgx
+MzQsLTE0MDI0NjE3MiwxNzQxOTk1MTExLC0xODgzMTA3NTY1LD
+MxMzAyODcyMCwtODc5MjU5MjUwLC0yMDg1MjU4MjQyLC0xMDE1
+MDUwMTAzXX0=
 -->
