@@ -165,7 +165,7 @@ def cell_proc(i: int, j: int):
 ```
 
 ### Send computed values
-Each processor doesn't need to keep a copy of the matrix $P(i, j)$: to find where to send the computed values, the previous formula can be used. As we already mentioned in a remark, each processor needs to send at most one values to different neighbors: we can use the previous algorithm `cell_proc(i, j)` to check whether the cells $(i+1, j)$ and $(i, j+1)$ belong to the current processor and in case of a negative answer we send their values to the proper processes.
+Each processor doesn't need to keep a copy of the matrix $P(i, j)$: to find where to send the computed values, the previous formula can be used. As we already mentioned in a remark, each processor needs to send at most one value to different neighbors: we can use the previous algorithm `cell_proc(i, j)` to check whether the cells $(i+1, j)$ and $(i, j+1)$ belong to the current processor and in case of a negative answer we send their values to the proper processes.
 
 We know for sure that the cell on the right can belong either to the current processor or the previous one, while, similarly, the one below either to the current or to the next one, but we couldn't find an usage of this information to improve the algorithm speed. With a litte abuse of notation for MPI signature of  `send`, we can write the following pseudocode:
 
@@ -194,11 +194,11 @@ def send(x: int, y: int, p: int):
 				MPI_SEND(p_below)
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIwOTQ4MzcxNDYsMjcxNTcxMzE4LC05Mz
-M5MDc0NTYsLTUwMzE5OTU2NCwtODA3MjA1NTU1LDg2ODk1NTQ2
-NSwxNjUxNDA3MzMwLDUzODcyMzQ0MSw1ODc2MTc3OTIsLTkyNj
-c5ODEzNCwtMTQwMjQ2MTcyLDE3NDE5OTUxMTEsLTE4ODMxMDc1
-NjUsMzEzMDI4NzIwLC04NzkyNTkyNTAsLTIwODUyNTgyNDIsLT
-EwMTUwNTAxMDMsLTMxNTg0NDc2MywtMTA5MzgzMzAxLC0xMDEw
-NDQxOTUzXX0=
+eyJoaXN0b3J5IjpbLTExNjgxNDMwOSwyNzE1NzEzMTgsLTkzMz
+kwNzQ1NiwtNTAzMTk5NTY0LC04MDcyMDU1NTUsODY4OTU1NDY1
+LDE2NTE0MDczMzAsNTM4NzIzNDQxLDU4NzYxNzc5MiwtOTI2Nz
+k4MTM0LC0xNDAyNDYxNzIsMTc0MTk5NTExMSwtMTg4MzEwNzU2
+NSwzMTMwMjg3MjAsLTg3OTI1OTI1MCwtMjA4NTI1ODI0MiwtMT
+AxNTA1MDEwMywtMzE1ODQ0NzYzLC0xMDkzODMzMDEsLTEwMTA0
+NDE5NTNdfQ==
 -->
