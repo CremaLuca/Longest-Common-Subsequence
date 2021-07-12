@@ -217,7 +217,7 @@ def get_LCS(i: int, j: int, m: string):
 	if M[i, j] == M[i-1,j-1] + 1:
 		MPI_SEND(cell_proc(i-1, j-1), x_i + m)
 	elif M[i, j] == M[i,j-1]:
-		MPI_SEND(cell_proc(i,m j-1), x_i + m)
+		MPI_SEND(cell_proc(i, j-1), x_i + m)
 	# Send the value right if needed
 	if p != 0: # process 0 never sends right
 		# No need to check whether j+1 < N because only process 0 would do that
@@ -235,7 +235,7 @@ def get_LCS(i: int, j: int, m: string):
 ```
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIwODI2NDEwNiwtMTA4MTU5NjY4OCwyMD
+eyJoaXN0b3J5IjpbLTcyOTk5Njg0OSwtMTA4MTU5NjY4OCwyMD
 k1NDg3OTg2LC0xMTU3NTUzODgyLC04OTA2OTA2MTYsMTk4MzU5
 NjczNCwxNDM5NjIxMTQyLDE1MTkyOTUxNzgsMTA3OTgxNTUwOS
 wtOTg5MjUwOTA5LDEzMjA5NjEzNzYsLTE5NTIyMTQ2ODUsLTEy
