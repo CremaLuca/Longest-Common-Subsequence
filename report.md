@@ -170,7 +170,7 @@ Each processor doesn't need to keep a copy of the matrix $P(i, j)$: to find wher
 We know for sure that the cell on the right can belong either to the current processor or the previous one, while, similarly, the one below either to the current or to the next one, but we couldn't find an usage of this information to improve the algorithm speed. With a litte abuse of notation for MPI signature of  `send`, we can write the following pseudocode:
 
 ```py
-def send(x: int, y: int, p: int):
+def send(i: int, j: int, p: int):
 	"""
 	Parameters:
 		- i, j: int
@@ -194,11 +194,11 @@ def send(x: int, y: int, p: int):
 				MPI_SEND(p_below)
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEyMjY0NjEzNjUsLTEyMjY0NjEzNjUsLT
-ExNjgxNDMwOSwyNzE1NzEzMTgsLTkzMzkwNzQ1NiwtNTAzMTk5
-NTY0LC04MDcyMDU1NTUsODY4OTU1NDY1LDE2NTE0MDczMzAsNT
-M4NzIzNDQxLDU4NzYxNzc5MiwtOTI2Nzk4MTM0LC0xNDAyNDYx
-NzIsMTc0MTk5NTExMSwtMTg4MzEwNzU2NSwzMTMwMjg3MjAsLT
-g3OTI1OTI1MCwtMjA4NTI1ODI0MiwtMTAxNTA1MDEwMywtMzE1
-ODQ0NzYzXX0=
+eyJoaXN0b3J5IjpbMjEzNjk4NTUxNywtMTIyNjQ2MTM2NSwtMT
+E2ODE0MzA5LDI3MTU3MTMxOCwtOTMzOTA3NDU2LC01MDMxOTk1
+NjQsLTgwNzIwNTU1NSw4Njg5NTU0NjUsMTY1MTQwNzMzMCw1Mz
+g3MjM0NDEsNTg3NjE3NzkyLC05MjY3OTgxMzQsLTE0MDI0NjE3
+MiwxNzQxOTk1MTExLC0xODgzMTA3NTY1LDMxMzAyODcyMCwtOD
+c5MjU5MjUwLC0yMDg1MjU4MjQyLC0xMDE1MDUwMTAzLC0zMTU4
+NDQ3NjNdfQ==
 -->
