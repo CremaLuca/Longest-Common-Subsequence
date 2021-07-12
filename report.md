@@ -139,7 +139,7 @@ Another useful function is needed to compute which processor is assigned to entr
 It's easy to derive a formula from the previous assignment of processors to each diagonal; 
 set $L = L(i+j)$ and $p = \min\{L, P_{\text{max}}\}$, $q =\lfloor L/p\rfloor$, $r=L\mod p$.
 We have:$$P(i, j)=\begin{cases}\bigl\lfloor\frac{\text{pos}(i, j)}{q+1}\bigr\rfloor& \text
-{if pos(i, j) $<(q+1)r$}  \\\bigl\lfloor\frac{\text{pos}(i, j)-r}{q}\bigr\rfloor & \text{if $m \le d < n$}\end{cases}$$
+{if pos(i, j) $<(q+1)r$}  \\\bigl\lfloor\frac{\text{pos}(i, j)-r}{q}\bigr\rfloor & \text{otherwise}\end{cases}$$
 
 ```py
 def cell_proc(i: int, j: int):
@@ -189,11 +189,11 @@ def send(x: int, y: int, i: int):
 				MPI_SEND(p_below)
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMzk2MzEyNTEyLDE2NTE0MDczMzAsNTM4Nz
-IzNDQxLDU4NzYxNzc5MiwtOTI2Nzk4MTM0LC0xNDAyNDYxNzIs
-MTc0MTk5NTExMSwtMTg4MzEwNzU2NSwzMTMwMjg3MjAsLTg3OT
-I1OTI1MCwtMjA4NTI1ODI0MiwtMTAxNTA1MDEwMywtMzE1ODQ0
-NzYzLC0xMDkzODMzMDEsLTEwMTA0NDE5NTMsMTczNDcyMTE1My
-wtMTM5MTIwNTcwLDE2ODM5ODczMjYsLTM4NTAwNTQ3NywtNjc4
-MDM5NTcxXX0=
+eyJoaXN0b3J5IjpbMTY4NTYzMTg5MywxNjUxNDA3MzMwLDUzOD
+cyMzQ0MSw1ODc2MTc3OTIsLTkyNjc5ODEzNCwtMTQwMjQ2MTcy
+LDE3NDE5OTUxMTEsLTE4ODMxMDc1NjUsMzEzMDI4NzIwLC04Nz
+kyNTkyNTAsLTIwODUyNTgyNDIsLTEwMTUwNTAxMDMsLTMxNTg0
+NDc2MywtMTA5MzgzMzAxLC0xMDEwNDQxOTUzLDE3MzQ3MjExNT
+MsLTEzOTEyMDU3MCwxNjgzOTg3MzI2LC0zODUwMDU0NzcsLTY3
+ODAzOTU3MV19
 -->
