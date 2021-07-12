@@ -201,7 +201,7 @@ Once the $M$ matrix has been computed by the parallel algorithm, process $P(m-1,
 If $1.$ is true, then $p$ sends $x_i$ to $p' = P(i-1, j-1)$. If $2.$ or $3.$ is true, then $p$ sends $e$ to $p' = P(i, j-1)$ or $p' = P(i-1, j)$ respectively, where $e$ is the null string. The same procedure applies $p'$, which will prepend its message to the one it just received from $p$. Once a processor assigned to a cell $(0, j$) or $(i, 0)$ is reached, the resulting message is the required LCS, which can then be sent in case to the starting process, i.e. $0$. Here the number of messages exchanged is at most $\min\{m, n\} = m$, i.e. the maximum length of an LCS. Here's the pseudocode:
 
 ```py
-def get_LCS(i: int, j: int, s: string):
+def get_LCS(i: int, j: int, l: string):
 	"""
 	Parameters:
 		- i, j: int
@@ -231,7 +231,7 @@ def get_LCS(i: int, j: int, s: string):
 ```
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTc1NzUyODczNSwtMTA4MTU5NjY4OCwyMD
+eyJoaXN0b3J5IjpbMTU0ODcwMjIzMiwtMTA4MTU5NjY4OCwyMD
 k1NDg3OTg2LC0xMTU3NTUzODgyLC04OTA2OTA2MTYsMTk4MzU5
 NjczNCwxNDM5NjIxMTQyLDE1MTkyOTUxNzgsMTA3OTgxNTUwOS
 wtOTg5MjUwOTA5LDEzMjA5NjEzNzYsLTE5NTIyMTQ2ODUsLTEy
