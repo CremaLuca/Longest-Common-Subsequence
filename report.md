@@ -193,9 +193,9 @@ def send(i: int, j: int, p: int):
 				MPI_SEND(p_below)
 ```
 ## Reconstruction of an LCS  from the M matrix
-Once the $M$ matrix has been computed by the parallel algorithm, process $P(m-1, n-1) = 0$ will known entry $M[m-1, n-1]$
+Once the $M$ matrix has been computed by the parallel algorithm, process $P(m-1, n-1) = 0$ knows entry $M[m-1, n-1]$
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIyMDQzMzgxMywtOTg5MjUwOTA5LDEzMj
+eyJoaXN0b3J5IjpbLTQ2NTI5NTU4OCwtOTg5MjUwOTA5LDEzMj
 A5NjEzNzYsLTE5NTIyMTQ2ODUsLTEyMjY0NjEzNjUsLTExNjgx
 NDMwOSwyNzE1NzEzMTgsLTkzMzkwNzQ1NiwtNTAzMTk5NTY0LC
 04MDcyMDU1NTUsODY4OTU1NDY1LDE2NTE0MDczMzAsNTM4NzIz
