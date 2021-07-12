@@ -107,7 +107,7 @@ def matrix_elements(i:int):
 			y = min(d, N-1) - e
 			elements.append((x,y))
 ```
----
+
 ### Some useful functions
 
 Given entry $(i, j)$, it will be useful for the following to know which diagonal index $d$ it corresponds, as well as its position relative to $D(d)$, which we call $\text{pos}(i, j)$.
@@ -194,7 +194,7 @@ def send(i: int, j: int, p: int):
 				MPI_SEND(p_below)
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjEzNjk4NTUxNywtMTIyNjQ2MTM2NSwtMT
+eyJoaXN0b3J5IjpbMTkyMjAwMjI1NiwtMTIyNjQ2MTM2NSwtMT
 E2ODE0MzA5LDI3MTU3MTMxOCwtOTMzOTA3NDU2LC01MDMxOTk1
 NjQsLTgwNzIwNTU1NSw4Njg5NTU0NjUsMTY1MTQwNzMzMCw1Mz
 g3MjM0NDEsNTg3NjE3NzkyLC05MjY3OTgxMzQsLTE0MDI0NjE3
