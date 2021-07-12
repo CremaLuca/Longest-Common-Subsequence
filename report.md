@@ -175,7 +175,8 @@ def send(x: int, y: int, p: int):
 	Parameters:
 		- i, j: int
 			Coordinates of a matrix cell.
-		- p: int 
+		- p: int
+			Process that sends the values 
 	"""
 	# Send the value right if needed
 	if p != 0: # p_0 never sends right
@@ -193,7 +194,7 @@ def send(x: int, y: int, p: int):
 				MPI_SEND(p_below)
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTczODMxNzg1NywtNTAzMTk5NTY0LC04MD
+eyJoaXN0b3J5IjpbMTY3MDE2MjQ3OSwtNTAzMTk5NTY0LC04MD
 cyMDU1NTUsODY4OTU1NDY1LDE2NTE0MDczMzAsNTM4NzIzNDQx
 LDU4NzYxNzc5MiwtOTI2Nzk4MTM0LC0xNDAyNDYxNzIsMTc0MT
 k5NTExMSwtMTg4MzEwNzU2NSwzMTMwMjg3MjAsLTg3OTI1OTI1
