@@ -198,14 +198,14 @@ Once the $M$ matrix has been computed by the parallel algorithm, process $P(m-1,
  2. $M[i, j] = M[i, j-1]$
  3. $M[i, j] = M[i-1, j]$
 
-If $1.$ is true, then $p$ sends $x_i$ to $p' = P(i-1, j-1)$. If $2.$ or $3.$ is true, then $p$ sends $e$ to $p' = P(i, j-1)$ or $p' = P(i-1, j)$ respectively, where $e$ is the null string $\notin \Sigma$. The same procedure applies $p'$ by prepending
+If $1.$ is true, then $p$ sends $x_i$ to $p' = P(i-1, j-1)$. If $2.$ or $3.$ is true, then $p$ sends $e$ to $p' = P(i, j-1)$ or $p' = P(i-1, j)$ respectively, where $e$ is the null string. The same procedure applies $p'$ by prepending
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbODg0MTUwLDE5ODM1OTY3MzQsMTQzOTYyMT
-E0MiwxNTE5Mjk1MTc4LDEwNzk4MTU1MDksLTk4OTI1MDkwOSwx
-MzIwOTYxMzc2LC0xOTUyMjE0Njg1LC0xMjI2NDYxMzY1LC0xMT
-Y4MTQzMDksMjcxNTcxMzE4LC05MzM5MDc0NTYsLTUwMzE5OTU2
-NCwtODA3MjA1NTU1LDg2ODk1NTQ2NSwxNjUxNDA3MzMwLDUzOD
-cyMzQ0MSw1ODc2MTc3OTIsLTkyNjc5ODEzNCwtMTQwMjQ2MTcy
-XX0=
+eyJoaXN0b3J5IjpbLTg0MTgwNDAyMSwxOTgzNTk2NzM0LDE0Mz
+k2MjExNDIsMTUxOTI5NTE3OCwxMDc5ODE1NTA5LC05ODkyNTA5
+MDksMTMyMDk2MTM3NiwtMTk1MjIxNDY4NSwtMTIyNjQ2MTM2NS
+wtMTE2ODE0MzA5LDI3MTU3MTMxOCwtOTMzOTA3NDU2LC01MDMx
+OTk1NjQsLTgwNzIwNTU1NSw4Njg5NTU0NjUsMTY1MTQwNzMzMC
+w1Mzg3MjM0NDEsNTg3NjE3NzkyLC05MjY3OTgxMzQsLTE0MDI0
+NjE3Ml19
 -->
