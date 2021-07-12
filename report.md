@@ -83,7 +83,7 @@ In this case *every* cell of *each* diagonal is assigned to a *different* proces
 ### Computing the list of entries assigned to a given processor
 
 # TODO (X marco)
-Each processor needs to know which entries to compute.
+Each processor needs to know which entries to compute. 
 On the diagonal $d$ the $i$-th element is 
 - if d < N: `(x: i, y: d-i)`
 - else the diagonal starts from another row so `(x: d-N+1-i, y: N-1-e)`
@@ -190,11 +190,11 @@ def send(x: int, y: int, i: int):
 				MPI_SEND(p_below)
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTg3OTI1OTI1MCwtMjA4NTI1ODI0MiwtMT
-AxNTA1MDEwMywtMzE1ODQ0NzYzLC0xMDkzODMzMDEsLTEwMTA0
-NDE5NTMsMTczNDcyMTE1MywtMTM5MTIwNTcwLDE2ODM5ODczMj
-YsLTM4NTAwNTQ3NywtNjc4MDM5NTcxLDg4ODI4MjM3MCwtMjc5
-ODMzNzUxLDE1MzIxNjQ5OTksNDAzMDQ1Mzc4LC04MDk3ODg5NT
-QsNTM5OTE3MTY0LDcwNzUyMzgxNSwtODM1MDQ0MjIzLDEwMzIy
-MDY0MTJdfQ==
+eyJoaXN0b3J5IjpbLTEzNzkxNDA0NjYsLTg3OTI1OTI1MCwtMj
+A4NTI1ODI0MiwtMTAxNTA1MDEwMywtMzE1ODQ0NzYzLC0xMDkz
+ODMzMDEsLTEwMTA0NDE5NTMsMTczNDcyMTE1MywtMTM5MTIwNT
+cwLDE2ODM5ODczMjYsLTM4NTAwNTQ3NywtNjc4MDM5NTcxLDg4
+ODI4MjM3MCwtMjc5ODMzNzUxLDE1MzIxNjQ5OTksNDAzMDQ1Mz
+c4LC04MDk3ODg5NTQsNTM5OTE3MTY0LDcwNzUyMzgxNSwtODM1
+MDQ0MjIzXX0=
 -->
