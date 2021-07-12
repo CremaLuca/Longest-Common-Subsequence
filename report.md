@@ -198,14 +198,14 @@ Once the $M$ matrix has been computed by the parallel algorithm, process $P(m-1,
  2. $M[i, j] = M[i, j-1]$
  3. $M[i, j] = M[i-1, j]$
 
-If $1.$ is true, then $p$ sends $x_i$ to $p' = P(i-1, j-1)$. If $2.$ or $3.$ is true, then $p$ sends $e$ to $p' = P(i, j-1)$ or $p' = P(i-1, j)$ respectively, where $e$ is the null string. The same procedure applies $p'$, which will prepend its message to the one it just received from $p$. Once a processor assigned to a cell $(0, j$) or $(i, 0)$ is reached, the resulting message is the required LCS, which can then be sent in case to the starting process, i.e. $0$.
+If $1.$ is true, then $p$ sends $x_i$ to $p' = P(i-1, j-1)$. If $2.$ or $3.$ is true, then $p$ sends $e$ to $p' = P(i, j-1)$ or $p' = P(i-1, j)$ respectively, where $e$ is the null string. The same procedure applies $p'$, which will prepend its message to the one it just received from $p$. Once a processor assigned to a cell $(0, j$) or $(i, 0)$ is reached, the resulting message is the required LCS, which can then be sent in case to the starting process, i.e. $0$. Here the number of messages excahnged is at most $m$.
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTExNTc1NTM4ODIsLTg5MDY5MDYxNiwxOT
-gzNTk2NzM0LDE0Mzk2MjExNDIsMTUxOTI5NTE3OCwxMDc5ODE1
-NTA5LC05ODkyNTA5MDksMTMyMDk2MTM3NiwtMTk1MjIxNDY4NS
-wtMTIyNjQ2MTM2NSwtMTE2ODE0MzA5LDI3MTU3MTMxOCwtOTMz
-OTA3NDU2LC01MDMxOTk1NjQsLTgwNzIwNTU1NSw4Njg5NTU0Nj
-UsMTY1MTQwNzMzMCw1Mzg3MjM0NDEsNTg3NjE3NzkyLC05MjY3
-OTgxMzRdfQ==
+eyJoaXN0b3J5IjpbMzY2NzA1NzkzLC0xMTU3NTUzODgyLC04OT
+A2OTA2MTYsMTk4MzU5NjczNCwxNDM5NjIxMTQyLDE1MTkyOTUx
+NzgsMTA3OTgxNTUwOSwtOTg5MjUwOTA5LDEzMjA5NjEzNzYsLT
+E5NTIyMTQ2ODUsLTEyMjY0NjEzNjUsLTExNjgxNDMwOSwyNzE1
+NzEzMTgsLTkzMzkwNzQ1NiwtNTAzMTk5NTY0LC04MDcyMDU1NT
+UsODY4OTU1NDY1LDE2NTE0MDczMzAsNTM4NzIzNDQxLDU4NzYx
+Nzc5Ml19
 -->
