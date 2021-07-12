@@ -200,12 +200,37 @@ Once the $M$ matrix has been computed by the parallel algorithm, process $P(m-1,
 
 If $1.$ is true, then $p$ sends $x_i$ to $p' = P(i-1, j-1)$. If $2.$ or $3.$ is true, then $p$ sends $e$ to $p' = P(i, j-1)$ or $p' = P(i-1, j)$ respectively, where $e$ is the null string. The same procedure applies $p'$, which will prepend its message to the one it just received from $p$. Once a processor assigned to a cell $(0, j$) or $(i, 0)$ is reached, the resulting message is the required LCS, which can then be sent in case to the starting process, i.e. $0$. Here the number of messages exchanged is at most $\min\{m, n\} = m$, i.e. the maximum length of an LCS. Here's the pseudocode:
 
+```py
+def send(i: int, j: int, p: int):
+	"""
+	Parameters:
+		- i, j: int
+			Coordinates of a matrix cell.
+		- p: int
+			Process that makes a send
+	"""
+	# Send the value right if needed
+	if p != 0: # process 0 never sends right
+		# No need to check whether j+1 < N because only process 0 would do that
+		# Can either be process p or p-1
+		p_right = cell_proc(i, j+1)
+		if p_right != p:
+			MPI_SEND(p_right)
+			return # No need to send it below too
+	# Send the value below if needed
+	if p != P-1: # process p-1 never sends below
+		if (i + 1 < N): # Avoid out of bounds
+			p_below = cell_proc(i+1, j)
+			if p_below != p:
+				MPI_SEND(p_below)
+```
+
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTYyODIzMDk3OCwyMDk1NDg3OTg2LC0xMT
-U3NTUzODgyLC04OTA2OTA2MTYsMTk4MzU5NjczNCwxNDM5NjIx
-MTQyLDE1MTkyOTUxNzgsMTA3OTgxNTUwOSwtOTg5MjUwOTA5LD
-EzMjA5NjEzNzYsLTE5NTIyMTQ2ODUsLTEyMjY0NjEzNjUsLTEx
-NjgxNDMwOSwyNzE1NzEzMTgsLTkzMzkwNzQ1NiwtNTAzMTk5NT
-Y0LC04MDcyMDU1NTUsODY4OTU1NDY1LDE2NTE0MDczMzAsNTM4
-NzIzNDQxXX0=
+eyJoaXN0b3J5IjpbLTE5ODY1ODE2NDgsMjA5NTQ4Nzk4NiwtMT
+E1NzU1Mzg4MiwtODkwNjkwNjE2LDE5ODM1OTY3MzQsMTQzOTYy
+MTE0MiwxNTE5Mjk1MTc4LDEwNzk4MTU1MDksLTk4OTI1MDkwOS
+wxMzIwOTYxMzc2LC0xOTUyMjE0Njg1LC0xMjI2NDYxMzY1LC0x
+MTY4MTQzMDksMjcxNTcxMzE4LC05MzM5MDc0NTYsLTUwMzE5OT
+U2NCwtODA3MjA1NTU1LDg2ODk1NTQ2NSwxNjUxNDA3MzMwLDUz
+ODcyMzQ0MV19
 -->
