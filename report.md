@@ -83,7 +83,7 @@ In this case *every* cell of *each* diagonal is assigned to a *different* proces
 ### Computing the list of entries assigned to a given processor
 
 # TODO (X marco)
-Each processor needs to know which entries to compute. We make use of the observations above, i.e. the procedure $\text{diagonal\_start\_end()}$. Notice that processor $i$ will never appear on principal diagonals $d$ s.t. $d < i$ or $d \ge n+m-1-i$, since in both cases the length of the diagonal is less than $i$.
+Each processor needs to know which entries to compute. We make use of the observations above, i.e. the procedure $\text{diagonal\_start\_end()}$. Notice that processor $i$ will never appear on principal diagonals $d$ s.t. $d < i$ or $d \ge n+m-1-i$, since in both cases the length of the diagonal is $\le i$.
 The algorithm to determine the list of elements of the whole matrix then is:
 ```py
 def matrix_elements(i:int):
@@ -186,11 +186,11 @@ def send(x: int, y: int, i: int):
 				MPI_SEND(p_below)
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMzEzMDI4NzIwLC04NzkyNTkyNTAsLTIwOD
-UyNTgyNDIsLTEwMTUwNTAxMDMsLTMxNTg0NDc2MywtMTA5Mzgz
-MzAxLC0xMDEwNDQxOTUzLDE3MzQ3MjExNTMsLTEzOTEyMDU3MC
-wxNjgzOTg3MzI2LC0zODUwMDU0NzcsLTY3ODAzOTU3MSw4ODgy
-ODIzNzAsLTI3OTgzMzc1MSwxNTMyMTY0OTk5LDQwMzA0NTM3OC
-wtODA5Nzg4OTU0LDUzOTkxNzE2NCw3MDc1MjM4MTUsLTgzNTA0
-NDIyM119
+eyJoaXN0b3J5IjpbLTE4ODMxMDc1NjUsMzEzMDI4NzIwLC04Nz
+kyNTkyNTAsLTIwODUyNTgyNDIsLTEwMTUwNTAxMDMsLTMxNTg0
+NDc2MywtMTA5MzgzMzAxLC0xMDEwNDQxOTUzLDE3MzQ3MjExNT
+MsLTEzOTEyMDU3MCwxNjgzOTg3MzI2LC0zODUwMDU0NzcsLTY3
+ODAzOTU3MSw4ODgyODIzNzAsLTI3OTgzMzc1MSwxNTMyMTY0OT
+k5LDQwMzA0NTM3OCwtODA5Nzg4OTU0LDUzOTkxNzE2NCw3MDc1
+MjM4MTVdfQ==
 -->
