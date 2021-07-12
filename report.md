@@ -78,7 +78,7 @@ Let us define $P(i, j)$ as the index of the processor assigned to entry $(i, j)$
 **Remark:** It's quite easy to see that $P(i, j)$, during the computation of entry $(i, j)$,  already has the value of cell $(i-1, j-1)$ stored in its memory, for $i, j \ge 1$. First notice that at least one of $(i, j-1)$ or $(i-1, j)$ is assigned to $p$:  in fact, let's say cell $(i, j)$ lies on diagonal $d$; then if $L(d-1) \le L(d)$, it follows that $P(i, j) = P(i, j-1)$; however, if $L(d-1) > L(d)$, $P(i, j) = P(i-1, j)$. Hence, in either case, cell $(i-1, j-1)$ is known to $p$, since its value was fetched by $p$ in the previous diagonal.
 
 A performance metric we use for the assignment is the number of messages exchanged by the processors. The exact measure for variable $n, m$ and $P_{\text{max}}$ is hard to obtain from analytical considerations, but we can give an upper bound: clearly we can assume $P_{\text{max}} = \min\{n, m\} = m$ since no diagonal will be longer than $m$.
-In this case *every* cell of *each* diagonal is assigned to a *different* processor. 
+In this case *every* cell of *each* diagonal is assigned to a *different* processor. It's easy to prove that $P(i, j) = P(i, j-1)$ and 
 
 # TODO (marco: checked up here)
 
@@ -195,7 +195,7 @@ def send(x: int, y: int, i: int):
 				MPI_SEND(p_below)
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTExMjI4NzIwMjMsLTEwMTUwNTAxMDMsLT
+eyJoaXN0b3J5IjpbLTE1NDU0MTU4NzAsLTEwMTUwNTAxMDMsLT
 MxNTg0NDc2MywtMTA5MzgzMzAxLC0xMDEwNDQxOTUzLDE3MzQ3
 MjExNTMsLTEzOTEyMDU3MCwxNjgzOTg3MzI2LC0zODUwMDU0Nz
 csLTY3ODAzOTU3MSw4ODgyODIzNzAsLTI3OTgzMzc1MSwxNTMy
