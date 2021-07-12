@@ -198,14 +198,14 @@ Once the $M$ matrix has been computed by the parallel algorithm, process $P(m-1,
  2. $M[i, j] = M[i, j-1]$
  3. $M[i, j] = M[i-1, j]$
 
-If $1.$ is true, then $p$ sends $x_i$ to $p' = P(i-1, j-1)$. If $2.$ or $3.$ is true, then $p$ sends $e$ to $p' = P(i, j-1)$ or $p' = P(i-1, j)$ respectively, where $e$ is the null string. The same procedure applies $p'$, which will prepend its message to the one it just received from $p$. Once a processor assigned to a cell $(0, j$) or $(i, 0)$
+If $1.$ is true, then $p$ sends $x_i$ to $p' = P(i-1, j-1)$. If $2.$ or $3.$ is true, then $p$ sends $e$ to $p' = P(i, j-1)$ or $p' = P(i-1, j)$ respectively, where $e$ is the null string. The same procedure applies $p'$, which will prepend its message to the one it just received from $p$. Once a processor assigned to a cell $(0, j$) or $(i, 0)$ is reached
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTY4MTc1MDM5MCwtODkwNjkwNjE2LDE5OD
-M1OTY3MzQsMTQzOTYyMTE0MiwxNTE5Mjk1MTc4LDEwNzk4MTU1
-MDksLTk4OTI1MDkwOSwxMzIwOTYxMzc2LC0xOTUyMjE0Njg1LC
-0xMjI2NDYxMzY1LC0xMTY4MTQzMDksMjcxNTcxMzE4LC05MzM5
-MDc0NTYsLTUwMzE5OTU2NCwtODA3MjA1NTU1LDg2ODk1NTQ2NS
-wxNjUxNDA3MzMwLDUzODcyMzQ0MSw1ODc2MTc3OTIsLTkyNjc5
-ODEzNF19
+eyJoaXN0b3J5IjpbLTE4NTA2NTQ5MzQsLTg5MDY5MDYxNiwxOT
+gzNTk2NzM0LDE0Mzk2MjExNDIsMTUxOTI5NTE3OCwxMDc5ODE1
+NTA5LC05ODkyNTA5MDksMTMyMDk2MTM3NiwtMTk1MjIxNDY4NS
+wtMTIyNjQ2MTM2NSwtMTE2ODE0MzA5LDI3MTU3MTMxOCwtOTMz
+OTA3NDU2LC01MDMxOTk1NjQsLTgwNzIwNTU1NSw4Njg5NTU0Nj
+UsMTY1MTQwNzMzMCw1Mzg3MjM0NDEsNTg3NjE3NzkyLC05MjY3
+OTgxMzRdfQ==
 -->
