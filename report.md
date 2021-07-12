@@ -84,10 +84,6 @@ In this case *every* cell of *each* diagonal is assigned to a *different* proces
 
 # TODO (X marco)
 Each processor needs to know which entries to compute. We make use of the observations above, i.e. the procedure $\text{diagonal\_start\_end()}$.
-On the diagonal $d$ the $i$-th element is 
-- if d < N: `(x: i, y: d-i)`
-- else the diagonal starts from another row so `(x: d-N+1-i, y: N-1-e)`
-
 The algorithm to determine the list of elements of the whole matrix then is:
 ```py
 def matrix_elements(i:int):
@@ -190,7 +186,7 @@ def send(x: int, y: int, i: int):
 				MPI_SEND(p_below)
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTM5NzA0ODIyNywtODc5MjU5MjUwLC0yMD
+eyJoaXN0b3J5IjpbLTE3MTk4MTA0OSwtODc5MjU5MjUwLC0yMD
 g1MjU4MjQyLC0xMDE1MDUwMTAzLC0zMTU4NDQ3NjMsLTEwOTM4
 MzMwMSwtMTAxMDQ0MTk1MywxNzM0NzIxMTUzLC0xMzkxMjA1Nz
 AsMTY4Mzk4NzMyNiwtMzg1MDA1NDc3LC02NzgwMzk1NzEsODg4
