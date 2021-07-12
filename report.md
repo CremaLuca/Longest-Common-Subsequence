@@ -195,10 +195,10 @@ def send(i: int, j: int, p: int):
 ## Reconstruction of an LCS  from the M matrix
 Once the $M$ matrix has been computed by the parallel algorithm, process $P(m-1, n-1) = 0$ knows entry $M[m-1, n-1]$, i.e. the length of an LCS. We show how to compute an LCS of $X_i$ and $Y_j$ starting at entry $(i, j)$: if $x_i = y_j$ then process $P(i, j)$ checks whether 
  1. $M[i, j] = M[i-1, j-1]+1$
- 2. $M[i, j] = M[i-1, j-1]+1$
+ 2. $M[i, j] = M[i, j-1]+1$
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIxMDA3OTA3NzEsMTQzOTYyMTE0MiwxNT
+eyJoaXN0b3J5IjpbLTEyMzk4Mzg4NzEsMTQzOTYyMTE0MiwxNT
 E5Mjk1MTc4LDEwNzk4MTU1MDksLTk4OTI1MDkwOSwxMzIwOTYx
 Mzc2LC0xOTUyMjE0Njg1LC0xMjI2NDYxMzY1LC0xMTY4MTQzMD
 ksMjcxNTcxMzE4LC05MzM5MDc0NTYsLTUwMzE5OTU2NCwtODA3
