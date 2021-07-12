@@ -167,7 +167,7 @@ def cell_proc(i: int, j: int):
 ### Send computed values
 Each processor doesn't need to keep a copy of the matrix $P(i, j)$: to find where to send the computed values, the previous formula can be used. As we already mentioned in a remark, each processor needs to send at most $2$ values to different neighbors: we can use the previous algorithm `cell_proc(i, j)` to check whether the cells $(i+1, j)$ and $(i, j+1)$ belong to the current processor and in case of a negative answer we send their values to the proper processes.
 
-We know for sure that the cell on the right can belong either to the current processor or the previous one, while, similarly, the one below either to the current or to the next one, but we couldn't find an usage of this information to improve the algorithm speed. With a litte abuse of notation for MPI singature of  `send`, we can write the following pseudocode:
+We know for sure that the cell on the right can belong either to the current processor or the previous one, while, similarly, the one below either to the current or to the next one, but we couldn't find an usage of this information to improve the algorithm speed. With a litte abuse of notation for MPI signature of  `send`, we can write the following pseudocode:
 
 ```py
 def send(x: int, y: int, p: int):
@@ -194,11 +194,11 @@ def send(x: int, y: int, p: int):
 				MPI_SEND(p_below)
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEzMjY4MDIzMzIsLTkzMzkwNzQ1NiwtNT
-AzMTk5NTY0LC04MDcyMDU1NTUsODY4OTU1NDY1LDE2NTE0MDcz
-MzAsNTM4NzIzNDQxLDU4NzYxNzc5MiwtOTI2Nzk4MTM0LC0xND
-AyNDYxNzIsMTc0MTk5NTExMSwtMTg4MzEwNzU2NSwzMTMwMjg3
-MjAsLTg3OTI1OTI1MCwtMjA4NTI1ODI0MiwtMTAxNTA1MDEwMy
-wtMzE1ODQ0NzYzLC0xMDkzODMzMDEsLTEwMTA0NDE5NTMsMTcz
-NDcyMTE1M119
+eyJoaXN0b3J5IjpbMjcxNTcxMzE4LC05MzM5MDc0NTYsLTUwMz
+E5OTU2NCwtODA3MjA1NTU1LDg2ODk1NTQ2NSwxNjUxNDA3MzMw
+LDUzODcyMzQ0MSw1ODc2MTc3OTIsLTkyNjc5ODEzNCwtMTQwMj
+Q2MTcyLDE3NDE5OTUxMTEsLTE4ODMxMDc1NjUsMzEzMDI4NzIw
+LC04NzkyNTkyNTAsLTIwODUyNTgyNDIsLTEwMTUwNTAxMDMsLT
+MxNTg0NDc2MywtMTA5MzgzMzAxLC0xMDEwNDQxOTUzLDE3MzQ3
+MjExNTNdfQ==
 -->
