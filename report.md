@@ -97,7 +97,7 @@ def matrix_elements(i:int):
 	
 	# If there are too many processor this one doesn't do anything
 	if i >= min(M, N):
-		return elements
+		return []
 	# Eg. Processor 1 (starting from 0) will never be in the first and last diagonal
 	for d in range(i, N+M-1-i):
 		start, end = diagonal_start_end(d, i)
@@ -186,7 +186,7 @@ def send(x: int, y: int, i: int):
 				MPI_SEND(p_below)
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTg3MTcwNTIzOSwtMTQwMjQ2MTcyLDE3ND
+eyJoaXN0b3J5IjpbLTQzNjE5NDc4NiwtMTQwMjQ2MTcyLDE3ND
 E5OTUxMTEsLTE4ODMxMDc1NjUsMzEzMDI4NzIwLC04NzkyNTky
 NTAsLTIwODUyNTgyNDIsLTEwMTUwNTAxMDMsLTMxNTg0NDc2My
 wtMTA5MzgzMzAxLC0xMDEwNDQxOTUzLDE3MzQ3MjExNTMsLTEz
