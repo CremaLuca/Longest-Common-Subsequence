@@ -212,7 +212,7 @@ def get_LCS(i: int, j: int, m: string):
 	It's assumed P(i, j) is calling this function.
 	"""
 	# M[i, j], M[i-1, j], M[i, j-1], M[i-1, j-1] are all stored in the local
-	# memory of the calling process
+	# memory of the calling process, as well as x_i, y_j
 	
 	if M[i, j] == M[i-1,j-1] + 1:
 		MPI_SEND(cell_proc(i-1,m j-1), m + )
@@ -235,7 +235,7 @@ def get_LCS(i: int, j: int, m: string):
 ```
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTkzNjM5MTkxMywtMTA4MTU5NjY4OCwyMD
+eyJoaXN0b3J5IjpbLTg3OTk4NzU3MSwtMTA4MTU5NjY4OCwyMD
 k1NDg3OTg2LC0xMTU3NTUzODgyLC04OTA2OTA2MTYsMTk4MzU5
 NjczNCwxNDM5NjIxMTQyLDE1MTkyOTUxNzgsMTA3OTgxNTUwOS
 wtOTg5MjUwOTA5LDEzMjA5NjEzNzYsLTE5NTIyMTQ2ODUsLTEy
