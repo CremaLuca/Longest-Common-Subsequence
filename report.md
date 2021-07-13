@@ -2,6 +2,7 @@
 
  **Definition:** Let $X = (x_1, \ldots, x_m)$ and $Y = (y_1, \ldots, y_n)$ be two sequences, where each $x_i, y_i \in$ alphabet $\Sigma$. We say that a sequence $Z = (z_1, \ldots, z_t)$ is a subsequence of $X$ if there exists a strictly increasing sequence $(i_1, \ldots, i_t)$ of indices of $X$ such that $z_j = x_{i_j}$, for all $1 \le j \le t$. The Longest Common Subsequence (LCS) problem consists in finding a common subsequence $Z$ of *both* $X$ and $Y$, of maximum length.
 Without loss of generality, we assume $m \le n$ in the following. We first describe a sequential algorithm for the LCS problem, and then we move to the more interesting parallel case, for which we propose an algorithm that borrows its structure from the sequential one.
+
 ## Sequential algorithm
 There's a well-known algorithm based on dynamic programming, that we propose here for the sequential case, which exploits the optimal substructure of the problem. Let $M$ be an $m \times n$ matrix, where entry $M[i, j]$ represents the length of an LCS of the sequences $X_i$ and $Y_j$, where $X_i$ is the $i$-th prefix of $X$, and similarly for $Y_j$. It holds that: $$M[i, j] = \begin{cases}0 & \text
 {if $i = 0$ or $j = 0$}  \\M[i-1, j-1] & \text{if $i, j > 0$ and $x_i = y_j$} \\\max(M[i, j-1], M[i-1, j])  & \text{if $i, j > 0$ and $x_i \ne y_j$}\end{cases}$$
@@ -233,11 +234,11 @@ def compute_LCS(i: int, j: int, m: string):
 ```
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE0NjkyMzc1NzMsLTE3NTkwNDYxNiwxMz
-ExNzc0NzM0LC0yMjAwODE1NTEsLTUzMTM1MTAxLDExOTIzNDcw
-NzUsODE1MTc5OTM4LC0xMDgxNTk2Njg4LDIwOTU0ODc5ODYsLT
-ExNTc1NTM4ODIsLTg5MDY5MDYxNiwxOTgzNTk2NzM0LDE0Mzk2
-MjExNDIsMTUxOTI5NTE3OCwxMDc5ODE1NTA5LC05ODkyNTA5MD
-ksMTMyMDk2MTM3NiwtMTk1MjIxNDY4NSwtMTIyNjQ2MTM2NSwt
-MTE2ODE0MzA5XX0=
+eyJoaXN0b3J5IjpbMTUzNzI1ODc2NSwtMTQ2OTIzNzU3MywtMT
+c1OTA0NjE2LDEzMTE3NzQ3MzQsLTIyMDA4MTU1MSwtNTMxMzUx
+MDEsMTE5MjM0NzA3NSw4MTUxNzk5MzgsLTEwODE1OTY2ODgsMj
+A5NTQ4Nzk4NiwtMTE1NzU1Mzg4MiwtODkwNjkwNjE2LDE5ODM1
+OTY3MzQsMTQzOTYyMTE0MiwxNTE5Mjk1MTc4LDEwNzk4MTU1MD
+ksLTk4OTI1MDkwOSwxMzIwOTYxMzc2LC0xOTUyMjE0Njg1LC0x
+MjI2NDYxMzY1XX0=
 -->
