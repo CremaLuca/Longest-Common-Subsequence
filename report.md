@@ -13,7 +13,7 @@ From this simple recurrence relation, it's easy to design a sequential algorithm
 We will exploit the previous recurrence relation, trying to find a way to parallelize the computation. Let us first define what we mean by principal diagonal of $M$.
 **Definition:** The $M$'s **principal diagonal** of index $d$, for $0 \le d \le m + n -2$, is the ordered set of entries$$D(d) =\begin{cases}\{M[0, d], M[1, d-1], \ldots,  M[d, 0])\} & \text
 {if $0\le d < m$}  \\\{M[0, d], M[1, d-1], \ldots,  M[m-1, d-m+1])\} & \text{if $m \le d < n$} \\\{M[d-n + 1, n-1], M[N-d+2, n-2], \ldots,  M[m-1, d-m+1])\}  & \text{if $d \ge n$}\end{cases}$$
-Note how entries in each $D(d)$ will only depend on entries belonging to $D(d-1)$ and D($d-2)$. In fact each element only depends on three elements from the two previous principal diagonals. This suggests a way to parallelize our initial algorithm: by looking at the CDAG of the computation, each diagonal is a level of the greedy schedule. Hence each entry in each diagonal can be computed in parallel, as long as entries from the previous diagonals have already been computed. From the previous definition, we have $$L(d) = |D(d)| =\begin{cases}d+1 & \text
+Note how entries in each $D(d)$ will only depend on entries belonging to $D(d-1)$ and D($d-2)$. In fact each element only depends on three elements from the two previous principal diagonals. This suggests a way to parallelize our initial algorithm: by looking at the CDAG of the computation, each diagonal is a level of the greedy schedule. Hence each entry in each diagonal can be computed in parallel, as long as entries from the previous diagonals have already been computed. From the previous definition, we define $L(d)$ as the le $$L(d) = |D(d)| =\begin{cases}d+1 & \text
 {if $0\le d < m$}  \\m & \text{if $m \le d < n$} \\m+n-1-d & \text{if $d \ge n$}\end{cases}$$
 or, more concisely, $L(d) = \min\{d+1, m, m+n-1-d\}$. 
 
@@ -234,11 +234,11 @@ def compute_LCS(i: int, j: int, m: string):
 ```
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTc5Njk2NTg1NSwtMTEzNTg4MTMwNSwtMT
-Q2OTIzNzU3MywtMTc1OTA0NjE2LDEzMTE3NzQ3MzQsLTIyMDA4
-MTU1MSwtNTMxMzUxMDEsMTE5MjM0NzA3NSw4MTUxNzk5MzgsLT
-EwODE1OTY2ODgsMjA5NTQ4Nzk4NiwtMTE1NzU1Mzg4MiwtODkw
-NjkwNjE2LDE5ODM1OTY3MzQsMTQzOTYyMTE0MiwxNTE5Mjk1MT
-c4LDEwNzk4MTU1MDksLTk4OTI1MDkwOSwxMzIwOTYxMzc2LC0x
-OTUyMjE0Njg1XX0=
+eyJoaXN0b3J5IjpbLTExNTE4OTkxNjcsLTExMzU4ODEzMDUsLT
+E0NjkyMzc1NzMsLTE3NTkwNDYxNiwxMzExNzc0NzM0LC0yMjAw
+ODE1NTEsLTUzMTM1MTAxLDExOTIzNDcwNzUsODE1MTc5OTM4LC
+0xMDgxNTk2Njg4LDIwOTU0ODc5ODYsLTExNTc1NTM4ODIsLTg5
+MDY5MDYxNiwxOTgzNTk2NzM0LDE0Mzk2MjExNDIsMTUxOTI5NT
+E3OCwxMDc5ODE1NTA5LC05ODkyNTA5MDksMTMyMDk2MTM3Niwt
+MTk1MjIxNDY4NV19
 -->
