@@ -29,8 +29,8 @@ To maximize concurrent computation we can look at the CDAG of the matrix, where 
 
 We now focus on the permutations of this sequence, in order to minimize the communication between processors. The intuitive way to achieve this is by having processors assigned to contiguous cells of the diagonal of the matrix and in the same order for each diagonal: this way we increase the probability for each processor to have the required variables from the previous diagonal already stored in its memory. Let $D$ be the principal diagonal of index $d$; processor $i$ will have to compute entries from $D[s]$ to $D[e-1]$, where:
 $$\begin{align*}
-s &=\begin{cases}i \Bigl \lfloor \frac{L(d)}{P}\Bigr\rfloor  \text
-{\quad if $i < L(d) \mod P$}  \\\\(L(d) \mod P) \cdot\Bigl \lfloor  \frac{L(d)}{P} \Bigr\rfloor + (i - (L(d) \mod P)) \cdot \Bigl \lceil  \frac{L(d)}{P} \Bigr\rceil & \text{otherwise} \end{cases}\\\\
+s &=\begin{cases}i \Bigl \lceil \frac{L(d)}{P}\Bigr\rceil  \text
+{\quad if $i < L(d) \mod P$}  \\\\(L(d) \mod P) \cdot\Bigl \lceil  \frac{L(d)}{P} \Bigr\rceil + (i - (L(d) \mod P)) \cdot \Bigl \lfloor  \frac{L(d)}{P} \Bigr\rfloor & \text{otherwise} \end{cases}\\\\
 e &=\begin{cases} s + \Bigl \lfloor  \frac{L(d)}{P}\Bigr\rfloor & \text
 {if $i < L(d) \mod P$}  \\\\s+ \Bigl\lceil \frac{L(d)}{P} \Bigr\rceil & \text{otherwise} \end{cases}
 \end{align*}
@@ -232,11 +232,11 @@ def compute_LCS(i: int, j: int, m: string):
 ```
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTUzMTM1MTAxLDExOTIzNDcwNzUsODE1MT
-c5OTM4LC0xMDgxNTk2Njg4LDIwOTU0ODc5ODYsLTExNTc1NTM4
-ODIsLTg5MDY5MDYxNiwxOTgzNTk2NzM0LDE0Mzk2MjExNDIsMT
-UxOTI5NTE3OCwxMDc5ODE1NTA5LC05ODkyNTA5MDksMTMyMDk2
-MTM3NiwtMTk1MjIxNDY4NSwtMTIyNjQ2MTM2NSwtMTE2ODE0Mz
-A5LDI3MTU3MTMxOCwtOTMzOTA3NDU2LC01MDMxOTk1NjQsLTgw
-NzIwNTU1NV19
+eyJoaXN0b3J5IjpbNTE1NjUyNDczLC01MzEzNTEwMSwxMTkyMz
+Q3MDc1LDgxNTE3OTkzOCwtMTA4MTU5NjY4OCwyMDk1NDg3OTg2
+LC0xMTU3NTUzODgyLC04OTA2OTA2MTYsMTk4MzU5NjczNCwxND
+M5NjIxMTQyLDE1MTkyOTUxNzgsMTA3OTgxNTUwOSwtOTg5MjUw
+OTA5LDEzMjA5NjEzNzYsLTE5NTIyMTQ2ODUsLTEyMjY0NjEzNj
+UsLTExNjgxNDMwOSwyNzE1NzEzMTgsLTkzMzkwNzQ1NiwtNTAz
+MTk5NTY0XX0=
 -->
