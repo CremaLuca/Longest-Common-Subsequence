@@ -18,6 +18,12 @@ $$L(d) = |D(d)| =\begin{cases}d+1 & \text
 {if $0\le d < m$}  \\m & \text{if $m \le d < n$} \\m+n-1-d & \text{if $d \ge n$}\end{cases}$$
 or, more concisely, $L(d) = \min\{d+1, m, m+n-1-d\}$. 
 
+
+```py
+def diag_length(d: int):
+	return min(d+1, N, M, M+N-1-d)
+```
+
 ### Optimal execution order
 
 We have to assign an order of execution to compute every entry in the LCS matrix. The assignment we are looking for has to:
@@ -41,9 +47,6 @@ $$
 Or more intuitively using an algorithm:
 
 ```py
-def diag_length(d: int):
-	return min(d+1, N, M, M+N-1-d)
-
 def diag_start_end(d: int, i: int):
 	"""
 	Parameters:
@@ -235,11 +238,11 @@ def compute_LCS(i: int, j: int, m: string):
 ```
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjExNTQ2NTQ3LC0xMTM1ODgxMzA1LC0xND
-Y5MjM3NTczLC0xNzU5MDQ2MTYsMTMxMTc3NDczNCwtMjIwMDgx
-NTUxLC01MzEzNTEwMSwxMTkyMzQ3MDc1LDgxNTE3OTkzOCwtMT
-A4MTU5NjY4OCwyMDk1NDg3OTg2LC0xMTU3NTUzODgyLC04OTA2
-OTA2MTYsMTk4MzU5NjczNCwxNDM5NjIxMTQyLDE1MTkyOTUxNz
-gsMTA3OTgxNTUwOSwtOTg5MjUwOTA5LDEzMjA5NjEzNzYsLTE5
-NTIyMTQ2ODVdfQ==
+eyJoaXN0b3J5IjpbNTQxNDYyMjE0LDIxMTU0NjU0NywtMTEzNT
+g4MTMwNSwtMTQ2OTIzNzU3MywtMTc1OTA0NjE2LDEzMTE3NzQ3
+MzQsLTIyMDA4MTU1MSwtNTMxMzUxMDEsMTE5MjM0NzA3NSw4MT
+UxNzk5MzgsLTEwODE1OTY2ODgsMjA5NTQ4Nzk4NiwtMTE1NzU1
+Mzg4MiwtODkwNjkwNjE2LDE5ODM1OTY3MzQsMTQzOTYyMTE0Mi
+wxNTE5Mjk1MTc4LDEwNzk4MTU1MDksLTk4OTI1MDkwOSwxMzIw
+OTYxMzc2XX0=
 -->
