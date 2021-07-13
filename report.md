@@ -11,9 +11,9 @@ From this simple recurrence relation, it's easy to design a sequential algorithm
 ## Parallel algorithm
 
 We will exploit the previous recurrence relation, trying to find a way to parallelize the computation. Let us first define what we mean by principal diagonal of $M$.
-**Definition:** The $M$'s principal diagonal of index $d$, for $0 \le d \le m + n -2$, is the ordered set of entries$$D(d) =\begin{cases}\{M[0, d], M[1, d-1], \ldots,  M[d, 0])\} & \text
+**Definition:** The $M$'s **principal diagonal** of index $d$, for $0 \le d \le m + n -2$, is the ordered set of entries$$D(d) =\begin{cases}\{M[0, d], M[1, d-1], \ldots,  M[d, 0])\} & \text
 {if $0\le d < m$}  \\\{M[0, d], M[1, d-1], \ldots,  M[m-1, d-m+1])\} & \text{if $m \le d < n$} \\\{M[d-n + 1, n-1], M[N-d+2, n-2], \ldots,  M[m-1, d-m+1])\}  & \text{if $d \ge n$}\end{cases}$$
-Each entry in $D(d)$ will depend only on entries belonging to $D(d-1)$ and D($d-2)$. In fact each element depends only on three elements from the two previous principal diagonals. This suggests a way to parallelize our initial algorithm: by looking at the CDAG of the computation, each diagonal is a level of the greedy schedule. Hence each entry in each diagonal can be computed in parallel, as long as entries from the previous diagonals have already been computed. From the previous definition, we have $$L(d) = |D(d)| =\begin{cases}d+1 & \text
+Note how each entry in $D(d)$ will only depend on entries belonging to $D(d-1)$ and D($d-2)$. In fact each element depends only on three elements from the two previous principal diagonals. This suggests a way to parallelize our initial algorithm: by looking at the CDAG of the computation, each diagonal is a level of the greedy schedule. Hence each entry in each diagonal can be computed in parallel, as long as entries from the previous diagonals have already been computed. From the previous definition, we have $$L(d) = |D(d)| =\begin{cases}d+1 & \text
 {if $0\le d < m$}  \\m & \text{if $m \le d < n$} \\m+n-1-d & \text{if $d \ge n$}\end{cases}$$
 or, more concisely, $L(d) = \min\{d+1, m, m+n-1-d\}$. 
 
@@ -234,7 +234,7 @@ def compute_LCS(i: int, j: int, m: string):
 ```
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTU2ODAzNjAwNywtMTEzNTg4MTMwNSwtMT
+eyJoaXN0b3J5IjpbMTQ5MDM4MjMxNSwtMTEzNTg4MTMwNSwtMT
 Q2OTIzNzU3MywtMTc1OTA0NjE2LDEzMTE3NzQ3MzQsLTIyMDA4
 MTU1MSwtNTMxMzUxMDEsMTE5MjM0NzA3NSw4MTUxNzk5MzgsLT
 EwODE1OTY2ODgsMjA5NTQ4Nzk4NiwtMTE1NzU1Mzg4MiwtODkw
