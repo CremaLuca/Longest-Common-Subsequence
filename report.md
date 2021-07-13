@@ -96,18 +96,20 @@ def matrix_elements(i:int):
 	Returns:
 		A list of cells of the LCS matrix assigned to processor i.
 	"""
-	
 	# If there are too many processor this one doesn't do anything
 	if i >= min(M, N):
 		return []
 	elements = []
-	# Eg. Processor 1 (starting from 0) will never be in the first and last diagonal
+	# Eg. Processor 1 (starting from 0) will never be in the
+	# first and last diagonal
 	for d in range(i, N+M-1-i):
 		start, end = diag_start_end(d, i)
 		for e in range(start, end):
-			# e if d < N and the diagonal starts from the top, d-N+1+e otherwise
+			# e if d < N and the diagonal starts from
+			# the top, d-N+1+e otherwise
 			x = max(0, d-N+1) + e
-			# d-e if d < N and the diagonal starts from the top, N-1-e otherwise
+			# d-e if d < N and the diagonal starts from
+			# the top, N-1-e otherwise
 			y = min(d, N-1) - e
 			elements.append((x,y))
 	return elements
@@ -238,11 +240,11 @@ def compute_LCS(i: int, j: int, m: string):
 ```
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTY2NTYwNzQxNiwtMTg3MzAwMjk4MCw1ND
-E0NjIyMTQsMjExNTQ2NTQ3LC0xMTM1ODgxMzA1LC0xNDY5MjM3
-NTczLC0xNzU5MDQ2MTYsMTMxMTc3NDczNCwtMjIwMDgxNTUxLC
-01MzEzNTEwMSwxMTkyMzQ3MDc1LDgxNTE3OTkzOCwtMTA4MTU5
-NjY4OCwyMDk1NDg3OTg2LC0xMTU3NTUzODgyLC04OTA2OTA2MT
-YsMTk4MzU5NjczNCwxNDM5NjIxMTQyLDE1MTkyOTUxNzgsMTA3
-OTgxNTUwOV19
+eyJoaXN0b3J5IjpbLTE2ODcxMzQ0NDEsLTE4NzMwMDI5ODAsNT
+QxNDYyMjE0LDIxMTU0NjU0NywtMTEzNTg4MTMwNSwtMTQ2OTIz
+NzU3MywtMTc1OTA0NjE2LDEzMTE3NzQ3MzQsLTIyMDA4MTU1MS
+wtNTMxMzUxMDEsMTE5MjM0NzA3NSw4MTUxNzk5MzgsLTEwODE1
+OTY2ODgsMjA5NTQ4Nzk4NiwtMTE1NzU1Mzg4MiwtODkwNjkwNj
+E2LDE5ODM1OTY3MzQsMTQzOTYyMTE0MiwxNTE5Mjk1MTc4LDEw
+Nzk4MTU1MDldfQ==
 -->
