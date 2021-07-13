@@ -131,7 +131,7 @@ def cell_diag(i: int, j: int):
 	"""
 	return i+j
 
-def cell_diag_index(i: int, j: int):
+def cell_pos(i: int, j: int):
 	"""
 	Parameters:
 		- i, j: int
@@ -142,10 +142,11 @@ def cell_diag_index(i: int, j: int):
 	return min(i, N-j-1)
 ```
 
-Another useful function is to compute $P(i, j)$ given $$.
+Another useful function is to compute $P(i, j)$.
 It's easy to derive a formula from the previous assignment of processors to each diagonal; 
-set $L = L(i+j)$ and $p = \min\{L, P_{\text{max}}\}$, $q =\lfloor L/p\rfloor$, $r=L\mod p$.
-We have:$$P(i, j)=\begin{cases}\bigl\lfloor\frac{\text{pos}(i, j)}{q+1}\bigr\rfloor& \text
+set $L = L(i+j)$ and $p = \min\{L, P_{\text{max}}\}$, $q =\lfloor L/p\rfloor$, $r=(L\mod p)$.
+We have:
+$$P(i, j)=\begin{cases}\bigl\lfloor\frac{\text{pos}(i, j)}{q+1}\bigr\rfloor& \text
 {if pos(i, j) $<(q+1)r$}  \\\bigl\lfloor\frac{\text{pos}(i, j)-r}{q}\bigr\rfloor & \text{otherwise}\end{cases}$$
 Hence the following algorithm:
 
@@ -240,11 +241,11 @@ def compute_LCS(i: int, j: int, m: string):
 ```
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTYwNjU3MTczLC0xODczMDAyOTgwLDU0MT
-Q2MjIxNCwyMTE1NDY1NDcsLTExMzU4ODEzMDUsLTE0NjkyMzc1
-NzMsLTE3NTkwNDYxNiwxMzExNzc0NzM0LC0yMjAwODE1NTEsLT
-UzMTM1MTAxLDExOTIzNDcwNzUsODE1MTc5OTM4LC0xMDgxNTk2
-Njg4LDIwOTU0ODc5ODYsLTExNTc1NTM4ODIsLTg5MDY5MDYxNi
-wxOTgzNTk2NzM0LDE0Mzk2MjExNDIsMTUxOTI5NTE3OCwxMDc5
-ODE1NTA5XX0=
+eyJoaXN0b3J5IjpbLTUyNjU1MTUwNywtMTg3MzAwMjk4MCw1ND
+E0NjIyMTQsMjExNTQ2NTQ3LC0xMTM1ODgxMzA1LC0xNDY5MjM3
+NTczLC0xNzU5MDQ2MTYsMTMxMTc3NDczNCwtMjIwMDgxNTUxLC
+01MzEzNTEwMSwxMTkyMzQ3MDc1LDgxNTE3OTkzOCwtMTA4MTU5
+NjY4OCwyMDk1NDg3OTg2LC0xMTU3NTUzODgyLC04OTA2OTA2MT
+YsMTk4MzU5NjczNCwxNDM5NjIxMTQyLDE1MTkyOTUxNzgsMTA3
+OTgxNTUwOV19
 -->
