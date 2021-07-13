@@ -78,7 +78,7 @@ def diag_start_end(d: int, i: int):
 ### Bound on the number of messages
 Let us define $P(i, j)$ as the index of the processor assigned to entry $(i, j)$, according to the previous scheme.
 
-**Remark:** It's quite easy to see that $P(i, j)$, during the computation of entry $(i, j)$,  already has the value of cell $(i-1, j-1)$ stored in its memory, for $i, j \ge 1$. First notice that at least one of $(i, j-1)$ or $(i-1, j)$ is assigned to $p$:  in fact, let's say cell $(i, j)$ lies on diagonal $d$; then if $L(d-1) \le L(d)$, it follows that $P(i, j) = P(i, j-1)$; however, if $L(d-1) > L(d)$, $P(i, j) = P(i-1, j)$. Hence, in either case, cell $(i-1, j-1)$ is known to $p$, since its value was fetched by $p$ in the previous diagonal.
+**Remark:** It's quite easy to see that during the computation of entry $(i, j)$ processor $P(i, j)$  already has the value of cell $(i-1, j-1)$ stored in its memory, for $i, j \ge 1$. First notice that at least one of $(i, j-1)$ or $(i-1, j)$ is assigned to $p$:  in fact, let's say cell $(i, j)$ lies on diagonal $d$; then if $L(d-1) \le L(d)$, it follows that $P(i, j) = P(i, j-1)$; however, if $L(d-1) > L(d)$, $P(i, j) = P(i-1, j)$. Hence, in either case, cell $(i-1, j-1)$ is known to $p$, since its value was fetched by $p$ in the previous diagonal.
 
 A performance metric we use for the assignment is the number of messages exchanged by the processors. The exact measure for variable $n, m$ and $P_{\text{max}}$ is hard to obtain from analytical considerations, but we can give an upper bound: clearly we can assume $P_{\text{max}} = \min\{n, m\} = m$ since no diagonal will be longer than $m$.
 In this case *every* cell of *each* diagonal is assigned to a *different* processor. By the remark, it's easy to prove that $P(i, j) = P(i, j-1) \ne P(i-1, j)$ if $i+j \le n-1$ and $P(i, j) = P(i-1, j) \ne P(i, j-1)$  if $i+j \ge n$.  Hence: $$\text{messages exchanged} = \sum_{i = 1}^{m-1}\sum_{j=1}^{n-1}1 + \underbrace{m-1}_{\text{first column}} = n(m-1) = \theta(nm)$$
@@ -237,7 +237,7 @@ def compute_LCS(i: int, j: int, m: string):
 ```
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEwODE1NTAyMTgsNTQxNDYyMjE0LDIxMT
+eyJoaXN0b3J5IjpbLTE4NzMwMDI5ODAsNTQxNDYyMjE0LDIxMT
 U0NjU0NywtMTEzNTg4MTMwNSwtMTQ2OTIzNzU3MywtMTc1OTA0
 NjE2LDEzMTE3NzQ3MzQsLTIyMDA4MTU1MSwtNTMxMzUxMDEsMT
 E5MjM0NzA3NSw4MTUxNzk5MzgsLTEwODE1OTY2ODgsMjA5NTQ4
