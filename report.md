@@ -188,7 +188,7 @@ def send(i: int, j: int, p: int):
 	"""
 	# Send the value right if needed
 	if p != 0: # process 0 never sends right
-		# No need to check whether j+1 < N because only process 0 would do that
+		# No need to check whether j+1 < N because only processor 0 would do that
 		# Can either be process p or p-1
 		p_right = cell_proc(i, j+1)
 		if p_right != p:
@@ -241,11 +241,11 @@ def compute_LCS(i: int, j: int, m: string):
 ```
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTExNTY5NDQ2NzAsLTE4NzMwMDI5ODAsNT
-QxNDYyMjE0LDIxMTU0NjU0NywtMTEzNTg4MTMwNSwtMTQ2OTIz
-NzU3MywtMTc1OTA0NjE2LDEzMTE3NzQ3MzQsLTIyMDA4MTU1MS
-wtNTMxMzUxMDEsMTE5MjM0NzA3NSw4MTUxNzk5MzgsLTEwODE1
-OTY2ODgsMjA5NTQ4Nzk4NiwtMTE1NzU1Mzg4MiwtODkwNjkwNj
-E2LDE5ODM1OTY3MzQsMTQzOTYyMTE0MiwxNTE5Mjk1MTc4LDEw
-Nzk4MTU1MDldfQ==
+eyJoaXN0b3J5IjpbMTE3MTg5Mjc2NywtMTg3MzAwMjk4MCw1ND
+E0NjIyMTQsMjExNTQ2NTQ3LC0xMTM1ODgxMzA1LC0xNDY5MjM3
+NTczLC0xNzU5MDQ2MTYsMTMxMTc3NDczNCwtMjIwMDgxNTUxLC
+01MzEzNTEwMSwxMTkyMzQ3MDc1LDgxNTE3OTkzOCwtMTA4MTU5
+NjY4OCwyMDk1NDg3OTg2LC0xMTU3NTUzODgyLC04OTA2OTA2MT
+YsMTk4MzU5NjczNCwxNDM5NjIxMTQyLDE1MTkyOTUxNzgsMTA3
+OTgxNTUwOV19
 -->
