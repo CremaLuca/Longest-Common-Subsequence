@@ -42,7 +42,7 @@ Or more intuitively using an algorithm:
 def diag_length(d: int):
 	return min(d+1, N, M, M+N-1-d)
 
-def diagonal_start_end(d: int, i: int):
+def diag_start_end(d: int, i: int):
 	"""
 	Parameters:
 		- d: int
@@ -232,11 +232,11 @@ def compute_LCS(i: int, j: int, m: string):
 ```
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTE5MjM0NzA3NSw4MTUxNzk5MzgsLTEwOD
-E1OTY2ODgsMjA5NTQ4Nzk4NiwtMTE1NzU1Mzg4MiwtODkwNjkw
-NjE2LDE5ODM1OTY3MzQsMTQzOTYyMTE0MiwxNTE5Mjk1MTc4LD
-EwNzk4MTU1MDksLTk4OTI1MDkwOSwxMzIwOTYxMzc2LC0xOTUy
-MjE0Njg1LC0xMjI2NDYxMzY1LC0xMTY4MTQzMDksMjcxNTcxMz
-E4LC05MzM5MDc0NTYsLTUwMzE5OTU2NCwtODA3MjA1NTU1LDg2
-ODk1NTQ2NV19
+eyJoaXN0b3J5IjpbMzEyODY1MjEsMTE5MjM0NzA3NSw4MTUxNz
+k5MzgsLTEwODE1OTY2ODgsMjA5NTQ4Nzk4NiwtMTE1NzU1Mzg4
+MiwtODkwNjkwNjE2LDE5ODM1OTY3MzQsMTQzOTYyMTE0MiwxNT
+E5Mjk1MTc4LDEwNzk4MTU1MDksLTk4OTI1MDkwOSwxMzIwOTYx
+Mzc2LC0xOTUyMjE0Njg1LC0xMjI2NDYxMzY1LC0xMTY4MTQzMD
+ksMjcxNTcxMzE4LC05MzM5MDc0NTYsLTUwMzE5OTU2NCwtODA3
+MjA1NTU1XX0=
 -->
