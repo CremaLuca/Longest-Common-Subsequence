@@ -26,8 +26,8 @@ We have to assign an order of execution to compute every entry in the LCS matrix
 
 To maximize concurrent computation we can look at the CDAG of the matrix, where we compute each cell that has required variables ready as soon as possible; let $P_{\text{max}} > 0$ processors at our disposal. Let's see how many processors we need to assign to a given principal diagonal $d$ whose length is $L= L(d)$. Notice that if$L < P_{\text{max}}$, $P_{\text{max}}-L$ processors will not work at all, since each entry can be computed in parallel by $L$ processors. So we put $P = \min\{L(d), P_{\text{max}}\}$. Thus we can assign processors as follows:
 
-- $\lceil L/P \rceil$ cells to  processor $i$ for  $0 \leq i < L \mod P$
-- $\lfloor L/P \rfloor$ cells to processor $j$ for $L \mod P \leq j < P$
+- $\lceil L/P \rceil$ cells to  processor $i$ for  $0 \leq i < (L \mod P)$
+- $\lfloor L/P \rfloor$ cells to processor $j$ for $(L \mod P) \leq j < P$
 
 We now focus on the permutations of this sequence, in order to minimize the communication between processors. The intuitive way to achieve this is by having processors assigned to contiguous cells of the diagonal of the matrix and in the same order for each diagonal: this way we increase the probability for each processor to have the required variables from the previous diagonal already stored in its memory. Let $D$ be the principal diagonal of index $d$; processor $i$ will have to compute entries from $D[s]$ to $D[e-1]$, where:
 $$\begin{align*}
@@ -235,11 +235,11 @@ def compute_LCS(i: int, j: int, m: string):
 ```
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE4ODgwNzUyOTksLTExMzU4ODEzMDUsLT
-E0NjkyMzc1NzMsLTE3NTkwNDYxNiwxMzExNzc0NzM0LC0yMjAw
-ODE1NTEsLTUzMTM1MTAxLDExOTIzNDcwNzUsODE1MTc5OTM4LC
-0xMDgxNTk2Njg4LDIwOTU0ODc5ODYsLTExNTc1NTM4ODIsLTg5
-MDY5MDYxNiwxOTgzNTk2NzM0LDE0Mzk2MjExNDIsMTUxOTI5NT
-E3OCwxMDc5ODE1NTA5LC05ODkyNTA5MDksMTMyMDk2MTM3Niwt
-MTk1MjIxNDY4NV19
+eyJoaXN0b3J5IjpbMjExNTQ2NTQ3LC0xMTM1ODgxMzA1LC0xND
+Y5MjM3NTczLC0xNzU5MDQ2MTYsMTMxMTc3NDczNCwtMjIwMDgx
+NTUxLC01MzEzNTEwMSwxMTkyMzQ3MDc1LDgxNTE3OTkzOCwtMT
+A4MTU5NjY4OCwyMDk1NDg3OTg2LC0xMTU3NTUzODgyLC04OTA2
+OTA2MTYsMTk4MzU5NjczNCwxNDM5NjIxMTQyLDE1MTkyOTUxNz
+gsMTA3OTgxNTUwOSwtOTg5MjUwOTA5LDEzMjA5NjEzNzYsLTE5
+NTIyMTQ2ODVdfQ==
 -->
