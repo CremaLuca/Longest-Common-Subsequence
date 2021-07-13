@@ -31,7 +31,7 @@ We now focus on the permutations of this sequence, in order to minimize the comm
 $$\begin{align*}
 s &=\begin{cases}i \Bigl \lceil \frac{L(d)}{P}\Bigr\rceil  \text
 {\quad if $i < L(d) \mod P$}  \\\\(L(d) \mod P) \cdot\Bigl \lceil  \frac{L(d)}{P} \Bigr\rceil + (i - (L(d) \mod P)) \cdot \Bigl \lfloor  \frac{L(d)}{P} \Bigr\rfloor & \text{otherwise} \end{cases}\\\\
-e &=\begin{cases} s + \Bigl \lfloor  \frac{L(d)}{P}\Bigr\rfloor & \text
+e &=\begin{cases} s + \Bigl \lceil  \frac{L(d)}{P}\Bigr\rceil & \text
 {if $i < L(d) \mod P$}  \\\\s+ \Bigl\lceil \frac{L(d)}{P} \Bigr\rceil & \text{otherwise} \end{cases}
 \end{align*}
 $$
@@ -232,11 +232,11 @@ def compute_LCS(i: int, j: int, m: string):
 ```
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNTE1NjUyNDczLC01MzEzNTEwMSwxMTkyMz
-Q3MDc1LDgxNTE3OTkzOCwtMTA4MTU5NjY4OCwyMDk1NDg3OTg2
-LC0xMTU3NTUzODgyLC04OTA2OTA2MTYsMTk4MzU5NjczNCwxND
-M5NjIxMTQyLDE1MTkyOTUxNzgsMTA3OTgxNTUwOSwtOTg5MjUw
-OTA5LDEzMjA5NjEzNzYsLTE5NTIyMTQ2ODUsLTEyMjY0NjEzNj
-UsLTExNjgxNDMwOSwyNzE1NzEzMTgsLTkzMzkwNzQ1NiwtNTAz
-MTk5NTY0XX0=
+eyJoaXN0b3J5IjpbLTIyMDA4MTU1MSwtNTMxMzUxMDEsMTE5Mj
+M0NzA3NSw4MTUxNzk5MzgsLTEwODE1OTY2ODgsMjA5NTQ4Nzk4
+NiwtMTE1NzU1Mzg4MiwtODkwNjkwNjE2LDE5ODM1OTY3MzQsMT
+QzOTYyMTE0MiwxNTE5Mjk1MTc4LDEwNzk4MTU1MDksLTk4OTI1
+MDkwOSwxMzIwOTYxMzc2LC0xOTUyMjE0Njg1LC0xMjI2NDYxMz
+Y1LC0xMTY4MTQzMDksMjcxNTcxMzE4LC05MzM5MDc0NTYsLTUw
+MzE5OTU2NF19
 -->
