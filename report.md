@@ -98,7 +98,7 @@ def matrix_elements(i:int):
 	elements = []
 	# Eg. Processor 1 (starting from 0) will never be in the first and last diagonal
 	for d in range(i, N+M-1-i):
-		start, end = diagonal_start_end(d, i)
+		start, end = diagona_start_end(d, i)
 		for e in range(start, end):
 			# e if d < N and the diagonal starts from the top, d-N+1+e otherwise
 			x = max(0, d-N+1) + e
@@ -232,11 +232,11 @@ def compute_LCS(i: int, j: int, m: string):
 ```
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTMxMTc3NDczNCwtMjIwMDgxNTUxLC01Mz
-EzNTEwMSwxMTkyMzQ3MDc1LDgxNTE3OTkzOCwtMTA4MTU5NjY4
-OCwyMDk1NDg3OTg2LC0xMTU3NTUzODgyLC04OTA2OTA2MTYsMT
-k4MzU5NjczNCwxNDM5NjIxMTQyLDE1MTkyOTUxNzgsMTA3OTgx
-NTUwOSwtOTg5MjUwOTA5LDEzMjA5NjEzNzYsLTE5NTIyMTQ2OD
-UsLTEyMjY0NjEzNjUsLTExNjgxNDMwOSwyNzE1NzEzMTgsLTkz
-MzkwNzQ1Nl19
+eyJoaXN0b3J5IjpbMTU5MDIxNTU5NCwxMzExNzc0NzM0LC0yMj
+AwODE1NTEsLTUzMTM1MTAxLDExOTIzNDcwNzUsODE1MTc5OTM4
+LC0xMDgxNTk2Njg4LDIwOTU0ODc5ODYsLTExNTc1NTM4ODIsLT
+g5MDY5MDYxNiwxOTgzNTk2NzM0LDE0Mzk2MjExNDIsMTUxOTI5
+NTE3OCwxMDc5ODE1NTA5LC05ODkyNTA5MDksMTMyMDk2MTM3Ni
+wtMTk1MjIxNDY4NSwtMTIyNjQ2MTM2NSwtMTE2ODE0MzA5LDI3
+MTU3MTMxOF19
 -->
