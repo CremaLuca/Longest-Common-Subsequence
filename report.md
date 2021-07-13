@@ -105,6 +105,7 @@ def matrix_elements(i:int):
 			# d-e if d < N and the diagonal starts from the top, N-1-e otherwise
 			y = min(d, N-1) - e
 			elements.append((x,y))
+	return elements
 ```
 
 ### Some useful functions
@@ -232,11 +233,11 @@ def compute_LCS(i: int, j: int, m: string):
 ```
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE3NTkwNDYxNiwxMzExNzc0NzM0LC0yMj
-AwODE1NTEsLTUzMTM1MTAxLDExOTIzNDcwNzUsODE1MTc5OTM4
-LC0xMDgxNTk2Njg4LDIwOTU0ODc5ODYsLTExNTc1NTM4ODIsLT
-g5MDY5MDYxNiwxOTgzNTk2NzM0LDE0Mzk2MjExNDIsMTUxOTI5
-NTE3OCwxMDc5ODE1NTA5LC05ODkyNTA5MDksMTMyMDk2MTM3Ni
-wtMTk1MjIxNDY4NSwtMTIyNjQ2MTM2NSwtMTE2ODE0MzA5LDI3
-MTU3MTMxOF19
+eyJoaXN0b3J5IjpbLTE0NjkyMzc1NzMsLTE3NTkwNDYxNiwxMz
+ExNzc0NzM0LC0yMjAwODE1NTEsLTUzMTM1MTAxLDExOTIzNDcw
+NzUsODE1MTc5OTM4LC0xMDgxNTk2Njg4LDIwOTU0ODc5ODYsLT
+ExNTc1NTM4ODIsLTg5MDY5MDYxNiwxOTgzNTk2NzM0LDE0Mzk2
+MjExNDIsMTUxOTI5NTE3OCwxMDc5ODE1NTA5LC05ODkyNTA5MD
+ksMTMyMDk2MTM3NiwtMTk1MjIxNDY4NSwtMTIyNjQ2MTM2NSwt
+MTE2ODE0MzA5XX0=
 -->
