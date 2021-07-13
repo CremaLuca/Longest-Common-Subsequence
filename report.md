@@ -32,7 +32,7 @@ $$\begin{align*}
 s &=\begin{cases}i \Bigl \lceil \frac{L(d)}{P}\Bigr\rceil  \text
 {\quad if $i < L(d) \mod P$}  \\\\(L(d) \mod P) \cdot\Bigl \lceil  \frac{L(d)}{P} \Bigr\rceil + (i - (L(d) \mod P)) \cdot \Bigl \lfloor  \frac{L(d)}{P} \Bigr\rfloor & \text{otherwise} \end{cases}\\\\
 e &=\begin{cases} s + \Bigl \lceil  \frac{L(d)}{P}\Bigr\rceil & \text
-{if $i < L(d) \mod P$}  \\\\s+ \Bigl\lceil \frac{L(d)}{P} \Bigr\rceil & \text{otherwise} \end{cases}
+{if $i < L(d) \mod P$}  \\\\s+ \Bigl\lfloor \frac{L(d)}{P} \Bigr\rfloor & \text{otherwise} \end{cases}
 \end{align*}
 $$
 
@@ -64,7 +64,7 @@ def diag_start_end(d: int, i: int):
 	rem = L_d % p
 	if i < rem:
 		start = i * ceil_size 
-		end = start + floor_size 
+		end = start + ceil_size 
 	else:
 		start = rem * ceil_size + (i-rem) * floor_size 
 		end = start + floor_size
@@ -232,11 +232,11 @@ def compute_LCS(i: int, j: int, m: string):
 ```
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIyMDA4MTU1MSwtNTMxMzUxMDEsMTE5Mj
-M0NzA3NSw4MTUxNzk5MzgsLTEwODE1OTY2ODgsMjA5NTQ4Nzk4
-NiwtMTE1NzU1Mzg4MiwtODkwNjkwNjE2LDE5ODM1OTY3MzQsMT
-QzOTYyMTE0MiwxNTE5Mjk1MTc4LDEwNzk4MTU1MDksLTk4OTI1
-MDkwOSwxMzIwOTYxMzc2LC0xOTUyMjE0Njg1LC0xMjI2NDYxMz
-Y1LC0xMTY4MTQzMDksMjcxNTcxMzE4LC05MzM5MDc0NTYsLTUw
-MzE5OTU2NF19
+eyJoaXN0b3J5IjpbMTMxMTc3NDczNCwtMjIwMDgxNTUxLC01Mz
+EzNTEwMSwxMTkyMzQ3MDc1LDgxNTE3OTkzOCwtMTA4MTU5NjY4
+OCwyMDk1NDg3OTg2LC0xMTU3NTUzODgyLC04OTA2OTA2MTYsMT
+k4MzU5NjczNCwxNDM5NjIxMTQyLDE1MTkyOTUxNzgsMTA3OTgx
+NTUwOSwtOTg5MjUwOTA5LDEzMjA5NjEzNzYsLTE5NTIyMTQ2OD
+UsLTEyMjY0NjEzNjUsLTExNjgxNDMwOSwyNzE1NzEzMTgsLTkz
+MzkwNzQ1Nl19
 -->
