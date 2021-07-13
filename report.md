@@ -80,7 +80,7 @@ A performance metric we use for the assignment is the number of messages exchang
 In this case *every* cell of *each* diagonal is assigned to a *different* processor. By the remark, it's easy to prove that $P(i, j) = P(i, j-1) \ne P(i-1, j)$ if $i+j \le n-1$ and $P(i, j) = P(i-1, j) \ne P(i, j-1)$  if $i+j \ge n$.  Hence: $$\text{messages exchanged} = \sum_{i = 1}^{m-1}\sum_{j=1}^{n-1}1 + \underbrace{m-1}_{\text{first column}} = n(m-1) = \theta(nm)$$
 
 ### Computing the list of entries assigned to a given processor
-Each processor needs to know which entries to compute. We make use of the observations above, i.e. the procedure `diagonal_start_end`. Notice that processor $i$ will never appear on principal diagonals $d$ s.t. $d < i$ or $d \ge n+m-1-i$, since in both cases the length of the diagonal is $\le i$. Also since no diagonal has length $\ge\min\{m, n\} = m$, we need $i < m$.
+Each processor needs to know which entries to compute. We make use of the observations above, i.e. the procedure `diag_start_end`. Notice that processor $i$ will never appear on principal diagonals $d$ s.t. $d < i$ or $d \ge n+m-1-i$, since in both cases the length of the diagonal is $\le i$. Also since no diagonal has length $\ge\min\{m, n\} = m$, we need $i < m$.
 The algorithm to determine the list of elements of the whole matrix then is:
 ```py
 def matrix_elements(i:int):
@@ -232,11 +232,11 @@ def compute_LCS(i: int, j: int, m: string):
 ```
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMzEyODY1MjEsMTE5MjM0NzA3NSw4MTUxNz
-k5MzgsLTEwODE1OTY2ODgsMjA5NTQ4Nzk4NiwtMTE1NzU1Mzg4
-MiwtODkwNjkwNjE2LDE5ODM1OTY3MzQsMTQzOTYyMTE0MiwxNT
-E5Mjk1MTc4LDEwNzk4MTU1MDksLTk4OTI1MDkwOSwxMzIwOTYx
-Mzc2LC0xOTUyMjE0Njg1LC0xMjI2NDYxMzY1LC0xMTY4MTQzMD
-ksMjcxNTcxMzE4LC05MzM5MDc0NTYsLTUwMzE5OTU2NCwtODA3
-MjA1NTU1XX0=
+eyJoaXN0b3J5IjpbLTUzMTM1MTAxLDExOTIzNDcwNzUsODE1MT
+c5OTM4LC0xMDgxNTk2Njg4LDIwOTU0ODc5ODYsLTExNTc1NTM4
+ODIsLTg5MDY5MDYxNiwxOTgzNTk2NzM0LDE0Mzk2MjExNDIsMT
+UxOTI5NTE3OCwxMDc5ODE1NTA5LC05ODkyNTA5MDksMTMyMDk2
+MTM3NiwtMTk1MjIxNDY4NSwtMTIyNjQ2MTM2NSwtMTE2ODE0Mz
+A5LDI3MTU3MTMxOCwtOTMzOTA3NDU2LC01MDMxOTk1NjQsLTgw
+NzIwNTU1NV19
 -->
