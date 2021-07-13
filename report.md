@@ -201,6 +201,7 @@ def send(i: int, j: int, p: int):
 			if p_below != p:
 				MPI_SEND(p_below)
 ```
+
 ## Reconstruction of an LCS  from the M matrix
 Once the $M$ matrix has been computed by the parallel algorithm, process $P(m-1, n-1) = 0$ knows entry $M[m-1, n-1]$, i.e. the length of an LCS. We show how to compute an LCS of $X_i$ and $Y_j$ starting at entry $(i, j)$: if $x_i = y_j$ then process $p = P(i, j)$ checks whether :
  1. $M[i, j] = M[i-1, j-1]+1$
@@ -210,7 +211,7 @@ Once the $M$ matrix has been computed by the parallel algorithm, process $P(m-1,
 If $1.$ is true, then $p$ sends $x_i$ to $p' = P(i-1, j-1)$. If $2.$ or $3.$ is true, then $p$ sends $e$ to $p' = P(i, j-1)$ or $p' = P(i-1, j)$ respectively, where $e$ is the null string. The same procedure applies $p'$, which will prepend its message to the one it just received from $p$. Once a processor assigned to a cell $(0, j$) or $(i, 0)$ is reached, the resulting message is the required LCS, which can then be sent in case to the starting process, i.e. $0$. Here the number of messages exchanged is at most $\min\{m, n\} = m$, i.e. the maximum length of an LCS. Here's the pseudocode, with a little abuse of notation as before:
 
 ```py
-def compute_LCS(i: int, j: int, m: string):
+def compute_LCS(i: int, j: int, m: str):
 	"""
 	Parameters:
 		- i, j: int
@@ -241,7 +242,7 @@ def compute_LCS(i: int, j: int, m: string):
 ```
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTE3MTg5Mjc2NywtMTg3MzAwMjk4MCw1ND
+eyJoaXN0b3J5IjpbLTI4MTY2NDUxMywtMTg3MzAwMjk4MCw1ND
 E0NjIyMTQsMjExNTQ2NTQ3LC0xMTM1ODgxMzA1LC0xNDY5MjM3
 NTczLC0xNzU5MDQ2MTYsMTMxMTc3NDczNCwtMjIwMDgxNTUxLC
 01MzEzNTEwMSwxMTkyMzQ3MDc1LDgxNTE3OTkzOCwtMTA4MTU5
