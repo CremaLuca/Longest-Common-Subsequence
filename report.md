@@ -6,7 +6,7 @@ Without loss of generality, we assume $m \le n$ in the following. We first descr
 ## Sequential algorithm
 There's a well-known algorithm based on dynamic programming, that we propose here for the sequential case, which exploits the optimal substructure of the problem. Let $M$ be an $m \times n$ matrix, where entry $M[i, j]$ represents the length of an LCS of the sequences $X_i$ and $Y_j$, where $X_i$ is the $i$-th prefix of $X$, and similarly for $Y_j$. It holds that: $$M[i, j] = \begin{cases}0 & \text
 {if $i = 0$ or $j = 0$}  \\M[i-1, j-1]+1 & \text{if $i, j > 0$ and $x_i = y_j$} \\\max(M[i, j-1], M[i-1, j])  & \text{if $i, j > 0$ and $x_i \ne y_j$}\end{cases}$$
-From this simple recurrence relation, it's easy to design a sequential algorithm that solves the LCS problem, filling each row one at a time. It follows that the length of an LCS is saved in $M[m-1, n-1]$. We can reduce the space requirements from $\theta(mn)$ to $\theta(n)$ by observing that by computing the entries of $M$ row by row, the algorithm only needs the current row and the previous row.$ If, however, not only the length of an LCS is required, but also the actual subsequence, we need the whole matrix $M$. To construct an LCS of sequences $X_i$, $Y_j$ it's enough to start at entry $M[i-1, j-1]$ and follow at each step the previous entry which led to the computation of the current entry.
+From this simple recurrence relation, it's easy to design a sequential algorithm that solves the LCS problem, filling each row one at a time. It follows that the length of an LCS is saved in $M[m-1, n-1]$. We can reduce the space requirements from $\theta(mn)$ to $\theta(n)$ by observing that by computing the entries of $M$ row by row, the algorithm only needs the current row and the previous row. If, however, not only the length of an LCS is required, but also the actual subsequence, we need the whole matrix $M$. To construct an LCS of sequences $X_i$, $Y_j$ it's enough to start at entry $M[i-1, j-1]$ and follow at each step the previous entry which led to the computation of the current entry.
 
 ## Parallel algorithm
 
@@ -234,7 +234,7 @@ def compute_LCS(i: int, j: int, m: string):
 ```
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTM4OTA4NDk3MCwtMTEzNTg4MTMwNSwtMT
+eyJoaXN0b3J5IjpbMTc1MzQ2MTY1MiwtMTEzNTg4MTMwNSwtMT
 Q2OTIzNzU3MywtMTc1OTA0NjE2LDEzMTE3NzQ3MzQsLTIyMDA4
 MTU1MSwtNTMxMzUxMDEsMTE5MjM0NzA3NSw4MTUxNzk5MzgsLT
 EwODE1OTY2ODgsMjA5NTQ4Nzk4NiwtMTE1NzU1Mzg4MiwtODkw
