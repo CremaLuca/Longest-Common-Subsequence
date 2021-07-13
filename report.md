@@ -204,7 +204,7 @@ def send(i: int, j: int, p: int):
 
 ### Storing the partial matrix
 
-The size of the two input strings $X$ and $Y$ so each process can't store the whole matrix, it will only store the cells it computed and the ones from other processors that it used for its computations. An efficient data structure is required.
+For big problem sizes each processor can't store the whole matrix, it can only store the cells it computed and the ones from other processors that it used for its computations. An efficient data structure is required.
 
 ### Reconstruction of an LCS  from the M matrix
 Once the $M$ matrix has been computed by the parallel algorithm, process $P(m-1, n-1) = 0$ knows entry $M[m-1, n-1]$, i.e. the length of an LCS. We show how to compute an LCS of $X_i$ and $Y_j$ starting at entry $(i, j)$: if $x_i = y_j$ then process $p = P(i, j)$ checks whether :
@@ -247,11 +247,11 @@ def main
 ```
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE1NjQyNjgwMDksMTY0NTEzNDE3MSwyMD
-M4OTg3NjQ1LC0xMzI0MjgyNzc5LC0yODE2NjQ1MTMsLTE4NzMw
-MDI5ODAsNTQxNDYyMjE0LDIxMTU0NjU0NywtMTEzNTg4MTMwNS
-wtMTQ2OTIzNzU3MywtMTc1OTA0NjE2LDEzMTE3NzQ3MzQsLTIy
-MDA4MTU1MSwtNTMxMzUxMDEsMTE5MjM0NzA3NSw4MTUxNzk5Mz
-gsLTEwODE1OTY2ODgsMjA5NTQ4Nzk4NiwtMTE1NzU1Mzg4Miwt
-ODkwNjkwNjE2XX0=
+eyJoaXN0b3J5IjpbMTgxNzg3NDEzNCwxNjQ1MTM0MTcxLDIwMz
+g5ODc2NDUsLTEzMjQyODI3NzksLTI4MTY2NDUxMywtMTg3MzAw
+Mjk4MCw1NDE0NjIyMTQsMjExNTQ2NTQ3LC0xMTM1ODgxMzA1LC
+0xNDY5MjM3NTczLC0xNzU5MDQ2MTYsMTMxMTc3NDczNCwtMjIw
+MDgxNTUxLC01MzEzNTEwMSwxMTkyMzQ3MDc1LDgxNTE3OTkzOC
+wtMTA4MTU5NjY4OCwyMDk1NDg3OTg2LC0xMTU3NTUzODgyLC04
+OTA2OTA2MTZdfQ==
 -->
