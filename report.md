@@ -173,7 +173,7 @@ def cell_proc(i: int, j: int):
 ```
 
 ### Sending the computed values to the proper processes
-Each processor doesn't need to keep a copy of the matrix $P(i, j)$: to find where to send the computed values, the previous formula can be used. As we already mentioned in a remark, each processor needs to send at most one value to a different neighbor: we can use the previous algorithm `cell_proc(i, j)` to check whether the cells $(i+1, j)$ and $(i, j+1)$ belong to the current processor and in case of a negative answer we send their values to the proper processes.
+Each processor doesn't need to keep a copy of the whole matrix $P(i, j)$: the previous formula can be used to find where to send the computed values. As we already mentioned in a remark, each processor needs to send at most one value to a different neighbor: we can use the previous algorithm `cell_proc(i, j)` to check whether the cells $(i+1, j)$ and $(i, j+1)$ belong to the current processor and in case of a negative answer we send their values to the proper processes.
 
 We know for sure that the cell on the right can belong either to the current processor or the previous one, while, similarly, the one below either to the current or to the next one, but we couldn't find an usage of this information to improve the algorithm speed. With a litte abuse of notation for MPI signature of  `send`, we can write the following pseudocode:
 
@@ -241,11 +241,11 @@ def compute_LCS(i: int, j: int, m: string):
 ```
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTUyNjU1MTUwNywtMTg3MzAwMjk4MCw1ND
-E0NjIyMTQsMjExNTQ2NTQ3LC0xMTM1ODgxMzA1LC0xNDY5MjM3
-NTczLC0xNzU5MDQ2MTYsMTMxMTc3NDczNCwtMjIwMDgxNTUxLC
-01MzEzNTEwMSwxMTkyMzQ3MDc1LDgxNTE3OTkzOCwtMTA4MTU5
-NjY4OCwyMDk1NDg3OTg2LC0xMTU3NTUzODgyLC04OTA2OTA2MT
-YsMTk4MzU5NjczNCwxNDM5NjIxMTQyLDE1MTkyOTUxNzgsMTA3
-OTgxNTUwOV19
+eyJoaXN0b3J5IjpbLTExNTY5NDQ2NzAsLTE4NzMwMDI5ODAsNT
+QxNDYyMjE0LDIxMTU0NjU0NywtMTEzNTg4MTMwNSwtMTQ2OTIz
+NzU3MywtMTc1OTA0NjE2LDEzMTE3NzQ3MzQsLTIyMDA4MTU1MS
+wtNTMxMzUxMDEsMTE5MjM0NzA3NSw4MTUxNzk5MzgsLTEwODE1
+OTY2ODgsMjA5NTQ4Nzk4NiwtMTE1NzU1Mzg4MiwtODkwNjkwNj
+E2LDE5ODM1OTY3MzQsMTQzOTYyMTE0MiwxNTE5Mjk1MTc4LDEw
+Nzk4MTU1MDldfQ==
 -->
