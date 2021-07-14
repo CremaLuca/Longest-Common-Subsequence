@@ -204,7 +204,7 @@ def send(i: int, j: int, p: int):
 
 ### Storing the local portion of matrix M
 
-For big problem sizes we aim to reduce the amount of memory each processor uses. Storing the whole $m\times n$ matrix could be too costly, so each processor should only store the cells it computed and the ones from other processors that it used for its computations.  This turns out  to be useful also for the reconstruction of an LCS, outline in the next paragraph. An efficient data structure is required.
+For big problem sizes we aim to reduce the amount of memory each processor uses. Storing the whole $m\times n$ matrix could be too costly, so each processor should only store the cells it computed and the ones from other processors that it used for its computations.  This turns out  to be useful also for the reconstruction of an LCS, outlined in the next paragraph. An efficient data structure is required.
 
 Foreach principal diagonal $d$ we know how many elements belong to each processor using the values from `diag_start_end` $s$ and $e$. We also know that we might need $s-1$ and $e+1$ to compute the cells of the next principal diagonal $d+1$. So we can store a list of $M+N-1$ variable-sized arrays each of size $S(d) = e-s+2$ where each element $i$ is the element of index $D(i) = (s-1)+i$.
 
@@ -308,11 +308,11 @@ def compute_LCS(i: int, j: int, m: str):
 ```
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNzE1NjU3MzEsLTE4OTkxNTY4NzYsLTIzOT
-c5NzQ5MiwxODE3ODc0MTM0LDE2NDUxMzQxNzEsMjAzODk4NzY0
-NSwtMTMyNDI4Mjc3OSwtMjgxNjY0NTEzLC0xODczMDAyOTgwLD
-U0MTQ2MjIxNCwyMTE1NDY1NDcsLTExMzU4ODEzMDUsLTE0Njky
-Mzc1NzMsLTE3NTkwNDYxNiwxMzExNzc0NzM0LC0yMjAwODE1NT
-EsLTUzMTM1MTAxLDExOTIzNDcwNzUsODE1MTc5OTM4LC0xMDgx
-NTk2Njg4XX0=
+eyJoaXN0b3J5IjpbNjkzOTcyODA5LC0xODk5MTU2ODc2LC0yMz
+k3OTc0OTIsMTgxNzg3NDEzNCwxNjQ1MTM0MTcxLDIwMzg5ODc2
+NDUsLTEzMjQyODI3NzksLTI4MTY2NDUxMywtMTg3MzAwMjk4MC
+w1NDE0NjIyMTQsMjExNTQ2NTQ3LC0xMTM1ODgxMzA1LC0xNDY5
+MjM3NTczLC0xNzU5MDQ2MTYsMTMxMTc3NDczNCwtMjIwMDgxNT
+UxLC01MzEzNTEwMSwxMTkyMzQ3MDc1LDgxNTE3OTkzOCwtMTA4
+MTU5NjY4OF19
 -->
