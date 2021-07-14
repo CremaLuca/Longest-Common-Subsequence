@@ -217,14 +217,14 @@ class LocalStore:
 			i: int
 				Processor index.
 		"""
-		self.partial_matrix = []
+		self.partial_matrices = []
 		for d in range(M+N-1):
 			s, e = diag_start_end(d, i)
 			if s != 0:
 				s -= 1
 			if e != diag_length(d) - 1:
 				e += 1
-			self.partial_matrix.append({
+			self.partial_matrices.append({
 				'a': array(length=e-s),
 				'start': s,
 				'end': e
@@ -238,7 +238,7 @@ class LocalStore:
 			e: int
 				Element in the diagonal index.
 		"""
-		array_object_TODO_NOME = self.partial_matrix[d]
+		array_object_TODO_NOME = self.partial_matrices[d]
 		if e < array_object.start or e > array_object.end:
 			return None
 		return array_object.array[e-array_object.start]
@@ -251,7 +251,12 @@ class LocalStore:
 			e: int
 				Element in the diagonal index.
 			v: int
+				Value to store.
 		"""
+		array_object_TODO_NOME = self.partial_matrices[d]
+		if e < array_object.start or e > array_object.end:
+			raise OutOfBoundsError()
+		array_object.array[e-array_object.start] = v
 
 	def get_cell(i: int, j: int):
 		"""
@@ -305,11 +310,11 @@ def main
 ```
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEwNzIxNDE0MDksMTgxNzg3NDEzNCwxNj
-Q1MTM0MTcxLDIwMzg5ODc2NDUsLTEzMjQyODI3NzksLTI4MTY2
-NDUxMywtMTg3MzAwMjk4MCw1NDE0NjIyMTQsMjExNTQ2NTQ3LC
-0xMTM1ODgxMzA1LC0xNDY5MjM3NTczLC0xNzU5MDQ2MTYsMTMx
-MTc3NDczNCwtMjIwMDgxNTUxLC01MzEzNTEwMSwxMTkyMzQ3MD
-c1LDgxNTE3OTkzOCwtMTA4MTU5NjY4OCwyMDk1NDg3OTg2LC0x
-MTU3NTUzODgyXX0=
+eyJoaXN0b3J5IjpbNTA1MzA5NzM2LDE4MTc4NzQxMzQsMTY0NT
+EzNDE3MSwyMDM4OTg3NjQ1LC0xMzI0MjgyNzc5LC0yODE2NjQ1
+MTMsLTE4NzMwMDI5ODAsNTQxNDYyMjE0LDIxMTU0NjU0NywtMT
+EzNTg4MTMwNSwtMTQ2OTIzNzU3MywtMTc1OTA0NjE2LDEzMTE3
+NzQ3MzQsLTIyMDA4MTU1MSwtNTMxMzUxMDEsMTE5MjM0NzA3NS
+w4MTUxNzk5MzgsLTEwODE1OTY2ODgsMjA5NTQ4Nzk4NiwtMTE1
+NzU1Mzg4Ml19
 -->
