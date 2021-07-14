@@ -1,6 +1,6 @@
-#include <mpi.h>
 #include <algorithm>
 #include <cmath>
+#include <mpi/mpi.h>
 
 using namespace std;
 
