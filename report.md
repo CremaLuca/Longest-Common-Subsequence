@@ -209,12 +209,19 @@ For big problem sizes we aim to reduce the amount of memory each processor uses.
 Foreach principal diagonal $d$ we know how many elements belong to each processor using the values from `diag_start_end` $s$ and $e$. We also know that we might need $s-1$ and $e+1$ to compute the cells of the next principal diagonal $d+1$. So we can store a list of $M+N-1$ variable-sized arrays each of size $S(d) = e-s+2$ where each element $i$ is the element of index $D(i) = (s-1)+i$.
 
 ```py
-def build_local_store(i: int):
-	nome = []
-	for d in range(M+N-1):
-		s, e = diag_start_end(d, i)
-		if s != 0:
-		
+class LocalStore:
+
+	def __init__(i: int):
+		self.nome = []
+		for d in range(M+N-1):
+			s, e = diag_start_end(d, i)
+			if s != 0:
+				s -= 1
+			self.s = s
+			if e != diag_length(d) - 1:
+				e += 1
+			self.e = e
+			self.
 ```
 
 ### Reconstruction of an LCS  from the M matrix
@@ -258,7 +265,7 @@ def main
 ```
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE5NDI0ODg5ODYsMTgxNzg3NDEzNCwxNj
+eyJoaXN0b3J5IjpbLTE3NjM2NDUxMDksMTgxNzg3NDEzNCwxNj
 Q1MTM0MTcxLDIwMzg5ODc2NDUsLTEzMjQyODI3NzksLTI4MTY2
 NDUxMywtMTg3MzAwMjk4MCw1NDE0NjIyMTQsMjExNTQ2NTQ3LC
 0xMTM1ODgxMzA1LC0xNDY5MjM3NTczLC0xNzU5MDQ2MTYsMTMx
