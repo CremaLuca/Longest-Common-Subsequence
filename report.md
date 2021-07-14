@@ -206,7 +206,7 @@ def send(i: int, j: int, p: int):
 
 For big problem sizes we aim to reduce the amount of memory each processor uses. Storing the whole $m\times n$ matrix could be too costly, so each processor should only store the cells it computed and the ones from other processors that it used for its computations. An efficient data structure is required.
 
-Foreach principal diagonal $d$ we know how many elements belong to each processor, a
+Foreach principal diagonal $d$ we know how many elements belong to each processor using the values from `diag_start_end` $s$ and $e$. We also know that we might need
 
 ### Reconstruction of an LCS  from the M matrix
 Once the $M$ matrix has been computed by the parallel algorithm, process $P(m-1, n-1) = 0$ knows entry $M[m-1, n-1]$, i.e. the length of an LCS. We show how to compute an LCS of $X_i$ and $Y_j$ starting at entry $(i, j)$: if $x_i = y_j$ then process $p = P(i, j)$ checks whether :
@@ -249,7 +249,7 @@ def main
 ```
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE4MDg5NTgzNzcsMTgxNzg3NDEzNCwxNj
+eyJoaXN0b3J5IjpbLTEyMDM1NTc1MzQsMTgxNzg3NDEzNCwxNj
 Q1MTM0MTcxLDIwMzg5ODc2NDUsLTEzMjQyODI3NzksLTI4MTY2
 NDUxMywtMTg3MzAwMjk4MCw1NDE0NjIyMTQsMjExNTQ2NTQ3LC
 0xMTM1ODgxMzA1LC0xNDY5MjM3NTczLC0xNzU5MDQ2MTYsMTMx
