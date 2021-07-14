@@ -212,6 +212,12 @@ Foreach principal diagonal $d$ we know how many elements belong to each processo
 class LocalStore:
 
 	def __init__(i: int):
+		'''
+		Parameters:
+			i: int
+				Processor index.
+		'''
+
 		self.nome = []
 		for d in range(M+N-1):
 			s, e = diag_start_end(d, i)
@@ -221,7 +227,11 @@ class LocalStore:
 			if e != diag_length(d) - 1:
 				e += 1
 			self.e = e
-			self.
+			self.nome.append(array(length= e-s))
+
+	def get_diag_index(d: int, e: int):
+	'''
+		
 ```
 
 ### Reconstruction of an LCS  from the M matrix
@@ -265,11 +275,11 @@ def main
 ```
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE3NjM2NDUxMDksMTgxNzg3NDEzNCwxNj
-Q1MTM0MTcxLDIwMzg5ODc2NDUsLTEzMjQyODI3NzksLTI4MTY2
-NDUxMywtMTg3MzAwMjk4MCw1NDE0NjIyMTQsMjExNTQ2NTQ3LC
-0xMTM1ODgxMzA1LC0xNDY5MjM3NTczLC0xNzU5MDQ2MTYsMTMx
-MTc3NDczNCwtMjIwMDgxNTUxLC01MzEzNTEwMSwxMTkyMzQ3MD
-c1LDgxNTE3OTkzOCwtMTA4MTU5NjY4OCwyMDk1NDg3OTg2LC0x
-MTU3NTUzODgyXX0=
+eyJoaXN0b3J5IjpbMTc2NzQ5NTE3MCwxODE3ODc0MTM0LDE2ND
+UxMzQxNzEsMjAzODk4NzY0NSwtMTMyNDI4Mjc3OSwtMjgxNjY0
+NTEzLC0xODczMDAyOTgwLDU0MTQ2MjIxNCwyMTE1NDY1NDcsLT
+ExMzU4ODEzMDUsLTE0NjkyMzc1NzMsLTE3NTkwNDYxNiwxMzEx
+Nzc0NzM0LC0yMjAwODE1NTEsLTUzMTM1MTAxLDExOTIzNDcwNz
+UsODE1MTc5OTM4LC0xMDgxNTk2Njg4LDIwOTU0ODc5ODYsLTEx
+NTc1NTM4ODJdfQ==
 -->
