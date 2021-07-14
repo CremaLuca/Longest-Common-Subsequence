@@ -241,7 +241,17 @@ class LocalStore:
 		array_object_TODO_NOME = self.partial_matrix[d]
 		if e < array_object.start or e > array_object.end:
 			return None
-		return array_object
+		return array_object.array[e-array_object.start]
+
+	def set_diag_index(d: int, e: int, v:int):
+		"""
+		Parameters:
+			d: int
+				Diagonal index.
+			e: int
+				Element in the diagonal index.
+			v: int
+		"""
 
 	def get_cell(i: int, j: int):
 		"""
@@ -295,11 +305,11 @@ def main
 ```
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTUyODc3MDAzNCwxODE3ODc0MTM0LDE2ND
-UxMzQxNzEsMjAzODk4NzY0NSwtMTMyNDI4Mjc3OSwtMjgxNjY0
-NTEzLC0xODczMDAyOTgwLDU0MTQ2MjIxNCwyMTE1NDY1NDcsLT
-ExMzU4ODEzMDUsLTE0NjkyMzc1NzMsLTE3NTkwNDYxNiwxMzEx
-Nzc0NzM0LC0yMjAwODE1NTEsLTUzMTM1MTAxLDExOTIzNDcwNz
-UsODE1MTc5OTM4LC0xMDgxNTk2Njg4LDIwOTU0ODc5ODYsLTEx
-NTc1NTM4ODJdfQ==
+eyJoaXN0b3J5IjpbLTEwNzIxNDE0MDksMTgxNzg3NDEzNCwxNj
+Q1MTM0MTcxLDIwMzg5ODc2NDUsLTEzMjQyODI3NzksLTI4MTY2
+NDUxMywtMTg3MzAwMjk4MCw1NDE0NjIyMTQsMjExNTQ2NTQ3LC
+0xMTM1ODgxMzA1LC0xNDY5MjM3NTczLC0xNzU5MDQ2MTYsMTMx
+MTc3NDczNCwtMjIwMDgxNTUxLC01MzEzNTEwMSwxMTkyMzQ3MD
+c1LDgxNTE3OTkzOCwtMTA4MTU5NjY4OCwyMDk1NDg3OTg2LC0x
+MTU3NTUzODgyXX0=
 -->
