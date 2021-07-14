@@ -1,6 +1,7 @@
 #include <algorithm>
 #include <cmath>
 #include <mpi/mpi.h>
+#include <vector>
 
 using namespace std;
 
@@ -37,7 +38,7 @@ pair<int, int> diag_start_end(int d, int i){
         start = rem * ceil_size + (i-rem) * floor_size;
         end = start + floor_size;
     }
-    return pair(start, end);
+    return pair<int, int>(start, end);
 }
 
 
@@ -72,6 +73,7 @@ int cell_proc(pair<int, int> c){
         return floor((float)(pos - rem) / floor_size);
 }
 
+
 vector<pair<int, int>> matrix_elements(int i){
 
     vector<pair<int, int>> v;
@@ -84,12 +86,11 @@ vector<pair<int, int>> matrix_elements(int i){
         for(int e = indices.first; e < indices.second; e++){
             int x = max(0, d-N+1) + e;
             int y = min(d, N-1) - e;
-            v.push_back(pair(x, y));
+            v.push_back(pair<int, int>(x, y));
         }
     }
     return v;
 }
-
 
 
 int main()
