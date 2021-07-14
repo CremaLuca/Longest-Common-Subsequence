@@ -222,11 +222,9 @@ class LocalStore:
 			s, e = diag_start_end(d, i)
 			if s != 0:
 				s -= 1
-			self.s = s
 			if e != diag_length(d) - 1:
 				e += 1
-			self.e = e
-			self.partial_matrix.append(array(length= e-s))
+			self.partial_matrix.append(a= array(length=e-s), s=s, e=e)
 
 	def get_diag_index(d: int, e: int):
 		"""
@@ -236,7 +234,7 @@ class LocalStore:
 			e: int
 				Element in the diagonal index.
 		"""
-		pass
+		
 
 	def get_cell(i: int, j: int):
 		"""
@@ -244,7 +242,9 @@ class LocalStore:
 			i, j: int
 				Cell coordinates.
 		"""
-		pass
+		d = cell_diag(i, j)
+		e = cell_pos(i, j)
+		return get_diag_index(d, e)
 ```
 
 ### Reconstruction of an LCS  from the M matrix
@@ -288,11 +288,11 @@ def main
 ```
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTI5OTA4MTc5LDE4MTc4NzQxMzQsMTY0NT
-EzNDE3MSwyMDM4OTg3NjQ1LC0xMzI0MjgyNzc5LC0yODE2NjQ1
-MTMsLTE4NzMwMDI5ODAsNTQxNDYyMjE0LDIxMTU0NjU0NywtMT
-EzNTg4MTMwNSwtMTQ2OTIzNzU3MywtMTc1OTA0NjE2LDEzMTE3
-NzQ3MzQsLTIyMDA4MTU1MSwtNTMxMzUxMDEsMTE5MjM0NzA3NS
-w4MTUxNzk5MzgsLTEwODE1OTY2ODgsMjA5NTQ4Nzk4NiwtMTE1
-NzU1Mzg4Ml19
+eyJoaXN0b3J5IjpbLTEyODQ5NjYyMDgsMTgxNzg3NDEzNCwxNj
+Q1MTM0MTcxLDIwMzg5ODc2NDUsLTEzMjQyODI3NzksLTI4MTY2
+NDUxMywtMTg3MzAwMjk4MCw1NDE0NjIyMTQsMjExNTQ2NTQ3LC
+0xMTM1ODgxMzA1LC0xNDY5MjM3NTczLC0xNzU5MDQ2MTYsMTMx
+MTc3NDczNCwtMjIwMDgxNTUxLC01MzEzNTEwMSwxMTkyMzQ3MD
+c1LDgxNTE3OTkzOCwtMTA4MTU5NjY4OCwyMDk1NDg3OTg2LC0x
+MTU3NTUzODgyXX0=
 -->
