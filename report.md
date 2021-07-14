@@ -202,7 +202,7 @@ def send(i: int, j: int, p: int):
 				MPI_SEND(p_below)
 ```
 
-### Storing the partial matrix
+### Storing the local portion of matrix M
 
 For big problem sizes we aim to reduce the amount of memory each processor uses. Storing the whole $m\times n$ matrix could be too costly, so each processor should only store the cells it computed and the ones from other processors that it used for its computations. An efficient data structure is required.
 
@@ -308,11 +308,11 @@ def compute_LCS(i: int, j: int, m: str):
 ```
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE4OTkxNTY4NzYsLTIzOTc5NzQ5MiwxOD
-E3ODc0MTM0LDE2NDUxMzQxNzEsMjAzODk4NzY0NSwtMTMyNDI4
-Mjc3OSwtMjgxNjY0NTEzLC0xODczMDAyOTgwLDU0MTQ2MjIxNC
-wyMTE1NDY1NDcsLTExMzU4ODEzMDUsLTE0NjkyMzc1NzMsLTE3
-NTkwNDYxNiwxMzExNzc0NzM0LC0yMjAwODE1NTEsLTUzMTM1MT
-AxLDExOTIzNDcwNzUsODE1MTc5OTM4LC0xMDgxNTk2Njg4LDIw
-OTU0ODc5ODZdfQ==
+eyJoaXN0b3J5IjpbMTgxNDIwODY2OSwtMTg5OTE1Njg3NiwtMj
+M5Nzk3NDkyLDE4MTc4NzQxMzQsMTY0NTEzNDE3MSwyMDM4OTg3
+NjQ1LC0xMzI0MjgyNzc5LC0yODE2NjQ1MTMsLTE4NzMwMDI5OD
+AsNTQxNDYyMjE0LDIxMTU0NjU0NywtMTEzNTg4MTMwNSwtMTQ2
+OTIzNzU3MywtMTc1OTA0NjE2LDEzMTE3NzQ3MzQsLTIyMDA4MT
+U1MSwtNTMxMzUxMDEsMTE5MjM0NzA3NSw4MTUxNzk5MzgsLTEw
+ODE1OTY2ODhdfQ==
 -->
