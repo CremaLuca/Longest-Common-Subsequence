@@ -210,9 +210,11 @@ Foreach principal diagonal $d$ we know how many elements belong to each processo
 
 ```py
 def build_local_store(i: int):
-	asd = []
+	nome = []
 	for d in range(M+N-1):
 		s, e = diag_start_end(d, i)
+		if s != 0:
+		
 ```
 
 ### Reconstruction of an LCS  from the M matrix
@@ -256,11 +258,11 @@ def main
 ```
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNjYwMTU4NTQ1LDE4MTc4NzQxMzQsMTY0NT
-EzNDE3MSwyMDM4OTg3NjQ1LC0xMzI0MjgyNzc5LC0yODE2NjQ1
-MTMsLTE4NzMwMDI5ODAsNTQxNDYyMjE0LDIxMTU0NjU0NywtMT
-EzNTg4MTMwNSwtMTQ2OTIzNzU3MywtMTc1OTA0NjE2LDEzMTE3
-NzQ3MzQsLTIyMDA4MTU1MSwtNTMxMzUxMDEsMTE5MjM0NzA3NS
-w4MTUxNzk5MzgsLTEwODE1OTY2ODgsMjA5NTQ4Nzk4NiwtMTE1
-NzU1Mzg4Ml19
+eyJoaXN0b3J5IjpbLTE5NDI0ODg5ODYsMTgxNzg3NDEzNCwxNj
+Q1MTM0MTcxLDIwMzg5ODc2NDUsLTEzMjQyODI3NzksLTI4MTY2
+NDUxMywtMTg3MzAwMjk4MCw1NDE0NjIyMTQsMjExNTQ2NTQ3LC
+0xMTM1ODgxMzA1LC0xNDY5MjM3NTczLC0xNzU5MDQ2MTYsMTMx
+MTc3NDczNCwtMjIwMDgxNTUxLC01MzEzNTEwMSwxMTkyMzQ3MD
+c1LDgxNTE3OTkzOCwtMTA4MTU5NjY4OCwyMDk1NDg3OTg2LC0x
+MTU3NTUzODgyXX0=
 -->
