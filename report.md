@@ -212,11 +212,11 @@ Foreach principal diagonal $d$ we know how many elements belong to each processo
 class LocalStore:
 
 	def __init__(i: int):
-		'''
+		"""
 		Parameters:
 			i: int
 				Processor index.
-		'''
+		"""
 
 		self.nome = []
 		for d in range(M+N-1):
@@ -230,8 +230,16 @@ class LocalStore:
 			self.nome.append(array(length= e-s))
 
 	def get_diag_index(d: int, e: int):
-	'''
-		
+		"""
+		Parameters:
+			d: int
+				Diagonal index.
+			e: int
+				Element in the diagonal index.
+		"""
+		pass
+
+	def get_
 ```
 
 ### Reconstruction of an LCS  from the M matrix
@@ -275,7 +283,7 @@ def main
 ```
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTc2NzQ5NTE3MCwxODE3ODc0MTM0LDE2ND
+eyJoaXN0b3J5IjpbLTMwMzczMzc1NSwxODE3ODc0MTM0LDE2ND
 UxMzQxNzEsMjAzODk4NzY0NSwtMTMyNDI4Mjc3OSwtMjgxNjY0
 NTEzLC0xODczMDAyOTgwLDU0MTQ2MjIxNCwyMTE1NDY1NDcsLT
 ExMzU4ODEzMDUsLTE0NjkyMzc1NzMsLTE3NTkwNDYxNiwxMzEx
