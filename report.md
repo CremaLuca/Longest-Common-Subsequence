@@ -209,7 +209,10 @@ For big problem sizes we aim to reduce the amount of memory each processor uses.
 Foreach principal diagonal $d$ we know how many elements belong to each processor using the values from `diag_start_end` $s$ and $e$. We also know that we might need $s-1$ and $e+1$ to compute the cells of the next principal diagonal $d+1$. So we can store a list of $M+N-1$ variable-sized arrays each of size $S(d) = e-s+2$ where each element $i$ is the element of index $D(i) = (s-1)+i$.
 
 ```py
-def 
+def build_local_store(i: int):
+	asd = []
+	for d in range(M+N-1):
+		s, e = diag_start_end(d, i)
 ```
 
 ### Reconstruction of an LCS  from the M matrix
@@ -253,11 +256,11 @@ def main
 ```
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTYyNTU2MjExNiwxODE3ODc0MTM0LDE2ND
-UxMzQxNzEsMjAzODk4NzY0NSwtMTMyNDI4Mjc3OSwtMjgxNjY0
-NTEzLC0xODczMDAyOTgwLDU0MTQ2MjIxNCwyMTE1NDY1NDcsLT
-ExMzU4ODEzMDUsLTE0NjkyMzc1NzMsLTE3NTkwNDYxNiwxMzEx
-Nzc0NzM0LC0yMjAwODE1NTEsLTUzMTM1MTAxLDExOTIzNDcwNz
-UsODE1MTc5OTM4LC0xMDgxNTk2Njg4LDIwOTU0ODc5ODYsLTEx
-NTc1NTM4ODJdfQ==
+eyJoaXN0b3J5IjpbNjYwMTU4NTQ1LDE4MTc4NzQxMzQsMTY0NT
+EzNDE3MSwyMDM4OTg3NjQ1LC0xMzI0MjgyNzc5LC0yODE2NjQ1
+MTMsLTE4NzMwMDI5ODAsNTQxNDYyMjE0LDIxMTU0NjU0NywtMT
+EzNTg4MTMwNSwtMTQ2OTIzNzU3MywtMTc1OTA0NjE2LDEzMTE3
+NzQ3MzQsLTIyMDA4MTU1MSwtNTMxMzUxMDEsMTE5MjM0NzA3NS
+w4MTUxNzk5MzgsLTEwODE1OTY2ODgsMjA5NTQ4Nzk4NiwtMTE1
+NzU1Mzg4Ml19
 -->
