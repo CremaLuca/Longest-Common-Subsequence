@@ -1,6 +1,6 @@
 #include <algorithm>
 #include <cmath>
-#include <mpi/mpi.h>
+#include <mpi.h>
 #include <vector>
 
 using namespace std;
@@ -58,7 +58,10 @@ int cell_diag_index(pair<int, int> c){
     return min(c.first, N-c.second-1);
 }
 
-
+/**
+ * @param c coordinates of a matrix cell
+ * @returns The index of the processor responsible for it.
+ */
 int cell_proc(pair<int, int> c){
     int d = cell_diag(c);
     int len = diag_length(d);
@@ -95,31 +98,69 @@ vector<pair<int, int>> matrix_elements(int i){
 
 int main()
 {
-    int rank, P;
+    int rank;
     char X[] = {'A', 'B', 'C', 'B', 'D', 'A', 'B'};
     char Y[] = {'B', 'D', 'C', 'A', 'B', 'A'};
+    // Compute the size of X and Y
+    N = sizeof(X)/sizeof(X[0]);
+    M = sizeof(Y)/sizeof(Y[0]);
+
     // Extra: "Currently, MPI_Init takes two arguments that are not necessary, and the extra parameters
     //         are simply left as extra space in case future implementations might need them"
-
     MPI_Init(NULL, NULL);
     MPI_Comm_rank(MPI_COMM_WORLD, &rank);
     MPI_Comm_size(MPI_COMM_WORLD, &P);
 
     printf("Hello world from process %d of %d\n", rank, P);
 
-    // TODO: inizializza la matrice con la prima riga e colonna a 0
+    // Compute the list of matrix elements this processor is responsible for.
+    vector<pair<int, int>> indices = matrix_elements(rank);
 
-    // TODO: calcola la lista di coppie di indici della matrice che questo processo deve calcolare
-
-    // TODO: per ogni coppia di indici assegnata a questo processo
-        // TODO: se i valori necessari per calcolare la cella corrente non sono già nella matrice
-            // TODO: aspetta di riceverli da chi di dovere in blocking RECV
-
-        // TODO: calcola la cella della coppia di indici corrente
-
-        // TODO: manda in non-blocking send il valore al processo che ne ha bisogno (se diverso)
-
-    // TODO: se non sei master manda tutta la matrice al processo master
+    // Foreach element in the list of indices
+    for(int index = 0; index < indices.size(); index++){
+        pair<int, int> c = indices[index];
+        int diagonal = cell_diag(c);
+        pair<int, int> up = pair<int, int>(c.first -1, c.second);
+        pair<int, int> left = pair<int, int>(c.first, c.second -1);
+        pair<int, int> up_left = pair<int, int>(c.first -1, c.second -1);
+        int up_value, left_value, up_left_value = 0, 0, 0;
+        // If the cell is not on the border 
+        if(up.first != 0){
+            // If the current processor is not responsible for it
+            if(cell_proc(up) != rank){ // wait for the value from another processor.
+                MPI_Recv(&up_value, 1, MPI_INT, cell_proc(up), diagonal-1, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
+            }else{  // Grab the value from local memory
+                // TODO: read from local memory
+            }
+        }
+        if(left.second != 0){
+            // If the current processor is not responsible for it
+            if(cell_proc(left) != rank){ // wait for the value from another processor.
+                MPI_Recv(&left_value, 1, MPI_INT, cell_proc(left), diagonal-1, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
+            }else{  // Grab the value from local memory
+                // TODO: read from local memory
+            }
+        }
+        // We know we have the value of the cell up_left in memory
+        up_left_value = 10; //TODO: read from local memory
+        // Compute the value of the current cell c
+        int c_value = 0;
+        if (X[c.first] == Y[c.second]){
+            c_value = up_left_value + 1;
+        }else{
+            c_value = max(up_value, left_value);
+        }
+        // TODO: Store c_value in local memory
+        // Send the value to the next processors
+        pair<int, int> right = pair<int, int>(c.first, c.second+1);
+        pair<int, int> down = pair<int, int>(c.first+1, c.second);
+        if (cell_proc(down) != rank){
+            MPI_ISend(&c_value, 1, MPI_INT, cell_proc(down), diagonal, MPI_COMM_WORLD);
+        } else if (cell_proc(right) != rank){
+            MPI_ISend(&c_value, 1, MPI_INT, cell_proc(right), diagonal, MPI_COMM_WORLD);
+        }
+        printf("p%d: c_value is %d\n", rank, c_value);
+    }
 
     // TODO: se sei il master raccogli tutti i dati della matrice e riempila con i valori che ti arrivano
 
