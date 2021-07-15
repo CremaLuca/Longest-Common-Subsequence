@@ -101,7 +101,7 @@ class DiagonalVector{
         int start;
         int end;
 
-        DiagonalVector(vector<int> v, int start, int end){
+        DiagonalVector(int start, int end){
             this->v.resize(end-start);
             this->start = start;
             this->end = end;
