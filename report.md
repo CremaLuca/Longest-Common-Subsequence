@@ -218,7 +218,7 @@ class LocalStore:
 				Processor index.
 		"""
 		self.partial_matrix = []
-		for d in range(M+N-1):
+		for d in range(i, N+M-1-i):
 			s, e = diag_start_end(d, i)
 			self.partial_matrix.append({
 				'array': array(length=e-s),
@@ -304,7 +304,7 @@ def compute_LCS(i: int, j: int, m: str):
 ```
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbOTk1NDE4MTUyLDY5Mzk3MjgwOSwtMTg5OT
+eyJoaXN0b3J5IjpbMzc0MTc5MzM3LDY5Mzk3MjgwOSwtMTg5OT
 E1Njg3NiwtMjM5Nzk3NDkyLDE4MTc4NzQxMzQsMTY0NTEzNDE3
 MSwyMDM4OTg3NjQ1LC0xMzI0MjgyNzc5LC0yODE2NjQ1MTMsLT
 E4NzMwMDI5ODAsNTQxNDYyMjE0LDIxMTU0NjU0NywtMTEzNTg4
