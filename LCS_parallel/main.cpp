@@ -95,6 +95,59 @@ vector<pair<int, int>> matrix_elements(int i){
     return v;
 }
 
+class DiagonalVector{
+    public:
+        vector<int> v;
+        int start;
+        int end;
+
+        DiagonalVector(vector<int> v, int start, int end){
+            this->v = v;
+            this->start = start;
+            this->end = end;
+        }
+}
+
+class LocalMemory{
+    public:
+        vector<DiagonalVector> data;
+
+        LocalMemory(int i){
+            n_diags = N+M-1-(2*i);
+            data = vector<DiagonalVector>(n_diags);
+            for(int d = i; d < N+M-1-i; d++){
+                pair<int, int> start_end = diag_start_end(d, i);
+                // Set the d-i-th element of the vector to a vector of length start_end.second-start_end.first
+                data[d-i] = DiagonalVector(vector<int>(start_end.second-start_end.first+2), start_end.first-1, start_end.second+1);
+            }
+        }
+
+        int get_diag_index(int i, int d, int e){
+            diag_vector = data[d-i];
+            if e < diag_vector.start || e >= diag_vector.end){
+                return -1;
+            }
+            return diag_vector.v[e-diag_vector.start];
+        }
+
+        int set_diag_index(int i, int d, int e, int value){
+            diag_vector = data[d-i];
+            if e < diag_vector.start || e >= diag_vector.end){
+                return -1;
+            }
+            diag_vector.v[e-diag_vector.start] = value;
+            return 0;
+        }
+
+        int get_cell(int i, pair<int, int> c){
+            return get_diag_index(i, cell_diag(c), cell_diag_index(c));
+        }
+
+        int set_cell(int i, pair<int, int> c, int value){
+            return set_diag_index(i, cell_diag(c), cell_diag_index(c), value);
+        }
+}
+
 
 int main()
 {
@@ -116,6 +169,9 @@ int main()
     // Setup send-request result.
     MPI_Request send_req;
 
+    // Setup local memory
+    LocalMemory local_memory(rank);
+
     // Compute the list of matrix elements this processor is responsible for.
     vector<pair<int, int>> indices = matrix_elements(rank);
 
@@ -132,20 +188,24 @@ int main()
             // If the current processor is not responsible for it
             if(cell_proc(up) != rank){ // wait for the value from another processor.
                 MPI_Recv(&up_value, 1, MPI_INT, cell_proc(up), diagonal-1, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
+                local_memory.set_cell(rank, up, up_value);
             }else{  // Grab the value from local memory
-                // TODO: read from local memory
+                up_value = local_memory.get_cell(rank, up);
             }
         }
         if(left.second != 0){
             // If the current processor is not responsible for it
             if(cell_proc(left) != rank){ // wait for the value from another processor.
                 MPI_Recv(&left_value, 1, MPI_INT, cell_proc(left), diagonal-1, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
+                local_memory.set_cell(rank, left, left_value);
             }else{  // Grab the value from local memory
-                // TODO: read from local memory
+                left_value = local_memory.get_cell(rank, left);
             }
         }
         // We know we have the value of the cell up_left in memory
-        up_left_value = 10; //TODO: read from local memory
+        up_left_value = local_memory.get_cell(rank, up_left);
+        if(up_left_value < 0)
+            printf("Incorrect value for up_left: (%d, %d) p%d", up_left.first, up_left.second, rank);
         // Compute the value of the current cell c
         int c_value = 0;
         if (X[c.first] == Y[c.second]){
@@ -153,7 +213,7 @@ int main()
         }else{
             c_value = max(up_value, left_value);
         }
-        // TODO: Store c_value in local memory
+        local_memory.set_cell(rank, c, c_value);
         // Send the value to the next processors
         pair<int, int> right = pair<int, int>(c.first, c.second+1);
         pair<int, int> down = pair<int, int>(c.first+1, c.second);
