@@ -206,7 +206,7 @@ def send(i: int, j: int, p: int):
 
 For big problem sizes we aim to reduce the amount of memory each processor uses. Storing the whole $m\times n$ matrix could be too costly, so each processor should only store the cells it computed and the ones from other processors that it used for its computations.  This turns out  to be useful also for the reconstruction of an LCS, outlined in the next paragraph. An efficient data structure is required.
 
-Foreach principal diagonal $d$ we know how many elements belong to each processor using the values from `diag_start_end` $s$ and $e$. So we can store a list of $M+N-1$ variable-sized arrays each of size $S(d) = e-s$ where each element $i$ is the element of index $D(i) = (s-1)+i$.
+Foreach principal diagonal $d$ we know how many elements belong to each processor using the values from `diag_start_end` $s$ and $e$. So we can store a list of $M+N-1$ variable-sized arrays each of size $S(d) = e-s$ where each element $i$ is the element of the diagonal of index $D(i) = s+i$.
 
 ```py
 class LocalStore:
@@ -304,11 +304,11 @@ def compute_LCS(i: int, j: int, m: str):
 ```
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbODczNDcwMTQ1LDY5Mzk3MjgwOSwtMTg5OT
-E1Njg3NiwtMjM5Nzk3NDkyLDE4MTc4NzQxMzQsMTY0NTEzNDE3
-MSwyMDM4OTg3NjQ1LC0xMzI0MjgyNzc5LC0yODE2NjQ1MTMsLT
-E4NzMwMDI5ODAsNTQxNDYyMjE0LDIxMTU0NjU0NywtMTEzNTg4
-MTMwNSwtMTQ2OTIzNzU3MywtMTc1OTA0NjE2LDEzMTE3NzQ3Mz
-QsLTIyMDA4MTU1MSwtNTMxMzUxMDEsMTE5MjM0NzA3NSw4MTUx
-Nzk5MzhdfQ==
+eyJoaXN0b3J5IjpbMTk5MTg4NTAxMyw2OTM5NzI4MDksLTE4OT
+kxNTY4NzYsLTIzOTc5NzQ5MiwxODE3ODc0MTM0LDE2NDUxMzQx
+NzEsMjAzODk4NzY0NSwtMTMyNDI4Mjc3OSwtMjgxNjY0NTEzLC
+0xODczMDAyOTgwLDU0MTQ2MjIxNCwyMTE1NDY1NDcsLTExMzU4
+ODEzMDUsLTE0NjkyMzc1NzMsLTE3NTkwNDYxNiwxMzExNzc0Nz
+M0LC0yMjAwODE1NTEsLTUzMTM1MTAxLDExOTIzNDcwNzUsODE1
+MTc5OTM4XX0=
 -->
