@@ -114,11 +114,9 @@ class LocalMemory{
 
         LocalMemory(int i){
             int n_diags = N+M-1-(2*i);
-            data.resize(n_diags);
             for(int d = i; d < N+M-1-i; d++){
                 pair<int, int> start_end = diag_start_end(d, i);
-                // Set the d-i-th element of the vector to a vector of length start_end.second-start_end.first
-                data[d-i] = DiagonalVector(start_end.first-1, start_end.second+1);
+                data.push_back(start_end.first-1, start_end.second+1);
             }
         }
 
