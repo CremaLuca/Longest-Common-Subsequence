@@ -114,7 +114,7 @@ int main()
     printf("Hello world from process %d of %d\n", rank, P);
 
     // Setup send-request result.
-    MPI_Request req;
+    MPI_Request send_req;
 
     // Compute the list of matrix elements this processor is responsible for.
     vector<pair<int, int>> indices = matrix_elements(rank);
@@ -163,7 +163,7 @@ int main()
             MPI_Isend(&c_value, 1, MPI_INT, cell_proc(right), diagonal, MPI_COMM_WORLD, &send_req);
         }
         // Ignore send request result
-        MPI_Request_free(&req);
+        MPI_Request_free(&send_req);
         printf("p%d: c_value is %d\n", rank, c_value);
     }
 
