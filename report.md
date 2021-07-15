@@ -220,10 +220,6 @@ class LocalStore:
 		self.partial_matrix = []
 		for d in range(M+N-1):
 			s, e = diag_start_end(d, i)
-			if s != 0:
-				s -= 1
-			if e != diag_length(d) - 1:
-				e += 1
 			self.partial_matrix.append({
 				'array': array(length=e-s),
 				'start': s,
@@ -308,11 +304,11 @@ def compute_LCS(i: int, j: int, m: str):
 ```
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNjkzOTcyODA5LC0xODk5MTU2ODc2LC0yMz
-k3OTc0OTIsMTgxNzg3NDEzNCwxNjQ1MTM0MTcxLDIwMzg5ODc2
-NDUsLTEzMjQyODI3NzksLTI4MTY2NDUxMywtMTg3MzAwMjk4MC
-w1NDE0NjIyMTQsMjExNTQ2NTQ3LC0xMTM1ODgxMzA1LC0xNDY5
-MjM3NTczLC0xNzU5MDQ2MTYsMTMxMTc3NDczNCwtMjIwMDgxNT
-UxLC01MzEzNTEwMSwxMTkyMzQ3MDc1LDgxNTE3OTkzOCwtMTA4
-MTU5NjY4OF19
+eyJoaXN0b3J5IjpbOTk1NDE4MTUyLDY5Mzk3MjgwOSwtMTg5OT
+E1Njg3NiwtMjM5Nzk3NDkyLDE4MTc4NzQxMzQsMTY0NTEzNDE3
+MSwyMDM4OTg3NjQ1LC0xMzI0MjgyNzc5LC0yODE2NjQ1MTMsLT
+E4NzMwMDI5ODAsNTQxNDYyMjE0LDIxMTU0NjU0NywtMTEzNTg4
+MTMwNSwtMTQ2OTIzNzU3MywtMTc1OTA0NjE2LDEzMTE3NzQ3Mz
+QsLTIyMDA4MTU1MSwtNTMxMzUxMDEsMTE5MjM0NzA3NSw4MTUx
+Nzk5MzhdfQ==
 -->
