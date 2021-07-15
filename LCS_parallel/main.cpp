@@ -118,12 +118,13 @@ class LocalMemory{
             for(int d = i; d < N+M-1-i; d++){
                 pair<int, int> start_end = diag_start_end(d, i);
                 // Set the d-i-th element of the vector to a vector of length start_end.second-start_end.first
-                data[d-i] = DiagonalVector(vector<int>(start_end.second-start_end.first+2), start_end.first-1, start_end.second+1);
+                vector<int> v(start_end.second-start_end.first+2, -1);
+                data[d-i] = DiagonalVector(v, start_end.first-1, start_end.second+1);
             }
         }
 
         int get_diag_index(int i, int d, int e){
-            diag_vector = data[d-i];
+            DiagonalVector diag_vector = data[d-i];
             if(e < diag_vector.start || e >= diag_vector.end){
                 return -1;
             }
@@ -131,7 +132,7 @@ class LocalMemory{
         }
 
         int set_diag_index(int i, int d, int e, int value){
-            diag_vector = data[d-i];
+            DiagonalVector diag_vector = data[d-i];
             if(e < diag_vector.start || e >= diag_vector.end){
                 return -1;
             }
