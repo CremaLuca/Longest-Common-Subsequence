@@ -158,10 +158,12 @@ int main()
         pair<int, int> right = pair<int, int>(c.first, c.second+1);
         pair<int, int> down = pair<int, int>(c.first+1, c.second);
         if (cell_proc(down) != rank){
-            MPI_Send(&c_value, 1, MPI_INT, cell_proc(down), diagonal, MPI_COMM_WORLD);
+            MPI_Isend(&c_value, 1, MPI_INT, cell_proc(down), diagonal, MPI_COMM_WORLD, &send_req);
         } else if (cell_proc(right) != rank){
-            MPI_Send(&c_value, 1, MPI_INT, cell_proc(right), diagonal, MPI_COMM_WORLD);
+            MPI_Isend(&c_value, 1, MPI_INT, cell_proc(right), diagonal, MPI_COMM_WORLD, &send_req);
         }
+        // Ignore send request result
+        MPI_Request_free(&req);
         printf("p%d: c_value is %d\n", rank, c_value);
     }
 
