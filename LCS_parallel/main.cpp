@@ -102,7 +102,7 @@ class DiagonalVector{
         int end;
 
         DiagonalVector(vector<int> v, int start, int end){
-            this->v = v;
+            this->v.resize(end-start);
             this->start = start;
             this->end = end;
         }
@@ -118,8 +118,7 @@ class LocalMemory{
             for(int d = i; d < N+M-1-i; d++){
                 pair<int, int> start_end = diag_start_end(d, i);
                 // Set the d-i-th element of the vector to a vector of length start_end.second-start_end.first
-                vector<int> v(start_end.second-start_end.first+2, -1);
-                data[d-i] = DiagonalVector(v, start_end.first-1, start_end.second+1);
+                data[d-i] = DiagonalVector(start_end.first-1, start_end.second+1);
             }
         }
 
