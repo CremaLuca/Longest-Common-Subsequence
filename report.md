@@ -226,9 +226,11 @@ class LocalStore:
 				'end': e
 			})
 
-	def get_diag_index(d: int, e: int):
+	def get_diag_index(i: int, d: int, e: int):
 		"""
 		Parameters:
+			i: int
+				
 			d: int
 				Diagonal index.
 			e: int
@@ -304,11 +306,11 @@ def compute_LCS(i: int, j: int, m: str):
 ```
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTk5MTg4NTAxMyw2OTM5NzI4MDksLTE4OT
-kxNTY4NzYsLTIzOTc5NzQ5MiwxODE3ODc0MTM0LDE2NDUxMzQx
-NzEsMjAzODk4NzY0NSwtMTMyNDI4Mjc3OSwtMjgxNjY0NTEzLC
-0xODczMDAyOTgwLDU0MTQ2MjIxNCwyMTE1NDY1NDcsLTExMzU4
-ODEzMDUsLTE0NjkyMzc1NzMsLTE3NTkwNDYxNiwxMzExNzc0Nz
-M0LC0yMjAwODE1NTEsLTUzMTM1MTAxLDExOTIzNDcwNzUsODE1
-MTc5OTM4XX0=
+eyJoaXN0b3J5IjpbLTEzMTAwNzQ5MSwxOTkxODg1MDEzLDY5Mz
+k3MjgwOSwtMTg5OTE1Njg3NiwtMjM5Nzk3NDkyLDE4MTc4NzQx
+MzQsMTY0NTEzNDE3MSwyMDM4OTg3NjQ1LC0xMzI0MjgyNzc5LC
+0yODE2NjQ1MTMsLTE4NzMwMDI5ODAsNTQxNDYyMjE0LDIxMTU0
+NjU0NywtMTEzNTg4MTMwNSwtMTQ2OTIzNzU3MywtMTc1OTA0Nj
+E2LDEzMTE3NzQ3MzQsLTIyMDA4MTU1MSwtNTMxMzUxMDEsMTE5
+MjM0NzA3NV19
 -->
