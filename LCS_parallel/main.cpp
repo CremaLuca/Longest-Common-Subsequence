@@ -126,7 +126,7 @@ int main()
         pair<int, int> up = pair<int, int>(c.first -1, c.second);
         pair<int, int> left = pair<int, int>(c.first, c.second -1);
         pair<int, int> up_left = pair<int, int>(c.first -1, c.second -1);
-        int up_value, left_value, up_left_value = 0, 0, 0;
+        int up_value, left_value, up_left_value = 0;
         // If the cell is not on the border 
         if(up.first != 0){
             // If the current processor is not responsible for it
