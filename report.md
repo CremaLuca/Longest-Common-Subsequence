@@ -230,13 +230,13 @@ class LocalStore:
 		"""
 		Parameters:
 			i: int
-				
+				Processor index.
 			d: int
 				Diagonal index.
 			e: int
 				Element in the diagonal index.
 		"""
-		array_object_TODO_NOME = self.partial_matrix[d]
+		array_object_TODO_NOME = self.partial_matrix[d-i]
 		if e < array_object.start or e > array_object.end:
 			return None
 		return array_object.array[e-array_object.start]
@@ -306,11 +306,11 @@ def compute_LCS(i: int, j: int, m: str):
 ```
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEzMTAwNzQ5MSwxOTkxODg1MDEzLDY5Mz
-k3MjgwOSwtMTg5OTE1Njg3NiwtMjM5Nzk3NDkyLDE4MTc4NzQx
-MzQsMTY0NTEzNDE3MSwyMDM4OTg3NjQ1LC0xMzI0MjgyNzc5LC
-0yODE2NjQ1MTMsLTE4NzMwMDI5ODAsNTQxNDYyMjE0LDIxMTU0
-NjU0NywtMTEzNTg4MTMwNSwtMTQ2OTIzNzU3MywtMTc1OTA0Nj
-E2LDEzMTE3NzQ3MzQsLTIyMDA4MTU1MSwtNTMxMzUxMDEsMTE5
-MjM0NzA3NV19
+eyJoaXN0b3J5IjpbLTg0OTA5ODA5LDE5OTE4ODUwMTMsNjkzOT
+cyODA5LC0xODk5MTU2ODc2LC0yMzk3OTc0OTIsMTgxNzg3NDEz
+NCwxNjQ1MTM0MTcxLDIwMzg5ODc2NDUsLTEzMjQyODI3NzksLT
+I4MTY2NDUxMywtMTg3MzAwMjk4MCw1NDE0NjIyMTQsMjExNTQ2
+NTQ3LC0xMTM1ODgxMzA1LC0xNDY5MjM3NTczLC0xNzU5MDQ2MT
+YsMTMxMTc3NDczNCwtMjIwMDgxNTUxLC01MzEzNTEwMSwxMTky
+MzQ3MDc1XX0=
 -->
