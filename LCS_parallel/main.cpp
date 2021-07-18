@@ -134,12 +134,12 @@ public:
         int diag_index = cell_diag_index(c);
         size_t local_data_index = diag-rank;
         if (local_data_index < 0 || local_data_index >= data.size())
-            throw out_of_range ("get_cell out of range");
+            throw out_of_range ("get_cell out of range: no array for this diagonal");
 
         DiagonalVector diag_vector = data[local_data_index];
 
         if(diag_index < diag_vector.start || diag_index >= diag_vector.end)
-            throw out_of_range ("get_cell out of range");
+            throw out_of_range ("get_cell out of range: diagonal index out of bounds");
 
         return diag_vector.v[diag_index - diag_vector.start];
     }
@@ -150,12 +150,12 @@ public:
         int diag_index = cell_diag_index(c);
         size_t local_data_index = diag-rank;
         if (local_data_index < 0 || local_data_index >= data.size())
-            throw out_of_range ("set_cell out of range");
+            throw out_of_range ("set_cell out of range: no array for this diagonal");
 
         DiagonalVector & d = data[local_data_index];
 
         if(diag_index < d.start || diag_index >= d.end)
-            throw out_of_range ("set_cell out of range");
+            throw out_of_range ("set_cell out of range: diagonal index out of bounds");
 
         d.v[diag_index - d.start] = value;
     }
@@ -202,7 +202,7 @@ int main()
             if(cell_proc(up) != rank){ // wait for the value from another processor.
                 printf("receiving from p%d\n", cell_proc(up));
                 MPI_Recv(&up_value, 1, MPI_INT, cell_proc(up), diagonal-1, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
-                local_memory.set_cell(up, up_value);
+                //local_memory.set_cell(up, up_value);
             }else{  // Grab the value from local memory
                 up_value = local_memory.get_cell(up);
             }
@@ -215,7 +215,7 @@ int main()
             if(cell_proc(left) != rank){ // wait for the value from another processor.
                 printf("receiving from p%d\n", cell_proc(left));
                 MPI_Recv(&left_value, 1, MPI_INT, cell_proc(left), diagonal-1, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
-                local_memory.set_cell(left, left_value);
+                //local_memory.set_cell(left, left_value);
             }else{  // Grab the value from local memory
                 left_value = local_memory.get_cell(left);
             }
@@ -237,8 +237,8 @@ int main()
         }else{
             c_value = max(up_value, left_value);
         }
-        local_memory.set_cell(c, c_value);
         printf("p%d: c_value is %d\n", rank, c_value);
+        local_memory.set_cell(c, c_value);
         // Send the value to the next processors
         pair<int, int> right = pair<int, int>(c.first, c.second + 1);
         pair<int, int> down = pair<int, int>(c.first + 1, c.second);
@@ -262,4 +262,11 @@ int main()
     // TODO: se sei il master ricostruisci il percorso con l'algoritmo sequenziale
     MPI_Finalize();
     return 0;
+
+
+    //TODO BUG: save elements needed by process i on diagonals which do not contain i (line 125 causes that problem).
+    //Set cell was throwing out of bounds (line 205, 218) since at line 125 no array was created for those elements.
+    //removing line 205, 218 isn't enough since those elements must be retrieved sometimes, at line 225-227. Commenting
+    //these lines make get_cell throw out of bounds. Simple solution is using a receive again. Correct solution should be fixing
+    //local memory structure.
 }
