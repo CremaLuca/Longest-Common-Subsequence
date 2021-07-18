@@ -1,7 +1,8 @@
 #include <algorithm>
 #include <cmath>
-#include <mpi.h>
+#include <mpi/mpi.h>
 #include <vector>
+#include <stdexcept>
 
 using namespace std;
 
@@ -67,13 +68,16 @@ int cell_proc(pair<int, int> c){
     int len = diag_length(d);
     int pos = cell_diag_index(c);
     int p = min(len, P);
-    int ceil_size = ceil((float)len/p);
-    int floor_size = floor((float)len/p);
+    int ceil_size = ceil(((float)len)/p);
+    int floor_size = floor(((float)len)/p);
     int rem = len % p;
+
+    printf("cell (%d, %d), diag %d, len %d, pos %d, ceil %d, floor %d, rem %d\n\n", c.first, c.second, d, len, pos, ceil_size, floor_size, rem);
+
     if (pos < ceil_size * rem)
-        return floor((float) pos / ceil_size);
+        return floor(((float) pos) / ceil_size);
     else
-        return floor((float)(pos - rem) / floor_size);
+        return floor(((float)(pos - rem)) / floor_size);
 }
 
 
@@ -101,51 +105,61 @@ class DiagonalVector{
         int start;
         int end;
 
-        DiagonalVector(int start, int end){
-            this->v.resize(end-start);
+        DiagonalVector(int start, int end):
+        v(end - start, 0)
+        {
             this->start = start;
             this->end = end;
         }
 };
 
 class LocalMemory{
-    public:
-        vector<DiagonalVector> data;
 
-        LocalMemory(int i){
-            int n_diags = N+M-1-(2*i);
-            for(int d = i; d < N+M-1-i; d++){
-                pair<int, int> start_end = diag_start_end(d, i);
-                data.push_back(DiagonalVector(start_end.first-1, start_end.second+1));
-            }
-        }
+private:
+    vector<DiagonalVector> data;
+    int rank;
 
-        int get_diag_index(int i, int d, int e){
-            DiagonalVector diag_vector = data[d-i];
-            if(e < diag_vector.start || e >= diag_vector.end){
-                return -1;
-            }
-            return diag_vector.v[e-diag_vector.start];
+public:
+    LocalMemory(int i){
+        rank = i;
+        for(int d = i; d < N+M-1-i; d++){
+            pair<int, int> start_end = diag_start_end(d, i);
+            data.push_back(DiagonalVector(max(start_end.first - 1, 0), min(start_end.second + 1, diag_length(d))));
         }
+    }
 
-        int set_diag_index(int i, int d, int e, int value){
-            DiagonalVector diag_vector = data[d-i];
-            if(e < diag_vector.start || e >= diag_vector.end){
-                return -1;
-            }
-            diag_vector.v[e-diag_vector.start] = value;
-            return 0;
-        }
+    int get_cell(pair<int, int> c){
 
-        int get_cell(int i, pair<int, int> c){
-            return get_diag_index(i, cell_diag(c), cell_diag_index(c));
-        }
+        int diag = cell_diag(c);
+        int diag_index = cell_diag_index(c);
+        size_t local_data_index = diag-rank;
+        if (local_data_index < 0 || local_data_index >= data.size())
+            throw out_of_range ("get_cell out of range");
 
-        int set_cell(int i, pair<int, int> c, int value){
-            return set_diag_index(i, cell_diag(c), cell_diag_index(c), value);
-        }
+        DiagonalVector diag_vector = data[local_data_index];
+
+        if(diag_index < diag_vector.start || diag_index >= diag_vector.end)
+            throw out_of_range ("get_cell out of range");
+
+        return diag_vector.v[diag_index - diag_vector.start];
+    }
+
+    void set_cell(pair<int, int> c, int value){
+
+        int diag = cell_diag(c);
+        int diag_index = cell_diag_index(c);
+        size_t local_data_index = diag-rank;
+        if (local_data_index < 0 || local_data_index >= data.size())
+            throw out_of_range ("set_cell out of range");
+
+        DiagonalVector & d = data[local_data_index];
+
+        if(diag_index < d.start || diag_index >= d.end)
+            throw out_of_range ("set_cell out of range");
+
+        d.v[diag_index - d.start] = value;
+    }
 };
-
 
 int main()
 {
@@ -165,7 +179,6 @@ int main()
     printf("Hello world from process %d of %d\n", rank, P);
 
     // Setup send-request result.
-    MPI_Request send_req;
 
     // Setup local memory
     LocalMemory local_memory(rank);
@@ -174,36 +187,49 @@ int main()
     vector<pair<int, int>> indices = matrix_elements(rank);
 
     // Foreach element in the list of indices
-    for(int index = 0; index < indices.size(); index++){
+    for(size_t index = 0; index < indices.size(); index++){
         pair<int, int> c = indices[index];
         int diagonal = cell_diag(c);
-        pair<int, int> up = pair<int, int>(c.first -1, c.second);
-        pair<int, int> left = pair<int, int>(c.first, c.second -1);
-        pair<int, int> up_left = pair<int, int>(c.first -1, c.second -1);
+        pair<int, int> up = pair<int, int>(c.first - 1, c.second);
+        pair<int, int> left = pair<int, int>(c.first, c.second - 1);
+        pair<int, int> up_left = pair<int, int>(c.first - 1, c.second -1);
         int up_value, left_value, up_left_value = 0;
-        // If the cell is not on the border 
-        if(up.first != 0){
+
+
+        // If the cell is not on the border
+        if(up.first >= 0){
             // If the current processor is not responsible for it
             if(cell_proc(up) != rank){ // wait for the value from another processor.
+                printf("receiving from p%d\n", cell_proc(up));
                 MPI_Recv(&up_value, 1, MPI_INT, cell_proc(up), diagonal-1, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
-                local_memory.set_cell(rank, up, up_value);
+                local_memory.set_cell(up, up_value);
             }else{  // Grab the value from local memory
-                up_value = local_memory.get_cell(rank, up);
+                up_value = local_memory.get_cell(up);
             }
         }
-        if(left.second != 0){
+
+
+        // If the cell is not on the border
+        if(left.second >= 0){
             // If the current processor is not responsible for it
             if(cell_proc(left) != rank){ // wait for the value from another processor.
+                printf("receiving from p%d\n", cell_proc(left));
                 MPI_Recv(&left_value, 1, MPI_INT, cell_proc(left), diagonal-1, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
-                local_memory.set_cell(rank, left, left_value);
+                local_memory.set_cell(left, left_value);
             }else{  // Grab the value from local memory
-                left_value = local_memory.get_cell(rank, left);
+                left_value = local_memory.get_cell(left);
             }
         }
+
+        up_left_value = 0;
         // We know we have the value of the cell up_left in memory
-        up_left_value = local_memory.get_cell(rank, up_left);
-        if(up_left_value < 0)
-            printf("Incorrect value for up_left: (%d, %d) p%d", up_left.first, up_left.second, rank);
+        if(up_left.first >= 0 && up_left.second >= 0){
+            up_left_value = local_memory.get_cell(up_left);
+            if(up_left_value < 0)
+                printf("Incorrect value for up_left: (%d, %d) p%d, value=%d\n", up_left.first, up_left.second, rank, up_left_value);
+
+        }
+
         // Compute the value of the current cell c
         int c_value = 0;
         if (X[c.first] == Y[c.second]){
@@ -211,24 +237,29 @@ int main()
         }else{
             c_value = max(up_value, left_value);
         }
-        local_memory.set_cell(rank, c, c_value);
+        local_memory.set_cell(c, c_value);
+        printf("p%d: c_value is %d\n", rank, c_value);
         // Send the value to the next processors
-        pair<int, int> right = pair<int, int>(c.first, c.second+1);
-        pair<int, int> down = pair<int, int>(c.first+1, c.second);
-        if (cell_proc(down) != rank){
+        pair<int, int> right = pair<int, int>(c.first, c.second + 1);
+        pair<int, int> down = pair<int, int>(c.first + 1, c.second);
+
+        MPI_Request send_req;
+
+        if(down.first < M && cell_proc(down) != rank){
             MPI_Isend(&c_value, 1, MPI_INT, cell_proc(down), diagonal, MPI_COMM_WORLD, &send_req);
-        } else if (cell_proc(right) != rank){
+        }
+        else if (right.second < N && cell_proc(right) != rank){
             MPI_Isend(&c_value, 1, MPI_INT, cell_proc(right), diagonal, MPI_COMM_WORLD, &send_req);
         }
         // Ignore send request result
-        MPI_Request_free(&send_req);
-        printf("p%d: c_value is %d\n", rank, c_value);
+
+        MPI_Status status;
+        MPI_Wait(&send_req, &status);
     }
 
     // TODO: se sei il master raccogli tutti i dati della matrice e riempila con i valori che ti arrivano
 
     // TODO: se sei il master ricostruisci il percorso con l'algoritmo sequenziale
-
     MPI_Finalize();
     return 0;
 }
