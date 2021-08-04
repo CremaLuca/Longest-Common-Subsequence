@@ -1,8 +1,9 @@
 #include <algorithm>
 #include <cmath>
-#include <mpi/mpi.h>
+#include <mpi.h>
 #include <vector>
 #include <stdexcept>
+#include <stdio.h>
 
 using namespace std;
 
@@ -121,7 +122,10 @@ private:
 
 public:
     LocalMemory(int i){
-        rank = i;
+        this->rank = i;
+        // TODO: add the previous diagonal storage if the rank is not 0
+
+        // Create the diagonal storage for diagonals where the current processor has at least one element
         for(int d = i; d < N+M-1-i; d++){
             pair<int, int> start_end = diag_start_end(d, i);
             data.push_back(DiagonalVector(max(start_end.first - 1, 0), min(start_end.second + 1, diag_length(d))));
@@ -134,12 +138,12 @@ public:
         int diag_index = cell_diag_index(c);
         size_t local_data_index = diag-rank;
         if (local_data_index < 0 || local_data_index >= data.size())
-            throw out_of_range ("get_cell out of range: no array for this diagonal");
+            throw out_of_range(sprintf("get_cell out of range: no array for diagonal '%d' for p%d", diag, rank));
 
         DiagonalVector diag_vector = data[local_data_index];
 
         if(diag_index < diag_vector.start || diag_index >= diag_vector.end)
-            throw out_of_range ("get_cell out of range: diagonal index out of bounds");
+            throw out_of_range(sprintf("get_cell out of range: diagonal index '%d' out of bounds for p%d", diag_index, rank));
 
         return diag_vector.v[diag_index - diag_vector.start];
     }
@@ -150,12 +154,12 @@ public:
         int diag_index = cell_diag_index(c);
         size_t local_data_index = diag-rank;
         if (local_data_index < 0 || local_data_index >= data.size())
-            throw out_of_range ("set_cell out of range: no array for this diagonal");
+            throw out_of_range(sprintf("set_cell out of range: no array for diagonal '%d' for p%d", diag, rank));
 
         DiagonalVector & d = data[local_data_index];
 
         if(diag_index < d.start || diag_index >= d.end)
-            throw out_of_range ("set_cell out of range: diagonal index out of bounds");
+            throw out_of_range(sprintf("set_cell out of range: diagonal index '%d' out of bounds for p%d", diag_index, rank));
 
         d.v[diag_index - d.start] = value;
     }
@@ -207,7 +211,6 @@ int main()
                 up_value = local_memory.get_cell(up);
             }
         }
-
 
         // If the cell is not on the border
         if(left.second >= 0){
