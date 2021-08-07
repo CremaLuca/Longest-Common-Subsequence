@@ -16,7 +16,7 @@ int N, M, P;
  */
 int diag_length(int d){
     int arr[] = {d+1, M, N, M+N-1-d};
-    return *min_element(arr, arr + 3);
+    return *min_element(arr, arr + 4);
 }
 
 /**
@@ -33,6 +33,9 @@ pair<int, int> diag_start_end(int d, int i){
     int floor_size = floor((float)len/p);
     int rem = len % p;
     int start, end;
+
+    //printf("len: %d, p: %d, ceil: %d, floor: %d, rem: %d\n", len, p, ceil_size, floor_size, rem);
+
     if (i < rem){
         start = i * ceil_size;
         end = start + ceil_size;
@@ -74,7 +77,7 @@ int cell_proc(pair<int, int> c){
     int floor_size = floor(((float)len)/p);
     int rem = len % p;
 
-    printf("cell (%d, %d), diag %d, len %d, pos %d, ceil %d, floor %d, rem %d\n\n", c.first, c.second, d, len, pos, ceil_size, floor_size, rem);
+    //printf("cell (%d, %d), diag %d, len %d, pos %d, ceil %d, floor %d, rem %d\n", c.first, c.second, d, len, pos, ceil_size, floor_size, rem);
 
     if (pos < ceil_size * rem)
         return floor(((float) pos) / ceil_size);
@@ -86,7 +89,7 @@ int cell_proc(pair<int, int> c){
 vector<pair<int, int>> matrix_elements(int i){
 
     vector<pair<int, int>> v;
-
+    // If there are more processor than elements, ignore processor
     if(i >= min(M, N))
         return v;
 
@@ -128,6 +131,7 @@ int main()
     MPI_Comm_size(MPI_COMM_WORLD, &P);
 
     printf("Hello world from process %d of %d\n", rank, P);
+    printf("N (size of X) is %d and M (size of Y) is %d\n", N, M);
 
     // Setup send-request result.
 
@@ -212,15 +216,15 @@ int main()
         MPI_Request send_req;
 
         if(down.first < M && cell_proc(down) != rank){
+            printf("p%d: sending c_value to p%d\n", rank, cell_proc(down));
             MPI_Isend(&c_value, 1, MPI_INT, cell_proc(down), diagonal, MPI_COMM_WORLD, &send_req);
         }
         else if (right.second < N && cell_proc(right) != rank){
+            printf("p%d: sending c_value to p%d\n", rank, cell_proc(right));
             MPI_Isend(&c_value, 1, MPI_INT, cell_proc(right), diagonal, MPI_COMM_WORLD, &send_req);
         }
         // Ignore send request result
-
-        MPI_Status status;
-        MPI_Wait(&send_req, &status);
+        // MPI_Request_free(&send_req);
     }
 
     // TODO: se sei il master raccogli tutti i dati della matrice e riempila con i valori che ti arrivano
@@ -228,11 +232,4 @@ int main()
     // TODO: se sei il master ricostruisci il percorso con l'algoritmo sequenziale
     MPI_Finalize();
     return 0;
-
-
-    //TODO BUG: save elements needed by process i on diagonals which do not contain i (line 125 causes that problem).
-    //Set cell was throwing out of bounds (line 205, 218) since at line 125 no array was created for those elements.
-    //removing line 205, 218 isn't enough since those elements must be retrieved sometimes, at line 225-227. Commenting
-    //these lines make get_cell throw out of bounds. Simple solution is using a receive again. Correct solution should be fixing
-    //local memory structure.
 }
