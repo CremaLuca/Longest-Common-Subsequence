@@ -8,6 +8,9 @@
 
 using namespace std;
 
+const int COMPUTE_LCS_TAG = 1;
+const int STOP_TAG = -1;
+
 int N, M, P;
 
 /**
@@ -168,7 +171,7 @@ int main()
         if(up.first >= 0){
             // If the current processor is not responsible for it
             if(cell_proc(up) != rank){ // wait for the value from another processor.
-                printf("receiving from p%d\n", cell_proc(up));
+                printf("p%d: receiving up (%d, %d) from p%d\n", rank, up.first, up.second, cell_proc(up));
                 MPI_Recv(&up_value, 1, MPI_INT, cell_proc(up), diagonal-1, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
                 local_memory[up] = up_value;
             }else{  // Grab the value from local memory
@@ -180,7 +183,7 @@ int main()
         if(left.second >= 0){
             // If the current processor is not responsible for it
             if(cell_proc(left) != rank){ // wait for the value from another processor.
-                printf("receiving from p%d\n", cell_proc(left));
+                printf("p%d: receiving left (%d, %d) from p%d\n", rank, left.first, left.second, cell_proc(left));
                 MPI_Recv(&left_value, 1, MPI_INT, cell_proc(left), diagonal-1, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
                 local_memory[left] = left_value;
             }else{  // Grab the value from local memory
@@ -207,6 +210,7 @@ int main()
             c_value = max(up_value, left_value);
         }
         printf("p%d: c_value is %d\n", rank, c_value);
+        // Store the value in local memory
         local_memory[c] = c_value;
         // Send the value to the next processors
         pair<int, int> right = pair<int, int>(c.first, c.second + 1);
@@ -225,8 +229,62 @@ int main()
         // Ignore send request result
         // MPI_Request_free(&send_req);
     }
-    // Wiat for all processes to finish before starting to reconstruct the LCS
+    // Wait for all processes to finish before starting to reconstruct the LCS
     MPI_Barrier(MPI_COMM_WORLD);
+    if(rank == 0){
+        printf("All processes are done for the first part and the LCS value is %d.\n", local_memory[pair<int, int>(N-1, M-1)]);
+    }
+    /*
+    string lcs;
+    int i,j;
+    if(rank == 0){
+        // Start the LCS reconstruction
+        printf("p0: starting the LCS reconstruction\n");
+        i=N;
+        j=M;
+        while(i>0 && j>0){
+            char lcs_char = '';
+            pair<int, int> current = pair<int, int>(i, j);
+            pair<int, int> up = pair<int, int>(i-1, j);
+            pair<int, int> left = pair<int, int>(i, j-1);
+            pair<int, int> up_left = pair<int, int>(i-1, j-1);
+            int current_value = local_memory[current];
+            int up_value = local_memory[up];
+            int left_value = local_memory[left];
+            int up_left_value = local_memory[up_left];
+            if(current_value == up_left_value + 1){
+                lcs = X[i-1] + lcs;
+                i--; j--;
+            }else if (current_value == up_value){
+                i--;
+            }else { //if current_value == left_value
+                j--;
+            }
+            pair<int, int> next = pair<int, int>(i, j);
+            int next_proc = cell_proc(next);
+            // Send the lcs to the next processor so that it can continue
+            if(next_proc != rank){
+                printf("p%d: sending %s to p%d\n", rank, lcs.c_str(), next_proc);
+                MPI_Isend(lcs.c_str(), lcs.size(), MPI_CHAR, next_proc, COMPUTE_LCS_TAG, MPI_COMM_WORLD, &send_req);
+            }
+        }
+    }
+    // Cycle until break command is received (or sent if is p0)
+    while(true){
+        MPI_Status status;
+        // Find out the length and the tag of the message without emptying the buffer
+        MPI_Probe(MPI_ANY_SOURCE, MPI_ANY_TAG, MPI_COMM_WORLD, &status);
+        // If we received a stop signal, break
+        if(status.TAG == STOP_TAG){
+            break;
+        } else if (status.TAG == COMPUTE_LCS_TAG){
+            // Read the message
+            int lcs_length;
+            MPI_Get_count(&status, MPI_CHAR, &lcs_length);
+            char* lcs_buffer = new char[lcs_length];
+            MPI_Recv(lcs_buffer, lcs_length, MPI_CHAR, status.SOURCE, status.TAG, MPI_COMM_WORLD, &status);
+        }
+    }*/
 
     MPI_Finalize();
     return 0;
