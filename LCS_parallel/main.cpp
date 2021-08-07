@@ -4,6 +4,7 @@
 #include <vector>
 #include <stdexcept>
 #include <stdio.h>
+#include <unordered_map>
 
 using namespace std;
 
@@ -100,68 +101,14 @@ vector<pair<int, int>> matrix_elements(int i){
     return v;
 }
 
-class DiagonalVector{
-    public:
-        vector<int> v;
-        int start;
-        int end;
-
-        DiagonalVector(int start, int end):
-        v(end - start, 0)
-        {
-            this->start = start;
-            this->end = end;
-        }
-};
-
-class LocalMemory{
-
-private:
-    vector<DiagonalVector> data;
-    int rank;
-
-public:
-    LocalMemory(int i){
-        this->rank = i;
-        // TODO: add the previous diagonal storage if the rank is not 0
-
-        // Create the diagonal storage for diagonals where the current processor has at least one element
-        for(int d = i; d < N+M-1-i; d++){
-            pair<int, int> start_end = diag_start_end(d, i);
-            data.push_back(DiagonalVector(max(start_end.first - 1, 0), min(start_end.second + 1, diag_length(d))));
-        }
-    }
-
-    int get_cell(pair<int, int> c){
-
-        int diag = cell_diag(c);
-        int diag_index = cell_diag_index(c);
-        size_t local_data_index = diag-rank;
-        if (local_data_index < 0 || local_data_index >= data.size())
-            throw out_of_range(sprintf("get_cell out of range: no array for diagonal '%d' for p%d", diag, rank));
-
-        DiagonalVector diag_vector = data[local_data_index];
-
-        if(diag_index < diag_vector.start || diag_index >= diag_vector.end)
-            throw out_of_range(sprintf("get_cell out of range: diagonal index '%d' out of bounds for p%d", diag_index, rank));
-
-        return diag_vector.v[diag_index - diag_vector.start];
-    }
-
-    void set_cell(pair<int, int> c, int value){
-
-        int diag = cell_diag(c);
-        int diag_index = cell_diag_index(c);
-        size_t local_data_index = diag-rank;
-        if (local_data_index < 0 || local_data_index >= data.size())
-            throw out_of_range(sprintf("set_cell out of range: no array for diagonal '%d' for p%d", diag, rank));
-
-        DiagonalVector & d = data[local_data_index];
-
-        if(diag_index < d.start || diag_index >= d.end)
-            throw out_of_range(sprintf("set_cell out of range: diagonal index '%d' out of bounds for p%d", diag_index, rank));
-
-        d.v[diag_index - d.start] = value;
+// A hash function used to hash a pair of any kind
+struct hash_pair {
+    template <class T1, class T2>
+    size_t operator()(const pair<T1, T2>& p) const
+    {
+        auto hash1 = hash<T1>{}(p.first);
+        auto hash2 = hash<T2>{}(p.second);
+        return hash1 ^ hash2;
     }
 };
 
@@ -185,10 +132,20 @@ int main()
     // Setup send-request result.
 
     // Setup local memory
-    LocalMemory local_memory(rank);
+    unordered_map<pair<int, int>, int, hash_pair> local_memory;
 
     // Compute the list of matrix elements this processor is responsible for.
     vector<pair<int, int>> indices = matrix_elements(rank);
+
+    // Initialize string variable
+    string indices_str = "P"+to_string(rank)+" is responsible for indices: ";
+    for (int i = 0; i < indices.size(); i++){
+        // Concatenate indices to string indices_str
+        pair<int, int> c = indices[i];
+        indices_str += "("+to_string(c.first) + "," + to_string(c.second) + ") ";
+    }
+    // Print indices_str to console
+    printf("%s\n", indices_str.c_str());
 
     // Foreach element in the list of indices
     for(size_t index = 0; index < indices.size(); index++){
@@ -197,20 +154,23 @@ int main()
         pair<int, int> up = pair<int, int>(c.first - 1, c.second);
         pair<int, int> left = pair<int, int>(c.first, c.second - 1);
         pair<int, int> up_left = pair<int, int>(c.first - 1, c.second -1);
-        int up_value, left_value, up_left_value = 0;
+        int up_value = 0;
+        int left_value = 0;
+        int up_left_value = 0;
 
-
+        printf("p%d is working on up (%d, %d), left (%d, %d), up_left (%d, %d)\n", rank, up.first, up.second, left.first, left.second, up_left.first, up_left.second);
         // If the cell is not on the border
         if(up.first >= 0){
             // If the current processor is not responsible for it
             if(cell_proc(up) != rank){ // wait for the value from another processor.
                 printf("receiving from p%d\n", cell_proc(up));
                 MPI_Recv(&up_value, 1, MPI_INT, cell_proc(up), diagonal-1, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
-                //local_memory.set_cell(up, up_value);
+                local_memory[up] = up_value;
             }else{  // Grab the value from local memory
-                up_value = local_memory.get_cell(up);
+                up_value = local_memory[up];
             }
         }
+        printf("p%d: up value is %d\n", rank, up_value);
 
         // If the cell is not on the border
         if(left.second >= 0){
@@ -218,20 +178,23 @@ int main()
             if(cell_proc(left) != rank){ // wait for the value from another processor.
                 printf("receiving from p%d\n", cell_proc(left));
                 MPI_Recv(&left_value, 1, MPI_INT, cell_proc(left), diagonal-1, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
-                //local_memory.set_cell(left, left_value);
+                local_memory[left] = left_value;
             }else{  // Grab the value from local memory
-                left_value = local_memory.get_cell(left);
+                left_value = local_memory[left];
             }
         }
+        printf("p%d: left value is %d\n", rank, left_value);
 
         up_left_value = 0;
         // We know we have the value of the cell up_left in memory
         if(up_left.first >= 0 && up_left.second >= 0){
-            up_left_value = local_memory.get_cell(up_left);
+            up_left_value = local_memory[up_left];
             if(up_left_value < 0)
                 printf("Incorrect value for up_left: (%d, %d) p%d, value=%d\n", up_left.first, up_left.second, rank, up_left_value);
 
         }
+
+        printf("p%d: up_left value is %d\n", rank, up_left_value);
 
         // Compute the value of the current cell c
         int c_value = 0;
@@ -241,7 +204,7 @@ int main()
             c_value = max(up_value, left_value);
         }
         printf("p%d: c_value is %d\n", rank, c_value);
-        local_memory.set_cell(c, c_value);
+        local_memory[c] = c_value;
         // Send the value to the next processors
         pair<int, int> right = pair<int, int>(c.first, c.second + 1);
         pair<int, int> down = pair<int, int>(c.first + 1, c.second);
