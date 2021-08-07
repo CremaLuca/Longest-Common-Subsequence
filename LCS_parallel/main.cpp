@@ -124,6 +124,8 @@ int main()
     N = sizeof(X)/sizeof(X[0]);
     M = sizeof(Y)/sizeof(Y[0]);
 
+    printf("N (size of X) is %d and M (size of Y) is %d\n", N, M);
+
     // Extra: "Currently, MPI_Init takes two arguments that are not necessary, and the extra parameters
     //         are simply left as extra space in case future implementations might need them"
     MPI_Init(NULL, NULL);
@@ -131,7 +133,7 @@ int main()
     MPI_Comm_size(MPI_COMM_WORLD, &P);
 
     printf("Hello world from process %d of %d\n", rank, P);
-    printf("N (size of X) is %d and M (size of Y) is %d\n", N, M);
+    
 
     // Setup send-request result.
 
@@ -162,7 +164,6 @@ int main()
         int left_value = 0;
         int up_left_value = 0;
 
-        printf("p%d is working on up (%d, %d), left (%d, %d), up_left (%d, %d)\n", rank, up.first, up.second, left.first, left.second, up_left.first, up_left.second);
         // If the cell is not on the border
         if(up.first >= 0){
             // If the current processor is not responsible for it
@@ -174,7 +175,6 @@ int main()
                 up_value = local_memory[up];
             }
         }
-        printf("p%d: up value is %d\n", rank, up_value);
 
         // If the cell is not on the border
         if(left.second >= 0){
@@ -187,7 +187,6 @@ int main()
                 left_value = local_memory[left];
             }
         }
-        printf("p%d: left value is %d\n", rank, left_value);
 
         up_left_value = 0;
         // We know we have the value of the cell up_left in memory
@@ -198,7 +197,7 @@ int main()
 
         }
 
-        printf("p%d: up_left value is %d\n", rank, up_left_value);
+        printf("p%d is working on (%d, %d) with up (%d, %d): %d, left (%d, %d): %d, up_left (%d, %d): %d\n", rank, c.first, c.second, up.first, up.second, up_value, left.first, left.second, left_value, up_left.first, up_left.second, up_left_value);
 
         // Compute the value of the current cell c
         int c_value = 0;
@@ -226,10 +225,9 @@ int main()
         // Ignore send request result
         // MPI_Request_free(&send_req);
     }
+    // Wiat for all processes to finish before starting to reconstruct the LCS
+    MPI_Barrier(MPI_COMM_WORLD);
 
-    // TODO: se sei il master raccogli tutti i dati della matrice e riempila con i valori che ti arrivano
-
-    // TODO: se sei il master ricostruisci il percorso con l'algoritmo sequenziale
     MPI_Finalize();
     return 0;
 }
