@@ -7,11 +7,11 @@ char * lcs_string(char * X, char * Y, int m, int n);
 
 int main()
 {
-    char X[] = {'A', 'B', 'C', 'B', 'D', 'A', 'B'};
-    char Y[] = {'B', 'D', 'C', 'A', 'B', 'A'};
+    char Y[] = {'A', 'B', 'C', 'B', 'D', 'A', 'B'};
+    char X[] = {'B', 'D', 'C', 'A', 'B', 'A'};
 
-    char * lcs = lcs_string(X, Y, 7, 6);
-    printf("%s\n", lcs);
+    char * lcs = lcs_string(X, Y, 6, 7);
+    printf("sequential output: %s\n", lcs);
     free(lcs);
     return 0;
 }
