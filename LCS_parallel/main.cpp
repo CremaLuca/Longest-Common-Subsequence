@@ -42,13 +42,17 @@ int main(int argc, char ** argv)
     }
 
     infile.close();
+
     M = X.size();
     N = Y.size();
 
     //Make sure M <= N
     //WLOG IT'S ASSUMED M <= N IN THE FOLLOWING
 
-    if(M > N) swap(M, N);
+    if(M > N) {
+        swap(M, N);
+        swap(X, Y);
+    }
 
     int rank;
 
