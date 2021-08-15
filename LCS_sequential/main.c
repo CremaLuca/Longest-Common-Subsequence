@@ -47,7 +47,7 @@ int main(int argc, char ** argv)
     }
 
     char * lcs = lcs_string(X, Y, 6, 7);
-    printf("sequential output: %s\n", lcs);
+    printf("Sequential output: %s\n", lcs);
 
 
     //save to the specified file

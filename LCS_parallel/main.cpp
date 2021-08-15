@@ -1,6 +1,7 @@
-#include <mpi.h>
+#include <mpi/mpi.h>
 #include <stdexcept>
 #include <unordered_map>
+#include <fstream>
 
 #include "utils.h"
 
@@ -9,19 +10,47 @@ using namespace std;
 int N, M, P;
 
 //M ROWS, N COLUMNS, P PROCESSORS
-//WLOG IT'S ASSUMED M <= N IN THE FOLLOWING
 
-int main()
+int main(int argc, char ** argv)
 {
+    //Read the input file containing the sequences
+
+    if(argc < 2){
+        printf("Wrong usage: pass the path to the input file!\n");
+        return 1;
+    }
+
+    char * path = argv[1];
+
+    ifstream infile;
+    infile.open(path);
+    if(!infile.is_open()){
+        printf("Make sure the input file exists!\n");
+        return 1;
+    }
+
+    string X;
+    string Y;
+
+    std::getline(infile, X);
+    std::getline(infile, Y);
+
+
+    if(infile.fail()){
+        printf("Make sure the input file consists of two lines!\n");
+        return 1;
+    }
+
+    infile.close();
+    M = X.size();
+    N = Y.size();
+
+    //Make sure M <= N
+    //WLOG IT'S ASSUMED M <= N IN THE FOLLOWING
+
+    if(M > N) swap(M, N);
+
     int rank;
-
-    char X[] = {'B', 'D', 'C', 'A', 'B', 'A'};
-    char Y[] = {'A', 'B', 'C', 'B', 'D', 'A', 'B'};
-
-    // Compute the size of X and Y
-    // Notice M is <= N
-    M = sizeof(X)/sizeof(X[0]);
-    N = sizeof(Y)/sizeof(Y[0]);
 
 #ifndef NDEBUG
     printf("M (size of X) is %d and N (size of Y) is %d\n", M, N);
@@ -195,8 +224,21 @@ int main()
                             MPI_Send(nullptr, 0, MPI_CHAR, p, STOP_TAG, MPI_COMM_WORLD);
                         }
 
-                    //Goto done, print the lcs and quitx
-                    printf("p%d: reconstructed lcs string %s\n", rank,  lcs.c_str());
+                    //Save output to file if specified, then print the lcs and goto done
+
+                    if(argc == 3){
+                        path = argv[2];
+                        ofstream oufile;
+                        oufile.open(path, ios_base::trunc | ios_base::out);
+                        if(oufile.fail()){
+                            printf("Cannot save output to file!\n");
+                            return 1;
+                        }
+                        oufile << lcs;
+                        oufile.close();
+                    }
+
+                    printf("Parallel output by p%d: %s\n", rank, lcs.c_str());
                     goto done;
                 }
 
