@@ -237,7 +237,6 @@ int main(int argc, char ** argv)
                         oufile << lcs;
                         oufile.close();
                     }
-
                     printf("Parallel output by p%d: %s\n", rank, lcs.c_str());
                     goto done;
                 }

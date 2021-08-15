@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 
 void lcs_length(char * X, char * Y, int m, int n, int len[m+1][n+1]);
@@ -14,39 +15,34 @@ int main(int argc, char ** argv)
 
     char * path = argv[1];
 
-    FILE * file = fopen(path, "r");
+    FILE * file = fopen(path, "rb");
     if(file == NULL){
         printf("Make sure the input file exists!\n");
         return 1;
     }
+    fseek(file, 0, SEEK_END);
+    long fsize = ftell(file);
+    fseek(file, 0, SEEK_SET);
 
-    char * line1 = NULL;
-    char * line2 = NULL;
-    size_t len = 0;
+    char * strings = malloc(fsize + 1);
+    fread(strings, 1, fsize, file);
+    fclose(file);
+    strings[fsize] = 0;
 
-    int read1 = getline(&line1, &len, file);
-    int read2 = getline(&line2, &len, file);
-
-    if(read1 == -1 || read2 == -1){
+    char * newline = strchr(strings, '\n');
+    if(newline == NULL){
         printf("Make sure the input file consists of two lines!\n");
         return 1;
     }
 
-    fclose(file);
+    newline[0] = '\0';
+    char * X = strings;
+    char * Y = newline + 1;
 
-    char * X;
-    char * Y;
+    int size1 = strlen(X);
+    int size2 = strlen(Y);
 
-    if(read1 <= read2){
-        X = line1;
-        Y = line2;
-    }
-    else{
-        X = line2;
-        Y = line1;
-    }
-
-    char * lcs = lcs_string(X, Y, 6, 7);
+    char * lcs = lcs_string(X, Y, size1, size2);
     printf("Sequential output: %s\n", lcs);
 
 
@@ -59,8 +55,7 @@ int main(int argc, char ** argv)
     }
 
     free(lcs);
-    free(X);
-    free(Y);
+    free(strings);
     return 0;
 }
 
