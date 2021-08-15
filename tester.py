@@ -43,7 +43,7 @@ for i in range(0, tests):
     seq_file.close(), par_file.close()
 
     if out_seq == out_par:
-        print("TEST SUCCEEDED on sequences:\n" + string1 + "\n" + string2 + "\n\n")
+        print("TEST SUCCEEDED on sequences:\n" + string1 + "\n" + string2 + "\n")
         successes += 1
     else:
         print("TEST FAILED on sequences:\n" + string1 + "\n" + string2 + "\n\n")

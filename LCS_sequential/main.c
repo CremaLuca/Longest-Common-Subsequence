@@ -36,13 +36,22 @@ int main(int argc, char ** argv)
     }
 
     newline[0] = '\0';
-    char * X = strings;
-    char * Y = newline + 1;
+    char * line1 = strings;
+    char * line2 = newline + 1;
 
-    int size1 = strlen(X);
-    int size2 = strlen(Y);
+    int size1 = strlen(line1);
+    int size2 = strlen(line2);
 
-    char * lcs = lcs_string(X, Y, size1, size2);
+    char * lcs;
+
+    if(size1 <= size2){
+        lcs = lcs_string(line1, line2, size1, size2);
+    }
+    else{
+        lcs = lcs_string(line2, line1, size2, size1);
+    }
+
+
     printf("Sequential output: %s\n", lcs);
 
 
