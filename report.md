@@ -4,9 +4,9 @@
 Without loss of generality, we assume $m \le n$ in the following. We first describe a sequential algorithm for the LCS problem, and then we move to the more interesting parallel case, for which we propose an algorithm that borrows its structure from the sequential one.
 
 ## Sequential algorithm
-There's a well-known algorithm based on dynamic programming, that we propose here for the sequential case, which exploits the optimal substructure of the problem. Let $M$ be an $m \times n$ matrix, where entry $M[i, j]$ represents the length of an LCS of the sequences $X_i$ and $Y_j$, where $X_i$ is the $i$-th prefix of $X$, and similarly for $Y_j$. It holds that: $$M[i, j] = \begin{cases}0 & \text
+There's a well-known algorithm based on dynamic programming, that we propose here for the sequential case, which exploits the optimal substructure of the problem. Let $M$ be an $(m+1) \times (n+1)$ matrix, where entry $M[i, j]$ represents the length of an LCS of the sequences $X_i$ and $Y_j$, where $X_i$ is the $i$-th prefix of $X$, and similarly for $Y_j$. It holds that: $$M[i, j] = \begin{cases}0 & \text
 {if $i = 0$ or $j = 0$}  \\M[i-1, j-1]+1 & \text{if $i, j > 0$ and $x_i = y_j$} \\\max(M[i, j-1], M[i-1, j])  & \text{if $i, j > 0$ and $x_i \ne y_j$}\end{cases}$$
-From this simple recurrence relation, it's easy to design a sequential algorithm that solves the LCS problem, filling each row one at a time. It follows that the length of an LCS is stored in $M[m-1, n-1]$ and we don't need the rest of the matrix. We can reduce the space requirements from $\theta(mn)$ to $\theta(n)$ by observing that by computing the entries of $M$ row by row, the algorithm only needs the current row and the previous row. If, however, not only the length of the LCS is required, but also the actual subsequence, we need to store the whole matrix $M$. To re-construct the LCS of sequences $X_i$, $Y_j$ from $M$ the procedure is to start at entry $M[i-1, j-1]$ and follow at each step the previous entry which led to the computation of the current entry.
+From this simple recurrence relation, it's easy to design a sequential algorithm that solves the LCS problem, filling each row one at a time. It follows that the length of an LCS is stored in $M[m, n]$ and we don't need the rest of the matrix. We can reduce the space requirements from $\theta(mn)$ to $\theta(n)$ by observing that by computing the entries of $M$ row by row, the algorithm only needs the current row and the previous row. If, however, not only the length of the LCS is required, but also the actual subsequence, we need to store the whole matrix $M$. To re-construct the LCS of sequences $X_i$, $Y_j$ from $M$ the procedure is to start at entry $M[i-1, j-1]$ and follow at each step the previous entry which led to the computation of the current entry.
 
 ## Parallel algorithm
 
@@ -306,11 +306,11 @@ def compute_LCS(i: int, j: int, m: str):
 ```
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTg0OTA5ODA5LDE5OTE4ODUwMTMsNjkzOT
-cyODA5LC0xODk5MTU2ODc2LC0yMzk3OTc0OTIsMTgxNzg3NDEz
-NCwxNjQ1MTM0MTcxLDIwMzg5ODc2NDUsLTEzMjQyODI3NzksLT
-I4MTY2NDUxMywtMTg3MzAwMjk4MCw1NDE0NjIyMTQsMjExNTQ2
-NTQ3LC0xMTM1ODgxMzA1LC0xNDY5MjM3NTczLC0xNzU5MDQ2MT
-YsMTMxMTc3NDczNCwtMjIwMDgxNTUxLC01MzEzNTEwMSwxMTky
-MzQ3MDc1XX0=
+eyJoaXN0b3J5IjpbMTY1NzU4NjE5MSwtODQ5MDk4MDksMTk5MT
+g4NTAxMyw2OTM5NzI4MDksLTE4OTkxNTY4NzYsLTIzOTc5NzQ5
+MiwxODE3ODc0MTM0LDE2NDUxMzQxNzEsMjAzODk4NzY0NSwtMT
+MyNDI4Mjc3OSwtMjgxNjY0NTEzLC0xODczMDAyOTgwLDU0MTQ2
+MjIxNCwyMTE1NDY1NDcsLTExMzU4ODEzMDUsLTE0NjkyMzc1Nz
+MsLTE3NTkwNDYxNiwxMzExNzc0NzM0LC0yMjAwODE1NTEsLTUz
+MTM1MTAxXX0=
 -->
