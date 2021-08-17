@@ -54,8 +54,9 @@ def diag_start_end(d: int, i: int):
 		- i: int
 			Processor index.
 	Returns:
-		A tuple with the first index of the cells for diagonal d
-		assigned to processor i and the last index.
+		A pair (s, e) indicating the starting/ending cell on the 
+		diagonal d assigned to processor i. 
+		Index e is exclusive, while index s in inclusive
     """
     # Calc length of the diagonal
 	L_d = diag_length(d)
@@ -306,11 +307,11 @@ def compute_LCS(i: int, j: int, m: str):
 ```
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTU2MDA4ODg3MiwtNzg3ODU5MDIsMTI0NT
-Y5NjY2MCwtODQ5MDk4MDksMTk5MTg4NTAxMyw2OTM5NzI4MDks
-LTE4OTkxNTY4NzYsLTIzOTc5NzQ5MiwxODE3ODc0MTM0LDE2ND
-UxMzQxNzEsMjAzODk4NzY0NSwtMTMyNDI4Mjc3OSwtMjgxNjY0
-NTEzLC0xODczMDAyOTgwLDU0MTQ2MjIxNCwyMTE1NDY1NDcsLT
-ExMzU4ODEzMDUsLTE0NjkyMzc1NzMsLTE3NTkwNDYxNiwxMzEx
-Nzc0NzM0XX0=
+eyJoaXN0b3J5IjpbLTE1Mzk3MjQwOTUsLTU2MDA4ODg3MiwtNz
+g3ODU5MDIsMTI0NTY5NjY2MCwtODQ5MDk4MDksMTk5MTg4NTAx
+Myw2OTM5NzI4MDksLTE4OTkxNTY4NzYsLTIzOTc5NzQ5MiwxOD
+E3ODc0MTM0LDE2NDUxMzQxNzEsMjAzODk4NzY0NSwtMTMyNDI4
+Mjc3OSwtMjgxNjY0NTEzLC0xODczMDAyOTgwLDU0MTQ2MjIxNC
+wyMTE1NDY1NDcsLTExMzU4ODEzMDUsLTE0NjkyMzc1NzMsLTE3
+NTkwNDYxNl19
 -->
