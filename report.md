@@ -118,7 +118,7 @@ def matrix_elements(i:int):
 
 ### Some useful functions
 
-Given entry $(i, j)$, it will be useful for the following to know which diagonal index $d$ it corresponds, as well as its position relative to $D(d)$, which we call $\text{pos}(i, j)$.
+Given entry $(i, j)$, it will be useful for the following to know which diagonal index $d$ it corresponds, as well as its position relative to $D(d)$ from top to bottom, which we call $\text{pos}(i, j)$.
 Given the coordinates $(i, j)$ the diagonal is clearly  $i+j$, while $\text{pos(i, j)}$ is given by row $i$ if  $d < n$ and $N-j-1$ otherwise: this can be condensed into $\min\{i, n-j-1\}$.
 
 ```py
@@ -307,11 +307,11 @@ def compute_LCS(i: int, j: int, m: str):
 ```
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTU4NzUwNzU3Myw4OTQ4MTk1ODgsLTE1Mz
-k3MjQwOTUsLTU2MDA4ODg3MiwtNzg3ODU5MDIsMTI0NTY5NjY2
-MCwtODQ5MDk4MDksMTk5MTg4NTAxMyw2OTM5NzI4MDksLTE4OT
-kxNTY4NzYsLTIzOTc5NzQ5MiwxODE3ODc0MTM0LDE2NDUxMzQx
-NzEsMjAzODk4NzY0NSwtMTMyNDI4Mjc3OSwtMjgxNjY0NTEzLC
-0xODczMDAyOTgwLDU0MTQ2MjIxNCwyMTE1NDY1NDcsLTExMzU4
-ODEzMDVdfQ==
+eyJoaXN0b3J5IjpbLTEzNzU4NjM1NjQsODk0ODE5NTg4LC0xNT
+M5NzI0MDk1LC01NjAwODg4NzIsLTc4Nzg1OTAyLDEyNDU2OTY2
+NjAsLTg0OTA5ODA5LDE5OTE4ODUwMTMsNjkzOTcyODA5LC0xOD
+k5MTU2ODc2LC0yMzk3OTc0OTIsMTgxNzg3NDEzNCwxNjQ1MTM0
+MTcxLDIwMzg5ODc2NDUsLTEzMjQyODI3NzksLTI4MTY2NDUxMy
+wtMTg3MzAwMjk4MCw1NDE0NjIyMTQsMjExNTQ2NTQ3LC0xMTM1
+ODgxMzA1XX0=
 -->
