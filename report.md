@@ -98,7 +98,7 @@ def matrix_elements(i:int):
 		A list of cells of the LCS matrix assigned to processor i.
 	"""
 	# If there are too many processor this one doesn't do anything
-	if i >= min(M, N):
+	if i >= M:
 		return []
 	elements = []
 	# Eg. Processor 1 (starting from 0) will never be in the
@@ -307,11 +307,11 @@ def compute_LCS(i: int, j: int, m: str):
 ```
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbODk0ODE5NTg4LC0xNTM5NzI0MDk1LC01Nj
-AwODg4NzIsLTc4Nzg1OTAyLDEyNDU2OTY2NjAsLTg0OTA5ODA5
-LDE5OTE4ODUwMTMsNjkzOTcyODA5LC0xODk5MTU2ODc2LC0yMz
-k3OTc0OTIsMTgxNzg3NDEzNCwxNjQ1MTM0MTcxLDIwMzg5ODc2
-NDUsLTEzMjQyODI3NzksLTI4MTY2NDUxMywtMTg3MzAwMjk4MC
-w1NDE0NjIyMTQsMjExNTQ2NTQ3LC0xMTM1ODgxMzA1LC0xNDY5
-MjM3NTczXX0=
+eyJoaXN0b3J5IjpbLTU4NzUwNzU3Myw4OTQ4MTk1ODgsLTE1Mz
+k3MjQwOTUsLTU2MDA4ODg3MiwtNzg3ODU5MDIsMTI0NTY5NjY2
+MCwtODQ5MDk4MDksMTk5MTg4NTAxMyw2OTM5NzI4MDksLTE4OT
+kxNTY4NzYsLTIzOTc5NzQ5MiwxODE3ODc0MTM0LDE2NDUxMzQx
+NzEsMjAzODk4NzY0NSwtMTMyNDI4Mjc3OSwtMjgxNjY0NTEzLC
+0xODczMDAyOTgwLDU0MTQ2MjIxNCwyMTE1NDY1NDcsLTExMzU4
+ODEzMDVdfQ==
 -->
