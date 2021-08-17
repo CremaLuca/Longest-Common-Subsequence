@@ -233,7 +233,7 @@ int main(int argc, char ** argv)
                     chrono::steady_clock::time_point end_time = chrono::steady_clock::now();
                     long int int_us = chrono::duration_cast<chrono::microseconds>(end_time - begin_time).count();
                     //Save output to file if specified, then print the lcs and goto done
-                    if(argc == 3){
+                    if(argc >= 3){
                         path = argv[2];
                         ofstream oufile;
                         oufile.open(path, ios_base::trunc | ios_base::out);
@@ -244,7 +244,8 @@ int main(int argc, char ** argv)
                         oufile << lcs << endl << int_us << " [µs]" << endl;
                         oufile.close();
                     }
-                    printf("Parallel output by p%d: %s, in %ld µs\n", rank, lcs.c_str(), int_us);
+                    printf("Parallel output by p%d: %s\n", rank, lcs.c_str());
+                    printf("Took %ld us\n\n", int_us);
                     goto done;
                 }
 
