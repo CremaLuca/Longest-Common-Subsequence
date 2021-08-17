@@ -20,7 +20,7 @@ or, more concisely, $L(d) = \min\{d+1, m, m+n-1-d\}$.
 Or using a pseudo-algorithm:
 ```py
 def diag_length(d: int):
-	return min(d+1, N, M, M+N-1-d)
+	return min(d+1, M, M+N-1-d)
 ```
 
 ### Optimal execution order
@@ -306,11 +306,11 @@ def compute_LCS(i: int, j: int, m: str):
 ```
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTI0NTY5NjY2MCwtODQ5MDk4MDksMTk5MT
-g4NTAxMyw2OTM5NzI4MDksLTE4OTkxNTY4NzYsLTIzOTc5NzQ5
-MiwxODE3ODc0MTM0LDE2NDUxMzQxNzEsMjAzODk4NzY0NSwtMT
-MyNDI4Mjc3OSwtMjgxNjY0NTEzLC0xODczMDAyOTgwLDU0MTQ2
-MjIxNCwyMTE1NDY1NDcsLTExMzU4ODEzMDUsLTE0NjkyMzc1Nz
-MsLTE3NTkwNDYxNiwxMzExNzc0NzM0LC0yMjAwODE1NTEsLTUz
-MTM1MTAxXX0=
+eyJoaXN0b3J5IjpbLTc4Nzg1OTAyLDEyNDU2OTY2NjAsLTg0OT
+A5ODA5LDE5OTE4ODUwMTMsNjkzOTcyODA5LC0xODk5MTU2ODc2
+LC0yMzk3OTc0OTIsMTgxNzg3NDEzNCwxNjQ1MTM0MTcxLDIwMz
+g5ODc2NDUsLTEzMjQyODI3NzksLTI4MTY2NDUxMywtMTg3MzAw
+Mjk4MCw1NDE0NjIyMTQsMjExNTQ2NTQ3LC0xMTM1ODgxMzA1LC
+0xNDY5MjM3NTczLC0xNzU5MDQ2MTYsMTMxMTc3NDczNCwtMjIw
+MDgxNTUxXX0=
 -->
