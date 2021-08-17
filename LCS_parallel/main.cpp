@@ -1,7 +1,8 @@
-#include <mpi/mpi.h>
+#include <mpi.h>
 #include <stdexcept>
 #include <unordered_map>
 #include <fstream>
+#include <chrono>
 
 #include "utils.h"
 
@@ -65,6 +66,8 @@ int main(int argc, char ** argv)
     MPI_Init(NULL, NULL);
     MPI_Comm_rank(MPI_COMM_WORLD, &rank);
     MPI_Comm_size(MPI_COMM_WORLD, &P);
+
+    chrono::steady_clock::time_point begin_time = chrono::steady_clock::now();
 
 #ifndef NDEBUG
     printf("Hello world from process %d of %d\n", rank, P);
@@ -227,9 +230,9 @@ int main(int argc, char ** argv)
                         if(p != rank){
                             MPI_Send(nullptr, 0, MPI_CHAR, p, STOP_TAG, MPI_COMM_WORLD);
                         }
-
+                    chrono::steady_clock::time_point end_time = chrono::steady_clock::now();
+                    long int int_us = chrono::duration_cast<chrono::microseconds>(end_time - begin_time).count();
                     //Save output to file if specified, then print the lcs and goto done
-
                     if(argc == 3){
                         path = argv[2];
                         ofstream oufile;
@@ -238,10 +241,10 @@ int main(int argc, char ** argv)
                             printf("Cannot save output to file!\n");
                             return 1;
                         }
-                        oufile << lcs;
+                        oufile << lcs << endl << int_us << " [µs]" << endl;
                         oufile.close();
                     }
-                    printf("Parallel output by p%d: %s\n", rank, lcs.c_str());
+                    printf("Parallel output by p%d: %s, in %ld µs\n", rank, lcs.c_str(), int_us);
                     goto done;
                 }
 
@@ -317,7 +320,6 @@ int main(int argc, char ** argv)
     //********************************
 
 done:
-    MPI_Barrier(MPI_COMM_WORLD);
     MPI_Finalize();
     return 0;
 }
