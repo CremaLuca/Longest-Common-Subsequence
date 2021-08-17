@@ -11,7 +11,7 @@ From this simple recurrence relation, it's easy to design a sequential algorithm
 ## Parallel algorithm
 
 We will exploit the previous recurrence relation, trying to find a way to parallelize the computation. Let us first define what we mean by principal diagonal of $M$. Here $M$ is the same as in the previous paragraph, with the first column and the first row removed (which don't require to be computed at all, since they consist of zeros).
-**Definition:** The $M$'s **principal diagonal** of index $d$, for $0 \le d \le m + n -2$, is the ordered set of entries$$D(d) =\begin{cases}\{M[0, d], M[1, d-1], \ldots,  M[d, 0])\} & \text
+**Definition:** The $M$'s **principal diagonal** of index $d$, for $0 \le d \le m + n -2$, is the *ordered* set of entries$$D(d) =\begin{cases}\{M[0, d], M[1, d-1], \ldots,  M[d, 0])\} & \text
 {if $0\le d < m$}  \\\{M[0, d], M[1, d-1], \ldots,  M[m-1, d-m+1])\} & \text{if $m \le d < n$} \\\{M[d-n + 1, n-1], M[d-n+2, n-2], \ldots,  M[m-1, d-m+1])\}  & \text{if $d \ge n$}\end{cases}$$
 Note how entries in each $D(d)$ will only depend on entries belonging to $D(d-1)$ and D($d-2)$. In fact each element only depends on three elements from the two previous principal diagonals. This suggests a way to parallelize our initial algorithm: by looking at the CDAG of the computation, each diagonal is a level of the greedy schedule. Hence each entry in each diagonal can be computed in parallel, as long as entries from the previous diagonals have already been computed. From the previous definition, we define $L(d)$ as the length of the principal diagonal $d$:
 $$L(d) = |D(d)| =\begin{cases}d+1 & \text
@@ -306,7 +306,7 @@ def compute_LCS(i: int, j: int, m: str):
 ```
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTQxODI5NDU5OCwtODQ5MDk4MDksMTk5MT
+eyJoaXN0b3J5IjpbMTI0NTY5NjY2MCwtODQ5MDk4MDksMTk5MT
 g4NTAxMyw2OTM5NzI4MDksLTE4OTkxNTY4NzYsLTIzOTc5NzQ5
 MiwxODE3ODc0MTM0LDE2NDUxMzQxNzEsMjAzODk4NzY0NSwtMT
 MyNDI4Mjc3OSwtMjgxNjY0NTEzLC0xODczMDAyOTgwLDU0MTQ2
