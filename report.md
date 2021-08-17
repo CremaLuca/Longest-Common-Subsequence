@@ -79,7 +79,7 @@ def diag_start_end(d: int, i: int):
 ### Bound on the number of messages
 Let us define $P(i, j)$ as the index of the processor assigned to entry $(i, j)$, according to the previous scheme.
 
-**Remark:** It's quite easy to see that during the computation of entry $(i, j)$ processor $P(i, j)$  already has the value of cell $(i-1, j-1)$ stored in its memory, for $i, j \ge 1$. First notice that at least one of $(i, j-1)$ or $(i-1, j)$ is assigned to $p$:  in fact, let's say cell $(i, j)$ lies on diagonal $d$; then if $L(d-1) \le L(d)$, it follows that $P(i, j) = P(i, j-1)$; however, if $L(d-1) > L(d)$, $P(i, j) = P(i-1, j)$. Hence, in either case, cell $(i-1, j-1)$ is known to $p$, since its value was fetched by $p$ in the previous diagonal.
+**Remark:** It's quite easy to see that during the computation of entry $(i, j)$ processor $P(i, j)$  already has the value of cell $(i-1, j-1)$ stored in its memory, for $i, j \ge 1$. First notice that at least one of $(i, j-1)$ or $(i-1, j)$ is assigned to $p$:  in fact, let's say cell $(i, j)$ lies on diagonal $d$; then if $L(d-1) = L(d)$, it follows that $P(i, j) = P(i, j-1)$; it's just slightly more difficult to see that if $L(d-1) = L(d) \pm$, $P(i, j) = P(i-1, j)$. Hence, in either case, cell $(i-1, j-1)$ is known to $p$, since its value was fetched by $p$ in the previous diagonal.
 
 A performance metric we use for the assignment is the number of messages exchanged by the processors. The exact measure for variable $n, m$ and $P_{\text{max}}$ is hard to obtain from analytical considerations, but we can give an upper bound: clearly we can assume $P_{\text{max}} = \min\{n, m\} = m$ since no diagonal will be longer than $m$.
 In this case *every* cell of *each* diagonal is assigned to a *different* processor. By the remark, it's easy to prove that $P(i, j) = P(i, j-1) \ne P(i-1, j)$ if $i+j \le n-1$ and $P(i, j) = P(i-1, j) \ne P(i, j-1)$  if $i+j \ge n$.  Hence:
@@ -307,11 +307,11 @@ def compute_LCS(i: int, j: int, m: str):
 ```
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE1Mzk3MjQwOTUsLTU2MDA4ODg3MiwtNz
-g3ODU5MDIsMTI0NTY5NjY2MCwtODQ5MDk4MDksMTk5MTg4NTAx
-Myw2OTM5NzI4MDksLTE4OTkxNTY4NzYsLTIzOTc5NzQ5MiwxOD
-E3ODc0MTM0LDE2NDUxMzQxNzEsMjAzODk4NzY0NSwtMTMyNDI4
-Mjc3OSwtMjgxNjY0NTEzLC0xODczMDAyOTgwLDU0MTQ2MjIxNC
-wyMTE1NDY1NDcsLTExMzU4ODEzMDUsLTE0NjkyMzc1NzMsLTE3
-NTkwNDYxNl19
+eyJoaXN0b3J5IjpbODA5OTk2NDkwLC0xNTM5NzI0MDk1LC01Nj
+AwODg4NzIsLTc4Nzg1OTAyLDEyNDU2OTY2NjAsLTg0OTA5ODA5
+LDE5OTE4ODUwMTMsNjkzOTcyODA5LC0xODk5MTU2ODc2LC0yMz
+k3OTc0OTIsMTgxNzg3NDEzNCwxNjQ1MTM0MTcxLDIwMzg5ODc2
+NDUsLTEzMjQyODI3NzksLTI4MTY2NDUxMywtMTg3MzAwMjk4MC
+w1NDE0NjIyMTQsMjExNTQ2NTQ3LC0xMTM1ODgxMzA1LC0xNDY5
+MjM3NTczXX0=
 -->
