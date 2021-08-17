@@ -10,7 +10,7 @@ From this simple recurrence relation, it's easy to design a sequential algorithm
 
 ## Parallel algorithm
 
-We will exploit the previous recurrence relation, trying to find a way to parallelize the computation. Let us first define what we mean by principal diagonal of $M$. Here $M$ is the same as in the previous paragraph, however the first column and the first row are c
+We will exploit the previous recurrence relation, trying to find a way to parallelize the computation. Let us first define what we mean by principal diagonal of $M$. Here $M$ is the same as in the previous paragraph, with the first column and the first row removed.
 **Definition:** The $M$'s **principal diagonal** of index $d$, for $0 \le d \le m + n -2$, is the ordered set of entries$$D(d) =\begin{cases}\{M[0, d], M[1, d-1], \ldots,  M[d, 0])\} & \text
 {if $0\le d < m$}  \\\{M[0, d], M[1, d-1], \ldots,  M[m-1, d-m+1])\} & \text{if $m \le d < n$} \\\{M[d-n + 1, n-1], M[N-d+2, n-2], \ldots,  M[m-1, d-m+1])\}  & \text{if $d \ge n$}\end{cases}$$
 Note how entries in each $D(d)$ will only depend on entries belonging to $D(d-1)$ and D($d-2)$. In fact each element only depends on three elements from the two previous principal diagonals. This suggests a way to parallelize our initial algorithm: by looking at the CDAG of the computation, each diagonal is a level of the greedy schedule. Hence each entry in each diagonal can be computed in parallel, as long as entries from the previous diagonals have already been computed. From the previous definition, we define $L(d)$ as the length of the principal diagonal $d$:
@@ -306,11 +306,11 @@ def compute_LCS(i: int, j: int, m: str):
 ```
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTg5ODY2ODU0NCwtODQ5MDk4MDksMTk5MT
-g4NTAxMyw2OTM5NzI4MDksLTE4OTkxNTY4NzYsLTIzOTc5NzQ5
-MiwxODE3ODc0MTM0LDE2NDUxMzQxNzEsMjAzODk4NzY0NSwtMT
-MyNDI4Mjc3OSwtMjgxNjY0NTEzLC0xODczMDAyOTgwLDU0MTQ2
-MjIxNCwyMTE1NDY1NDcsLTExMzU4ODEzMDUsLTE0NjkyMzc1Nz
-MsLTE3NTkwNDYxNiwxMzExNzc0NzM0LC0yMjAwODE1NTEsLTUz
-MTM1MTAxXX0=
+eyJoaXN0b3J5IjpbOTM4MDg5Mzc5LC04NDkwOTgwOSwxOTkxOD
+g1MDEzLDY5Mzk3MjgwOSwtMTg5OTE1Njg3NiwtMjM5Nzk3NDky
+LDE4MTc4NzQxMzQsMTY0NTEzNDE3MSwyMDM4OTg3NjQ1LC0xMz
+I0MjgyNzc5LC0yODE2NjQ1MTMsLTE4NzMwMDI5ODAsNTQxNDYy
+MjE0LDIxMTU0NjU0NywtMTEzNTg4MTMwNSwtMTQ2OTIzNzU3My
+wtMTc1OTA0NjE2LDEzMTE3NzQ3MzQsLTIyMDA4MTU1MSwtNTMx
+MzUxMDFdfQ==
 -->
