@@ -1,8 +1,8 @@
 #!/bin/bash
 
-#SBATCH --job-name lcs_o1_n1
-#SBATCH --error lcs_err_o1_n1_%j.err
-#SBATCH --output lcs_out_o1_n1_%j.log
+#SBATCH --job-name lcs_o3_n1
+#SBATCH --error lcs_err_o3_n1_%j.err
+#SBATCH --output lcs_out_o3_n1_%j.log
 #SBATCH --partition allgroups
 #SBATCH --ntasks 1
 #SBATCH --mem 2G
