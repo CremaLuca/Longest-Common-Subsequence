@@ -29,7 +29,7 @@ We have to assign an order of execution to compute every entry in the LCS matrix
 - maximize concurrent computation
 - minimize communication costs
 
-To maximize concurrent computation we can look at the CDAG of the matrix, where we compute each cell that has required variables ready as soon as possible; let $P_{\text{max}} > 0$ processors at our disposal. Let's see how many processors we need to assign to a given principal diagonal $d$ whose length is $L= L(d)$. Notice that if$L < P_{\text{max}}$, $P_{\text{max}}-L$ processors will not work at all, since each entry can be computed in parallel by $L$ processors. So we put $P = \min\{L(d), P_{\text{max}}\}$. Thus we can assign processors as follows:
+To maximize concurrent computation we can look at the CDAG of the matrix, where we compute each cell that has required variables ready as soon as possible; let $P_{\text{max}} > 0$ be the number of processors at our disposal. Let's see how many processors we need to assign to a given principal diagonal $d$ whose length is $L= L(d)$. Notice that if$L < P_{\text{max}}$, $P_{\text{max}}-L$ processors will not work at all, since each entry can be computed in parallel by $L$ processors. So we put $P = \min\{L(d), P_{\text{max}}\}$. Thus we can assign processors as follows:
 
 - $\lceil L/P \rceil$ cells to  processor $i$ for  $0 \leq i < (L \mod P)$
 - $\lfloor L/P \rfloor$ cells to processor $j$ for $(L \mod P) \leq j < P$
@@ -306,11 +306,11 @@ def compute_LCS(i: int, j: int, m: str):
 ```
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTc4Nzg1OTAyLDEyNDU2OTY2NjAsLTg0OT
-A5ODA5LDE5OTE4ODUwMTMsNjkzOTcyODA5LC0xODk5MTU2ODc2
-LC0yMzk3OTc0OTIsMTgxNzg3NDEzNCwxNjQ1MTM0MTcxLDIwMz
-g5ODc2NDUsLTEzMjQyODI3NzksLTI4MTY2NDUxMywtMTg3MzAw
-Mjk4MCw1NDE0NjIyMTQsMjExNTQ2NTQ3LC0xMTM1ODgxMzA1LC
-0xNDY5MjM3NTczLC0xNzU5MDQ2MTYsMTMxMTc3NDczNCwtMjIw
-MDgxNTUxXX0=
+eyJoaXN0b3J5IjpbLTU2MDA4ODg3MiwtNzg3ODU5MDIsMTI0NT
+Y5NjY2MCwtODQ5MDk4MDksMTk5MTg4NTAxMyw2OTM5NzI4MDks
+LTE4OTkxNTY4NzYsLTIzOTc5NzQ5MiwxODE3ODc0MTM0LDE2ND
+UxMzQxNzEsMjAzODk4NzY0NSwtMTMyNDI4Mjc3OSwtMjgxNjY0
+NTEzLC0xODczMDAyOTgwLDU0MTQ2MjIxNCwyMTE1NDY1NDcsLT
+ExMzU4ODEzMDUsLTE0NjkyMzc1NzMsLTE3NTkwNDYxNiwxMzEx
+Nzc0NzM0XX0=
 -->
