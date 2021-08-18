@@ -234,18 +234,20 @@ def compute_LCS(i: int, j: int, m: str):
 	
 	if i == 0 or j == 0:
 		if x[i] == y[j]:
-			print()
+			print("LCS: " + x[i] + m)
+		else:
+			print("LCS: " + m)
 			
-	if M[i, j] == M[i-1,j-1] + 1:
+	if x[i] == y[j]:
 		MPI_SEND(cell_proc(i-1, j-1), x_i + m)
-	elif M[i, j] == M[i,j-1]:
+	elif M[i, j] == M[i-1,j]:
 		MPI_SEND(cell_proc(i, j-1), m)
 	else:
 		MPI_SEND(cell_proc(i-1, j), m)
 ```
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbOTQ1Nzc4NDQ1LDE5ODQwNzA5MDksLTExMj
+eyJoaXN0b3J5IjpbMTMzMjY5NjY2LDE5ODQwNzA5MDksLTExMj
 c3OTg1NTMsMTI0MjYwNjY3NywtMTAxNjI5NjQ5MywxNTQ5MTQ0
 NTcwLDg5NDgxOTU4OCwtMTUzOTcyNDA5NSwtNTYwMDg4ODcyLC
 03ODc4NTkwMiwxMjQ1Njk2NjYwLC04NDkwOTgwOSwxOTkxODg1
