@@ -269,11 +269,12 @@ def compute_LCS(i: int, j: int, m: str):
 		MPI_SEND(cell_proc(i, j-1), m)
 ```
 ### Results and conclusions
-We run our program on the CAPRI cluster
+We run our program on the CAPRI cluster, after compiling with two different optimization flags, O1 and O3.
+We performed 3 measurements for eac
 <img align="left" src="https://i.postimg.cc/sXKXyTsf/graphs.png"></img> 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjEyNjEwNjY2MywxNjU5MjM5OTc3LDcyOT
+eyJoaXN0b3J5IjpbMTQ3NDQxMTA1MSwxNjU5MjM5OTc3LDcyOT
 QwNzkwOSwxOTkzNjE3NjA5LDE0NTIzMDQ3NTAsNzk5MDk2OTkw
 LC04NzAxNDAxNTEsNjc5MjQ3NzI4LC0xOTc0MzI1MTM0LC0yMD
 A2NTM1OTA3LDQ2MDY1Njc5NCwxNTk4MTMxODMyLC0xOTkyNzAx
