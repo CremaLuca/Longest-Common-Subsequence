@@ -208,7 +208,7 @@ def send(i: int, j: int, p: int):
 For big problem sizes we aim to reduce the amount of memory each processor uses. Storing the whole $m\times n$ matrix could be too costly, so each processor should only store the cells it computed and the ones from other processors that it used for its computations.  This turns out  to be useful also for the reconstruction of an LCS, outlined in the next paragraph. We decided to use an hash table, which guarantees $O(1)$ access time on average.
 
 ### Reconstruction of an LCS  from the M matrix
-Once the $M$ matrix has been computed by the parallel algorithm, process $P(m-1, n-1) = 0$ knows entry $M[m-1, n-1]$, i.e. the length of an LCS. We show how to compute an LCS of $X_i$ and $Y_j$ starting at entry $(i, j)$: if $x_i = y_j$ then process $p = P(i, j)$ checks whether :
+Once the $M$ matrix has been computed by the parallel algorithm, process $P(m-1, n-1) = 0$ knows entry $M[m-1, n-1]$, i.e. the length of an LCS of $X_m$ and $Y_n$. We show how to compute an LCS of $X_i$ and $Y_j$ starting at entry $(i, j)$: if $x_i = y_j$ then process $p = P(i, j)$ checks whether :
  1. $M[i, j] = M[i-1, j-1]+1$
  2. $M[i, j] = M[i, j-1]$
  3. $M[i, j] = M[i-1, j]$
@@ -246,11 +246,11 @@ def compute_LCS(i: int, j: int, m: str):
 ```
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEwMTYyOTY0OTMsMTU0OTE0NDU3MCw4OT
-Q4MTk1ODgsLTE1Mzk3MjQwOTUsLTU2MDA4ODg3MiwtNzg3ODU5
-MDIsMTI0NTY5NjY2MCwtODQ5MDk4MDksMTk5MTg4NTAxMyw2OT
-M5NzI4MDksLTE4OTkxNTY4NzYsLTIzOTc5NzQ5MiwxODE3ODc0
-MTM0LDE2NDUxMzQxNzEsMjAzODk4NzY0NSwtMTMyNDI4Mjc3OS
-wtMjgxNjY0NTEzLC0xODczMDAyOTgwLDU0MTQ2MjIxNCwyMTE1
-NDY1NDddfQ==
+eyJoaXN0b3J5IjpbMTI2MTI2MDU5NywtMTAxNjI5NjQ5MywxNT
+Q5MTQ0NTcwLDg5NDgxOTU4OCwtMTUzOTcyNDA5NSwtNTYwMDg4
+ODcyLC03ODc4NTkwMiwxMjQ1Njk2NjYwLC04NDkwOTgwOSwxOT
+kxODg1MDEzLDY5Mzk3MjgwOSwtMTg5OTE1Njg3NiwtMjM5Nzk3
+NDkyLDE4MTc4NzQxMzQsMTY0NTEzNDE3MSwyMDM4OTg3NjQ1LC
+0xMzI0MjgyNzc5LC0yODE2NjQ1MTMsLTE4NzMwMDI5ODAsNTQx
+NDYyMjE0XX0=
 -->
