@@ -120,7 +120,7 @@ char * lcs_string(char * X, char * Y, long m, long n){
     //avoid this: for large inputs might cause stack overflow
     //int lcs_prefix[m+1][n+1];
 
-    int * lcs_prefix = (int *) malloc((m+1)*(n+1) * sizeof(long));
+    long * lcs_prefix = (int *) malloc((m+1)*(n+1) * sizeof(long));
     if(lcs_prefix == NULL){
         printf("Failed to allocate memory\n");
         exit(EXIT_FAILURE);
