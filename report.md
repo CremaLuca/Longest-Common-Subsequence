@@ -4,15 +4,15 @@
 Without loss of generality, we assume $m \le n$ in the following. We first describe a sequential algorithm for the LCS problem, and then we move to the more interesting parallel case, for which we propose an algorithm that borrows its structure from the sequential one.
 
 ## Sequential algorithm
-There's a well-known algorithm based on dynamic programming, that we propose here for the sequential case, which exploits the optimal substructure of the problem. Let $M$ be an $m \times n$ matrix, where entry $M[i, j]$ represents the length of an LCS of the sequences $X_i$ and $Y_j$, where $X_i$ is the $i$-th prefix of $X$, and similarly for $Y_j$. It holds that: $$M[i, j] = \begin{cases}0 & \text
+There's a well-known algorithm based on dynamic programming, that we propose here for the sequential case, which exploits the optimal substructure of the problem. Let $M$ be an $(m+1) \times (n+1)$ matrix, where entry $M[i, j]$ represents the length of an LCS of the sequences $X_i$ and $Y_j$, where $X_i$ is the $i$-th prefix of $X$, i.e. $(x_1, \ldots, x_i)$ for $i>0$ while $X_0$ is the empty string, and similarly for $Y_j$. It holds that: $$M[i, j] = \begin{cases}0 & \text
 {if $i = 0$ or $j = 0$}  \\M[i-1, j-1]+1 & \text{if $i, j > 0$ and $x_i = y_j$} \\\max(M[i, j-1], M[i-1, j])  & \text{if $i, j > 0$ and $x_i \ne y_j$}\end{cases}$$
-From this simple recurrence relation, it's easy to design a sequential algorithm that solves the LCS problem, filling each row one at a time. It follows that the length of an LCS is stored in $M[m-1, n-1]$ and we don't need the rest of the matrix. We can reduce the space requirements from $\theta(mn)$ to $\theta(n)$ by observing that by computing the entries of $M$ row by row, the algorithm only needs the current row and the previous row. If, however, not only the length of the LCS is required, but also the actual subsequence, we need to store the whole matrix $M$. To re-construct the LCS of sequences $X_i$, $Y_j$ from $M$ the procedure is to start at entry $M[i-1, j-1]$ and follow at each step the previous entry which led to the computation of the current entry.
+From this simple recurrence relation, it's easy to design a sequential algorithm that solves the LCS problem, filling each row one at a time. It follows that the length of an LCS is stored in $M[m, n]$ and we don't need the rest of the matrix. We can reduce the space requirements from $\theta(mn)$ to $\theta(n)$ by observing that by computing the entries of $M$ row by row, the algorithm only needs the current row and the previous row. If, however, not only the length of the LCS is required, but also the actual subsequence, we need to store the whole matrix $M$. To re-construct the LCS of sequences $X_i$, $Y_j$ from $M$ the procedure is to start at entry $M[i, j]$ and follow at each step the previous entry which led to the computation of the current entry.
 
 ## Parallel algorithm
 
-We will exploit the previous recurrence relation, trying to find a way to parallelize the computation. Let us first define what we mean by principal diagonal of $M$.
-**Definition:** The $M$'s **principal diagonal** of index $d$, for $0 \le d \le m + n -2$, is the ordered set of entries$$D(d) =\begin{cases}\{M[0, d], M[1, d-1], \ldots,  M[d, 0])\} & \text
-{if $0\le d < m$}  \\\{M[0, d], M[1, d-1], \ldots,  M[m-1, d-m+1])\} & \text{if $m \le d < n$} \\\{M[d-n + 1, n-1], M[N-d+2, n-2], \ldots,  M[m-1, d-m+1])\}  & \text{if $d \ge n$}\end{cases}$$
+We will exploit the previous recurrence relation, trying to find a way to parallelize the computation. Let us first define what we mean by principal diagonal of $M$. Here $M$ is the same as in the previous paragraph, with the first column and the first row removed (which don't require to be computed at all, since they consist of zeros). Hence $M[i, j]$ contains the length of an LCS of $X_{i+1}$ and $Y_{j+1}$.
+**Definition:** The $M$'s **principal diagonal** of index $d$, for $0 \le d \le m + n -2$, is the *ordered* set of entries$$D(d) =\begin{cases}\{M[0, d], M[1, d-1], \ldots,  M[d, 0])\} & \text
+{if $0\le d < m$}  \\\{M[0, d], M[1, d-1], \ldots,  M[m-1, d-m+1])\} & \text{if $m \le d < n$} \\\{M[d-n + 1, n-1], M[d-n+2, n-2], \ldots,  M[m-1, d-m+1])\}  & \text{if $d \ge n$}\end{cases}$$
 Note how entries in each $D(d)$ will only depend on entries belonging to $D(d-1)$ and D($d-2)$. In fact each element only depends on three elements from the two previous principal diagonals. This suggests a way to parallelize our initial algorithm: by looking at the CDAG of the computation, each diagonal is a level of the greedy schedule. Hence each entry in each diagonal can be computed in parallel, as long as entries from the previous diagonals have already been computed. From the previous definition, we define $L(d)$ as the length of the principal diagonal $d$:
 $$L(d) = |D(d)| =\begin{cases}d+1 & \text
 {if $0\le d < m$}  \\m & \text{if $m \le d < n$} \\m+n-1-d & \text{if $d \ge n$}\end{cases}$$
@@ -20,7 +20,7 @@ or, more concisely, $L(d) = \min\{d+1, m, m+n-1-d\}$.
 Or using a pseudo-algorithm:
 ```py
 def diag_length(d: int):
-	return min(d+1, N, M, M+N-1-d)
+	return min(d+1, M, M+N-1-d)
 ```
 
 ### Optimal execution order
@@ -29,7 +29,7 @@ We have to assign an order of execution to compute every entry in the LCS matrix
 - maximize concurrent computation
 - minimize communication costs
 
-To maximize concurrent computation we can look at the CDAG of the matrix, where we compute each cell that has required variables ready as soon as possible; let $P_{\text{max}} > 0$ processors at our disposal. Let's see how many processors we need to assign to a given principal diagonal $d$ whose length is $L= L(d)$. Notice that if$L < P_{\text{max}}$, $P_{\text{max}}-L$ processors will not work at all, since each entry can be computed in parallel by $L$ processors. So we put $P = \min\{L(d), P_{\text{max}}\}$. Thus we can assign processors as follows:
+To maximize concurrent computation we can look at the CDAG of the matrix, where we compute each cell that has required variables ready as soon as possible; let $P_{\text{max}} > 0$ be the number of processors at our disposal. Let's see how many processors we need to assign to a given principal diagonal $d$ whose length is $L= L(d)$. Notice that if$L < P_{\text{max}}$, $P_{\text{max}}-L$ processors will not work at all, since each entry can be computed in parallel by $L$ processors. So we put $P = \min\{L(d), P_{\text{max}}\}$. Thus we can assign processors as follows:
 
 - $\lceil L/P \rceil$ cells to  processor $i$ for  $0 \leq i < (L \mod P)$
 - $\lfloor L/P \rfloor$ cells to processor $j$ for $(L \mod P) \leq j < P$
@@ -54,8 +54,9 @@ def diag_start_end(d: int, i: int):
 		- i: int
 			Processor index.
 	Returns:
-		A tuple with the first index of the cells for diagonal d
-		assigned to processor i and the last index.
+		A pair (s, e) indicating the starting/ending cell on the 
+		diagonal d assigned to processor i. 
+		Index e is exclusive, while index s in inclusive
     """
     # Calc length of the diagonal
 	L_d = diag_length(d)
@@ -74,11 +75,31 @@ def diag_start_end(d: int, i: int):
 		end = start + floor_size
 	return (start, end)
 ```
+As an example of optimal assignment, we show two possible matrices ($5\times8$ and $4\times6$)
+$$
+\begin{array}{|c|c|c|c|c|c|c|c|}
+\hline
+\textbf{p0} & \textbf{p0} & \textbf{p0} & \textbf{p0} & \textbf{p0} & \textbf{p0} & \textbf{p0} & \textbf{p0} \\ \hline
+\textbf{p1} & \textbf{p1} & \textbf{p0} & \textbf{p0} & \textbf{p0} & \textbf{p0} & \textbf{p0} & \textbf{p0} \\ \hline
+\textbf{p2} & \textbf{p1} & \textbf{p1} & \textbf{p1} & \textbf{p1} & \textbf{p1} & \textbf{p0} & \textbf{p0} \\ \hline
+\textbf{p2} & \textbf{p1} & \textbf{p1} & \textbf{p1} & \textbf{p1} & \textbf{p1} & \textbf{p1} & \textbf{p0} \\ \hline
+\textbf{p2} & \textbf{p2} & \textbf{p2} & \textbf{p2} & \textbf{p2} & \textbf{p2} & \textbf{p1} & \textbf{p0} \\ \hline
+\end{array}
+\quad
+\begin{array}{|c|c|c|c|c|c|}
+\hline
+\textbf{p0} & \textbf{p0} & \textbf{p0} & \textbf{p0} & \textbf{p0} & \textbf{p0}  \\ \hline
+\textbf{p1} & \textbf{p0} & \textbf{p0} & \textbf{p0} & \textbf{p0} & \textbf{p0}\\ \hline
+\textbf{p1} & \textbf{p1} & \textbf{p1} & \textbf{p1} & \textbf{p0} & \textbf{p0}\\ \hline
+\textbf{p1} & \textbf{p1} & \textbf{p1} & \textbf{p1} & \textbf{p1} & \textbf{p0}\\ \hline
+\end{array}
+$$
+the left one is computed by $3$ processors, while the other by $2$.
 
 ### Bound on the number of messages
 Let us define $P(i, j)$ as the index of the processor assigned to entry $(i, j)$, according to the previous scheme.
 
-**Remark:** It's quite easy to see that during the computation of entry $(i, j)$ processor $P(i, j)$  already has the value of cell $(i-1, j-1)$ stored in its memory, for $i, j \ge 1$. First notice that at least one of $(i, j-1)$ or $(i-1, j)$ is assigned to $p$:  in fact, let's say cell $(i, j)$ lies on diagonal $d$; then if $L(d-1) \le L(d)$, it follows that $P(i, j) = P(i, j-1)$; however, if $L(d-1) > L(d)$, $P(i, j) = P(i-1, j)$. Hence, in either case, cell $(i-1, j-1)$ is known to $p$, since its value was fetched by $p$ in the previous diagonal.
+**Remark:** It's quite easy to see that during the computation of entry $(i, j)$ processor $P(i, j)$  already has the value of cell $(i-1, j-1)$ stored in its memory, for $i, j \ge 1$. First notice that at least one of $(i, j-1)$ or $(i-1, j)$ is assigned to $p$:  in fact, let's say cell $(i, j)$ lies on diagonal $d$; then if $L(d-1) = L(d)$, it follows that $P(i, j) = P(i, j-1)$; it's just slightly more difficult to see that if $L(d-1) = L(d) \pm 1$, the statement is still valid. Hence, in either case, cell $(i-1, j-1)$ is known to $p$, since its value was fetched by $p$ in the previous diagonal.
 
 A performance metric we use for the assignment is the number of messages exchanged by the processors. The exact measure for variable $n, m$ and $P_{\text{max}}$ is hard to obtain from analytical considerations, but we can give an upper bound: clearly we can assume $P_{\text{max}} = \min\{n, m\} = m$ since no diagonal will be longer than $m$.
 In this case *every* cell of *each* diagonal is assigned to a *different* processor. By the remark, it's easy to prove that $P(i, j) = P(i, j-1) \ne P(i-1, j)$ if $i+j \le n-1$ and $P(i, j) = P(i-1, j) \ne P(i, j-1)$  if $i+j \ge n$.  Hence:
@@ -97,7 +118,7 @@ def matrix_elements(i:int):
 		A list of cells of the LCS matrix assigned to processor i.
 	"""
 	# If there are too many processor this one doesn't do anything
-	if i >= min(M, N):
+	if i >= M:
 		return []
 	elements = []
 	# Eg. Processor 1 (starting from 0) will never be in the
@@ -117,7 +138,7 @@ def matrix_elements(i:int):
 
 ### Some useful functions
 
-Given entry $(i, j)$, it will be useful for the following to know which diagonal index $d$ it corresponds, as well as its position relative to $D(d)$, which we call $\text{pos}(i, j)$.
+Given entry $(i, j)$, it will be useful for the following to know which diagonal index $d$ it corresponds, as well as its position relative to $D(d)$ from top to bottom, which we call $\text{pos}(i, j)$.
 Given the coordinates $(i, j)$ the diagonal is clearly  $i+j$, while $\text{pos(i, j)}$ is given by row $i$ if  $d < n$ and $N-j-1$ otherwise: this can be condensed into $\min\{i, n-j-1\}$.
 
 ```py
@@ -131,7 +152,7 @@ def cell_diag(i: int, j: int):
 	"""
 	return i+j
 
-def cell_pos(i: int, j: int):
+def cell_diag_index(i: int, j: int):
 	"""
 	Parameters:
 		- i, j: int
@@ -178,9 +199,11 @@ Each processor doesn't need to keep a copy of the whole matrix $P(i, j)$: the pr
 We know for sure that the cell on the right can belong either to the current processor or the previous one, while, similarly, the one below either to the current or to the next one, but we couldn't find an usage of this information to improve the algorithm speed. With a litte abuse of notation for MPI signature of  `send`, we can write the following pseudocode:
 
 ```py
-def send(i: int, j: int, p: int):
+def send(value: int, i: int, j: int, p: int):
 	"""
 	Parameters:
+		-value: int
+			Value to be sent
 		- i, j: int
 			Coordinates of a matrix cell.
 		- p: int
@@ -192,88 +215,27 @@ def send(i: int, j: int, p: int):
 		# Can either be process p or p-1
 		p_right = cell_proc(i, j+1)
 		if p_right != p:
-			MPI_SEND(p_right)
+			MPI_SEND(p_right, value)
 			return # No need to send it below too
 	# Send the value below if needed
 	if p != P-1: # process p-1 never sends below
 		if (i + 1 < N): # Avoid out of bounds
 			p_below = cell_proc(i+1, j)
 			if p_below != p:
-				MPI_SEND(p_below)
+				MPI_SEND(p_below, value)
 ```
 
 ### Storing the local portion of matrix M
 
-For big problem sizes we aim to reduce the amount of memory each processor uses. Storing the whole $m\times n$ matrix could be too costly, so each processor should only store the cells it computed and the ones from other processors that it used for its computations.  This turns out  to be useful also for the reconstruction of an LCS, outlined in the next paragraph. An efficient data structure is required.
-
-Foreach principal diagonal $d$ we know how many elements belong to each processor using the values from `diag_start_end` $s$ and $e$. So we can store a list of $M+N-1$ variable-sized arrays each of size $S(d) = e-s$ where each element $i$ is the element of the diagonal of index $D(i) = s+i$.
-
-```py
-class LocalStore:
-
-	def __init__(i: int):
-		"""
-		Parameters:
-			i: int
-				Processor index.
-		"""
-		self.partial_matrix = []
-		for d in range(i, N+M-1-i):
-			s, e = diag_start_end(d, i)
-			self.partial_matrix.append({
-				'array': array(length=e-s),
-				'start': s,
-				'end': e
-			})
-
-	def get_diag_index(i: int, d: int, e: int):
-		"""
-		Parameters:
-			i: int
-				Processor index.
-			d: int
-				Diagonal index.
-			e: int
-				Element in the diagonal index.
-		"""
-		array_object_TODO_NOME = self.partial_matrix[d-i]
-		if e < array_object.start or e > array_object.end:
-			return None
-		return array_object.array[e-array_object.start]
-
-	def set_diag_index(d: int, e: int, v:int):
-		"""
-		Parameters:
-			d: int
-				Diagonal index.
-			e: int
-				Element in the diagonal index.
-			v: int
-				Value to store.
-		"""
-		array_object_TODO_NOME = self.partial_matrix[d]
-		if e < array_object.start or e > array_object.end:
-			raise OutOfBoundsError()
-		array_object.array[e-array_object.start] = v
-
-	def get_cell(i: int, j: int):
-		"""
-		Parameters:
-			i, j: int
-				Cell coordinates.
-		"""
-		d = cell_diag(i, j)
-		e = cell_pos(i, j)
-		return get_diag_index(d, e)
-```
+For big problem sizes we aim to reduce the amount of memory each processor uses. Storing the whole $m\times n$ matrix could be too costly, so each processor should only store the cells it computed and the ones from other processors that it used for its computations.  This turns out  to be useful also for the reconstruction of an LCS, outlined in the next paragraph. We decided to use an hash table, which guarantees $O(1)$ access time on average.
 
 ### Reconstruction of an LCS  from the M matrix
-Once the $M$ matrix has been computed by the parallel algorithm, process $P(m-1, n-1) = 0$ knows entry $M[m-1, n-1]$, i.e. the length of an LCS. We show how to compute an LCS of $X_i$ and $Y_j$ starting at entry $(i, j)$: if $x_i = y_j$ then process $p = P(i, j)$ checks whether :
+Once the $M$ matrix has been computed by the parallel algorithm, process $P(m-1, n-1) = 0$ knows entry $M[m-1, n-1]$, i.e. the length of an LCS of $X_m$ and $Y_n$. We show how to compute an LCS of $X_{i+1}$ and $Y_{j+1}$ starting at entry $(i, j)$: if $x_{i+1} = y_{j+1}$ then process $p = P(i, j)$ checks whether :
  1. $M[i, j] = M[i-1, j-1]+1$
  2. $M[i, j] = M[i, j-1]$
  3. $M[i, j] = M[i-1, j]$
 
-If $1.$ is true, then $p$ sends $x_i$ to $p' = P(i-1, j-1)$. If $2.$ or $3.$ is true, then $p$ sends $e$ to $p' = P(i, j-1)$ or $p' = P(i-1, j)$ respectively, where $e$ is the null string. The same procedure applies $p'$, which will prepend its message to the one it just received from $p$. Once a processor assigned to a cell $(0, j$) or $(i, 0)$ is reached, the resulting message is the required LCS, which can then be sent in case to the starting process, i.e. $0$. Here the number of messages exchanged is at most $\min\{m, n\} = m$, i.e. the maximum length of an LCS. Here's the pseudocode, with a little abuse of notation as before:
+If $1.$ is true, then $p$ sends $x_{i+1}$ to $p' = P(i-1, j-1)$. If $2.$ or $3.$ is true, then $p$ sends $e$ to $p' = P(i, j-1)$ or $p' = P(i-1, j)$ respectively, where $e$ is the null string. The same procedure applies $p'$, which will prepend its message to the one it just received from $p$. Once a processor assigned to a cell $(0, j$) or $(i, 0)$ is reached, the resulting message is the required LCS. Here the number of messages exchanged is at most $m+n$. Here's the pseudocode, with a little abuse of notation as before:
 
 ```py
 def compute_LCS(i: int, j: int, m: str):
@@ -291,26 +253,32 @@ def compute_LCS(i: int, j: int, m: str):
 	# let p_curr be global variable s.t. p_curr = P(i, j)
 	
 	if i == 0 or j == 0:
-		if p_curr == 0 
-			return
+		if x[i] == y[j]:
+			print("LCS: " + x[i] + m)
 		else:
-			MPI_SEND(0, m)
-			return
+			print("LCS: " + m)
+		return
 			
-	if M[i, j] == M[i-1,j-1] + 1:
+	if x[i] == y[j]:
+		# the receving process has to call this function upon receiving this message
+		# this can be accomplished using MPI tags
 		MPI_SEND(cell_proc(i-1, j-1), x_i + m)
-	elif M[i, j] == M[i,j-1]:
-		MPI_SEND(cell_proc(i, j-1), m)
-	else:
+	elif M[i, j] == M[i-1,j]:
 		MPI_SEND(cell_proc(i-1, j), m)
+	else:
+		MPI_SEND(cell_proc(i, j-1), m)
 ```
+### Results and conclusions
+We ran our parallel program on the CAPRI cluster, after compiling with two different optimization flags, O1 and O3.
+We tested 3 different kind of inputs: small, medium and large consisting respectively of approximately 25, 1K and 2K characters in total for both sequences. For each input a different number of processors were used: 1, 2, 4, 8 and 16; and for each number of processors, we performed 3 tests, so what is actually shown in the graphs is the average of these 3 measures.
+<img align="left" src="https://i.postimg.cc/sXKXyTsf/graphs.png"></img> 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTg0OTA5ODA5LDE5OTE4ODUwMTMsNjkzOT
-cyODA5LC0xODk5MTU2ODc2LC0yMzk3OTc0OTIsMTgxNzg3NDEz
-NCwxNjQ1MTM0MTcxLDIwMzg5ODc2NDUsLTEzMjQyODI3NzksLT
-I4MTY2NDUxMywtMTg3MzAwMjk4MCw1NDE0NjIyMTQsMjExNTQ2
-NTQ3LC0xMTM1ODgxMzA1LC0xNDY5MjM3NTczLC0xNzU5MDQ2MT
-YsMTMxMTc3NDczNCwtMjIwMDgxNTUxLC01MzEzNTEwMSwxMTky
-MzQ3MDc1XX0=
+eyJoaXN0b3J5IjpbLTM1ODg1NDY2MywzMDQ1NTg3MjIsLTEyMD
+c0NjU5MTgsMTY1OTIzOTk3Nyw3Mjk0MDc5MDksMTk5MzYxNzYw
+OSwxNDUyMzA0NzUwLDc5OTA5Njk5MCwtODcwMTQwMTUxLDY3OT
+I0NzcyOCwtMTk3NDMyNTEzNCwtMjAwNjUzNTkwNyw0NjA2NTY3
+OTQsMTU5ODEzMTgzMiwtMTk5MjcwMTk3NiwxOTg0MDcwOTA5LC
+0xMTI3Nzk4NTUzLDEyNDI2MDY2NzcsLTEwMTYyOTY0OTMsMTU0
+OTE0NDU3MF19
 -->
