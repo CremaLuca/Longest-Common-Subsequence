@@ -179,9 +179,11 @@ Each processor doesn't need to keep a copy of the whole matrix $P(i, j)$: the pr
 We know for sure that the cell on the right can belong either to the current processor or the previous one, while, similarly, the one below either to the current or to the next one, but we couldn't find an usage of this information to improve the algorithm speed. With a litte abuse of notation for MPI signature of  `send`, we can write the following pseudocode:
 
 ```py
-def send(i: int, j: int, p: int):
+def send(value: int, i: int, j: int, p: int):
 	"""
 	Parameters:
+		-value: int
+			Value to be sent
 		- i, j: int
 			Coordinates of a matrix cell.
 		- p: int
@@ -246,11 +248,11 @@ def compute_LCS(i: int, j: int, m: str):
 ```
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTExMjc3OTg1NTMsMTI0MjYwNjY3NywtMT
-AxNjI5NjQ5MywxNTQ5MTQ0NTcwLDg5NDgxOTU4OCwtMTUzOTcy
-NDA5NSwtNTYwMDg4ODcyLC03ODc4NTkwMiwxMjQ1Njk2NjYwLC
-04NDkwOTgwOSwxOTkxODg1MDEzLDY5Mzk3MjgwOSwtMTg5OTE1
-Njg3NiwtMjM5Nzk3NDkyLDE4MTc4NzQxMzQsMTY0NTEzNDE3MS
-wyMDM4OTg3NjQ1LC0xMzI0MjgyNzc5LC0yODE2NjQ1MTMsLTE4
-NzMwMDI5ODBdfQ==
+eyJoaXN0b3J5IjpbLTE1NDUwNDI5NjksLTExMjc3OTg1NTMsMT
+I0MjYwNjY3NywtMTAxNjI5NjQ5MywxNTQ5MTQ0NTcwLDg5NDgx
+OTU4OCwtMTUzOTcyNDA5NSwtNTYwMDg4ODcyLC03ODc4NTkwMi
+wxMjQ1Njk2NjYwLC04NDkwOTgwOSwxOTkxODg1MDEzLDY5Mzk3
+MjgwOSwtMTg5OTE1Njg3NiwtMjM5Nzk3NDkyLDE4MTc4NzQxMz
+QsMTY0NTEzNDE3MSwyMDM4OTg3NjQ1LC0xMzI0MjgyNzc5LC0y
+ODE2NjQ1MTNdfQ==
 -->
