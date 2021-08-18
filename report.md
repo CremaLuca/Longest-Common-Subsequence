@@ -195,14 +195,14 @@ def send(value: int, i: int, j: int, p: int):
 		# Can either be process p or p-1
 		p_right = cell_proc(i, j+1)
 		if p_right != p:
-			MPI_SEND(value, p_right)
+			MPI_SEND(p_right, value)
 			return # No need to send it below too
 	# Send the value below if needed
 	if p != P-1: # process p-1 never sends below
 		if (i + 1 < N): # Avoid out of bounds
 			p_below = cell_proc(i+1, j)
 			if p_below != p:
-				MPI_SEND(value, p_below)
+				MPI_SEND(p_below, value)
 ```
 
 ### Storing the local portion of matrix M
@@ -248,11 +248,11 @@ def compute_LCS(i: int, j: int, m: str):
 ```
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTk4NDA3MDkwOSwtMTEyNzc5ODU1MywxMj
-QyNjA2Njc3LC0xMDE2Mjk2NDkzLDE1NDkxNDQ1NzAsODk0ODE5
-NTg4LC0xNTM5NzI0MDk1LC01NjAwODg4NzIsLTc4Nzg1OTAyLD
-EyNDU2OTY2NjAsLTg0OTA5ODA5LDE5OTE4ODUwMTMsNjkzOTcy
-ODA5LC0xODk5MTU2ODc2LC0yMzk3OTc0OTIsMTgxNzg3NDEzNC
-wxNjQ1MTM0MTcxLDIwMzg5ODc2NDUsLTEzMjQyODI3NzksLTI4
-MTY2NDUxM119
+eyJoaXN0b3J5IjpbNDE2NDgxNzE1LDE5ODQwNzA5MDksLTExMj
+c3OTg1NTMsMTI0MjYwNjY3NywtMTAxNjI5NjQ5MywxNTQ5MTQ0
+NTcwLDg5NDgxOTU4OCwtMTUzOTcyNDA5NSwtNTYwMDg4ODcyLC
+03ODc4NTkwMiwxMjQ1Njk2NjYwLC04NDkwOTgwOSwxOTkxODg1
+MDEzLDY5Mzk3MjgwOSwtMTg5OTE1Njg3NiwtMjM5Nzk3NDkyLD
+E4MTc4NzQxMzQsMTY0NTEzNDE3MSwyMDM4OTg3NjQ1LC0xMzI0
+MjgyNzc5XX0=
 -->
