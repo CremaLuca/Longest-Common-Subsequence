@@ -75,7 +75,7 @@ def diag_start_end(d: int, i: int):
 		end = start + floor_size
 	return (start, end)
 ```
-As an example of optimal assignment, we show two possible matrices
+As an example of optimal assignment, we show two possible matrices ($5\times8$ and $4\times6$)
 $$
 \begin{array}{|c|c|c|c|c|c|c|c|}
 \hline
@@ -269,16 +269,16 @@ def compute_LCS(i: int, j: int, m: str):
 		MPI_SEND(cell_proc(i, j-1), m)
 ```
 ### Results and conclusions
-|  |  |
+| ew| ew |
 |--|--|
-|  |  |
+|ew  |ew  |
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNDUyOTY2ODIyLC0xOTc0MzI1MTM0LC0yMD
-A2NTM1OTA3LDQ2MDY1Njc5NCwxNTk4MTMxODMyLC0xOTkyNzAx
-OTc2LDE5ODQwNzA5MDksLTExMjc3OTg1NTMsMTI0MjYwNjY3Ny
-wtMTAxNjI5NjQ5MywxNTQ5MTQ0NTcwLDg5NDgxOTU4OCwtMTUz
-OTcyNDA5NSwtNTYwMDg4ODcyLC03ODc4NTkwMiwxMjQ1Njk2Nj
-YwLC04NDkwOTgwOSwxOTkxODg1MDEzLDY5Mzk3MjgwOSwtMTg5
-OTE1Njg3Nl19
+eyJoaXN0b3J5IjpbLTc2NTg5MzU4MywtMTk3NDMyNTEzNCwtMj
+AwNjUzNTkwNyw0NjA2NTY3OTQsMTU5ODEzMTgzMiwtMTk5Mjcw
+MTk3NiwxOTg0MDcwOTA5LC0xMTI3Nzk4NTUzLDEyNDI2MDY2Nz
+csLTEwMTYyOTY0OTMsMTU0OTE0NDU3MCw4OTQ4MTk1ODgsLTE1
+Mzk3MjQwOTUsLTU2MDA4ODg3MiwtNzg3ODU5MDIsMTI0NTY5Nj
+Y2MCwtODQ5MDk4MDksMTk5MTg4NTAxMyw2OTM5NzI4MDksLTE4
+OTkxNTY4NzZdfQ==
 -->
