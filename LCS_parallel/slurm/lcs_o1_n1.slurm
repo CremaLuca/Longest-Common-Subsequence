@@ -6,7 +6,7 @@
 #SBATCH --partition allgroups
 #SBATCH --ntasks 1
 #SBATCH --mem 16G
-#SBATCH --time 25:00
+#SBATCH --time 60:00
 
 spack load intel-parallel-studio@professional.2019.4
 
@@ -26,11 +26,5 @@ mpirun -np 1 ./lcs_o1.o ../input_large.txt
 mpirun -np 1 ./lcs_o1.o ../input_large.txt
 
 mpirun -np 1 ./lcs_o1.o ../input_large2.txt
-mpirun -np 1 ./lcs_o1.o ../input_large2.txt
-mpirun -np 1 ./lcs_o1.o ../input_large2.txt
-mpirun -np 1 ./lcs_o1.o ../input_large2.txt
 
-mpirun -np 1 ./lcs_o1.o ../input_large3.txt
-mpirun -np 1 ./lcs_o1.o ../input_large3.txt
-mpirun -np 1 ./lcs_o1.o ../input_large3.txt
 mpirun -np 1 ./lcs_o1.o ../input_large3.txt

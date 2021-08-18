@@ -6,7 +6,7 @@
 #SBATCH --partition allgroups
 #SBATCH --ntasks 32
 #SBATCH --mem 16G
-#SBATCH --time 25:00
+#SBATCH --time 30:00
 
 spack load intel-parallel-studio@professional.2019.4
 
