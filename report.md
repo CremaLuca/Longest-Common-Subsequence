@@ -270,14 +270,14 @@ def compute_LCS(i: int, j: int, m: str):
 ```
 ### Results and conclusions
 
-<img align="left" src="https://i.postimg.cc/qBmQq070/Cattura.png" style="float:right"></img> Some text which should appear to the right of the image.
+<img align="left" src="https://i.postimg.cc/qBmQq070/Cattura.png" style="float:right"></img> 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTQ1MjMwNDc1MCw3OTkwOTY5OTAsLTg3MD
-E0MDE1MSw2NzkyNDc3MjgsLTE5NzQzMjUxMzQsLTIwMDY1MzU5
-MDcsNDYwNjU2Nzk0LDE1OTgxMzE4MzIsLTE5OTI3MDE5NzYsMT
-k4NDA3MDkwOSwtMTEyNzc5ODU1MywxMjQyNjA2Njc3LC0xMDE2
-Mjk2NDkzLDE1NDkxNDQ1NzAsODk0ODE5NTg4LC0xNTM5NzI0MD
-k1LC01NjAwODg4NzIsLTc4Nzg1OTAyLDEyNDU2OTY2NjAsLTg0
-OTA5ODA5XX0=
+eyJoaXN0b3J5IjpbMTk5MzYxNzYwOSwxNDUyMzA0NzUwLDc5OT
+A5Njk5MCwtODcwMTQwMTUxLDY3OTI0NzcyOCwtMTk3NDMyNTEz
+NCwtMjAwNjUzNTkwNyw0NjA2NTY3OTQsMTU5ODEzMTgzMiwtMT
+k5MjcwMTk3NiwxOTg0MDcwOTA5LC0xMTI3Nzk4NTUzLDEyNDI2
+MDY2NzcsLTEwMTYyOTY0OTMsMTU0OTE0NDU3MCw4OTQ4MTk1OD
+gsLTE1Mzk3MjQwOTUsLTU2MDA4ODg3MiwtNzg3ODU5MDIsMTI0
+NTY5NjY2MF19
 -->
