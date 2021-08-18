@@ -241,11 +241,11 @@ int main(int argc, char ** argv)
                             printf("Cannot save output to file!\n");
                             return 1;
                         }
-                        oufile << lcs << endl << int_us << " [µs]" << endl;
+                        oufile << lcs << endl << int_us << " [µs]";
                         oufile.close();
                     }
-                    //printf("Parallel output by p%d: %s\n", rank, lcs.c_str());
-                    printf("%s took %ld us\n\n", path, int_us);
+
+                    printf("Parallel output by p%d: %s\nTook %ld us\n", rank, lcs.c_str(), int_us);
                     goto done;
                 }
 

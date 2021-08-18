@@ -9,9 +9,9 @@ intro = "The following script will test the LCS programs using:\n" \
     "* {} processors for the parallel algorithm\n"
 
 strings = []
-ran = (10, 20)  # range of size of the strings to be compared
-tests = 20  # number of tests to perform
-n_letters = 5  # use a subset of #letters from the latin alphabet
+ran = (50, 200)  # range of size of the strings to be compared
+tests = 100  # number of tests to perform
+n_letters = 10  # use a subset of #letters from the latin alphabet
 processors = 3
 
 print(intro.format(tests, ran, n_letters, processors))
@@ -37,8 +37,8 @@ for i in range(0, tests):
     seq_file = open("output_sequential.txt", "r")
     par_file = open("output_parallel.txt", "r")
 
-    out_seq = seq_file.readline()
-    out_par = par_file.readline()
+    out_seq = seq_file.readline().rstrip('\n')
+    out_par = par_file.readline().rstrip('\n')
 
     seq_file.close(), par_file.close()
 

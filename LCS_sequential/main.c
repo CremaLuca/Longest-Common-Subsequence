@@ -4,7 +4,7 @@
 #include <time.h>
 
 
-void lcs_length(char * X, char * Y, int m, int n, int len[m+1][n+1]);
+void lcs_length(char * X, char * Y, int m, int n, int * len);
 char * lcs_string(char * X, char * Y, int m, int n);
 
 int main(int argc, char ** argv)
@@ -83,21 +83,25 @@ int main(int argc, char ** argv)
  * @param lcs_prefix: 2d array holding the results of the computation
  *
 */
-void lcs_length(char * X, char * Y, int m, int n, int lcs_prefix[m+1][n+1]){
+void lcs_length(char * X, char * Y, int m, int n, int * lcs_prefix){
+
+    int cols = n + 1;
+    //to index a cell (i, j) of lcs_prefix which is a matrix,
+    //use cols * i + j
 
     for(int i = 1; i <= m; i++)
-        lcs_prefix[i][0] = 0;
+        lcs_prefix[cols * i] = 0;
     for(int j = 0; j <= n; j++)
-        lcs_prefix[0][j] = 0;
+        lcs_prefix[j] = 0;
 
     for(int i = 1; i <= m; i++){
         for(int j = 1; j <= n; j++){
             if(X[i-1] == Y[j-1])
-                lcs_prefix[i][j] = lcs_prefix[i-1][j-1] + 1;
-            else if(lcs_prefix[i-1][j] >= lcs_prefix[i][j-1])
-                lcs_prefix[i][j] = lcs_prefix[i-1][j];
+                lcs_prefix[cols * i + j] = lcs_prefix[cols * (i-1) + (j-1)] + 1;
+            else if(lcs_prefix[cols * (i-1) + j] >= lcs_prefix[cols * i + (j-1)])
+                lcs_prefix[cols * i + j] = lcs_prefix[cols * (i-1) + j];
             else
-                lcs_prefix[i][j] = lcs_prefix[i][j-1];
+                lcs_prefix[cols * i + j] = lcs_prefix[cols * i + (j-1)];
         }
     }
 }
@@ -113,24 +117,34 @@ void lcs_length(char * X, char * Y, int m, int n, int lcs_prefix[m+1][n+1]){
 */
 char * lcs_string(char * X, char * Y, int m, int n){
 
-   int lcs_prefix[m+1][n+1];
-   lcs_length(X, Y, m, n, lcs_prefix);
-   int lcs_len = lcs_prefix[m][n];
-   char * lcs = malloc(sizeof(char) * (lcs_len+1));
-   lcs[lcs_len] = '\0';
-   int i = m, j = n;
-   while(i > 0 && j > 0){
-       if(X[i-1] == Y[j-1]){
-           lcs[--lcs_len] = X[i-1];
-           i--;
-           j--;
-       }
-       else if(lcs_prefix[i-1][j] >= lcs_prefix[i][j-1])
-           i--;
-       else
-           j--;
-   }
-   return lcs;
+    //avoid this: for large inputs might cause stack overflow
+    //int lcs_prefix[m+1][n+1];
+
+    int * lcs_prefix = (int *) malloc((m+1)*(n+1) * sizeof(int));
+
+    int cols = n + 1;
+
+    //to index a cell (i, j) of this array which is a matrix,
+    //use cols * i + j
+
+    lcs_length(X, Y, m, n, lcs_prefix);
+    int lcs_len = lcs_prefix[cols * m + n];
+    char * lcs = malloc(sizeof(char) * (lcs_len+1));
+    lcs[lcs_len] = '\0';
+    int i = m, j = n;
+    while(i > 0 && j > 0){
+        if(X[i-1] == Y[j-1]){
+            lcs[--lcs_len] = X[i-1];
+            i--;
+            j--;
+        }
+        else if(lcs_prefix[cols * (i-1) + j] >= lcs_prefix[cols * i + (j-1)])
+            i--;
+        else
+            j--;
+    }
+    free(lcs_prefix);
+    return lcs;
 }
 
 
