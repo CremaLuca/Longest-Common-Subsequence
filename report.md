@@ -78,8 +78,8 @@ def diag_start_end(d: int, i: int):
 As an example of optimal assignment, we show two possible matrices:
 
 $$
-\begin{table}[]
-\begin{tabular}{|c|c|c|c|c|c|c|c|}
+\begin{array}{c|c}
+
 \hline
 \textbf{0} & \textbf{0} & \textbf{0} & \textbf{0} & \textbf{0} & \textbf{0} & \textbf{0} & \textbf{0} \\ \hline
 \textbf{1} & \textbf{1} & \textbf{0} & \textbf{0} & \textbf{0} & \textbf{0} & \textbf{0} & \textbf{0} \\ \hline
@@ -264,11 +264,11 @@ def compute_LCS(i: int, j: int, m: str):
 ```
 ### Results and conclusions
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNDYwNjU2Nzk0LDE1OTgxMzE4MzIsLTE5OT
-I3MDE5NzYsMTk4NDA3MDkwOSwtMTEyNzc5ODU1MywxMjQyNjA2
-Njc3LC0xMDE2Mjk2NDkzLDE1NDkxNDQ1NzAsODk0ODE5NTg4LC
-0xNTM5NzI0MDk1LC01NjAwODg4NzIsLTc4Nzg1OTAyLDEyNDU2
-OTY2NjAsLTg0OTA5ODA5LDE5OTE4ODUwMTMsNjkzOTcyODA5LC
-0xODk5MTU2ODc2LC0yMzk3OTc0OTIsMTgxNzg3NDEzNCwxNjQ1
-MTM0MTcxXX0=
+eyJoaXN0b3J5IjpbODI0OTk2NDc3LDQ2MDY1Njc5NCwxNTk4MT
+MxODMyLC0xOTkyNzAxOTc2LDE5ODQwNzA5MDksLTExMjc3OTg1
+NTMsMTI0MjYwNjY3NywtMTAxNjI5NjQ5MywxNTQ5MTQ0NTcwLD
+g5NDgxOTU4OCwtMTUzOTcyNDA5NSwtNTYwMDg4ODcyLC03ODc4
+NTkwMiwxMjQ1Njk2NjYwLC04NDkwOTgwOSwxOTkxODg1MDEzLD
+Y5Mzk3MjgwOSwtMTg5OTE1Njg3NiwtMjM5Nzk3NDkyLDE4MTc4
+NzQxMzRdfQ==
 -->
