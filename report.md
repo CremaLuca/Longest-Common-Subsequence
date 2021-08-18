@@ -233,11 +233,8 @@ def compute_LCS(i: int, j: int, m: str):
 	# let p_curr be global variable s.t. p_curr = P(i, j)
 	
 	if i == 0 or j == 0:
-		if p_curr == 0 
-			return
-		else:
-			MPI_SEND(0, m)
-			return
+		if x[i] == y[j]:
+			print()
 			
 	if M[i, j] == M[i-1,j-1] + 1:
 		MPI_SEND(cell_proc(i-1, j-1), x_i + m)
@@ -248,11 +245,11 @@ def compute_LCS(i: int, j: int, m: str):
 ```
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTI1MTI3MTA4NiwxOTg0MDcwOTA5LC0xMT
-I3Nzk4NTUzLDEyNDI2MDY2NzcsLTEwMTYyOTY0OTMsMTU0OTE0
-NDU3MCw4OTQ4MTk1ODgsLTE1Mzk3MjQwOTUsLTU2MDA4ODg3Mi
-wtNzg3ODU5MDIsMTI0NTY5NjY2MCwtODQ5MDk4MDksMTk5MTg4
-NTAxMyw2OTM5NzI4MDksLTE4OTkxNTY4NzYsLTIzOTc5NzQ5Mi
-wxODE3ODc0MTM0LDE2NDUxMzQxNzEsMjAzODk4NzY0NSwtMTMy
-NDI4Mjc3OV19
+eyJoaXN0b3J5IjpbOTQ1Nzc4NDQ1LDE5ODQwNzA5MDksLTExMj
+c3OTg1NTMsMTI0MjYwNjY3NywtMTAxNjI5NjQ5MywxNTQ5MTQ0
+NTcwLDg5NDgxOTU4OCwtMTUzOTcyNDA5NSwtNTYwMDg4ODcyLC
+03ODc4NTkwMiwxMjQ1Njk2NjYwLC04NDkwOTgwOSwxOTkxODg1
+MDEzLDY5Mzk3MjgwOSwtMTg5OTE1Njg3NiwtMjM5Nzk3NDkyLD
+E4MTc4NzQxMzQsMTY0NTEzNDE3MSwyMDM4OTg3NjQ1LC0xMzI0
+MjgyNzc5XX0=
 -->
