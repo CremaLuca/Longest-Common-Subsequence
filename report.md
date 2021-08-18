@@ -237,6 +237,7 @@ def compute_LCS(i: int, j: int, m: str):
 			print("LCS: " + x[i] + m)
 		else:
 			print("LCS: " + m)
+		return
 			
 	if x[i] == y[j]:
 		MPI_SEND(cell_proc(i-1, j-1), x_i + m)
@@ -247,7 +248,7 @@ def compute_LCS(i: int, j: int, m: str):
 ```
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTc0OTIxNTk4MiwxOTg0MDcwOTA5LC0xMT
+eyJoaXN0b3J5IjpbLTE3MTkyOTcyNCwxOTg0MDcwOTA5LC0xMT
 I3Nzk4NTUzLDEyNDI2MDY2NzcsLTEwMTYyOTY0OTMsMTU0OTE0
 NDU3MCw4OTQ4MTk1ODgsLTE1Mzk3MjQwOTUsLTU2MDA4ODg3Mi
 wtNzg3ODU5MDIsMTI0NTY5NjY2MCwtODQ5MDk4MDksMTk5MTg4
