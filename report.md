@@ -270,14 +270,14 @@ def compute_LCS(i: int, j: int, m: str):
 ```
 ### Results and conclusions
 
-<img align="left" src="https://i.ibb.co/4MgxqK8/graphs.png"></img> 
+<img align="left" src="https://i.postimg.cc/y8fvgHj0/graphs.png"></img> 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNzI5NDA3OTA5LDE5OTM2MTc2MDksMTQ1Mj
-MwNDc1MCw3OTkwOTY5OTAsLTg3MDE0MDE1MSw2NzkyNDc3Mjgs
-LTE5NzQzMjUxMzQsLTIwMDY1MzU5MDcsNDYwNjU2Nzk0LDE1OT
-gxMzE4MzIsLTE5OTI3MDE5NzYsMTk4NDA3MDkwOSwtMTEyNzc5
-ODU1MywxMjQyNjA2Njc3LC0xMDE2Mjk2NDkzLDE1NDkxNDQ1Nz
-AsODk0ODE5NTg4LC0xNTM5NzI0MDk1LC01NjAwODg4NzIsLTc4
-Nzg1OTAyXX0=
+eyJoaXN0b3J5IjpbMTY1OTIzOTk3Nyw3Mjk0MDc5MDksMTk5Mz
+YxNzYwOSwxNDUyMzA0NzUwLDc5OTA5Njk5MCwtODcwMTQwMTUx
+LDY3OTI0NzcyOCwtMTk3NDMyNTEzNCwtMjAwNjUzNTkwNyw0Nj
+A2NTY3OTQsMTU5ODEzMTgzMiwtMTk5MjcwMTk3NiwxOTg0MDcw
+OTA5LC0xMTI3Nzk4NTUzLDEyNDI2MDY2NzcsLTEwMTYyOTY0OT
+MsMTU0OTE0NDU3MCw4OTQ4MTk1ODgsLTE1Mzk3MjQwOTUsLTU2
+MDA4ODg3Ml19
 -->
