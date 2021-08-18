@@ -4,8 +4,8 @@
 #include <time.h>
 
 
-void lcs_length(char * X, char * Y, int m, int n, int * len);
-char * lcs_string(char * X, char * Y, int m, int n);
+void lcs_length(char * X, char * Y, long m, long n, long * len);
+char * lcs_string(char * X, char * Y, long m, long n);
 
 int main(int argc, char ** argv)
 {
@@ -40,8 +40,8 @@ int main(int argc, char ** argv)
     char * line1 = strings;
     char * line2 = newline + 1;
 
-    int size1 = strlen(line1);
-    int size2 = strlen(line2);
+    long size1 = strlen(line1);
+    long size2 = strlen(line2);
 
     clock_t begin = clock();
 
@@ -83,19 +83,19 @@ int main(int argc, char ** argv)
  * @param lcs_prefix: 2d array holding the results of the computation
  *
 */
-void lcs_length(char * X, char * Y, int m, int n, int * lcs_prefix){
+void lcs_length(char * X, char * Y, long m, long n, long * lcs_prefix){
 
-    int cols = n + 1;
+    long cols = n + 1;
     //to index a cell (i, j) of lcs_prefix which is a matrix,
     //use cols * i + j
 
-    for(int i = 1; i <= m; i++)
+    for(long i = 1; i <= m; i++)
         lcs_prefix[cols * i] = 0;
-    for(int j = 0; j <= n; j++)
+    for(long j = 0; j <= n; j++)
         lcs_prefix[j] = 0;
 
-    for(int i = 1; i <= m; i++){
-        for(int j = 1; j <= n; j++){
+    for(long i = 1; i <= m; i++){
+        for(long j = 1; j <= n; j++){
             if(X[i-1] == Y[j-1])
                 lcs_prefix[cols * i + j] = lcs_prefix[cols * (i-1) + (j-1)] + 1;
             else if(lcs_prefix[cols * (i-1) + j] >= lcs_prefix[cols * i + (j-1)])
@@ -115,28 +115,28 @@ void lcs_length(char * X, char * Y, int m, int n, int * lcs_prefix){
  * @return: the LCS of X and Y
  *
 */
-char * lcs_string(char * X, char * Y, int m, int n){
+char * lcs_string(char * X, char * Y, long m, long n){
 
     //avoid this: for large inputs might cause stack overflow
     //int lcs_prefix[m+1][n+1];
 
-    int * lcs_prefix = (int *) malloc((m+1)*(n+1) * sizeof(int));
+    int * lcs_prefix = (int *) malloc((m+1)*(n+1) * sizeof(long));
     if(lcs_prefix == NULL){
         printf("Failed to allocate memory\n");
         exit(EXIT_FAILURE);
     }
     
     
-    int cols = n + 1;
+    long cols = n + 1;
 
     //to index a cell (i, j) of this array which is a matrix,
     //use cols * i + j
 
     lcs_length(X, Y, m, n, lcs_prefix);
-    int lcs_len = lcs_prefix[cols * m + n];
+    long lcs_len = lcs_prefix[cols * m + n];
     char * lcs = malloc(sizeof(char) * (lcs_len+1));
     lcs[lcs_len] = '\0';
-    int i = m, j = n;
+    long i = m, j = n;
     while(i > 0 && j > 0){
         if(X[i-1] == Y[j-1]){
             lcs[--lcs_len] = X[i-1];
