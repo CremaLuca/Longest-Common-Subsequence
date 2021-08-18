@@ -90,9 +90,9 @@ $$
 \begin{array}{|c|c|c|c|c|c|}
 \hline
 \textbf{p0} & \textbf{p0} & \textbf{p0} & \textbf{p0} & \textbf{p0} & \textbf{p0}  \\ \hline
-\textbf{p1} & \textbf{p1} & \textbf{p0} & \textbf{p0} & \textbf{p0} & \textbf{p0}\\ \hline
-\textbf{p2} & \textbf{p1} & \textbf{p1} & \textbf{p1} & \textbf{p1} & \textbf{p1}\\ \hline
-\textbf{p2} & \textbf{p1} & \textbf{p1} & \textbf{p1} & \textbf{p1} & \textbf{p1}\\ \hline
+\textbf{p1} & \textbf{p0} & \textbf{p0} & \textbf{p0} & \textbf{p0} & \textbf{p0}\\ \hline
+\textbf{p1} & \textbf{p1} & \textbf{p1} & \textbf{p1} & \textbf{p0} & \textbf{p1}\\ \hline
+\textbf{p1} & \textbf{p1} & \textbf{p1} & \textbf{p1} & \textbf{p1} & \textbf{p1}\\ \hline
 \end{array}
 $$
 
@@ -270,11 +270,11 @@ def compute_LCS(i: int, j: int, m: str):
 ```
 ### Results and conclusions
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE1Njg1MjcwNTksLTIwMDY1MzU5MDcsND
-YwNjU2Nzk0LDE1OTgxMzE4MzIsLTE5OTI3MDE5NzYsMTk4NDA3
-MDkwOSwtMTEyNzc5ODU1MywxMjQyNjA2Njc3LC0xMDE2Mjk2ND
-kzLDE1NDkxNDQ1NzAsODk0ODE5NTg4LC0xNTM5NzI0MDk1LC01
-NjAwODg4NzIsLTc4Nzg1OTAyLDEyNDU2OTY2NjAsLTg0OTA5OD
-A5LDE5OTE4ODUwMTMsNjkzOTcyODA5LC0xODk5MTU2ODc2LC0y
-Mzk3OTc0OTJdfQ==
+eyJoaXN0b3J5IjpbLTEwODcyMTI2NSwtMjAwNjUzNTkwNyw0Nj
+A2NTY3OTQsMTU5ODEzMTgzMiwtMTk5MjcwMTk3NiwxOTg0MDcw
+OTA5LC0xMTI3Nzk4NTUzLDEyNDI2MDY2NzcsLTEwMTYyOTY0OT
+MsMTU0OTE0NDU3MCw4OTQ4MTk1ODgsLTE1Mzk3MjQwOTUsLTU2
+MDA4ODg3MiwtNzg3ODU5MDIsMTI0NTY5NjY2MCwtODQ5MDk4MD
+ksMTk5MTg4NTAxMyw2OTM5NzI4MDksLTE4OTkxNTY4NzYsLTIz
+OTc5NzQ5Ml19
 -->
