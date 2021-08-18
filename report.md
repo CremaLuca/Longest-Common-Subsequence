@@ -75,6 +75,7 @@ def diag_start_end(d: int, i: int):
 		end = start + floor_size
 	return (start, end)
 ```
+As an example of optimal assignment, we show two possible matrices:
 
 ### Bound on the number of messages
 Let us define $P(i, j)$ as the index of the processor assigned to entry $(i, j)$, according to the previous scheme.
@@ -250,11 +251,11 @@ def compute_LCS(i: int, j: int, m: str):
 ```
 ### Results and conclusions
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTc3NzQ3NDE4NSwxOTg0MDcwOTA5LC0xMT
-I3Nzk4NTUzLDEyNDI2MDY2NzcsLTEwMTYyOTY0OTMsMTU0OTE0
-NDU3MCw4OTQ4MTk1ODgsLTE1Mzk3MjQwOTUsLTU2MDA4ODg3Mi
-wtNzg3ODU5MDIsMTI0NTY5NjY2MCwtODQ5MDk4MDksMTk5MTg4
-NTAxMyw2OTM5NzI4MDksLTE4OTkxNTY4NzYsLTIzOTc5NzQ5Mi
-wxODE3ODc0MTM0LDE2NDUxMzQxNzEsMjAzODk4NzY0NSwtMTMy
-NDI4Mjc3OV19
+eyJoaXN0b3J5IjpbLTE5OTI3MDE5NzYsMTk4NDA3MDkwOSwtMT
+EyNzc5ODU1MywxMjQyNjA2Njc3LC0xMDE2Mjk2NDkzLDE1NDkx
+NDQ1NzAsODk0ODE5NTg4LC0xNTM5NzI0MDk1LC01NjAwODg4Nz
+IsLTc4Nzg1OTAyLDEyNDU2OTY2NjAsLTg0OTA5ODA5LDE5OTE4
+ODUwMTMsNjkzOTcyODA5LC0xODk5MTU2ODc2LC0yMzk3OTc0OT
+IsMTgxNzg3NDEzNCwxNjQ1MTM0MTcxLDIwMzg5ODc2NDUsLTEz
+MjQyODI3NzldfQ==
 -->
