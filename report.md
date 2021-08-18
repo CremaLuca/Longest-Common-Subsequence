@@ -205,68 +205,8 @@ def send(i: int, j: int, p: int):
 
 ### Storing the local portion of matrix M
 
-For big problem sizes we aim to reduce the amount of memory each processor uses. Storing the whole $m\times n$ matrix could be too costly, so each processor should only store the cells it computed and the ones from other processors that it used for its computations.  This turns out  to be useful also for the reconstruction of an LCS, outlined in the next paragraph. An efficient data structure is required.
+For big problem sizes we aim to reduce the amount of memory each processor uses. Storing the whole $m\times n$ matrix could be too costly, so each processor should only store the cells it computed and the ones from other processors that it used for its computations.  This turns out  to be useful also for the reconstruction of an LCS, outlined in the next paragraph. An efficient data structure is required. 
 
-Foreach principal diagonal $d$ we know how many elements belong to each processor using the values from `diag_start_end` $s$ and $e$. So we can store a list of $M+N-1$ variable-sized arrays each of size $S(d) = e-s$ where each element $i$ is the element of the diagonal of index $D(i) = s+i$.
-
-```py
-class LocalStore:
-
-	def __init__(i: int):
-		"""
-		Parameters:
-			i: int
-				Processor index.
-		"""
-		self.partial_matrix = []
-		for d in range(i, N+M-1-i):
-			s, e = diag_start_end(d, i)
-			self.partial_matrix.append({
-				'array': array(length=e-s),
-				'start': s,
-				'end': e
-			})
-
-	def get_diag_index(i: int, d: int, e: int):
-		"""
-		Parameters:
-			i: int
-				Processor index.
-			d: int
-				Diagonal index.
-			e: int
-				Element in the diagonal index.
-		"""
-		array_object_TODO_NOME = self.partial_matrix[d-i]
-		if e < array_object.start or e > array_object.end:
-			return None
-		return array_object.array[e-array_object.start]
-
-	def set_diag_index(d: int, e: int, v:int):
-		"""
-		Parameters:
-			d: int
-				Diagonal index.
-			e: int
-				Element in the diagonal index.
-			v: int
-				Value to store.
-		"""
-		array_object_TODO_NOME = self.partial_matrix[d]
-		if e < array_object.start or e > array_object.end:
-			raise OutOfBoundsError()
-		array_object.array[e-array_object.start] = v
-
-	def get_cell(i: int, j: int):
-		"""
-		Parameters:
-			i, j: int
-				Cell coordinates.
-		"""
-		d = cell_diag(i, j)
-		e = cell_pos(i, j)
-		return get_diag_index(d, e)
-```
 
 ### Reconstruction of an LCS  from the M matrix
 Once the $M$ matrix has been computed by the parallel algorithm, process $P(m-1, n-1) = 0$ knows entry $M[m-1, n-1]$, i.e. the length of an LCS. We show how to compute an LCS of $X_i$ and $Y_j$ starting at entry $(i, j)$: if $x_i = y_j$ then process $p = P(i, j)$ checks whether :
@@ -307,11 +247,11 @@ def compute_LCS(i: int, j: int, m: str):
 ```
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTU0OTE0NDU3MCw4OTQ4MTk1ODgsLTE1Mz
-k3MjQwOTUsLTU2MDA4ODg3MiwtNzg3ODU5MDIsMTI0NTY5NjY2
-MCwtODQ5MDk4MDksMTk5MTg4NTAxMyw2OTM5NzI4MDksLTE4OT
-kxNTY4NzYsLTIzOTc5NzQ5MiwxODE3ODc0MTM0LDE2NDUxMzQx
-NzEsMjAzODk4NzY0NSwtMTMyNDI4Mjc3OSwtMjgxNjY0NTEzLC
-0xODczMDAyOTgwLDU0MTQ2MjIxNCwyMTE1NDY1NDcsLTExMzU4
-ODEzMDVdfQ==
+eyJoaXN0b3J5IjpbMTc2MjM5NTY0MSwxNTQ5MTQ0NTcwLDg5ND
+gxOTU4OCwtMTUzOTcyNDA5NSwtNTYwMDg4ODcyLC03ODc4NTkw
+MiwxMjQ1Njk2NjYwLC04NDkwOTgwOSwxOTkxODg1MDEzLDY5Mz
+k3MjgwOSwtMTg5OTE1Njg3NiwtMjM5Nzk3NDkyLDE4MTc4NzQx
+MzQsMTY0NTEzNDE3MSwyMDM4OTg3NjQ1LC0xMzI0MjgyNzc5LC
+0yODE2NjQ1MTMsLTE4NzMwMDI5ODAsNTQxNDYyMjE0LDIxMTU0
+NjU0N119
 -->
