@@ -270,11 +270,11 @@ def compute_LCS(i: int, j: int, m: str):
 ```
 ### Results and conclusions
 We run our program on the CAPRI cluster, after compiling with two different optimization flags, O1 and O3.
-We performed 3 measurements for eac
+We tested 3 different kind of inputs, small consisting of 
 <img align="left" src="https://i.postimg.cc/sXKXyTsf/graphs.png"></img> 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTQ3NDQxMTA1MSwxNjU5MjM5OTc3LDcyOT
+eyJoaXN0b3J5IjpbLTQ1Njk3NzQ3NSwxNjU5MjM5OTc3LDcyOT
 QwNzkwOSwxOTkzNjE3NjA5LDE0NTIzMDQ3NTAsNzk5MDk2OTkw
 LC04NzAxNDAxNTEsNjc5MjQ3NzI4LC0xOTc0MzI1MTM0LC0yMD
 A2NTM1OTA3LDQ2MDY1Njc5NCwxNTk4MTMxODMyLC0xOTkyNzAx
