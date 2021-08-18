@@ -79,12 +79,14 @@ As an example of optimal assignment, we show two possible matrices:
 
 $$
 \begin{array}{|c|c|c|c|c|c|c|c|}
-\hline
+\begin{array}{|c|c|c|c|c|c|c|c|}
+\end{array}
+\\\hline
 \textbf{p0} & \textbf{p0} & \textbf{p0} & \textbf{p0} & \textbf{p0} & \textbf{p0} & \textbf{p0} & \textbf{p0} \\ \hline
-\textbf{p1} & \textbf{p1} & \textbf{p0} & \textbf{p0} & \textbf{p0} & \textbf{p0} & \textbf{0} & \textbf{0} \\ \hline
-\textbf{p2} & \textbf{p1} & \textbf{p1} & \textbf{p1} & \textbf{p1} & \textbf{p1} & \textbf{0} & \textbf{0} \\ \hline
-\textbf{p2} & \textbf{p1} & \textbf{p1} & \textbf{p1} & \textbf{p1} & \textbf{p1} & \textbf{1} & \textbf{0} \\ \hline
-\textbf{p2} & \textbf{p2} & \textbf{p2} & \textbf{p2} & \textbf{p2} & \textbf{p2} & \textbf{1} & \textbf{0} \\ \hline
+\textbf{p1} & \textbf{p1} & \textbf{p0} & \textbf{p0} & \textbf{p0} & \textbf{p0} & \textbf{p0} & \textbf{p0} \\ \hline
+\textbf{p2} & \textbf{p1} & \textbf{p1} & \textbf{p1} & \textbf{p1} & \textbf{p1} & \textbf{p0} & \textbf{p0} \\ \hline
+\textbf{p2} & \textbf{p1} & \textbf{p1} & \textbf{p1} & \textbf{p1} & \textbf{p1} & \textbf{p1} & \textbf{p0} \\ \hline
+\textbf{p2} & \textbf{p2} & \textbf{p2} & \textbf{p2} & \textbf{p2} & \textbf{p2} & \textbf{p1} & \textbf{p0} \\ \hline
 \end{array}
 $$
 
@@ -262,11 +264,11 @@ def compute_LCS(i: int, j: int, m: str):
 ```
 ### Results and conclusions
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTg3NTkyODMzOCw0NjA2NTY3OTQsMTU5OD
-EzMTgzMiwtMTk5MjcwMTk3NiwxOTg0MDcwOTA5LC0xMTI3Nzk4
-NTUzLDEyNDI2MDY2NzcsLTEwMTYyOTY0OTMsMTU0OTE0NDU3MC
-w4OTQ4MTk1ODgsLTE1Mzk3MjQwOTUsLTU2MDA4ODg3MiwtNzg3
-ODU5MDIsMTI0NTY5NjY2MCwtODQ5MDk4MDksMTk5MTg4NTAxMy
-w2OTM5NzI4MDksLTE4OTkxNTY4NzYsLTIzOTc5NzQ5MiwxODE3
-ODc0MTM0XX0=
+eyJoaXN0b3J5IjpbMjg5MTkzNzYsNDYwNjU2Nzk0LDE1OTgxMz
+E4MzIsLTE5OTI3MDE5NzYsMTk4NDA3MDkwOSwtMTEyNzc5ODU1
+MywxMjQyNjA2Njc3LC0xMDE2Mjk2NDkzLDE1NDkxNDQ1NzAsOD
+k0ODE5NTg4LC0xNTM5NzI0MDk1LC01NjAwODg4NzIsLTc4Nzg1
+OTAyLDEyNDU2OTY2NjAsLTg0OTA5ODA5LDE5OTE4ODUwMTMsNj
+kzOTcyODA5LC0xODk5MTU2ODc2LC0yMzk3OTc0OTIsMTgxNzg3
+NDEzNF19
 -->
