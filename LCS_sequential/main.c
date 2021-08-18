@@ -121,7 +121,12 @@ char * lcs_string(char * X, char * Y, int m, int n){
     //int lcs_prefix[m+1][n+1];
 
     int * lcs_prefix = (int *) malloc((m+1)*(n+1) * sizeof(int));
-
+    if(lcs_prefix == NULL){
+        printf("Failed to allocate memory\n");
+        return 1;
+    }
+    
+    
     int cols = n + 1;
 
     //to index a cell (i, j) of this array which is a matrix,
