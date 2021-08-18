@@ -79,7 +79,7 @@ As an example of optimal assignment, we show two possible matrices:
 
 $$
 \begin{array}{|c|c|c|c|c|c|c|c|}
-\text{s} \\
+\text{d0} \\ 
 \hline
 \textbf{p0} & \textbf{p0} & \textbf{p0} & \textbf{p0} & \textbf{p0} & \textbf{p0} & \textbf{p0} & \textbf{p0} \\ \hline
 \textbf{p1} & \textbf{p1} & \textbf{p0} & \textbf{p0} & \textbf{p0} & \textbf{p0} & \textbf{p0} & \textbf{p0} \\ \hline
@@ -263,11 +263,11 @@ def compute_LCS(i: int, j: int, m: str):
 ```
 ### Results and conclusions
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTg4MTIyMjI4MCw0NjA2NTY3OTQsMTU5OD
-EzMTgzMiwtMTk5MjcwMTk3NiwxOTg0MDcwOTA5LC0xMTI3Nzk4
-NTUzLDEyNDI2MDY2NzcsLTEwMTYyOTY0OTMsMTU0OTE0NDU3MC
-w4OTQ4MTk1ODgsLTE1Mzk3MjQwOTUsLTU2MDA4ODg3MiwtNzg3
-ODU5MDIsMTI0NTY5NjY2MCwtODQ5MDk4MDksMTk5MTg4NTAxMy
-w2OTM5NzI4MDksLTE4OTkxNTY4NzYsLTIzOTc5NzQ5MiwxODE3
-ODc0MTM0XX0=
+eyJoaXN0b3J5IjpbLTIwMDY1MzU5MDcsNDYwNjU2Nzk0LDE1OT
+gxMzE4MzIsLTE5OTI3MDE5NzYsMTk4NDA3MDkwOSwtMTEyNzc5
+ODU1MywxMjQyNjA2Njc3LC0xMDE2Mjk2NDkzLDE1NDkxNDQ1Nz
+AsODk0ODE5NTg4LC0xNTM5NzI0MDk1LC01NjAwODg4NzIsLTc4
+Nzg1OTAyLDEyNDU2OTY2NjAsLTg0OTA5ODA5LDE5OTE4ODUwMT
+MsNjkzOTcyODA5LC0xODk5MTU2ODc2LC0yMzk3OTc0OTIsMTgx
+Nzg3NDEzNF19
 -->
