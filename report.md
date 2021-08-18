@@ -269,16 +269,16 @@ def compute_LCS(i: int, j: int, m: str):
 		MPI_SEND(cell_proc(i, j-1), m)
 ```
 ### Results and conclusions
-We run our program on the CAPRI cluster, after compiling with two different optimization flags, O1 and O3.
-We tested 3 different kind of inputs: small, medium and large consisting respectively of approximately 25, 1K and 2K characters in total for both sequences. For each input, we run 
+We ran our program on the CAPRI cluster, after compiling with two different optimization flags, O1 and O3.
+We tested 3 different kind of inputs: small, medium and large consisting respectively of approximately 25, 1K and 2K characters in total for both sequences. For each input a different number of processors were used: 1, 2, 4, 8 and 16; and for each number of processors, we 
 <img align="left" src="https://i.postimg.cc/sXKXyTsf/graphs.png"></img> 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE1MzYzNjU0NTUsLTEyMDc0NjU5MTgsMT
-Y1OTIzOTk3Nyw3Mjk0MDc5MDksMTk5MzYxNzYwOSwxNDUyMzA0
-NzUwLDc5OTA5Njk5MCwtODcwMTQwMTUxLDY3OTI0NzcyOCwtMT
-k3NDMyNTEzNCwtMjAwNjUzNTkwNyw0NjA2NTY3OTQsMTU5ODEz
-MTgzMiwtMTk5MjcwMTk3NiwxOTg0MDcwOTA5LC0xMTI3Nzk4NT
-UzLDEyNDI2MDY2NzcsLTEwMTYyOTY0OTMsMTU0OTE0NDU3MCw4
-OTQ4MTk1ODhdfQ==
+eyJoaXN0b3J5IjpbLTU2Nzg4NTAyMywtMTIwNzQ2NTkxOCwxNj
+U5MjM5OTc3LDcyOTQwNzkwOSwxOTkzNjE3NjA5LDE0NTIzMDQ3
+NTAsNzk5MDk2OTkwLC04NzAxNDAxNTEsNjc5MjQ3NzI4LC0xOT
+c0MzI1MTM0LC0yMDA2NTM1OTA3LDQ2MDY1Njc5NCwxNTk4MTMx
+ODMyLC0xOTkyNzAxOTc2LDE5ODQwNzA5MDksLTExMjc3OTg1NT
+MsMTI0MjYwNjY3NywtMTAxNjI5NjQ5MywxNTQ5MTQ0NTcwLDg5
+NDgxOTU4OF19
 -->
