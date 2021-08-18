@@ -202,7 +202,7 @@ def send(value: int, i: int, j: int, p: int):
 		if (i + 1 < N): # Avoid out of bounds
 			p_below = cell_proc(i+1, j)
 			if p_below != p:
-				MPI_SEND(p_below)
+				MPI_SEND(value, p_below)
 ```
 
 ### Storing the local portion of matrix M
@@ -248,7 +248,7 @@ def compute_LCS(i: int, j: int, m: str):
 ```
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTU0NzQzNzk3MCwtMTEyNzc5ODU1MywxMj
+eyJoaXN0b3J5IjpbMTk4NDA3MDkwOSwtMTEyNzc5ODU1MywxMj
 QyNjA2Njc3LC0xMDE2Mjk2NDkzLDE1NDkxNDQ1NzAsODk0ODE5
 NTg4LC0xNTM5NzI0MDk1LC01NjAwODg4NzIsLTc4Nzg1OTAyLD
 EyNDU2OTY2NjAsLTg0OTA5ODA5LDE5OTE4ODUwMTMsNjkzOTcy
