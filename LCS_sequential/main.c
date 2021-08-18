@@ -123,7 +123,7 @@ char * lcs_string(char * X, char * Y, int m, int n){
     int * lcs_prefix = (int *) malloc((m+1)*(n+1) * sizeof(int));
     if(lcs_prefix == NULL){
         printf("Failed to allocate memory\n");
-        return 1;
+        exit(EXIT_FAILURE);
     }
     
     
