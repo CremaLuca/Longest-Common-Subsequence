@@ -213,7 +213,7 @@ Once the $M$ matrix has been computed by the parallel algorithm, process $P(m-1,
  2. $M[i, j] = M[i, j-1]$
  3. $M[i, j] = M[i-1, j]$
 
-If $1.$ is true, then $p$ sends $x_{i+1}$ to $p' = P(i-1, j-1)$. If $2.$ or $3.$ is true, then $p$ sends $e$ to $p' = P(i, j-1)$ or $p' = P(i-1, j)$ respectively, where $e$ is the null string. The same procedure applies $p'$, which will prepend its message to the one it just received from $p$. Once a processor assigned to a cell $(0, j$) or $(i, 0)$ is reached, the resulting message is the required LCS, which can then be sent in case to the starting process, i.e. $0$. Here the number of messages exchanged is at most $m+n$, i.e. the maximum length of an LCS. Here's the pseudocode, with a little abuse of notation as before:
+If $1.$ is true, then $p$ sends $x_{i+1}$ to $p' = P(i-1, j-1)$. If $2.$ or $3.$ is true, then $p$ sends $e$ to $p' = P(i, j-1)$ or $p' = P(i-1, j)$ respectively, where $e$ is the null string. The same procedure applies $p'$, which will prepend its message to the one it just received from $p$. Once a processor assigned to a cell $(0, j$) or $(i, 0)$ is reached, the resulting message is the required LCS, which can then be sent in case to the starting process, i.e. $0$. Here the number of messages exchanged is at most $m+n$. Here's the pseudocode, with a little abuse of notation as before:
 
 ```py
 def compute_LCS(i: int, j: int, m: str):
@@ -246,11 +246,11 @@ def compute_LCS(i: int, j: int, m: str):
 ```
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTg5OTI5ODUxNiwxMjQyNjA2Njc3LC0xMD
-E2Mjk2NDkzLDE1NDkxNDQ1NzAsODk0ODE5NTg4LC0xNTM5NzI0
-MDk1LC01NjAwODg4NzIsLTc4Nzg1OTAyLDEyNDU2OTY2NjAsLT
-g0OTA5ODA5LDE5OTE4ODUwMTMsNjkzOTcyODA5LC0xODk5MTU2
-ODc2LC0yMzk3OTc0OTIsMTgxNzg3NDEzNCwxNjQ1MTM0MTcxLD
-IwMzg5ODc2NDUsLTEzMjQyODI3NzksLTI4MTY2NDUxMywtMTg3
-MzAwMjk4MF19
+eyJoaXN0b3J5IjpbLTExMjc3OTg1NTMsMTI0MjYwNjY3NywtMT
+AxNjI5NjQ5MywxNTQ5MTQ0NTcwLDg5NDgxOTU4OCwtMTUzOTcy
+NDA5NSwtNTYwMDg4ODcyLC03ODc4NTkwMiwxMjQ1Njk2NjYwLC
+04NDkwOTgwOSwxOTkxODg1MDEzLDY5Mzk3MjgwOSwtMTg5OTE1
+Njg3NiwtMjM5Nzk3NDkyLDE4MTc4NzQxMzQsMTY0NTEzNDE3MS
+wyMDM4OTg3NjQ1LC0xMzI0MjgyNzc5LC0yODE2NjQ1MTMsLTE4
+NzMwMDI5ODBdfQ==
 -->
