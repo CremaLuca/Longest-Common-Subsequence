@@ -240,7 +240,7 @@ def compute_LCS(i: int, j: int, m: str):
 		return
 			
 	if x[i] == y[j]:
-		#the receving process will call this function upon receiving this message
+		#the receving process has to call this function upon receiving this message
 		MPI_SEND(cell_proc(i-1, j-1), x_i + m)
 	elif M[i, j] == M[i-1,j]:
 		MPI_SEND(cell_proc(i-1, j), m)
@@ -249,11 +249,11 @@ def compute_LCS(i: int, j: int, m: str):
 ```
 ### Results and conclusions
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNDY2MTA1MzM5LDE5ODQwNzA5MDksLTExMj
-c3OTg1NTMsMTI0MjYwNjY3NywtMTAxNjI5NjQ5MywxNTQ5MTQ0
-NTcwLDg5NDgxOTU4OCwtMTUzOTcyNDA5NSwtNTYwMDg4ODcyLC
-03ODc4NTkwMiwxMjQ1Njk2NjYwLC04NDkwOTgwOSwxOTkxODg1
-MDEzLDY5Mzk3MjgwOSwtMTg5OTE1Njg3NiwtMjM5Nzk3NDkyLD
-E4MTc4NzQxMzQsMTY0NTEzNDE3MSwyMDM4OTg3NjQ1LC0xMzI0
-MjgyNzc5XX0=
+eyJoaXN0b3J5IjpbLTE1MTI3MTg4NzAsMTk4NDA3MDkwOSwtMT
+EyNzc5ODU1MywxMjQyNjA2Njc3LC0xMDE2Mjk2NDkzLDE1NDkx
+NDQ1NzAsODk0ODE5NTg4LC0xNTM5NzI0MDk1LC01NjAwODg4Nz
+IsLTc4Nzg1OTAyLDEyNDU2OTY2NjAsLTg0OTA5ODA5LDE5OTE4
+ODUwMTMsNjkzOTcyODA5LC0xODk5MTU2ODc2LC0yMzk3OTc0OT
+IsMTgxNzg3NDEzNCwxNjQ1MTM0MTcxLDIwMzg5ODc2NDUsLTEz
+MjQyODI3NzldfQ==
 -->
