@@ -270,15 +270,15 @@ def compute_LCS(i: int, j: int, m: str):
 ```
 ### Results and conclusions
 We run our program on the CAPRI cluster, after compiling with two different optimization flags, O1 and O3.
-We tested 3 different kind of inputs, small consisting of 
+We tested 3 different kind of inputs: small, medium and large consisting respectively of approximately 25, 1K and 2K characters in total for both sequences.
 <img align="left" src="https://i.postimg.cc/sXKXyTsf/graphs.png"></img> 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTQ1Njk3NzQ3NSwxNjU5MjM5OTc3LDcyOT
-QwNzkwOSwxOTkzNjE3NjA5LDE0NTIzMDQ3NTAsNzk5MDk2OTkw
-LC04NzAxNDAxNTEsNjc5MjQ3NzI4LC0xOTc0MzI1MTM0LC0yMD
-A2NTM1OTA3LDQ2MDY1Njc5NCwxNTk4MTMxODMyLC0xOTkyNzAx
-OTc2LDE5ODQwNzA5MDksLTExMjc3OTg1NTMsMTI0MjYwNjY3Ny
-wtMTAxNjI5NjQ5MywxNTQ5MTQ0NTcwLDg5NDgxOTU4OCwtMTUz
-OTcyNDA5NV19
+eyJoaXN0b3J5IjpbLTEyMDc0NjU5MTgsMTY1OTIzOTk3Nyw3Mj
+k0MDc5MDksMTk5MzYxNzYwOSwxNDUyMzA0NzUwLDc5OTA5Njk5
+MCwtODcwMTQwMTUxLDY3OTI0NzcyOCwtMTk3NDMyNTEzNCwtMj
+AwNjUzNTkwNyw0NjA2NTY3OTQsMTU5ODEzMTgzMiwtMTk5Mjcw
+MTk3NiwxOTg0MDcwOTA5LC0xMTI3Nzk4NTUzLDEyNDI2MDY2Nz
+csLTEwMTYyOTY0OTMsMTU0OTE0NDU3MCw4OTQ4MTk1ODgsLTE1
+Mzk3MjQwOTVdfQ==
 -->
