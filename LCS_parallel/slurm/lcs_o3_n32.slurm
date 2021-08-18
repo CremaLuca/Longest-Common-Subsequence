@@ -5,8 +5,8 @@
 #SBATCH --output lcs_out_o3_n32_%j.log
 #SBATCH --partition allgroups
 #SBATCH --ntasks 32
-#SBATCH --mem 2G
-#SBATCH --time 10:00
+#SBATCH --mem 4G
+#SBATCH --time 25:00
 
 spack load intel-parallel-studio@professional.2019.4
 

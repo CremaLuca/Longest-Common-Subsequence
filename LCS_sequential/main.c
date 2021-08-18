@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <time.h>
 
 
 void lcs_length(char * X, char * Y, int m, int n, int len[m+1][n+1]);
@@ -42,6 +43,8 @@ int main(int argc, char ** argv)
     int size1 = strlen(line1);
     int size2 = strlen(line2);
 
+    clock_t begin = clock();
+
     char * lcs;
 
     if(size1 <= size2){
@@ -51,8 +54,10 @@ int main(int argc, char ** argv)
         lcs = lcs_string(line2, line1, size2, size1);
     }
 
+    clock_t end = clock();
 
     printf("Sequential output: %s\n", lcs);
+    printf("Took %f us\n", (double)((end-begin)*1000000/CLOCKS_PER_SEC));
 
 
     //save to the specified file

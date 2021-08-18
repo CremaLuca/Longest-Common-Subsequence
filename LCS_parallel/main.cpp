@@ -244,8 +244,8 @@ int main(int argc, char ** argv)
                         oufile << lcs << endl << int_us << " [µs]" << endl;
                         oufile.close();
                     }
-                    printf("Parallel output by p%d: %s\n", rank, lcs.c_str());
-                    printf("Took %ld us\n\n", int_us);
+                    //printf("Parallel output by p%d: %s\n", rank, lcs.c_str());
+                    printf("%s took %ld us\n\n", path, int_us);
                     goto done;
                 }
 
