@@ -77,9 +77,8 @@ def diag_start_end(d: int, i: int):
 ```
 As an example of optimal assignment, we show two possible matrices:
 
-$$
+$
 \begin{array}{|c|c|c|c|c|c|c|c|}
-\text{d0} \\ 
 \hline
 \textbf{p0} & \textbf{p0} & \textbf{p0} & \textbf{p0} & \textbf{p0} & \textbf{p0} & \textbf{p0} & \textbf{p0} \\ \hline
 \textbf{p1} & \textbf{p1} & \textbf{p0} & \textbf{p0} & \textbf{p0} & \textbf{p0} & \textbf{p0} & \textbf{p0} \\ \hline
@@ -87,7 +86,16 @@ $$
 \textbf{p2} & \textbf{p1} & \textbf{p1} & \textbf{p1} & \textbf{p1} & \textbf{p1} & \textbf{p1} & \textbf{p0} \\ \hline
 \textbf{p2} & \textbf{p2} & \textbf{p2} & \textbf{p2} & \textbf{p2} & \textbf{p2} & \textbf{p1} & \textbf{p0} \\ \hline
 \end{array}
-$$
+
+\begin{array}{|c|c|c|c|c|c|c|c|}
+\hline
+\textbf{p0} & \textbf{p0} & \textbf{p0} & \textbf{p0} & \textbf{p0} & \textbf{p0} & \textbf{p0} & \textbf{p0} \\ \hline
+\textbf{p1} & \textbf{p1} & \textbf{p0} & \textbf{p0} & \textbf{p0} & \textbf{p0} & \textbf{p0} & \textbf{p0} \\ \hline
+\textbf{p2} & \textbf{p1} & \textbf{p1} & \textbf{p1} & \textbf{p1} & \textbf{p1} & \textbf{p0} & \textbf{p0} \\ \hline
+\textbf{p2} & \textbf{p1} & \textbf{p1} & \textbf{p1} & \textbf{p1} & \textbf{p1} & \textbf{p1} & \textbf{p0} \\ \hline
+\textbf{p2} & \textbf{p2} & \textbf{p2} & \textbf{p2} & \textbf{p2} & \textbf{p2} & \textbf{p1} & \textbf{p0} \\ \hline
+\end{array}
+$
 
 ### Bound on the number of messages
 Let us define $P(i, j)$ as the index of the processor assigned to entry $(i, j)$, according to the previous scheme.
@@ -263,11 +271,11 @@ def compute_LCS(i: int, j: int, m: str):
 ```
 ### Results and conclusions
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIwMDY1MzU5MDcsNDYwNjU2Nzk0LDE1OT
-gxMzE4MzIsLTE5OTI3MDE5NzYsMTk4NDA3MDkwOSwtMTEyNzc5
-ODU1MywxMjQyNjA2Njc3LC0xMDE2Mjk2NDkzLDE1NDkxNDQ1Nz
-AsODk0ODE5NTg4LC0xNTM5NzI0MDk1LC01NjAwODg4NzIsLTc4
-Nzg1OTAyLDEyNDU2OTY2NjAsLTg0OTA5ODA5LDE5OTE4ODUwMT
-MsNjkzOTcyODA5LC0xODk5MTU2ODc2LC0yMzk3OTc0OTIsMTgx
-Nzg3NDEzNF19
+eyJoaXN0b3J5IjpbLTExNzA2NzM1MzYsLTIwMDY1MzU5MDcsND
+YwNjU2Nzk0LDE1OTgxMzE4MzIsLTE5OTI3MDE5NzYsMTk4NDA3
+MDkwOSwtMTEyNzc5ODU1MywxMjQyNjA2Njc3LC0xMDE2Mjk2ND
+kzLDE1NDkxNDQ1NzAsODk0ODE5NTg4LC0xNTM5NzI0MDk1LC01
+NjAwODg4NzIsLTc4Nzg1OTAyLDEyNDU2OTY2NjAsLTg0OTA5OD
+A5LDE5OTE4ODUwMTMsNjkzOTcyODA5LC0xODk5MTU2ODc2LC0y
+Mzk3OTc0OTJdfQ==
 -->
