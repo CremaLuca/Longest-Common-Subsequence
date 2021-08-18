@@ -195,7 +195,7 @@ def send(value: int, i: int, j: int, p: int):
 		# Can either be process p or p-1
 		p_right = cell_proc(i, j+1)
 		if p_right != p:
-			MPI_SEND(p_right)
+			MPI_SEND(value, p_right)
 			return # No need to send it below too
 	# Send the value below if needed
 	if p != P-1: # process p-1 never sends below
@@ -248,11 +248,11 @@ def compute_LCS(i: int, j: int, m: str):
 ```
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE1NDUwNDI5NjksLTExMjc3OTg1NTMsMT
-I0MjYwNjY3NywtMTAxNjI5NjQ5MywxNTQ5MTQ0NTcwLDg5NDgx
-OTU4OCwtMTUzOTcyNDA5NSwtNTYwMDg4ODcyLC03ODc4NTkwMi
-wxMjQ1Njk2NjYwLC04NDkwOTgwOSwxOTkxODg1MDEzLDY5Mzk3
-MjgwOSwtMTg5OTE1Njg3NiwtMjM5Nzk3NDkyLDE4MTc4NzQxMz
-QsMTY0NTEzNDE3MSwyMDM4OTg3NjQ1LC0xMzI0MjgyNzc5LC0y
-ODE2NjQ1MTNdfQ==
+eyJoaXN0b3J5IjpbLTU0NzQzNzk3MCwtMTEyNzc5ODU1MywxMj
+QyNjA2Njc3LC0xMDE2Mjk2NDkzLDE1NDkxNDQ1NzAsODk0ODE5
+NTg4LC0xNTM5NzI0MDk1LC01NjAwODg4NzIsLTc4Nzg1OTAyLD
+EyNDU2OTY2NjAsLTg0OTA5ODA5LDE5OTE4ODUwMTMsNjkzOTcy
+ODA5LC0xODk5MTU2ODc2LC0yMzk3OTc0OTIsMTgxNzg3NDEzNC
+wxNjQ1MTM0MTcxLDIwMzg5ODc2NDUsLTEzMjQyODI3NzksLTI4
+MTY2NDUxM119
 -->
