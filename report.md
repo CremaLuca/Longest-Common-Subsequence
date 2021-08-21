@@ -284,10 +284,10 @@ In almost every test we performed at least $3$ measures of the total time (proce
 <img align="center" src="https://i.postimg.cc/VLD0G6Fd/large.png"></img>
  
 <img align="left" src="https://i.postimg.cc/Y0ykFJ1q/small-medium.png"></img> 
-What really strikes
+What really striked us is the huge difference of the total time between the sequential version and the parallel version.
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTkyMDAzNzQxMSwtMTUxNzgwNzExMyw1NT
+eyJoaXN0b3J5IjpbMTkyMDU2NjIzMywtMTUxNzgwNzExMyw1NT
 YwNTI0NzEsLTE0MTYyODgyMTQsLTE4NDEyNzczODEsMTcyNTg4
 NzA4OSwtMjA1Mzk3NDkzNSwtMjA3MzExNjQ5NywtMzU4ODU0Nj
 YzLDMwNDU1ODcyMiwtMTIwNzQ2NTkxOCwxNjU5MjM5OTc3LDcy
