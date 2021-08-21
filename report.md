@@ -284,14 +284,14 @@ In almost every test we performed at least $3$ measures of the total time (proce
 <img align="center" src="https://i.postimg.cc/VLD0G6Fd/large.png"></img>
  
 <img align="left" src="https://i.postimg.cc/Y0ykFJ1q/small-medium.png"></img> 
-What really striked us is the huge difference of the total time between the sequential version and the parallel version: probably our input files were too tiny to justify going parallel; we have to mention however that quite a good amount of time is spent on searching the hash table: a few simulations on the large files using $4$processors showed that about $15%$ of computation time
+What really striked us is the huge difference of the total time between the sequential version and the parallel version: probably our input files were too tiny to justify going parallel; we have to mention however that quite a good amount of time is spent on searching the hash table: a few simulations on the large files using $4$ processors showed that about $33$% of computation time is spent on looking up values; originally we used the $STL$
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTQxNjc2NDUsMTkyMDU2NjIzMywtMTUxNz
-gwNzExMyw1NTYwNTI0NzEsLTE0MTYyODgyMTQsLTE4NDEyNzcz
-ODEsMTcyNTg4NzA4OSwtMjA1Mzk3NDkzNSwtMjA3MzExNjQ5Ny
-wtMzU4ODU0NjYzLDMwNDU1ODcyMiwtMTIwNzQ2NTkxOCwxNjU5
-MjM5OTc3LDcyOTQwNzkwOSwxOTkzNjE3NjA5LDE0NTIzMDQ3NT
-AsNzk5MDk2OTkwLC04NzAxNDAxNTEsNjc5MjQ3NzI4LC0xOTc0
-MzI1MTM0XX0=
+eyJoaXN0b3J5IjpbMTAzNDg4NjYyNCwxOTIwNTY2MjMzLC0xNT
+E3ODA3MTEzLDU1NjA1MjQ3MSwtMTQxNjI4ODIxNCwtMTg0MTI3
+NzM4MSwxNzI1ODg3MDg5LC0yMDUzOTc0OTM1LC0yMDczMTE2ND
+k3LC0zNTg4NTQ2NjMsMzA0NTU4NzIyLC0xMjA3NDY1OTE4LDE2
+NTkyMzk5NzcsNzI5NDA3OTA5LDE5OTM2MTc2MDksMTQ1MjMwND
+c1MCw3OTkwOTY5OTAsLTg3MDE0MDE1MSw2NzkyNDc3MjgsLTE5
+NzQzMjUxMzRdfQ==
 -->
