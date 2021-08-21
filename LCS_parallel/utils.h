@@ -22,7 +22,7 @@ struct hash_pair {
     {
         auto hash1 = std::hash<T1>{}(p.first);
         auto hash2 = std::hash<T2>{}(p.second);
-        return hash1 ^ hash2;
+        return size_t(hash1) << 32 | hash2;
     }
 };
 
