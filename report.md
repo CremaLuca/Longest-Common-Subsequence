@@ -271,18 +271,18 @@ def compute_LCS(i: int, j: int, m: str):
 ### Results and conclusions
 We ran our parallel program on the CAPRI cluster, after compiling with two different optimization flags, O1 and O3.
 We tested $5$ different kind of inputs: small, medium, large, large_2, large_3.
-In almost every test we performed at least $3$ measures of the total time (processing time + communication time), so the graphs below actually show the average of these measures. As we expect, the time decreases as the number of processors increase, at least for the large inputs: for example with input_large2, time decreases by almost a factor of $100$ going from $1$ to $16$ processors. The things are a bit different for small and medium input sizes, where using at least $8$ processors 
+In almost every test we performed at least $3$ measures of the total time (processing time + communication time), so the graphs below actually show the average of these measures. As we expect, the time decreases as the number of processors increase, at least for the large inputs: for example with input_large2, time decreases by almost a factor of $100$ going from $1$ to $16$ processors. The things are a bit different for small and medium input sizes, where using at least $8$ processors degraded the performance in a surprising way. This is probably due to 
 
 <img align="center" src="https://i.postimg.cc/VLD0G6Fd/large.png"></img>
  
 <img align="left" src="https://i.postimg.cc/Y0ykFJ1q/small-medium.png"></img> 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTIyMzc3Njk3MCwtMTg0MTI3NzM4MSwxNz
-I1ODg3MDg5LC0yMDUzOTc0OTM1LC0yMDczMTE2NDk3LC0zNTg4
-NTQ2NjMsMzA0NTU4NzIyLC0xMjA3NDY1OTE4LDE2NTkyMzk5Nz
-csNzI5NDA3OTA5LDE5OTM2MTc2MDksMTQ1MjMwNDc1MCw3OTkw
-OTY5OTAsLTg3MDE0MDE1MSw2NzkyNDc3MjgsLTE5NzQzMjUxMz
-QsLTIwMDY1MzU5MDcsNDYwNjU2Nzk0LDE1OTgxMzE4MzIsLTE5
-OTI3MDE5NzZdfQ==
+eyJoaXN0b3J5IjpbLTEzNjUxMTYxMTgsLTE4NDEyNzczODEsMT
+cyNTg4NzA4OSwtMjA1Mzk3NDkzNSwtMjA3MzExNjQ5NywtMzU4
+ODU0NjYzLDMwNDU1ODcyMiwtMTIwNzQ2NTkxOCwxNjU5MjM5OT
+c3LDcyOTQwNzkwOSwxOTkzNjE3NjA5LDE0NTIzMDQ3NTAsNzk5
+MDk2OTkwLC04NzAxNDAxNTEsNjc5MjQ3NzI4LC0xOTc0MzI1MT
+M0LC0yMDA2NTM1OTA3LDQ2MDY1Njc5NCwxNTk4MTMxODMyLC0x
+OTkyNzAxOTc2XX0=
 -->
