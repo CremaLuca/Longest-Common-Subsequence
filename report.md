@@ -284,10 +284,9 @@ In almost every test we performed at least $3$ measures of the total time (proce
 <img align="center" src="https://i.postimg.cc/VLD0G6Fd/large.png"></img>
  
 <img align="left" src="https://i.postimg.cc/Y0ykFJ1q/small-medium.png"></img> 
-What really striked us is the huge difference of the total time between the sequential version and the parallel version: probably our input files were too tiny to justify going parallel; we have to mention however that quite a good amount of time is spent on searching the hash table: a few simulations on the large files using $4$ processors showed that about $33$% of computation time is spent on looking up values; originally we used the STL implementation of the hash map, which yielded a fourfold total time, which led us to use a faster implementation (robin hood unordered map). We are aware that the hash table could be replaced with a faster data structure, which basically gives the value of a cell cwhich however we decided to not 
-
+What really striked us is the huge difference of the total time between the sequential version and the parallel version: probably our input files were too tiny to justify going parallel; we have to mention however that quite a good amount of time is spent on searching the hash table: a few simulations on the large files using $4$ processors showed that about $33$% of computation time is spent on looking up values; originally we used the STL implementation of the hash map, which yielded a fourfold total time, which led us to use a faster implementation (robin hood unordered map). We are aware that the hash table could be replaced with a faster data structure, which basically gives the value of an LCS matrix cell by indexing a suitable array. However the detailed implementation required a careful study of specific cases, so we decided to use 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTU2NzAwOTc1MSwxOTIwNTY2MjMzLC0xNT
+eyJoaXN0b3J5IjpbMTg5OTIxNjE5OCwxOTIwNTY2MjMzLC0xNT
 E3ODA3MTEzLDU1NjA1MjQ3MSwtMTQxNjI4ODIxNCwtMTg0MTI3
 NzM4MSwxNzI1ODg3MDg5LC0yMDUzOTc0OTM1LC0yMDczMTE2ND
 k3LC0zNTg4NTQ2NjMsMzA0NTU4NzIyLC0xMjA3NDY1OTE4LDE2
