@@ -271,18 +271,18 @@ def compute_LCS(i: int, j: int, m: str):
 ### Results and conclusions
 We ran our parallel program on the CAPRI cluster, after compiling with two different optimization flags, O1 and O3.
 We tested 5 different kind of inputs: small, medium, large, large_2, large_3.
-In almost every test we performed at least 3 measures of the 
+In almost every test we performed at least 3 measures of the total time (processing time + communication time), so the graphs below actually show the average of these measures. The scale of 
 
 <img align="center" src="https://i.postimg.cc/VLD0G6Fd/large.png"></img>
  
 <img align="left" src="https://i.postimg.cc/Y0ykFJ1q/small-medium.png"></img> 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbOTY0NjY4MjMsLTE4NDEyNzczODEsMTcyNT
-g4NzA4OSwtMjA1Mzk3NDkzNSwtMjA3MzExNjQ5NywtMzU4ODU0
-NjYzLDMwNDU1ODcyMiwtMTIwNzQ2NTkxOCwxNjU5MjM5OTc3LD
-cyOTQwNzkwOSwxOTkzNjE3NjA5LDE0NTIzMDQ3NTAsNzk5MDk2
-OTkwLC04NzAxNDAxNTEsNjc5MjQ3NzI4LC0xOTc0MzI1MTM0LC
-0yMDA2NTM1OTA3LDQ2MDY1Njc5NCwxNTk4MTMxODMyLC0xOTky
-NzAxOTc2XX0=
+eyJoaXN0b3J5IjpbLTEwMzUzMjE1OTEsLTE4NDEyNzczODEsMT
+cyNTg4NzA4OSwtMjA1Mzk3NDkzNSwtMjA3MzExNjQ5NywtMzU4
+ODU0NjYzLDMwNDU1ODcyMiwtMTIwNzQ2NTkxOCwxNjU5MjM5OT
+c3LDcyOTQwNzkwOSwxOTkzNjE3NjA5LDE0NTIzMDQ3NTAsNzk5
+MDk2OTkwLC04NzAxNDAxNTEsNjc5MjQ3NzI4LC0xOTc0MzI1MT
+M0LC0yMDA2NTM1OTA3LDQ2MDY1Njc5NCwxNTk4MTMxODMyLC0x
+OTkyNzAxOTc2XX0=
 -->
