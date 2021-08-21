@@ -270,15 +270,17 @@ def compute_LCS(i: int, j: int, m: str):
 ```
 ### Results and conclusions
 We ran our parallel program on the CAPRI cluster, after compiling with two different optimization flags, O1 and O3.
-We tested 5 different kind of inputs: small, medium, large, large_2, large_3. For each input a different number of processors were used: 1, 2, 4, 8 and 16; and for each number of processors, we performed 3 tests, so what is actually shown in the graphs is the average of these 3 measures.
-<img align="left" src="https://i.postimg.cc/sXKXyTsf/graphs.png"></img> 
+We tested 5 different kind of inputs: small, medium, large, large_2, large_3. 
+
+<img align="left" src=""></img> 
+<img align="left" src=""></img> 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIwNzMxMTY0OTcsLTM1ODg1NDY2MywzMD
-Q1NTg3MjIsLTEyMDc0NjU5MTgsMTY1OTIzOTk3Nyw3Mjk0MDc5
-MDksMTk5MzYxNzYwOSwxNDUyMzA0NzUwLDc5OTA5Njk5MCwtOD
-cwMTQwMTUxLDY3OTI0NzcyOCwtMTk3NDMyNTEzNCwtMjAwNjUz
-NTkwNyw0NjA2NTY3OTQsMTU5ODEzMTgzMiwtMTk5MjcwMTk3Ni
-wxOTg0MDcwOTA5LC0xMTI3Nzk4NTUzLDEyNDI2MDY2NzcsLTEw
-MTYyOTY0OTNdfQ==
+eyJoaXN0b3J5IjpbLTIwNTM5NzQ5MzUsLTIwNzMxMTY0OTcsLT
+M1ODg1NDY2MywzMDQ1NTg3MjIsLTEyMDc0NjU5MTgsMTY1OTIz
+OTk3Nyw3Mjk0MDc5MDksMTk5MzYxNzYwOSwxNDUyMzA0NzUwLD
+c5OTA5Njk5MCwtODcwMTQwMTUxLDY3OTI0NzcyOCwtMTk3NDMy
+NTEzNCwtMjAwNjUzNTkwNyw0NjA2NTY3OTQsMTU5ODEzMTgzMi
+wtMTk5MjcwMTk3NiwxOTg0MDcwOTA5LC0xMTI3Nzk4NTUzLDEy
+NDI2MDY2NzddfQ==
 -->
