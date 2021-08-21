@@ -285,13 +285,13 @@ In almost every test we performed at least $3$ measures of the total time (proce
  
 <img align="left" src="https://i.postimg.cc/Y0ykFJ1q/small-medium.png"></img>
 What really striked us is the huge difference of the total time between the sequential version and the parallel version: probably our input files were too tiny to justify going parallel; we have to mention however that quite a good amount of time is spent on searching the hash table: a few simulations on the large files using $4$ processors showed that about $33$% of computation time is spent on looking up values; originally we used the STL implementation of the hash map, which yielded a fourfold total time, which led us to use a faster implementation (robin hood unordered map). We are aware that the hash table could be replaced with a faster data structure: [DESCRIBE HERE]. However the detailed implementation required a careful study of specific cases, so we ended up with an existing data structure, in order to not slow down the flow of the project.
-We mention also that the sequential algorithm looks a bit more cache friendly, since the whole LCS matrix is actually a linear array, whereas the parallel algorithm fails to take advantage of this.
+We mention also that the sequential algorithm is a lot more cache friendly, since the whole LCS matrix is actually a linear array, whereas the parallel algorithm fails to take advantage of this. We were not able to test the large_3 input on the cluster using 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMzkwMTE1NTc2LDE5MjA1NjYyMzMsLTE1MT
-c4MDcxMTMsNTU2MDUyNDcxLC0xNDE2Mjg4MjE0LC0xODQxMjc3
-MzgxLDE3MjU4ODcwODksLTIwNTM5NzQ5MzUsLTIwNzMxMTY0OT
-csLTM1ODg1NDY2MywzMDQ1NTg3MjIsLTEyMDc0NjU5MTgsMTY1
-OTIzOTk3Nyw3Mjk0MDc5MDksMTk5MzYxNzYwOSwxNDUyMzA0Nz
-UwLDc5OTA5Njk5MCwtODcwMTQwMTUxLDY3OTI0NzcyOCwtMTk3
-NDMyNTEzNF19
+eyJoaXN0b3J5IjpbLTUyMzk5ODQ2MSwxOTIwNTY2MjMzLC0xNT
+E3ODA3MTEzLDU1NjA1MjQ3MSwtMTQxNjI4ODIxNCwtMTg0MTI3
+NzM4MSwxNzI1ODg3MDg5LC0yMDUzOTc0OTM1LC0yMDczMTE2ND
+k3LC0zNTg4NTQ2NjMsMzA0NTU4NzIyLC0xMjA3NDY1OTE4LDE2
+NTkyMzk5NzcsNzI5NDA3OTA5LDE5OTM2MTc2MDksMTQ1MjMwND
+c1MCw3OTkwOTY5OTAsLTg3MDE0MDE1MSw2NzkyNDc3MjgsLTE5
+NzQzMjUxMzRdfQ==
 -->
