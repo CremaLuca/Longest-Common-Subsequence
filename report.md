@@ -278,7 +278,7 @@ We tested $5$ different kind of input files: small, medium, large, large_2, larg
 |large|1.96KB|1000 char|
 |large_2|19.5KB|10.000 char|
 |large_3|97.7KB|50.000 char|
-This table does not show all tests, but a few with 
+This table does not show all tests, but only a few. For the complete numerical details, we refer the reader to the 
 In almost every test we performed at least $3$ measures of the total time (processing time + communication time), so the graphs below actually show the average of these measures. As we expect, the time decreases as the number of processors increase, at least for the large inputs: for example with input_large2, time decreases by almost a factor of $100$ going from $1$ to $16$ processors. The things are a bit different for small and medium input sizes, where using at least $8$ processors degraded the performance in a surprising way. This is probably due to more communications between processors which have a relatively high impact on the performace. 
 
 <img align="center" src="https://i.postimg.cc/VLD0G6Fd/large.png"></img>
@@ -286,7 +286,7 @@ In almost every test we performed at least $3$ measures of the total time (proce
 <img align="left" src="https://i.postimg.cc/Y0ykFJ1q/small-medium.png"></img> 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTE2NzgyMzk0NCw1NTYwNTI0NzEsLTE0MT
+eyJoaXN0b3J5IjpbMTI2MTAzNDM0Myw1NTYwNTI0NzEsLTE0MT
 YyODgyMTQsLTE4NDEyNzczODEsMTcyNTg4NzA4OSwtMjA1Mzk3
 NDkzNSwtMjA3MzExNjQ5NywtMzU4ODU0NjYzLDMwNDU1ODcyMi
 wtMTIwNzQ2NTkxOCwxNjU5MjM5OTc3LDcyOTQwNzkwOSwxOTkz
