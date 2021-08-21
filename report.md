@@ -284,13 +284,14 @@ In almost every test we performed at least $3$ measures of the total time (proce
 <img align="center" src="https://i.postimg.cc/VLD0G6Fd/large.png"></img>
  
 <img align="left" src="https://i.postimg.cc/Y0ykFJ1q/small-medium.png"></img> 
+What really strikes
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE1MTc4MDcxMTMsNTU2MDUyNDcxLC0xND
-E2Mjg4MjE0LC0xODQxMjc3MzgxLDE3MjU4ODcwODksLTIwNTM5
-NzQ5MzUsLTIwNzMxMTY0OTcsLTM1ODg1NDY2MywzMDQ1NTg3Mj
-IsLTEyMDc0NjU5MTgsMTY1OTIzOTk3Nyw3Mjk0MDc5MDksMTk5
-MzYxNzYwOSwxNDUyMzA0NzUwLDc5OTA5Njk5MCwtODcwMTQwMT
-UxLDY3OTI0NzcyOCwtMTk3NDMyNTEzNCwtMjAwNjUzNTkwNyw0
-NjA2NTY3OTRdfQ==
+eyJoaXN0b3J5IjpbMTkyMDAzNzQxMSwtMTUxNzgwNzExMyw1NT
+YwNTI0NzEsLTE0MTYyODgyMTQsLTE4NDEyNzczODEsMTcyNTg4
+NzA4OSwtMjA1Mzk3NDkzNSwtMjA3MzExNjQ5NywtMzU4ODU0Nj
+YzLDMwNDU1ODcyMiwtMTIwNzQ2NTkxOCwxNjU5MjM5OTc3LDcy
+OTQwNzkwOSwxOTkzNjE3NjA5LDE0NTIzMDQ3NTAsNzk5MDk2OT
+kwLC04NzAxNDAxNTEsNjc5MjQ3NzI4LC0xOTc0MzI1MTM0LC0y
+MDA2NTM1OTA3XX0=
 -->
