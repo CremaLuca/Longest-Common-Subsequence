@@ -274,8 +274,8 @@ We tested $5$ different kind of input files: small, medium, large, large_2, larg
 | input | size|approx. size of X, Y|
 |:--:|:--:|:--:|
 |small | 26B |13 char|
-|medium|1.08KB||
-|large|1.96KB||
+|medium|1.08KB|550 char|
+|large|1.96KB|1000 char|
 |large_2|19.5KB||
 |large_3|97.7KB||
 
@@ -287,11 +287,11 @@ In almost every test we performed at least $3$ measures of the total time (proce
 <img align="left" src="https://i.postimg.cc/Y0ykFJ1q/small-medium.png"></img> 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIxMjE4MTY3NDcsLTE0MTYyODgyMTQsLT
-E4NDEyNzczODEsMTcyNTg4NzA4OSwtMjA1Mzk3NDkzNSwtMjA3
-MzExNjQ5NywtMzU4ODU0NjYzLDMwNDU1ODcyMiwtMTIwNzQ2NT
-kxOCwxNjU5MjM5OTc3LDcyOTQwNzkwOSwxOTkzNjE3NjA5LDE0
-NTIzMDQ3NTAsNzk5MDk2OTkwLC04NzAxNDAxNTEsNjc5MjQ3Nz
-I4LC0xOTc0MzI1MTM0LC0yMDA2NTM1OTA3LDQ2MDY1Njc5NCwx
-NTk4MTMxODMyXX0=
+eyJoaXN0b3J5IjpbMzA3MzMxODk2LC0xNDE2Mjg4MjE0LC0xOD
+QxMjc3MzgxLDE3MjU4ODcwODksLTIwNTM5NzQ5MzUsLTIwNzMx
+MTY0OTcsLTM1ODg1NDY2MywzMDQ1NTg3MjIsLTEyMDc0NjU5MT
+gsMTY1OTIzOTk3Nyw3Mjk0MDc5MDksMTk5MzYxNzYwOSwxNDUy
+MzA0NzUwLDc5OTA5Njk5MCwtODcwMTQwMTUxLDY3OTI0NzcyOC
+wtMTk3NDMyNTEzNCwtMjAwNjUzNTkwNyw0NjA2NTY3OTQsMTU5
+ODEzMTgzMl19
 -->
