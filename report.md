@@ -271,14 +271,14 @@ def compute_LCS(i: int, j: int, m: str):
 ### Results and conclusions
 We ran our parallel program on the CAPRI cluster, after compiling with two different optimization flags, O1 and O3.
 We tested $5$ different kind of inputs: small, medium, large, large_2, large_3.
-In almost every test we performed at least $3$ measures of the total time (processing time + communication time), so the graphs below actually show the average of these measures. As we expect, the time decreases as the number of processors increase, at least for the large inputs: for example with input_large2, time decreases by almost a factor of $100$ from $1$ to $$
+In almost every test we performed at least $3$ measures of the total time (processing time + communication time), so the graphs below actually show the average of these measures. As we expect, the time decreases as the number of processors increase, at least for the large inputs: for example with input_large2, time decreases by almost a factor of $100$ going from $1$ to $16$ processors. The things are a bit different for small and medium input sizes, where using at least $8$ processors 
 
 <img align="center" src="https://i.postimg.cc/VLD0G6Fd/large.png"></img>
  
 <img align="left" src="https://i.postimg.cc/Y0ykFJ1q/small-medium.png"></img> 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTc0Mjc1ODUwOSwtMTg0MTI3NzM4MSwxNz
+eyJoaXN0b3J5IjpbMTIyMzc3Njk3MCwtMTg0MTI3NzM4MSwxNz
 I1ODg3MDg5LC0yMDUzOTc0OTM1LC0yMDczMTE2NDk3LC0zNTg4
 NTQ2NjMsMzA0NTU4NzIyLC0xMjA3NDY1OTE4LDE2NTkyMzk5Nz
 csNzI5NDA3OTA5LDE5OTM2MTc2MDksMTQ1MjMwNDc1MCw3OTkw
