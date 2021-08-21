@@ -1,4 +1,4 @@
-#include <mpi.h>
+#include <mpi/mpi.h>
 #include <stdexcept>
 #include <unordered_map>
 #include <fstream>
@@ -8,8 +8,6 @@
 #include "robinhood.h"
 
 using namespace std;
-
-int N, M, P;
 
 //M ROWS, N COLUMNS, P PROCESSORS
 
@@ -120,7 +118,7 @@ int main(int argc, char ** argv)
     for(size_t index = 0; index < indices.size(); index++){
         timepoint2 = chrono::steady_clock::now();
         cell current_cell = indices[index];
-        int diagonal = cell_diag(current_cell);
+        int diagonal = current_cell.first + current_cell.second;
         cell up = cell(current_cell.first - 1, current_cell.second);
         cell left = cell(current_cell.first, current_cell.second - 1);
         cell up_left = cell(current_cell.first - 1, current_cell.second -1);
@@ -303,11 +301,11 @@ int main(int argc, char ** argv)
                 }
 
                 cell next = cell(i, j);
-                int next_proc = cell_proc(next);
+                int next_proc;
                 // Send the coordinates to the next processor so that it can continue computing the lcs
-                if(next_proc != rank && next_proc != -1){
+                if(i != -1 && j != -1 && (next_proc = cell_proc(next)) != rank){
 
-                    //if == -1, then we passed the border, and back at the beginning of the loop termination is done
+                    //if i or j == -1, then we passed the border, and back at the beginning of the loop termination is done
 #ifndef NDEBUG
                     printf("p%d: sending %s and (%d, %d) to p%d\n", rank, lcs.c_str(), i, j, next_proc);
 #endif
@@ -354,7 +352,7 @@ int main(int argc, char ** argv)
 
 done:
     timestamps.emplace_back(chrono::steady_clock::now(), "MPI_finalize");
-    for(int t=0; t<timestamps.size()-1; t++){
+    for(int t = 0; t < timestamps.size() - 1; t++){
         long int diff_us = chrono::duration_cast<chrono::microseconds>(timestamps[t+1].first - timestamps[t].first).count();
         printf("p%d: %s -> %s %ld us\n", rank, timestamps[t].second, timestamps[t+1].second, diff_us);
     }
