@@ -271,8 +271,8 @@ def compute_LCS(i: int, j: int, m: str):
 ### Results and conclusions
 We ran our parallel program on the CAPRI cluster, after compiling with two different optimization flags, O1 and O3.
 We tested $5$ different kind of input files: small, medium, large, large_2, large_3. 
-| input | size|approx. size of X, Y||
-|:--:|:--:|:--:|:--:
+| input | size|approx. size of X, Y|sequential alg.|parall. p=4 O3|
+|:--:|:--:|:--:|:--:|:--|
 |small | 26B |13 char|
 |medium|1.08KB|550 char|
 |large|1.96KB|1000 char|
@@ -287,11 +287,11 @@ In almost every test we performed at least $3$ measures of the total time (proce
 <img align="left" src="https://i.postimg.cc/Y0ykFJ1q/small-medium.png"></img> 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTAyNjg3NjExNCw1NTYwNTI0NzEsLTE0MT
-YyODgyMTQsLTE4NDEyNzczODEsMTcyNTg4NzA4OSwtMjA1Mzk3
-NDkzNSwtMjA3MzExNjQ5NywtMzU4ODU0NjYzLDMwNDU1ODcyMi
-wtMTIwNzQ2NTkxOCwxNjU5MjM5OTc3LDcyOTQwNzkwOSwxOTkz
-NjE3NjA5LDE0NTIzMDQ3NTAsNzk5MDk2OTkwLC04NzAxNDAxNT
-EsNjc5MjQ3NzI4LC0xOTc0MzI1MTM0LC0yMDA2NTM1OTA3LDQ2
-MDY1Njc5NF19
+eyJoaXN0b3J5IjpbNzA4ODg0NzQ2LDU1NjA1MjQ3MSwtMTQxNj
+I4ODIxNCwtMTg0MTI3NzM4MSwxNzI1ODg3MDg5LC0yMDUzOTc0
+OTM1LC0yMDczMTE2NDk3LC0zNTg4NTQ2NjMsMzA0NTU4NzIyLC
+0xMjA3NDY1OTE4LDE2NTkyMzk5NzcsNzI5NDA3OTA5LDE5OTM2
+MTc2MDksMTQ1MjMwNDc1MCw3OTkwOTY5OTAsLTg3MDE0MDE1MS
+w2NzkyNDc3MjgsLTE5NzQzMjUxMzQsLTIwMDY1MzU5MDcsNDYw
+NjU2Nzk0XX0=
 -->
