@@ -58,8 +58,6 @@ int main(int argc, char ** argv)
 
 #ifndef NDEBUG
     printf("M (size of X) is %d and N (size of Y) is %d\n", M, N);
-#endif
-
     vector<pair<chrono::steady_clock::time_point, char const*>> timestamps;
     chrono::steady_clock::time_point timepoint;
     chrono::steady_clock::time_point timepoint2;
@@ -68,6 +66,7 @@ int main(int argc, char ** argv)
     long int hashmaptime = 0;
     long int comptime = 0;
     long int sendtime = 0;
+#endif
 
     // Currently, MPI_Init takes two arguments that are not necessary, and the extra parameters
     // are simply left as extra space in case future implementations might need them
@@ -78,45 +77,37 @@ int main(int argc, char ** argv)
     // Wait for every process
     MPI_Barrier(MPI_COMM_WORLD);
 
-    timestamps.emplace_back(chrono::steady_clock::now(), "MPI_Init");
+    chrono::steady_clock::time_point begin_time = chrono::steady_clock::now();
 
 #ifndef NDEBUG
+    timestamps.emplace_back(chrono::steady_clock::now(), "MPI_Init");
+
     printf("Hello world from process %d of %d\n", rank, P);
 #endif
 
     // Setup local memory
     robin_hood::unordered_map<cell, int, hash_pair> local_memory;
 
+#ifndef NDEBUG
     timestamps.emplace_back(chrono::steady_clock::now(), "Local memory");
+#endif
 
     // Compute the list of matrix elements this processor is responsible for
     vector<cell> indices = matrix_elements(rank);
 
-    timestamps.emplace_back(chrono::steady_clock::now(), "Matrix elements");
-
 #ifndef NDEBUG
-    // Print cells assigned to this processor
-    string indices_str = "P" + to_string(rank) + " is responsible for indices: ";
-    for (size_t i = 0; i < indices.size(); i++){
-        // Concatenate indices to string indices_str
-        cell c = indices[i];
-        indices_str += "("+to_string(c.first) + "," + to_string(c.second) + ") ";
-    }
-
-    // Print indices_str to console
-    printf("%s\n", indices_str.c_str());
-
+    timestamps.emplace_back(chrono::steady_clock::now(), "Matrix elements");
 #endif
 
     //********************************
     //BEGIN PROCESSING LOOP
     //********************************
 
-    timepoint3 = chrono::steady_clock::now();
-
     // Foreach element in the list of indices
     for(size_t index = 0; index < indices.size(); index++){
+#ifndef NDEBUG
         timepoint2 = chrono::steady_clock::now();
+#endif
         cell current_cell = indices[index];
         int diagonal = current_cell.first + current_cell.second;
         cell up = cell(current_cell.first - 1, current_cell.second);
@@ -131,13 +122,17 @@ int main(int argc, char ** argv)
             // If the current processor is not responsible for it
             int proc_up = cell_proc(up);
             if(proc_up != rank){ // wait for the value from another processor.
+#ifndef NDEBUG
                 timepoint = chrono::steady_clock::now();
+#endif
                 MPI_Recv(&up_value, 1, MPI_INT, proc_up, diagonal-1, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
+#ifndef NDEBUG
                 waittime += chrono::duration_cast<chrono::microseconds>(chrono::steady_clock::now() - timepoint).count();
                 timepoint = chrono::steady_clock::now();
+#endif
                 local_memory[up] = up_value;
-                hashmaptime += chrono::duration_cast<chrono::microseconds>(chrono::steady_clock::now() - timepoint).count();
 #ifndef NDEBUG
+                hashmaptime += chrono::duration_cast<chrono::microseconds>(chrono::steady_clock::now() - timepoint).count();
                 printf("p%d: receiving up (%d, %d) from p%d\n", rank, up.first, up.second, proc_up);
 #endif
             }else{  // Grab the value from local memory
@@ -150,13 +145,18 @@ int main(int argc, char ** argv)
             // If the current processor is not responsible for it
             int proc_left = cell_proc(left);
             if(proc_left != rank){ // wait for the value from another processor.
+#ifndef NDEBUG
                 timepoint = chrono::steady_clock::now();
+#endif
                 MPI_Recv(&left_value, 1, MPI_INT, proc_left, diagonal-1, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
+#ifndef NDEBUG
                 waittime += chrono::duration_cast<chrono::microseconds>(chrono::steady_clock::now() - timepoint).count();
                 timepoint = chrono::steady_clock::now();
+#endif
                 local_memory[left] = left_value;
-                hashmaptime += chrono::duration_cast<chrono::microseconds>(chrono::steady_clock::now() - timepoint).count();
+                
 #ifndef NDEBUG
+                hashmaptime += chrono::duration_cast<chrono::microseconds>(chrono::steady_clock::now() - timepoint).count();
                 printf("p%d: receiving left (%d, %d) from p%d\n", rank, left.first, left.second, proc_left);
 #endif
             }else{  // Grab the value from local memory
@@ -184,20 +184,23 @@ int main(int argc, char ** argv)
                " up_left (%d, %d) = %d\n",
                rank, X[current_cell.first], Y[current_cell.second], current_cell.first, current_cell.second, c_value, up.first, up.second,
                 up_value, left.first, left.second, left_value, up_left.first, up_left.second, up_left_value);
+        timepoint = chrono::steady_clock::now();
 #endif
 
         // Store the value in local memory
-        timepoint = chrono::steady_clock::now();
         local_memory[current_cell] = c_value;
+#ifndef NDEBUG
         hashmaptime += chrono::duration_cast<chrono::microseconds>(chrono::steady_clock::now() - timepoint).count();
+#endif
 
         // Send the value to the next processors
         cell right = cell(current_cell.first, current_cell.second + 1);
         cell down = cell(current_cell.first + 1, current_cell.second);
 
         MPI_Request send_req;
-
+#ifndef NDEBUG
         timepoint = chrono::steady_clock::now();
+#endif
         int rec_proc;
         if(down.first < M && (rec_proc = cell_proc(down)) != rank){
 #ifndef NDEBUG
@@ -211,34 +214,36 @@ int main(int argc, char ** argv)
 #endif
             MPI_Isend(&c_value, 1, MPI_INT, rec_proc, diagonal, MPI_COMM_WORLD, &send_req);
         }
+#ifndef NDEBUG
         sendtime += chrono::duration_cast<chrono::microseconds>(chrono::steady_clock::now() - timepoint).count();
         comptime += chrono::duration_cast<chrono::microseconds>(chrono::steady_clock::now() - timepoint2).count();
+#endif
         // Ignore send request result
         //MPI_Request_free(&send_req);
     }
-
-#ifndef NDEBUG
-    if(rank == 0){
-        printf("All processes are done for the first part and the LCS value is %d\n", local_memory[cell(M-1, N-1)]);
-    }
-#endif
 
     //********************************
     //END PROCESSING LOOP
     //********************************
 
+#ifndef NDEBUG
+    if(rank == 0){
+        printf("All processes are done for the first part and the LCS value is %d\n", local_memory[cell(M-1, N-1)]);
+    }
+    timestamps.emplace_back(chrono::steady_clock::now(), "Ready to begin LCS reconstruction");
+#endif
 
     //********************************
     //BEGIN LCS RECONSTRUCTION LOOP
     //********************************
 
-    timestamps.emplace_back(chrono::steady_clock::now(), "Ready to begin LCS reconstruction");
 
     string lcs;
     int i,j;
 
     bool begin_reconstruction = false;
     if(rank == 0) {
+        //P0 starts the LCS reconstruction
         begin_reconstruction = true;
         i = M - 1;
         j = N - 1;
@@ -255,8 +260,10 @@ int main(int argc, char ** argv)
             while(i >= -1 && j >= -1){
 
                 if(i == -1 || j == -1){ //We passed the border of the lcs matrix, so the computation halts
+#ifndef NDEBUG
                     timestamps.emplace_back(chrono::steady_clock::now(), "Output ready");
-                    long int int_us = chrono::duration_cast<chrono::microseconds>(timestamps[timestamps.size() - 1].first - timestamps[0].first).count();
+#endif
+                    long int int_us = chrono::duration_cast<chrono::microseconds>(chrono::steady_clock::now() - begin_time).count();
                     // Send stop signal to all other procesors
                     for(int p = 0; p < P; p++)
                         if(p != rank){
@@ -275,7 +282,7 @@ int main(int argc, char ** argv)
                         oufile.close();
                     }
 
-                    printf("Parallel output by p%d: %s\nTook %ld us\n", rank, lcs.c_str(), int_us);
+                    printf("p%d: %s took %ld us\n", rank, path, int_us);
                     goto done;
                 }
 
@@ -351,6 +358,7 @@ int main(int argc, char ** argv)
     //********************************
 
 done:
+#ifndef NDEBUG
     timestamps.emplace_back(chrono::steady_clock::now(), "MPI_finalize");
     for(int t = 0; t < timestamps.size() - 1; t++){
         long int diff_us = chrono::duration_cast<chrono::microseconds>(timestamps[t+1].first - timestamps[t].first).count();
@@ -360,6 +368,7 @@ done:
     printf("p%d: time spent sending %ld us\n", rank, sendtime);
     printf("p%d: time spent for hashmap %ld us\n", rank, hashmaptime);
     printf("p%d: time spent computing %ld us\n", rank, comptime);
+#endif
     MPI_Finalize();
     return 0;
 }
