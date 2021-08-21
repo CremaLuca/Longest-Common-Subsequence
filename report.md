@@ -284,14 +284,14 @@ In almost every test we performed at least $3$ measures of the total time (proce
 <img align="center" src="https://i.postimg.cc/VLD0G6Fd/large.png"></img>
  
 <img align="left" src="https://i.postimg.cc/Y0ykFJ1q/small-medium.png"></img> 
-What really striked us is the huge difference of the total time between the sequential version and the parallel version.
+What really striked us is the huge difference of the total time between the sequential version and the parallel version: probably our input files were too tiny to justify going parallel over the sequential algorithm; we have to mention however that quite a 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTkyMDU2NjIzMywtMTUxNzgwNzExMyw1NT
-YwNTI0NzEsLTE0MTYyODgyMTQsLTE4NDEyNzczODEsMTcyNTg4
-NzA4OSwtMjA1Mzk3NDkzNSwtMjA3MzExNjQ5NywtMzU4ODU0Nj
-YzLDMwNDU1ODcyMiwtMTIwNzQ2NTkxOCwxNjU5MjM5OTc3LDcy
-OTQwNzkwOSwxOTkzNjE3NjA5LDE0NTIzMDQ3NTAsNzk5MDk2OT
-kwLC04NzAxNDAxNTEsNjc5MjQ3NzI4LC0xOTc0MzI1MTM0LC0y
-MDA2NTM1OTA3XX0=
+eyJoaXN0b3J5IjpbLTEyNTcyMTQ0OTksMTkyMDU2NjIzMywtMT
+UxNzgwNzExMyw1NTYwNTI0NzEsLTE0MTYyODgyMTQsLTE4NDEy
+NzczODEsMTcyNTg4NzA4OSwtMjA1Mzk3NDkzNSwtMjA3MzExNj
+Q5NywtMzU4ODU0NjYzLDMwNDU1ODcyMiwtMTIwNzQ2NTkxOCwx
+NjU5MjM5OTc3LDcyOTQwNzkwOSwxOTkzNjE3NjA5LDE0NTIzMD
+Q3NTAsNzk5MDk2OTkwLC04NzAxNDAxNTEsNjc5MjQ3NzI4LC0x
+OTc0MzI1MTM0XX0=
 -->
