@@ -270,18 +270,19 @@ def compute_LCS(i: int, j: int, m: str):
 ```
 ### Results and conclusions
 We ran our parallel program on the CAPRI cluster, after compiling with two different optimization flags, O1 and O3.
-We tested 5 different kind of inputs: small, medium, large, large_2, large_3. 
+We tested 5 different kind of inputs: small, medium, large, large_2, large_3.
+In almost every test we performed at least 3 measures of the 
 
 <img align="center" src="https://i.postimg.cc/VLD0G6Fd/large.png"></img>
  
 <img align="left" src="https://i.postimg.cc/Y0ykFJ1q/small-medium.png"></img> 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE4NDEyNzczODEsMTcyNTg4NzA4OSwtMj
-A1Mzk3NDkzNSwtMjA3MzExNjQ5NywtMzU4ODU0NjYzLDMwNDU1
-ODcyMiwtMTIwNzQ2NTkxOCwxNjU5MjM5OTc3LDcyOTQwNzkwOS
-wxOTkzNjE3NjA5LDE0NTIzMDQ3NTAsNzk5MDk2OTkwLC04NzAx
-NDAxNTEsNjc5MjQ3NzI4LC0xOTc0MzI1MTM0LC0yMDA2NTM1OT
-A3LDQ2MDY1Njc5NCwxNTk4MTMxODMyLC0xOTkyNzAxOTc2LDE5
-ODQwNzA5MDldfQ==
+eyJoaXN0b3J5IjpbOTY0NjY4MjMsLTE4NDEyNzczODEsMTcyNT
+g4NzA4OSwtMjA1Mzk3NDkzNSwtMjA3MzExNjQ5NywtMzU4ODU0
+NjYzLDMwNDU1ODcyMiwtMTIwNzQ2NTkxOCwxNjU5MjM5OTc3LD
+cyOTQwNzkwOSwxOTkzNjE3NjA5LDE0NTIzMDQ3NTAsNzk5MDk2
+OTkwLC04NzAxNDAxNTEsNjc5MjQ3NzI4LC0xOTc0MzI1MTM0LC
+0yMDA2NTM1OTA3LDQ2MDY1Njc5NCwxNTk4MTMxODMyLC0xOTky
+NzAxOTc2XX0=
 -->
