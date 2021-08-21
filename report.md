@@ -271,13 +271,13 @@ def compute_LCS(i: int, j: int, m: str):
 ### Results and conclusions
 We ran our parallel program on the CAPRI cluster, after compiling with two different optimization flags, O1 and O3.
 We tested $5$ different kind of input files: small, medium, large, large_2, large_3. 
-| input | size|approx. size |sequential |parallel p = 2 O3 | parallel p = 4 O3|parallel p = 8 O3|
+| input | size|approx. size |sequential O3|parallel p = 2 O3 | parallel p = 4 O3|parallel p = 8 O3|
 |:--:|:--:|:--:|:--:|:--:|:--:|:--:|
-|small | 26B |13 char|
-|medium|1.08KB|550 char|
-|large|1.96KB|1000 char|
-|large_2|19.5KB|10.000 char|
-|large_3|97.7KB|50.000 char|
+|<i>small | 26B |13 char|E
+|<i>medium|1.08KB|550 char|
+|<i>large|1.96KB|1000 char|
+|<i>large_2|19.5KB|10.000 char|
+|<i>large_3|97.7KB|50.000 char|
 This table does not show all tests, but only a few. For the complete numerical details, we refer the reader to the 
 In almost every test we performed at least $3$ measures of the total time (processing time + communication time), so the graphs below actually show the average of these measures. As we expect, the time decreases as the number of processors increase, at least for the large inputs: for example with input_large2, time decreases by almost a factor of $100$ going from $1$ to $16$ processors. The things are a bit different for small and medium input sizes, where using at least $8$ processors degraded the performance in a surprising way. This is probably due to more communications between processors which have a relatively high impact on the performace. 
 
@@ -286,11 +286,11 @@ In almost every test we performed at least $3$ measures of the total time (proce
 <img align="left" src="https://i.postimg.cc/Y0ykFJ1q/small-medium.png"></img> 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjExNTEyMDUxNSw1NTYwNTI0NzEsLTE0MT
-YyODgyMTQsLTE4NDEyNzczODEsMTcyNTg4NzA4OSwtMjA1Mzk3
-NDkzNSwtMjA3MzExNjQ5NywtMzU4ODU0NjYzLDMwNDU1ODcyMi
-wtMTIwNzQ2NTkxOCwxNjU5MjM5OTc3LDcyOTQwNzkwOSwxOTkz
-NjE3NjA5LDE0NTIzMDQ3NTAsNzk5MDk2OTkwLC04NzAxNDAxNT
-EsNjc5MjQ3NzI4LC0xOTc0MzI1MTM0LC0yMDA2NTM1OTA3LDQ2
-MDY1Njc5NF19
+eyJoaXN0b3J5IjpbLTEwMTEzMjYzNzMsNTU2MDUyNDcxLC0xND
+E2Mjg4MjE0LC0xODQxMjc3MzgxLDE3MjU4ODcwODksLTIwNTM5
+NzQ5MzUsLTIwNzMxMTY0OTcsLTM1ODg1NDY2MywzMDQ1NTg3Mj
+IsLTEyMDc0NjU5MTgsMTY1OTIzOTk3Nyw3Mjk0MDc5MDksMTk5
+MzYxNzYwOSwxNDUyMzA0NzUwLDc5OTA5Njk5MCwtODcwMTQwMT
+UxLDY3OTI0NzcyOCwtMTk3NDMyNTEzNCwtMjAwNjUzNTkwNyw0
+NjA2NTY3OTRdfQ==
 -->
