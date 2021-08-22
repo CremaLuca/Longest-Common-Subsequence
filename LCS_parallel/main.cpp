@@ -1,4 +1,4 @@
-#include <mpi/mpi.h>
+#include <mpi.h>
 #include <stdexcept>
 #include <unordered_map>
 #include <fstream>
