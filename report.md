@@ -104,7 +104,7 @@ Let us define $P(i, j)$ as the index of the processor assigned to entry $(i, j)$
 A performance metric we use for the assignment is the number of messages exchanged by the processors. The exact measure for variable $n, m$ and $P_{\text{max}}$ is hard to obtain from analytical considerations, but we can give an upper bound: clearly we can assume $P_{\text{max}} = \min\{n, m\} = m$ since no diagonal will be longer than $m$.
 In this case *every* cell of *each* diagonal is assigned to a *different* processor. By the remark, it's easy to prove that $P(i, j) = P(i, j-1) \ne P(i-1, j)$ if $i+j \le n-1$ and $P(i, j) = P(i-1, j) \ne P(i, j-1)$  if $i+j \ge n$.  Hence:
 $$\text{messages exchanged} = \sum_{i = 1}^{m-1}\sum_{j=1}^{n-1}1 + \underbrace{m-1}_{\text{first column}} = n(m-1) = \theta(nm)$$
-
+<br><br>
 ### Computing the list of entries assigned to a given processor
 Each processor needs to know which entries to compute. We make use of the observations above, i.e. the procedure `diag_start_end`. Notice that processor $i$ will never appear on principal diagonals $d$ s.t. $d < i$ or $d \ge n+m-1-i$, since in both cases the length of the diagonal is $\le i$. Also since no diagonal has length $\ge\min\{m, n\} = m$, we need $i < m$.
 The algorithm to determine the list of elements of the whole matrix then is:
@@ -294,11 +294,11 @@ We notice also that the sequential algorithm is a lot more cache friendly, since
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTgyODc5ODQzNCwxNjQ1NDUwMDA5LC0xMz
-YzOTIwOTg4LDUxNDA3MzE4NSwxOTIwNTY2MjMzLC0xNTE3ODA3
-MTEzLDU1NjA1MjQ3MSwtMTQxNjI4ODIxNCwtMTg0MTI3NzM4MS
-wxNzI1ODg3MDg5LC0yMDUzOTc0OTM1LC0yMDczMTE2NDk3LC0z
-NTg4NTQ2NjMsMzA0NTU4NzIyLC0xMjA3NDY1OTE4LDE2NTkyMz
-k5NzcsNzI5NDA3OTA5LDE5OTM2MTc2MDksMTQ1MjMwNDc1MCw3
-OTkwOTY5OTBdfQ==
+eyJoaXN0b3J5IjpbLTE1NjgzODA1NDIsLTgyODc5ODQzNCwxNj
+Q1NDUwMDA5LC0xMzYzOTIwOTg4LDUxNDA3MzE4NSwxOTIwNTY2
+MjMzLC0xNTE3ODA3MTEzLDU1NjA1MjQ3MSwtMTQxNjI4ODIxNC
+wtMTg0MTI3NzM4MSwxNzI1ODg3MDg5LC0yMDUzOTc0OTM1LC0y
+MDczMTE2NDk3LC0zNTg4NTQ2NjMsMzA0NTU4NzIyLC0xMjA3ND
+Y1OTE4LDE2NTkyMzk5NzcsNzI5NDA3OTA5LDE5OTM2MTc2MDks
+MTQ1MjMwNDc1MF19
 -->
