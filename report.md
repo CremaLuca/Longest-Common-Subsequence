@@ -228,10 +228,8 @@ If $1.$ is true, then $p$ sends $x_{i+1}$ to $p' = P(i-1, j-1)$. If $2.$ or $3.$
 def compute_LCS(i: int, j: int, m: str):
 	"""
 	Parameters:
-		- i, j: int
-			Coordinates of a matrix cell.
-		- m:
-			Message received from a previous process, which
+		- i, j: int Coordinates of a matrix cell.
+		- m: Message received from a previous process, which
 			signals this process to call this function
 	It's assumed P(i, j) is calling this function.
 	"""
@@ -284,11 +282,11 @@ We notice also that the sequential algorithm is a lot more cache friendly, since
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNTQzOTI1MzM5LDg0MDkwNTk5OSwtMTMxMD
-YwMDI0NCwxMDAyNDc4Mzc2LC0xMzkyMDA1NTUyLC04Mjg3OTg0
-MzQsMTY0NTQ1MDAwOSwtMTM2MzkyMDk4OCw1MTQwNzMxODUsMT
-kyMDU2NjIzMywtMTUxNzgwNzExMyw1NTYwNTI0NzEsLTE0MTYy
-ODgyMTQsLTE4NDEyNzczODEsMTcyNTg4NzA4OSwtMjA1Mzk3ND
-kzNSwtMjA3MzExNjQ5NywtMzU4ODU0NjYzLDMwNDU1ODcyMiwt
-MTIwNzQ2NTkxOF19
+eyJoaXN0b3J5IjpbLTk5NzgxOTUyMSw4NDA5MDU5OTksLTEzMT
+A2MDAyNDQsMTAwMjQ3ODM3NiwtMTM5MjAwNTU1MiwtODI4Nzk4
+NDM0LDE2NDU0NTAwMDksLTEzNjM5MjA5ODgsNTE0MDczMTg1LD
+E5MjA1NjYyMzMsLTE1MTc4MDcxMTMsNTU2MDUyNDcxLC0xNDE2
+Mjg4MjE0LC0xODQxMjc3MzgxLDE3MjU4ODcwODksLTIwNTM5Nz
+Q5MzUsLTIwNzMxMTY0OTcsLTM1ODg1NDY2MywzMDQ1NTg3MjIs
+LTEyMDc0NjU5MThdfQ==
 -->
