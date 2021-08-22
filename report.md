@@ -217,6 +217,7 @@ def send(value: int, i: int, j: int, p: int):
 For big problem sizes we aim to reduce the amount of memory each processor uses. Storing the whole $m\times n$ matrix could be too costly, so each processor should only store the cells it computed and the ones from other processors that it used for its computations.  This turns out  to be useful also for the reconstruction of an LCS, outlined in the next paragraph. To simplify storing and retrieving data we decided to use an hash table, which guarantees $O(1)$ access time on average.
 
 ### Reconstruction of an LCS  from the M matrix
+
 Once the $M$ matrix has been computed by the parallel algorithm, process $P(m-1, n-1) = 0$ knows entry $M[m-1, n-1]$, i.e. the length of an LCS of $X_m$ and $Y_n$. We show how to compute an LCS of $X_{i+1}$ and $Y_{j+1}$ starting at entry $(i, j)$: if $x_{i+1} = y_{j+1}$ then process $p = P(i, j)$ checks whether :
  1. $M[i, j] = M[i-1, j-1]+1$
  2. $M[i, j] = M[i, j-1]$
@@ -256,6 +257,7 @@ def compute_LCS(i: int, j: int, m: str):
 <br><br>
 
 ### Results and conclusions
+
 We ran our parallel program on the CAPRI cluster, after compiling with two different optimization flags, O1 and O3.
 We tested $5$ different kind of input files: small, medium, large, large_2, large_3. 
 | input | size|approx. X, Y size |sequential O3|parallel p = 2 O3 | parallel p = 4 O3|parallel p = 8 O3|
@@ -282,11 +284,11 @@ We notice also that the sequential algorithm is a lot more cache friendly, since
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTk5NzgxOTUyMSw4NDA5MDU5OTksLTEzMT
-A2MDAyNDQsMTAwMjQ3ODM3NiwtMTM5MjAwNTU1MiwtODI4Nzk4
-NDM0LDE2NDU0NTAwMDksLTEzNjM5MjA5ODgsNTE0MDczMTg1LD
-E5MjA1NjYyMzMsLTE1MTc4MDcxMTMsNTU2MDUyNDcxLC0xNDE2
-Mjg4MjE0LC0xODQxMjc3MzgxLDE3MjU4ODcwODksLTIwNTM5Nz
-Q5MzUsLTIwNzMxMTY0OTcsLTM1ODg1NDY2MywzMDQ1NTg3MjIs
-LTEyMDc0NjU5MThdfQ==
+eyJoaXN0b3J5IjpbLTIwMzU4MjA2MDksODQwOTA1OTk5LC0xMz
+EwNjAwMjQ0LDEwMDI0NzgzNzYsLTEzOTIwMDU1NTIsLTgyODc5
+ODQzNCwxNjQ1NDUwMDA5LC0xMzYzOTIwOTg4LDUxNDA3MzE4NS
+wxOTIwNTY2MjMzLC0xNTE3ODA3MTEzLDU1NjA1MjQ3MSwtMTQx
+NjI4ODIxNCwtMTg0MTI3NzM4MSwxNzI1ODg3MDg5LC0yMDUzOT
+c0OTM1LC0yMDczMTE2NDk3LC0zNTg4NTQ2NjMsMzA0NTU4NzIy
+LC0xMjA3NDY1OTE4XX0=
 -->
