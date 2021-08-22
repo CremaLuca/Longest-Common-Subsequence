@@ -268,6 +268,8 @@ def compute_LCS(i: int, j: int, m: str):
 	else:
 		MPI_SEND(cell_proc(i, j-1), m)
 ```
+<br><br>
+
 ### Results and conclusions
 We ran our parallel program on the CAPRI cluster, after compiling with two different optimization flags, O1 and O3.
 We tested $5$ different kind of input files: small, medium, large, large_2, large_3. 
@@ -284,6 +286,7 @@ In almost every test we performed at least $3$ measures of the total time (proce
 <img align="center" src="https://i.postimg.cc/VLD0G6Fd/large.png"></img>
  
 <img align="left" src="https://i.postimg.cc/Y0ykFJ1q/small-medium.png"></img>
+<br>
 What really striked us is the huge difference of the total time between the sequential version and the parallel version: probably our input files were too tiny to justify going parallel; we have to mention however that quite a good amount of time is spent on searching the hash table: a few simulations on the large files using $4$ processors showed that about $33$% of computation time is spent on looking up values; originally we used the STL implementation of the hash map, which yielded a fourfold total time, which led us to use a faster implementation [4]. We are aware that the hash table could be replaced with a faster data structure: for each processor, we could use an array of vectors, each holding elements received by another process or computed by the current process; furthermore this array is indexed using the diagonal number. However the detailed implementation required a careful study of specific cases, so we ended up with an existing data structure, in order to not slow down the flow of the project. [INSERIRE QUI PARTE SU EFFICIENCY]
 We notice also that the sequential algorithm is a lot more cache friendly, since the whole LCS matrix is actually a linear array, whereas the parallel algorithm fails to take advantage of this. We were not able to test the large_3 input on the cluster using $2$ or $4$ processors, since the required memory for the execution was bigger than $32$GB; of course the parallel algorithm requires more RAM since it's written in C++ (objects take more space).
 ### References
@@ -294,11 +297,11 @@ We notice also that the sequential algorithm is a lot more cache friendly, since
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEzOTIwMDU1NTIsLTgyODc5ODQzNCwxNj
-Q1NDUwMDA5LC0xMzYzOTIwOTg4LDUxNDA3MzE4NSwxOTIwNTY2
-MjMzLC0xNTE3ODA3MTEzLDU1NjA1MjQ3MSwtMTQxNjI4ODIxNC
-wtMTg0MTI3NzM4MSwxNzI1ODg3MDg5LC0yMDUzOTc0OTM1LC0y
-MDczMTE2NDk3LC0zNTg4NTQ2NjMsMzA0NTU4NzIyLC0xMjA3ND
-Y1OTE4LDE2NTkyMzk5NzcsNzI5NDA3OTA5LDE5OTM2MTc2MDks
-MTQ1MjMwNDc1MF19
+eyJoaXN0b3J5IjpbNTA0MTk4MTU2LC0xMzkyMDA1NTUyLC04Mj
+g3OTg0MzQsMTY0NTQ1MDAwOSwtMTM2MzkyMDk4OCw1MTQwNzMx
+ODUsMTkyMDU2NjIzMywtMTUxNzgwNzExMyw1NTYwNTI0NzEsLT
+E0MTYyODgyMTQsLTE4NDEyNzczODEsMTcyNTg4NzA4OSwtMjA1
+Mzk3NDkzNSwtMjA3MzExNjQ5NywtMzU4ODU0NjYzLDMwNDU1OD
+cyMiwtMTIwNzQ2NTkxOCwxNjU5MjM5OTc3LDcyOTQwNzkwOSwx
+OTkzNjE3NjA5XX0=
 -->
