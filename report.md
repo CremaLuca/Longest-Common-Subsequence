@@ -24,7 +24,7 @@ We have to assign an order of execution to compute every entry in the LCS matrix
 - maximize concurrent computation
 - minimize communication costs
 
-To maximize concurrent computation we can look at the CDAG of the matrix, where we compute each cell that has required variables ready as soon as possible; let $P_{\text{max}} > 0$ be the number of processors at our disposal. Let's see how many processors we need to assign to a given principal diagonal $d$ whose length is $L= L(d)$. Notice that if$L < P_{\text{max}}$, $P_{\text{max}}-L$ processors will not work at all, since each entry can be computed in parallel by $L$ processors. So we put $P = \min\{L(d), P_{\text{max}}\}$. Thus we can assign processors as follows:
+To maximize concurrent computation we can look at the CDAG of the matrix, where we compute each cell that has required variables ready as soon as possible; let $P_{\text{max}} > 0$ be the number of processors at our disposal. Let's see how many processors we need to assign to a given principal diagonal $d$ whose length is $L= L(d)$. Notice how if $L < P_{\text{max}}$, $P_{\text{max}}-L$ processors will not work at all, since each entry can be computed in parallel by $L$ processors. So we put $P = \min\{L(d), P_{\text{max}}\}$. Thus we can assign processors as follows:
 
 - $\lceil L/P \rceil$ cells to  processor $i$ for  $0 \leq i < (L \mod P)$
 - $\lfloor L/P \rfloor$ cells to processor $j$ for $(L \mod P) \leq j < P$
@@ -292,11 +292,11 @@ We notice also that the sequential algorithm is a lot more cache friendly, since
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNjA4MDA1NTksMTAwMjQ3ODM3NiwtMTM5Mj
-AwNTU1MiwtODI4Nzk4NDM0LDE2NDU0NTAwMDksLTEzNjM5MjA5
-ODgsNTE0MDczMTg1LDE5MjA1NjYyMzMsLTE1MTc4MDcxMTMsNT
-U2MDUyNDcxLC0xNDE2Mjg4MjE0LC0xODQxMjc3MzgxLDE3MjU4
-ODcwODksLTIwNTM5NzQ5MzUsLTIwNzMxMTY0OTcsLTM1ODg1ND
-Y2MywzMDQ1NTg3MjIsLTEyMDc0NjU5MTgsMTY1OTIzOTk3Nyw3
-Mjk0MDc5MDldfQ==
+eyJoaXN0b3J5IjpbLTEzMTA2MDAyNDQsMTAwMjQ3ODM3NiwtMT
+M5MjAwNTU1MiwtODI4Nzk4NDM0LDE2NDU0NTAwMDksLTEzNjM5
+MjA5ODgsNTE0MDczMTg1LDE5MjA1NjYyMzMsLTE1MTc4MDcxMT
+MsNTU2MDUyNDcxLC0xNDE2Mjg4MjE0LC0xODQxMjc3MzgxLDE3
+MjU4ODcwODksLTIwNTM5NzQ5MzUsLTIwNzMxMTY0OTcsLTM1OD
+g1NDY2MywzMDQ1NTg3MjIsLTEyMDc0NjU5MTgsMTY1OTIzOTk3
+Nyw3Mjk0MDc5MDldfQ==
 -->
