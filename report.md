@@ -41,13 +41,11 @@ $$
 Or more intuitively using an algorithm:
 
 ```py
-def diag_start_end(d: int, i: int):
+def diag_start_end(d: int, i: int) -> Tuple[int, int]:
 	"""
 	Parameters:
-		- d: int
-			Diagonal index.
-		- i: int
-			Processor index.
+		- d: int Diagonal index.
+		- i: int Processor index.
 	Returns:
 		A pair (s, e) indicating the starting/ending cell on the 
 		diagonal d assigned to processor i. 
@@ -87,8 +85,7 @@ $$
 \textbf{p1} & \textbf{p1} & \textbf{p1} & \textbf{p1} & \textbf{p0} & \textbf{p0}\\ \hline
 \textbf{p1} & \textbf{p1} & \textbf{p1} & \textbf{p1} & \textbf{p1} & \textbf{p0}\\ \hline
 \end{array}
-$$
-the left one is computed by $3$ processors, while the other by $2$.
+$$ the left one is computed by $3$ processors, while the other by $2$.
 
 ### Bound on the number of messages
 Let us define $P(i, j)$ as the index of the processor assigned to entry $(i, j)$, according to the previous scheme.
@@ -291,7 +288,7 @@ We notice also that the sequential algorithm is a lot more cache friendly, since
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbODUwNzkxMTg3LC0xMzEwNjAwMjQ0LDEwMD
+eyJoaXN0b3J5IjpbNjU2MzMwNTM4LC0xMzEwNjAwMjQ0LDEwMD
 I0NzgzNzYsLTEzOTIwMDU1NTIsLTgyODc5ODQzNCwxNjQ1NDUw
 MDA5LC0xMzYzOTIwOTg4LDUxNDA3MzE4NSwxOTIwNTY2MjMzLC
 0xNTE3ODA3MTEzLDU1NjA1MjQ3MSwtMTQxNjI4ODIxNCwtMTg0
