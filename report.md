@@ -100,11 +100,10 @@ $$\text{messages exchanged} = \sum_{i = 1}^{m-1}\sum_{j=1}^{n-1}1 + \underbrace{
 Each processor needs to know which entries to compute. We make use of the observations above, i.e. the procedure `diag_start_end`. Notice that processor $i$ will never appear on principal diagonals $d$ s.t. $d < i$ or $d \ge n+m-1-i$, since in both cases the length of the diagonal is $\le i$. Also since no diagonal has length $\ge\min\{m, n\} = m$, we need $i < m$.
 The algorithm to determine the list of elements of the whole matrix then is:
 ```py
-def matrix_elements(i:int):
+def matrix_elements(i:int) -> List[Tuple[int, int]]:
 	"""
 	Parameters:
-		- i: int
-			Processor index.
+		- i: int Processor index.
 	Returns:
 		A list of cells of the LCS matrix assigned to processor i.
 	"""
@@ -288,11 +287,11 @@ We notice also that the sequential algorithm is a lot more cache friendly, since
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNjk4OTc5NTQ2LC0xMzEwNjAwMjQ0LDEwMD
-I0NzgzNzYsLTEzOTIwMDU1NTIsLTgyODc5ODQzNCwxNjQ1NDUw
-MDA5LC0xMzYzOTIwOTg4LDUxNDA3MzE4NSwxOTIwNTY2MjMzLC
-0xNTE3ODA3MTEzLDU1NjA1MjQ3MSwtMTQxNjI4ODIxNCwtMTg0
-MTI3NzM4MSwxNzI1ODg3MDg5LC0yMDUzOTc0OTM1LC0yMDczMT
-E2NDk3LC0zNTg4NTQ2NjMsMzA0NTU4NzIyLC0xMjA3NDY1OTE4
-LDE2NTkyMzk5NzddfQ==
+eyJoaXN0b3J5IjpbMTU2NDA0OTY3NSwtMTMxMDYwMDI0NCwxMD
+AyNDc4Mzc2LC0xMzkyMDA1NTUyLC04Mjg3OTg0MzQsMTY0NTQ1
+MDAwOSwtMTM2MzkyMDk4OCw1MTQwNzMxODUsMTkyMDU2NjIzMy
+wtMTUxNzgwNzExMyw1NTYwNTI0NzEsLTE0MTYyODgyMTQsLTE4
+NDEyNzczODEsMTcyNTg4NzA4OSwtMjA1Mzk3NDkzNSwtMjA3Mz
+ExNjQ5NywtMzU4ODU0NjYzLDMwNDU1ODcyMiwtMTIwNzQ2NTkx
+OCwxNjU5MjM5OTc3XX0=
 -->
