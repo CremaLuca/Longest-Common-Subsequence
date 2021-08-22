@@ -53,7 +53,6 @@ def diag_start_end(d: int, i: int):
 		diagonal d assigned to processor i. 
 		Index e is exclusive, while index s in inclusive.
     """
-    # Calc length of the diagonal
 	L_d = diag_length(d)
 	# Avoid unnecessary processors
 	p = min(P, L_d)
@@ -292,11 +291,11 @@ We notice also that the sequential algorithm is a lot more cache friendly, since
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjEwMDY0NDE4MCwtMTMxMDYwMDI0NCwxMD
-AyNDc4Mzc2LC0xMzkyMDA1NTUyLC04Mjg3OTg0MzQsMTY0NTQ1
-MDAwOSwtMTM2MzkyMDk4OCw1MTQwNzMxODUsMTkyMDU2NjIzMy
-wtMTUxNzgwNzExMyw1NTYwNTI0NzEsLTE0MTYyODgyMTQsLTE4
-NDEyNzczODEsMTcyNTg4NzA4OSwtMjA1Mzk3NDkzNSwtMjA3Mz
-ExNjQ5NywtMzU4ODU0NjYzLDMwNDU1ODcyMiwtMTIwNzQ2NTkx
-OCwxNjU5MjM5OTc3XX0=
+eyJoaXN0b3J5IjpbODUwNzkxMTg3LC0xMzEwNjAwMjQ0LDEwMD
+I0NzgzNzYsLTEzOTIwMDU1NTIsLTgyODc5ODQzNCwxNjQ1NDUw
+MDA5LC0xMzYzOTIwOTg4LDUxNDA3MzE4NSwxOTIwNTY2MjMzLC
+0xNTE3ODA3MTEzLDU1NjA1MjQ3MSwtMTQxNjI4ODIxNCwtMTg0
+MTI3NzM4MSwxNzI1ODg3MDg5LC0yMDUzOTc0OTM1LC0yMDczMT
+E2NDk3LC0zNTg4NTQ2NjMsMzA0NTU4NzIyLC0xMjA3NDY1OTE4
+LDE2NTkyMzk5NzddfQ==
 -->
