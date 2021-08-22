@@ -214,7 +214,7 @@ def send(value: int, i: int, j: int, p: int):
 
 ### Storing the local portion of matrix M
 
-For big problem sizes we aim to reduce the amount of memory each processor uses. Storing the whole $m\times n$ matrix could be too costly, so each processor should only store the cells it computed and the ones from other processors that it used for its computations.  This turns out  to be useful also for the reconstruction of an LCS, outlined in the next paragraph. We decided to use an hash table, which guarantees $O(1)$ access time on average.
+For big problem sizes we aim to reduce the amount of memory each processor uses. Storing the whole $m\times n$ matrix could be too costly, so each processor should only store the cells it computed and the ones from other processors that it used for its computations.  This turns out  to be useful also for the reconstruction of an LCS, outlined in the next paragraph. To simplify storing and retrieving data we decided to use an hash table, which guarantees $O(1)$ access time on average.
 
 ### Reconstruction of an LCS  from the M matrix
 Once the $M$ matrix has been computed by the parallel algorithm, process $P(m-1, n-1) = 0$ knows entry $M[m-1, n-1]$, i.e. the length of an LCS of $X_m$ and $Y_n$. We show how to compute an LCS of $X_{i+1}$ and $Y_{j+1}$ starting at entry $(i, j)$: if $x_{i+1} = y_{j+1}$ then process $p = P(i, j)$ checks whether :
@@ -284,11 +284,11 @@ We notice also that the sequential algorithm is a lot more cache friendly, since
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbODQwOTA1OTk5LC0xMzEwNjAwMjQ0LDEwMD
-I0NzgzNzYsLTEzOTIwMDU1NTIsLTgyODc5ODQzNCwxNjQ1NDUw
-MDA5LC0xMzYzOTIwOTg4LDUxNDA3MzE4NSwxOTIwNTY2MjMzLC
-0xNTE3ODA3MTEzLDU1NjA1MjQ3MSwtMTQxNjI4ODIxNCwtMTg0
-MTI3NzM4MSwxNzI1ODg3MDg5LC0yMDUzOTc0OTM1LC0yMDczMT
-E2NDk3LC0zNTg4NTQ2NjMsMzA0NTU4NzIyLC0xMjA3NDY1OTE4
-LDE2NTkyMzk5NzddfQ==
+eyJoaXN0b3J5IjpbNTQzOTI1MzM5LDg0MDkwNTk5OSwtMTMxMD
+YwMDI0NCwxMDAyNDc4Mzc2LC0xMzkyMDA1NTUyLC04Mjg3OTg0
+MzQsMTY0NTQ1MDAwOSwtMTM2MzkyMDk4OCw1MTQwNzMxODUsMT
+kyMDU2NjIzMywtMTUxNzgwNzExMyw1NTYwNTI0NzEsLTE0MTYy
+ODgyMTQsLTE4NDEyNzczODEsMTcyNTg4NzA4OSwtMjA1Mzk3ND
+kzNSwtMjA3MzExNjQ5NywtMzU4ODU0NjYzLDMwNDU1ODcyMiwt
+MTIwNzQ2NTkxOF19
 -->
