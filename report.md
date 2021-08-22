@@ -13,7 +13,7 @@ From this simple recurrence relation, it's easy to design a sequential algorithm
 We will exploit the previous recurrence relation, trying to find a way to parallelize the computation. Let us first define what we mean by principal diagonal of $M$. Here $M$ is the same as in the previous paragraph, with the first column and the first row removed (which don't require to be computed at all, since they consist of zeros). Hence $M[i, j]$ contains the length of an LCS of $X_{i+1}$ and $Y_{j+1}$.
 **Definition:** The $M$'s **principal diagonal** of index $d$, for $0 \le d \le m + n -2$, is the *ordered* set of entries$$D(d) =\begin{cases}\{M[0, d], M[1, d-1], \ldots,  M[d, 0])\} & \text
 {if $0\le d < m$}  \\\{M[0, d], M[1, d-1], \ldots,  M[m-1, d-m+1])\} & \text{if $m \le d < n$} \\\{M[d-n + 1, n-1], M[d-n+2, n-2], \ldots,  M[m-1, d-m+1])\}  & \text{if $d \ge n$}\end{cases}$$
-Note how entries in each $D(d)$ will only depend on entries belonging to $D(d-1)$ and D($d-2)$. In fact each element only depends on three elements from the two previous principal diagonals. This suggests a way to parallelize our initial algorithm: by looking at the CDAG of the computation, each diagonal is a level of the greedy schedule. Hence each entry in each diagonal can be computed in parallel, as long as entries from the previous diagonals have already been computed. From the previous definition, we define $L(d)$ as the length of the principal diagonal $d$:
+Note how entries in each $D(d)$ will only depend on entries belonging to $D(d-1)$ and $D(d-2)$. In fact each element only depends on three elements from the two previous principal diagonals. This suggests a way to parallelize our initial algorithm: by looking at the CDAG of the computation, each diagonal is a level of the greedy schedule. Hence each entry in each diagonal can be computed in parallel, as long as entries from the previous diagonals have already been computed. From the previous definition, we define $L(d)$ as the length of the principal diagonal $d$:
 $$L(d) = |D(d)| =\begin{cases}d+1 & \text
 {if $0\le d < m$}  \\m & \text{if $m \le d < n$} \\m+n-1-d & \text{if $d \ge n$}\end{cases}$$
 or, more concisely, $L(d) = \min\{d+1, m, m+n-1-d\}$. 
@@ -297,11 +297,11 @@ We notice also that the sequential algorithm is a lot more cache friendly, since
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTAwMjQ3ODM3NiwtMTM5MjAwNTU1MiwtOD
-I4Nzk4NDM0LDE2NDU0NTAwMDksLTEzNjM5MjA5ODgsNTE0MDcz
-MTg1LDE5MjA1NjYyMzMsLTE1MTc4MDcxMTMsNTU2MDUyNDcxLC
-0xNDE2Mjg4MjE0LC0xODQxMjc3MzgxLDE3MjU4ODcwODksLTIw
-NTM5NzQ5MzUsLTIwNzMxMTY0OTcsLTM1ODg1NDY2MywzMDQ1NT
-g3MjIsLTEyMDc0NjU5MTgsMTY1OTIzOTk3Nyw3Mjk0MDc5MDks
-MTk5MzYxNzYwOV19
+eyJoaXN0b3J5IjpbLTc0NzQ1NjkxMiwxMDAyNDc4Mzc2LC0xMz
+kyMDA1NTUyLC04Mjg3OTg0MzQsMTY0NTQ1MDAwOSwtMTM2Mzky
+MDk4OCw1MTQwNzMxODUsMTkyMDU2NjIzMywtMTUxNzgwNzExMy
+w1NTYwNTI0NzEsLTE0MTYyODgyMTQsLTE4NDEyNzczODEsMTcy
+NTg4NzA4OSwtMjA1Mzk3NDkzNSwtMjA3MzExNjQ5NywtMzU4OD
+U0NjYzLDMwNDU1ODcyMiwtMTIwNzQ2NTkxOCwxNjU5MjM5OTc3
+LDcyOTQwNzkwOV19
 -->
