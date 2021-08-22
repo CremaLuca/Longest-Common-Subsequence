@@ -163,8 +163,7 @@ Hence the following algorithm:
 def cell_proc(i: int, j: int):
 	"""
 	Parameters:
-		- i, j: int
-			Coordinates of a matrix cell.
+		- i, j: int Coordinates of a matrix cell.
 	Returns:
 		The processor assigned to the given cell.
 	"""
@@ -285,11 +284,11 @@ We notice also that the sequential algorithm is a lot more cache friendly, since
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE2Mzg4MTE4MDEsLTEzMTA2MDAyNDQsMT
-AwMjQ3ODM3NiwtMTM5MjAwNTU1MiwtODI4Nzk4NDM0LDE2NDU0
-NTAwMDksLTEzNjM5MjA5ODgsNTE0MDczMTg1LDE5MjA1NjYyMz
-MsLTE1MTc4MDcxMTMsNTU2MDUyNDcxLC0xNDE2Mjg4MjE0LC0x
-ODQxMjc3MzgxLDE3MjU4ODcwODksLTIwNTM5NzQ5MzUsLTIwNz
-MxMTY0OTcsLTM1ODg1NDY2MywzMDQ1NTg3MjIsLTEyMDc0NjU5
-MTgsMTY1OTIzOTk3N119
+eyJoaXN0b3J5IjpbODQwOTA1OTk5LC0xMzEwNjAwMjQ0LDEwMD
+I0NzgzNzYsLTEzOTIwMDU1NTIsLTgyODc5ODQzNCwxNjQ1NDUw
+MDA5LC0xMzYzOTIwOTg4LDUxNDA3MzE4NSwxOTIwNTY2MjMzLC
+0xNTE3ODA3MTEzLDU1NjA1MjQ3MSwtMTQxNjI4ODIxNCwtMTg0
+MTI3NzM4MSwxNzI1ODg3MDg5LC0yMDUzOTc0OTM1LC0yMDczMT
+E2NDk3LC0zNTg4NTQ2NjMsMzA0NTU4NzIyLC0xMjA3NDY1OTE4
+LDE2NTkyMzk5NzddfQ==
 -->
