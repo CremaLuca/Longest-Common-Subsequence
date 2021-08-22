@@ -4,8 +4,9 @@
 #SBATCH --error lcs_err_o3_n1_%j.err
 #SBATCH --output lcs_out_o3_n1_%j.log
 #SBATCH --partition allgroups
+#SBATCH -c 1
 #SBATCH --ntasks 1
-#SBATCH --mem 16G
+#SBATCH --mem 32G
 #SBATCH --time 60:00
 
 spack load intel-parallel-studio@professional.2019.4
