@@ -289,14 +289,15 @@ We notice also that the sequential algorithm is a lot more cache friendly, since
 ### References
 [1] <i>Spreadsheet with numerical results in microseconds<i>: https://docs.google.com/spreadsheets/d/1rcYe3zi5sDbGkvDs1t6joy9k7QzM-bF1frSsXAbS6wY/edit#gid=0
 [2] Github reference to Robin Hood Hash Map: https://github.com/martinus/robin-hood-hashing
-[3] Longest common subsequence problhttps://en.wikipedia.org/wiki/Longest_common_subsequence_problem
+[3] Longest common subsequence problem https://en.wikipedia.org/wiki/Longest_common_subsequence_problem
+[4] Thomas H. Cormen, Introduction to algorithms
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTExMjExNTI1OSwtMTM2MzkyMDk4OCw1MT
-QwNzMxODUsMTkyMDU2NjIzMywtMTUxNzgwNzExMyw1NTYwNTI0
-NzEsLTE0MTYyODgyMTQsLTE4NDEyNzczODEsMTcyNTg4NzA4OS
-wtMjA1Mzk3NDkzNSwtMjA3MzExNjQ5NywtMzU4ODU0NjYzLDMw
-NDU1ODcyMiwtMTIwNzQ2NTkxOCwxNjU5MjM5OTc3LDcyOTQwNz
-kwOSwxOTkzNjE3NjA5LDE0NTIzMDQ3NTAsNzk5MDk2OTkwLC04
-NzAxNDAxNTFdfQ==
+eyJoaXN0b3J5IjpbLTE5MzczOTc0NDgsLTEzNjM5MjA5ODgsNT
+E0MDczMTg1LDE5MjA1NjYyMzMsLTE1MTc4MDcxMTMsNTU2MDUy
+NDcxLC0xNDE2Mjg4MjE0LC0xODQxMjc3MzgxLDE3MjU4ODcwOD
+ksLTIwNTM5NzQ5MzUsLTIwNzMxMTY0OTcsLTM1ODg1NDY2Mywz
+MDQ1NTg3MjIsLTEyMDc0NjU5MTgsMTY1OTIzOTk3Nyw3Mjk0MD
+c5MDksMTk5MzYxNzYwOSwxNDUyMzA0NzUwLDc5OTA5Njk5MCwt
+ODcwMTQwMTUxXX0=
 -->
