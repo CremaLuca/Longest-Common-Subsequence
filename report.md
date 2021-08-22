@@ -259,7 +259,7 @@ def compute_LCS(i: int, j: int, m: str):
 ### Results and conclusions
 
 We ran our parallel program on the CAPRI cluster, after compiling with two different optimization flags, O1 and O3.
-We tested $5$ different kind of input files: small, medium, large, large_2, large_3. 
+We tested $5$ different kind of input files named small, medium, large, large_2, large_3. 
 | input | size|approx. X, Y size |sequential O3|parallel p = 2 O3 | parallel p = 4 O3|parallel p = 8 O3|
 |:--:|:--:|:--:|:--:|:--:|:--:|:--:|
 |<i>small | $26$B |$13$ char| $1$ $\mu s$|$0.1$ $ms$|$0.2$ $ms$|$88$ $ms$| 
@@ -284,11 +284,11 @@ We notice also that the sequential algorithm is a lot more cache friendly, since
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIwMzU4MjA2MDksODQwOTA1OTk5LC0xMz
-EwNjAwMjQ0LDEwMDI0NzgzNzYsLTEzOTIwMDU1NTIsLTgyODc5
-ODQzNCwxNjQ1NDUwMDA5LC0xMzYzOTIwOTg4LDUxNDA3MzE4NS
-wxOTIwNTY2MjMzLC0xNTE3ODA3MTEzLDU1NjA1MjQ3MSwtMTQx
-NjI4ODIxNCwtMTg0MTI3NzM4MSwxNzI1ODg3MDg5LC0yMDUzOT
-c0OTM1LC0yMDczMTE2NDk3LC0zNTg4NTQ2NjMsMzA0NTU4NzIy
-LC0xMjA3NDY1OTE4XX0=
+eyJoaXN0b3J5IjpbLTE0ODExMTgwNCw4NDA5MDU5OTksLTEzMT
+A2MDAyNDQsMTAwMjQ3ODM3NiwtMTM5MjAwNTU1MiwtODI4Nzk4
+NDM0LDE2NDU0NTAwMDksLTEzNjM5MjA5ODgsNTE0MDczMTg1LD
+E5MjA1NjYyMzMsLTE1MTc4MDcxMTMsNTU2MDUyNDcxLC0xNDE2
+Mjg4MjE0LC0xODQxMjc3MzgxLDE3MjU4ODcwODksLTIwNTM5Nz
+Q5MzUsLTIwNzMxMTY0OTcsLTM1ODg1NDY2MywzMDQ1NTg3MjIs
+LTEyMDc0NjU5MThdfQ==
 -->
