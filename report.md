@@ -284,13 +284,14 @@ In almost every test we performed at least $3$ measures of the total time (proce
 <img align="center" src="https://i.postimg.cc/VLD0G6Fd/large.png"></img>
  
 <img align="left" src="https://i.postimg.cc/Y0ykFJ1q/small-medium.png"></img>
-What really striked us is the huge difference of the total time between the sequential version and the parallel version: probably our input files were too tiny to justify going parallel; we have to mention however that quite a good amount of time is spent on searching the hash table: a few simulations on the large files using $4$ processors showed that about $33$% of computation time is spent on looking up values; originally we used the STL implementation of the hash map, which yielded a fourfold total time, which led us to use a faster implementation [REFERENCE]. We are aware that the hash table could be replaced with a faster data structure: [DESCRIBE HERE]. However the detailed implementation required a careful study of specific cases, so we ended up with an existing data structure, in order to not slow down the flow of the project.
+What really striked us is the huge difference of the total time between the sequential version and the parallel version: probably our input files were too tiny to justify going parallel; we have to mention however that quite a good amount of time is spent on searching the hash table: a few simulations on the large files using $4$ processors showed that about $33$% of computation time is spent on looking up values; originally we used the STL implementation of the hash map, which yielded a fourfold total time, which led us to use a faster implementation [2]. We are aware that the hash table could be replaced with a faster data structure: for instance we could use a variabl . However the detailed implementation required a careful study of specific cases, so we ended up with an existing data structure, in order to not slow down the flow of the project.
 We mention also that the sequential algorithm is a lot more cache friendly, since the whole LCS matrix is actually a linear array, whereas the parallel algorithm fails to take advantage of this. We were not able to test the large_3 input on the cluster using $2$ or $4$ processors, since the required memory for the execution was bigger than $32$GB; of course the parallel algorithm requires more RAM since it's written in C++ (objects take more space).
 ### Bibliography
 [1] <i>Spreadsheet with numerical results in microseconds<i>: https://docs.google.com/spreadsheets/d/1rcYe3zi5sDbGkvDs1t6joy9k7QzM-bF1frSsXAbS6wY/edit#gid=0
-[2] Github reference to Robin Hood unordered map
+[2] Github reference to Robin Hood Hash Map: https://github.com/martinus/robin-hood-hashing
+
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTU1Njg5OTE4Myw1MTQwNzMxODUsMTkyMD
+eyJoaXN0b3J5IjpbMTk4OTU3ODUxNyw1MTQwNzMxODUsMTkyMD
 U2NjIzMywtMTUxNzgwNzExMyw1NTYwNTI0NzEsLTE0MTYyODgy
 MTQsLTE4NDEyNzczODEsMTcyNTg4NzA4OSwtMjA1Mzk3NDkzNS
 wtMjA3MzExNjQ5NywtMzU4ODU0NjYzLDMwNDU1ODcyMiwtMTIw
