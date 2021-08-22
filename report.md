@@ -51,7 +51,7 @@ def diag_start_end(d: int, i: int):
 	Returns:
 		A pair (s, e) indicating the starting/ending cell on the 
 		diagonal d assigned to processor i. 
-		Index e is exclusive, while index s in inclusive
+		Index e is exclusive, while index s in inclusive.
     """
     # Calc length of the diagonal
 	L_d = diag_length(d)
@@ -292,11 +292,11 @@ We notice also that the sequential algorithm is a lot more cache friendly, since
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEzMTA2MDAyNDQsMTAwMjQ3ODM3NiwtMT
-M5MjAwNTU1MiwtODI4Nzk4NDM0LDE2NDU0NTAwMDksLTEzNjM5
-MjA5ODgsNTE0MDczMTg1LDE5MjA1NjYyMzMsLTE1MTc4MDcxMT
-MsNTU2MDUyNDcxLC0xNDE2Mjg4MjE0LC0xODQxMjc3MzgxLDE3
-MjU4ODcwODksLTIwNTM5NzQ5MzUsLTIwNzMxMTY0OTcsLTM1OD
-g1NDY2MywzMDQ1NTg3MjIsLTEyMDc0NjU5MTgsMTY1OTIzOTk3
-Nyw3Mjk0MDc5MDldfQ==
+eyJoaXN0b3J5IjpbMjEwMDY0NDE4MCwtMTMxMDYwMDI0NCwxMD
+AyNDc4Mzc2LC0xMzkyMDA1NTUyLC04Mjg3OTg0MzQsMTY0NTQ1
+MDAwOSwtMTM2MzkyMDk4OCw1MTQwNzMxODUsMTkyMDU2NjIzMy
+wtMTUxNzgwNzExMyw1NTYwNTI0NzEsLTE0MTYyODgyMTQsLTE4
+NDEyNzczODEsMTcyNTg4NzA4OSwtMjA1Mzk3NDkzNSwtMjA3Mz
+ExNjQ5NywtMzU4ODU0NjYzLDMwNDU1ODcyMiwtMTIwNzQ2NTkx
+OCwxNjU5MjM5OTc3XX0=
 -->
