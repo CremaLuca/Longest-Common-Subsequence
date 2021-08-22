@@ -4,7 +4,7 @@
 Without loss of generality, we assume $m \le n$ in the following. We first describe a sequential algorithm for the LCS problem, and then we move to the more interesting parallel case, for which we propose an algorithm that borrows its structure from the sequential one.
 
 ## Sequential algorithm
-There's a well-known algorithm based on dynamic programming, that we propose here for the sequential case, which exploits the optimal substructure of the problem. Let $M$ be an $(m+1) \times (n+1)$ matrix, where entry $M[i, j]$ represents the length of an LCS of the sequences $X_i$ and $Y_j$, where $X_i$ is the $i$-th prefix of $X$, i.e. $(x_1, \ldots, x_i)$ for $i>0$ while $X_0$ is the empty string, and similarly for $Y_j$. It holds that: $$M[i, j] = \begin{cases}0 & \text
+There's a well-known algorithm (see [1] or [2]) based on dynamic programming, that we propose here for the sequential case, which exploits the optimal substructure of the problem. Let $M$ be an $(m+1) \times (n+1)$ matrix, where entry $M[i, j]$ represents the length of an LCS of the sequences $X_i$ and $Y_j$, where $X_i$ is the $i$-th prefix of $X$, i.e. $(x_1, \ldots, x_i)$ for $i>0$ while $X_0$ is the empty string, and similarly for $Y_j$. It holds that: $$M[i, j] = \begin{cases}0 & \text
 {if $i = 0$ or $j = 0$}  \\M[i-1, j-1]+1 & \text{if $i, j > 0$ and $x_i = y_j$} \\\max(M[i, j-1], M[i-1, j])  & \text{if $i, j > 0$ and $x_i \ne y_j$}\end{cases}$$
 From this simple recurrence relation, it's easy to design a sequential algorithm that solves the LCS problem, filling each row one at a time. It follows that the length of an LCS is stored in $M[m, n]$ and we don't need the rest of the matrix. We can reduce the space requirements from $\theta(mn)$ to $\theta(n)$ by observing that by computing the entries of $M$ row by row, the algorithm only needs the current row and the previous row. If, however, not only the length of the LCS is required, but also the actual subsequence, we need to store the whole matrix $M$. To re-construct the LCS of sequences $X_i$, $Y_j$ from $M$ the procedure is to start at entry $M[i, j]$ and follow at each step the previous entry which led to the computation of the current entry.
 
@@ -278,7 +278,7 @@ We tested $5$ different kind of input files: small, medium, large, large_2, larg
 |<i>large|$1.96$KB|$1000$ char|$3$ $ms$|$162$ $ms$|$103$ $ms$|$2$ $s$|
 |<i>large_2|$19.5$KB|$10.000$ char| $418$ $ms$|$21$ $s$|$12$ $s$|$8$ $s$|
 |<i>large_3|$97.7$KB|$50.000$ char| $39$ $s$|n.a.|n.a.| $587$ $s$|
-This table does not show all tests, but only a few. For the complete numerical details, we refer the reader to the shared spreadsheet document [3]. Instead we proceed to show the graphical details.
+This table does not show all tests, but <i>only</i> a few. For the complete numerical details, we refer the reader to the shared spreadsheet document [3]. Instead we proceed to show the graphical details.
 In almost every test we performed at least $3$ measures of the total time (processing time + communication time), so the graphs below actually show the average of these measures. As we expect, the time decreases as the number of processors increase, at least for the large inputs: for example with input_large2, time decreases by almost a factor of $100$ going from $1$ to $16$ processors. The things are a bit different for small and medium input sizes, where using at least $8$ processors degraded the performance in a surprising way. This is probably due to more communications between processors which have a relatively high impact on the performace. 
 
 <img align="center" src="https://i.postimg.cc/VLD0G6Fd/large.png"></img>
@@ -287,18 +287,18 @@ In almost every test we performed at least $3$ measures of the total time (proce
 What really striked us is the huge difference of the total time between the sequential version and the parallel version: probably our input files were too tiny to justify going parallel; we have to mention however that quite a good amount of time is spent on searching the hash table: a few simulations on the large files using $4$ processors showed that about $33$% of computation time is spent on looking up values; originally we used the STL implementation of the hash map, which yielded a fourfold total time, which led us to use a faster implementation [4]. We are aware that the hash table could be replaced with a faster data structure: for each processor, we could use an array of vectors, each holding elements received by another process or computed by the current process; furthermore this array is indexed using the diagonal number. However the detailed implementation required a careful study of specific cases, so we ended up with an existing data structure, in order to not slow down the flow of the project.
 We notice also that the sequential algorithm is a lot more cache friendly, since the whole LCS matrix is actually a linear array, whereas the parallel algorithm fails to take advantage of this. We were not able to test the large_3 input on the cluster using $2$ or $4$ processors, since the required memory for the execution was bigger than $32$GB; of course the parallel algorithm requires more RAM since it's written in C++ (objects take more space).
 ### References
-[1] <i>Longest common subsequence problem:<i> https://en.wikipedia.org/wiki/Longest_common_subsequence_problem
-[2] <i>Thomas H. Cormen, Introduction to algorithms<i>
-[3] <i>Spreadsheet with numerical results in microseconds:<i> https://docs.google.com/spreadsheets/d/1rcYe3zi5sDbGkvDs1t6joy9k7QzM-bF1frSsXAbS6wY/edit#gid=0
-[4] <i>Github reference to Robin Hood Hash Map:<i> https://github.com/martinus/robin-hood-hashing
+[1] <i>Longest common subsequence problem:</i> https://en.wikipedia.org/wiki/Longest_common_subsequence_problem
+[2] <i>Thomas H. Cormen, Introduction to algorithms</i>
+[3] <i>Spreadsheet with numerical results in microseconds:</i> https://docs.google.com/spreadsheets/d/1rcYe3zi5sDbGkvDs1t6joy9k7QzM-bF1frSsXAbS6wY/edit#gid=0
+[4] <i>Github reference to Robin Hood Hash Map:</i> https://github.com/martinus/robin-hood-hashing
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbOTI4NDQ4MTgyLC0xMzYzOTIwOTg4LDUxND
-A3MzE4NSwxOTIwNTY2MjMzLC0xNTE3ODA3MTEzLDU1NjA1MjQ3
-MSwtMTQxNjI4ODIxNCwtMTg0MTI3NzM4MSwxNzI1ODg3MDg5LC
-0yMDUzOTc0OTM1LC0yMDczMTE2NDk3LC0zNTg4NTQ2NjMsMzA0
-NTU4NzIyLC0xMjA3NDY1OTE4LDE2NTkyMzk5NzcsNzI5NDA3OT
-A5LDE5OTM2MTc2MDksMTQ1MjMwNDc1MCw3OTkwOTY5OTAsLTg3
-MDE0MDE1MV19
+eyJoaXN0b3J5IjpbMTY0NTQ1MDAwOSwtMTM2MzkyMDk4OCw1MT
+QwNzMxODUsMTkyMDU2NjIzMywtMTUxNzgwNzExMyw1NTYwNTI0
+NzEsLTE0MTYyODgyMTQsLTE4NDEyNzczODEsMTcyNTg4NzA4OS
+wtMjA1Mzk3NDkzNSwtMjA3MzExNjQ5NywtMzU4ODU0NjYzLDMw
+NDU1ODcyMiwtMTIwNzQ2NTkxOCwxNjU5MjM5OTc3LDcyOTQwNz
+kwOSwxOTkzNjE3NjA5LDE0NTIzMDQ3NTAsNzk5MDk2OTkwLC04
+NzAxNDAxNTFdfQ==
 -->
