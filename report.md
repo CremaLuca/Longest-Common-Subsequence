@@ -17,11 +17,6 @@ Note how entries in each $D(d)$ will only depend on entries belonging to $D(d-1)
 $$L(d) = |D(d)| =\begin{cases}d+1 & \text
 {if $0\le d < m$}  \\m & \text{if $m \le d < n$} \\m+n-1-d & \text{if $d \ge n$}\end{cases}$$
 or, more concisely, $L(d) = \min\{d+1, m, m+n-1-d\}$. 
-Or using a pseudo-algorithm:
-```py
-def diag_length(d: int):
-	return min(d+1, M, M+N-1-d)
-```
 
 ### Optimal execution order
 
@@ -297,11 +292,11 @@ We notice also that the sequential algorithm is a lot more cache friendly, since
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTc0NzQ1NjkxMiwxMDAyNDc4Mzc2LC0xMz
-kyMDA1NTUyLC04Mjg3OTg0MzQsMTY0NTQ1MDAwOSwtMTM2Mzky
-MDk4OCw1MTQwNzMxODUsMTkyMDU2NjIzMywtMTUxNzgwNzExMy
-w1NTYwNTI0NzEsLTE0MTYyODgyMTQsLTE4NDEyNzczODEsMTcy
-NTg4NzA4OSwtMjA1Mzk3NDkzNSwtMjA3MzExNjQ5NywtMzU4OD
-U0NjYzLDMwNDU1ODcyMiwtMTIwNzQ2NTkxOCwxNjU5MjM5OTc3
-LDcyOTQwNzkwOV19
+eyJoaXN0b3J5IjpbNjA4MDA1NTksMTAwMjQ3ODM3NiwtMTM5Mj
+AwNTU1MiwtODI4Nzk4NDM0LDE2NDU0NTAwMDksLTEzNjM5MjA5
+ODgsNTE0MDczMTg1LDE5MjA1NjYyMzMsLTE1MTc4MDcxMTMsNT
+U2MDUyNDcxLC0xNDE2Mjg4MjE0LC0xODQxMjc3MzgxLDE3MjU4
+ODcwODksLTIwNTM5NzQ5MzUsLTIwNzMxMTY0OTcsLTM1ODg1ND
+Y2MywzMDQ1NTg3MjIsLTEyMDc0NjU5MTgsMTY1OTIzOTk3Nyw3
+Mjk0MDc5MDldfQ==
 -->
