@@ -278,7 +278,7 @@ We tested $5$ different kind of input files: small, medium, large, large_2, larg
 |<i>large|$1.96$KB|$1000$ char|$3$ $ms$|$162$ $ms$|$103$ $ms$|$2$ $s$|
 |<i>large_2|$19.5$KB|$10.000$ char| $418$ $ms$|$21$ $s$|$12$ $s$|$8$ $s$|
 |<i>large_3|$97.7$KB|$50.000$ char| $39$ $s$|n.a.|n.a.| $587$ $s$|
-This table does not show all tests, but only a few. For the complete numerical details, we refer the reader to the shared spreadsheet document [REFERENCE]. Instead we proceed to show the graphical details.
+This table does not show all tests, but only a few. For the complete numerical details, we refer the reader to the shared spreadsheet document [1]. Instead we proceed to show the graphical details.
 In almost every test we performed at least $3$ measures of the total time (processing time + communication time), so the graphs below actually show the average of these measures. As we expect, the time decreases as the number of processors increase, at least for the large inputs: for example with input_large2, time decreases by almost a factor of $100$ going from $1$ to $16$ processors. The things are a bit different for small and medium input sizes, where using at least $8$ processors degraded the performance in a surprising way. This is probably due to more communications between processors which have a relatively high impact on the performace. 
 
 <img align="center" src="https://i.postimg.cc/VLD0G6Fd/large.png"></img>
@@ -287,13 +287,13 @@ In almost every test we performed at least $3$ measures of the total time (proce
 What really striked us is the huge difference of the total time between the sequential version and the parallel version: probably our input files were too tiny to justify going parallel; we have to mention however that quite a good amount of time is spent on searching the hash table: a few simulations on the large files using $4$ processors showed that about $33$% of computation time is spent on looking up values; originally we used the STL implementation of the hash map, which yielded a fourfold total time, which led us to use a faster implementation [REFERENCE]. We are aware that the hash table could be replaced with a faster data structure: [DESCRIBE HERE]. However the detailed implementation required a careful study of specific cases, so we ended up with an existing data structure, in order to not slow down the flow of the project.
 We mention also that the sequential algorithm is a lot more cache friendly, since the whole LCS matrix is actually a linear array, whereas the parallel algorithm fails to take advantage of this. We were not able to test the large_3 input on the cluster using $2$ or $4$ processors, since the required memory for the execution was bigger than $32$GB; of course the parallel algorithm requires more RAM since it's written in C++ (objects take more space).
 ### Bibliography
-
+[1] Spreadsheet with numerical results in microseconds https://docs.google.com/spreadsheets/d/1rcYe3zi5sDbGkvDs1t6joy9k7QzM-bF1frSsXAbS6wY/edit#gid=0
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNTE0MDczMTg1LDE5MjA1NjYyMzMsLTE1MT
-c4MDcxMTMsNTU2MDUyNDcxLC0xNDE2Mjg4MjE0LC0xODQxMjc3
-MzgxLDE3MjU4ODcwODksLTIwNTM5NzQ5MzUsLTIwNzMxMTY0OT
-csLTM1ODg1NDY2MywzMDQ1NTg3MjIsLTEyMDc0NjU5MTgsMTY1
-OTIzOTk3Nyw3Mjk0MDc5MDksMTk5MzYxNzYwOSwxNDUyMzA0Nz
-UwLDc5OTA5Njk5MCwtODcwMTQwMTUxLDY3OTI0NzcyOCwtMTk3
-NDMyNTEzNF19
+eyJoaXN0b3J5IjpbMTY2MDUzOTY2Miw1MTQwNzMxODUsMTkyMD
+U2NjIzMywtMTUxNzgwNzExMyw1NTYwNTI0NzEsLTE0MTYyODgy
+MTQsLTE4NDEyNzczODEsMTcyNTg4NzA4OSwtMjA1Mzk3NDkzNS
+wtMjA3MzExNjQ5NywtMzU4ODU0NjYzLDMwNDU1ODcyMiwtMTIw
+NzQ2NTkxOCwxNjU5MjM5OTc3LDcyOTQwNzkwOSwxOTkzNjE3Nj
+A5LDE0NTIzMDQ3NTAsNzk5MDk2OTkwLC04NzAxNDAxNTEsNjc5
+MjQ3NzI4XX0=
 -->
