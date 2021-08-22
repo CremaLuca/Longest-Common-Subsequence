@@ -1,5 +1,21 @@
 # Parallel-algorithms-2021
 
+## Getting started
+
+The sequential version and the parallel one are in their respective folders `LCS_sequential` and `LCS_parallel`.
+
+### Sequential
+
+You can compile the source file using the `makefile` or by running `gcc main.c -OX -o main_oX.o` replacing `X` with 1, 2 and 3.
+
+To execute the code on the CAPRI machine you can run `sbatch lcs_sequential.slurm` which will run the three optimization version on all of the input sizes in one job.
+
+### Parallel
+
+You can compile the source file using the `makefile` or by running `mpiicpc main.cpp utils.cpp -OX -o lcs_oX.o` on CAPRI after spack-loading intel parallel studio using `spack load intel-parallel-studio@professional.2019.4` and replacing `X` with 1 and 3.
+
+To execute the code on the CAPRI machine you can run any slurm file in the `slurm` folder which are of type `lcs_oX_nP.slurm` where X is the optimization code and P is the number of processors between 1, 2, 4, 8, 16 and 32.
+
 ## Report
 
 The printed verstion of the [report](report.md) pdf has been printed using StackEdit with the following CSS applied.
