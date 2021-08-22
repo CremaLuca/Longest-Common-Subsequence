@@ -135,8 +135,7 @@ Given the coordinates $(i, j)$ the diagonal is clearly  $i+j$, while $\text{pos(
 def cell_diag(i: int, j: int):
 	"""
 	Parameters:
-		- i, j: int
-			Coordinates of a matrix cell.
+		- i, j: int Coordinates of a matrix cell.
 	Returns:
 		The index of the diagonal where the cell belongs.
 	"""
@@ -145,8 +144,7 @@ def cell_diag(i: int, j: int):
 def cell_diag_index(i: int, j: int):
 	"""
 	Parameters:
-		- i, j: int
-			Coordinates of a matrix cell.
+		- i, j: int Coordinates of a matrix cell.
 	Returns:
 		The index of the cell w.r.t. the diagonal it belongs to.
 	"""
@@ -287,11 +285,11 @@ We notice also that the sequential algorithm is a lot more cache friendly, since
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTU2NDA0OTY3NSwtMTMxMDYwMDI0NCwxMD
-AyNDc4Mzc2LC0xMzkyMDA1NTUyLC04Mjg3OTg0MzQsMTY0NTQ1
-MDAwOSwtMTM2MzkyMDk4OCw1MTQwNzMxODUsMTkyMDU2NjIzMy
-wtMTUxNzgwNzExMyw1NTYwNTI0NzEsLTE0MTYyODgyMTQsLTE4
-NDEyNzczODEsMTcyNTg4NzA4OSwtMjA1Mzk3NDkzNSwtMjA3Mz
-ExNjQ5NywtMzU4ODU0NjYzLDMwNDU1ODcyMiwtMTIwNzQ2NTkx
-OCwxNjU5MjM5OTc3XX0=
+eyJoaXN0b3J5IjpbLTE2Mzg4MTE4MDEsLTEzMTA2MDAyNDQsMT
+AwMjQ3ODM3NiwtMTM5MjAwNTU1MiwtODI4Nzk4NDM0LDE2NDU0
+NTAwMDksLTEzNjM5MjA5ODgsNTE0MDczMTg1LDE5MjA1NjYyMz
+MsLTE1MTc4MDcxMTMsNTU2MDUyNDcxLC0xNDE2Mjg4MjE0LC0x
+ODQxMjc3MzgxLDE3MjU4ODcwODksLTIwNTM5NzQ5MzUsLTIwNz
+MxMTY0OTcsLTM1ODg1NDY2MywzMDQ1NTg3MjIsLTEyMDc0NjU5
+MTgsMTY1OTIzOTk3N119
 -->
