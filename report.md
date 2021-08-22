@@ -47,7 +47,7 @@ def diag_start_end(d: int, i: int) -> Tuple[int, int]:
 		- d: int Diagonal index.
 		- i: int Processor index.
 	Returns:
-		A pair (s, e) indicating the starting/ending cell on the 
+		A pair (s: int, e: int) indicating the starting/ending cell on the 
 		diagonal d assigned to processor i. 
 		Index e is exclusive, while index s in inclusive.
     """
@@ -288,7 +288,7 @@ We notice also that the sequential algorithm is a lot more cache friendly, since
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNjU2MzMwNTM4LC0xMzEwNjAwMjQ0LDEwMD
+eyJoaXN0b3J5IjpbNjk4OTc5NTQ2LC0xMzEwNjAwMjQ0LDEwMD
 I0NzgzNzYsLTEzOTIwMDU1NTIsLTgyODc5ODQzNCwxNjQ1NDUw
 MDA5LC0xMzYzOTIwOTg4LDUxNDA3MzE4NSwxOTIwNTY2MjMzLC
 0xNTE3ODA3MTEzLDU1NjA1MjQ3MSwtMTQxNjI4ODIxNCwtMTg0
