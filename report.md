@@ -15,8 +15,7 @@ We will exploit the previous recurrence relation, trying to find a way to parall
 {if $0\le d < m$}  \\\{M[0, d], M[1, d-1], \ldots,  M[m-1, d-m+1])\} & \text{if $m \le d < n$} \\\{M[d-n + 1, n-1], M[d-n+2, n-2], \ldots,  M[m-1, d-m+1])\}  & \text{if $d \ge n$}\end{cases}$$
 Note how entries in each $D(d)$ will only depend on entries belonging to $D(d-1)$ and $D(d-2)$. In fact each element only depends on three elements from the two previous principal diagonals. This suggests a way to parallelize our initial algorithm: by looking at the CDAG of the computation, each diagonal is a level of the greedy schedule. Hence each entry in each diagonal can be computed in parallel, as long as entries from the previous diagonals have already been computed. From the previous definition, we define $L(d)$ as the length of the principal diagonal $d$:
 $$L(d) = |D(d)| =\begin{cases}d+1 & \text
-{if $0\le d < m$}  \\m & \text{if $m \le d < n$} \\m+n-1-d & \text{if $d \ge n$}\end{cases}$$
-or, more concisely, $L(d) = \min\{d+1, m, m+n-1-d\}$. 
+{if $0\le d < m$}  \\m & \text{if $m \le d < n$} \\m+n-1-d & \text{if $d \ge n$}\end{cases}$$ or, more concisely, $L(d) = \min\{d+1, m, m+n-1-d\}$. 
 
 ### Optimal execution order
 
@@ -254,7 +253,7 @@ def compute_LCS(i: int, j: int, m: str):
 	else:
 		MPI_SEND(cell_proc(i, j-1), m)
 ```
-<br><br>
+<br>
 
 ### Results and conclusions
 
@@ -274,8 +273,8 @@ In almost every test we performed at least $3$ measures of the total time (proce
  
 <img align="center" src="https://i.postimg.cc/Y0ykFJ1q/small-medium.png"></img>
 
-What really striked us is the huge difference of the total time between the sequential version and the parallel version: probably our input files were too tiny to justify going parallel; we have to mention however that quite a good amount of time is spent on research for the best hash table: a few simulations on the large files using $4$ processors showed that about $33$% of computation time is spent on looking up values; originally we used the STL implementation of the hash map, which yielded a fourfold total time, which led us to use a faster implementation [4]. We are aware that the hash table could be replaced with a faster data structure: for each processor, we could use an array of vectors, each holding elements received by another process or computed by the current process; furthermore this array is indexed using the diagonal number. However the detailed implementation required a careful study of specific cases, so we ended up with an existing data structure, in order to not slow down the flow of the project. [INSERIRE QUI PARTE SU EFFICIENCY]
-The CPU efficiency values are obtained from the `seff` command on CAPRI and have meaningful values only for some of the jobs. It is worth mentioning that alll of the jobs running the parallel algorithm resulted in $>85\%$ CPU efficiency while the job running the sequential algorithm only reached around $34\%$ CPU efficiency.
+What really striked us is the huge difference of the total time between the sequential version and the parallel version: probably our input files were too tiny to justify going parallel; we have to mention however that quite a good amount of time is spent on research for the best hash table: a few simulations on the large files using $4$ processors showed that about $33$% of computation time is spent on looking up values; originally we used the STL implementation of the hash map, which yielded a fourfold total time, which led us to use a faster implementation [4]. We are aware that the hash table could be replaced with a faster data structure: for each processor, we could use an array of vectors, each holding elements received by another process or computed by the current process; furthermore this array is indexed using the diagonal number. However the detailed implementation required a careful study of specific cases, so we ended up with an existing data structure, in order to not slow down the flow of the project.
+The CPU efficiency values are obtained from the `seff` command on CAPRI and have meaningful values only for some of the jobs. It is worth mentioning that all of the jobs running the parallel algorithm resulted in $>85\%$ CPU efficiency while the job running the sequential algorithm only reached around $34\%$ CPU efficiency.
 We notice also that the sequential algorithm is a lot more cache friendly, since the whole LCS matrix is actually a linear array, whereas the parallel algorithm fails to take advantage of this. We were not able to test the large_3 input on the cluster using $2$ or $4$ processors, since the required memory for the execution was bigger than $64$GB; of course the parallel algorithm requires more RAM since it's written in C++ (objects take more space).
 
 ### References
@@ -286,11 +285,11 @@ We notice also that the sequential algorithm is a lot more cache friendly, since
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTUzMTQ5NDE4Myw4NDA5MDU5OTksLTEzMT
-A2MDAyNDQsMTAwMjQ3ODM3NiwtMTM5MjAwNTU1MiwtODI4Nzk4
-NDM0LDE2NDU0NTAwMDksLTEzNjM5MjA5ODgsNTE0MDczMTg1LD
-E5MjA1NjYyMzMsLTE1MTc4MDcxMTMsNTU2MDUyNDcxLC0xNDE2
-Mjg4MjE0LC0xODQxMjc3MzgxLDE3MjU4ODcwODksLTIwNTM5Nz
-Q5MzUsLTIwNzMxMTY0OTcsLTM1ODg1NDY2MywzMDQ1NTg3MjIs
-LTEyMDc0NjU5MThdfQ==
+eyJoaXN0b3J5IjpbMjI3MzQ1NDAsODQwOTA1OTk5LC0xMzEwNj
+AwMjQ0LDEwMDI0NzgzNzYsLTEzOTIwMDU1NTIsLTgyODc5ODQz
+NCwxNjQ1NDUwMDA5LC0xMzYzOTIwOTg4LDUxNDA3MzE4NSwxOT
+IwNTY2MjMzLC0xNTE3ODA3MTEzLDU1NjA1MjQ3MSwtMTQxNjI4
+ODIxNCwtMTg0MTI3NzM4MSwxNzI1ODg3MDg5LC0yMDUzOTc0OT
+M1LC0yMDczMTE2NDk3LC0zNTg4NTQ2NjMsMzA0NTU4NzIyLC0x
+MjA3NDY1OTE4XX0=
 -->
