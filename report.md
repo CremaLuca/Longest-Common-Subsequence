@@ -1,4 +1,5 @@
-Marco Mariotto 2027835 Luca Crema 2026827
+Marco Mariotto 2027835
+Luca Crema 2026827
 
 # Longest Common Subsequence problem
 
@@ -188,12 +189,9 @@ We know for sure that the cell on the right can belong either to the current pro
 def send(value: int, i: int, j: int, p: int):
 	"""
 	Parameters:
-		-value: int
-			Value to be sent
-		- i, j: int
-			Coordinates of a matrix cell.
-		- p: int
-			Process that makes a send
+		-value: int Value to be sent
+		- i, j: int Coordinates of a matrix cell.
+		- p: int Process that makes a send
 	"""
 	# Send the value right if needed
 	if p != 0: # process 0 never sends right
@@ -285,11 +283,11 @@ We notice also that the sequential algorithm is a lot more cache friendly, since
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTg1NTA4NDgzOCwtMTI4NTQwMjQxNiwxMz
-A1NjY4Mzg2LDQxNjU2NDI5MiwxMDY5NzMxNzg0LDg0MDkwNTk5
-OSwtMTMxMDYwMDI0NCwxMDAyNDc4Mzc2LC0xMzkyMDA1NTUyLC
-04Mjg3OTg0MzQsMTY0NTQ1MDAwOSwtMTM2MzkyMDk4OCw1MTQw
-NzMxODUsMTkyMDU2NjIzMywtMTUxNzgwNzExMyw1NTYwNTI0Nz
-EsLTE0MTYyODgyMTQsLTE4NDEyNzczODEsMTcyNTg4NzA4OSwt
-MjA1Mzk3NDkzNV19
+eyJoaXN0b3J5IjpbLTE2OTcxNjMzNTAsMTg1NTA4NDgzOCwtMT
+I4NTQwMjQxNiwxMzA1NjY4Mzg2LDQxNjU2NDI5MiwxMDY5NzMx
+Nzg0LDg0MDkwNTk5OSwtMTMxMDYwMDI0NCwxMDAyNDc4Mzc2LC
+0xMzkyMDA1NTUyLC04Mjg3OTg0MzQsMTY0NTQ1MDAwOSwtMTM2
+MzkyMDk4OCw1MTQwNzMxODUsMTkyMDU2NjIzMywtMTUxNzgwNz
+ExMyw1NTYwNTI0NzEsLTE0MTYyODgyMTQsLTE4NDEyNzczODEs
+MTcyNTg4NzA4OV19
 -->
