@@ -1,3 +1,9 @@
+#### Parallel computing 2021
+
+Marco Mariotto 2027835
+Luca Crema 2026827
+[Repository on Github](github.com/CremaLuca/Longest-Common-Subsequence)
+
 # Longest Common Subsequence problem
 
  **Definition:** Let $X = (x_1, \ldots, x_m)$ and $Y = (y_1, \ldots, y_n)$ be two sequences, where each $x_i, y_i \in$ alphabet $\Sigma$. We say that a sequence $Z = (z_1, \ldots, z_t)$ is a subsequence of $X$ if there exists a strictly increasing sequence $(i_1, \ldots, i_t)$ of indices of $X$ such that $z_j = x_{i_j}$, for all $1 \le j \le t$. The Longest Common Subsequence (LCS) problem consists in finding a common subsequence $Z$ of *both* $X$ and $Y$, of maximum length.
@@ -186,12 +192,9 @@ We know for sure that the cell on the right can belong either to the current pro
 def send(value: int, i: int, j: int, p: int):
 	"""
 	Parameters:
-		-value: int
-			Value to be sent
-		- i, j: int
-			Coordinates of a matrix cell.
-		- p: int
-			Process that makes a send
+		-value: int Value to be sent
+		- i, j: int Coordinates of a matrix cell.
+		- p: int Process that makes a send
 	"""
 	# Send the value right if needed
 	if p != 0: # process 0 never sends right
@@ -283,11 +286,11 @@ We notice also that the sequential algorithm is a lot more cache friendly, since
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTMwNTY2ODM4Niw0MTY1NjQyOTIsMTA2OT
-czMTc4NCw4NDA5MDU5OTksLTEzMTA2MDAyNDQsMTAwMjQ3ODM3
-NiwtMTM5MjAwNTU1MiwtODI4Nzk4NDM0LDE2NDU0NTAwMDksLT
-EzNjM5MjA5ODgsNTE0MDczMTg1LDE5MjA1NjYyMzMsLTE1MTc4
-MDcxMTMsNTU2MDUyNDcxLC0xNDE2Mjg4MjE0LC0xODQxMjc3Mz
-gxLDE3MjU4ODcwODksLTIwNTM5NzQ5MzUsLTIwNzMxMTY0OTcs
-LTM1ODg1NDY2M119
+eyJoaXN0b3J5IjpbMzczNTIzNjYyLC0xNjk3MTYzMzUwLC0xNj
+k3MTYzMzUwLDE4NTUwODQ4MzgsLTEyODU0MDI0MTYsMTMwNTY2
+ODM4Niw0MTY1NjQyOTIsMTA2OTczMTc4NCw4NDA5MDU5OTksLT
+EzMTA2MDAyNDQsMTAwMjQ3ODM3NiwtMTM5MjAwNTU1MiwtODI4
+Nzk4NDM0LDE2NDU0NTAwMDksLTEzNjM5MjA5ODgsNTE0MDczMT
+g1LDE5MjA1NjYyMzMsLTE1MTc4MDcxMTMsNTU2MDUyNDcxLC0x
+NDE2Mjg4MjE0XX0=
 -->
