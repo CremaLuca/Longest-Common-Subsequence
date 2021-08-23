@@ -2,7 +2,7 @@
 
 Marco Mariotto 2027835
 Luca Crema 2026827
-Repository: [Github](github.com/CremaLuca/Longest-Common-Subsequence)
+[Repository on Github](github.com/CremaLuca/Longest-Common-Subsequence)
 
 # Longest Common Subsequence problem
 
@@ -286,7 +286,7 @@ We notice also that the sequential algorithm is a lot more cache friendly, since
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbOTkzNzQ5MjAzLC0xNjk3MTYzMzUwLC0xNj
+eyJoaXN0b3J5IjpbMzczNTIzNjYyLC0xNjk3MTYzMzUwLC0xNj
 k3MTYzMzUwLDE4NTUwODQ4MzgsLTEyODU0MDI0MTYsMTMwNTY2
 ODM4Niw0MTY1NjQyOTIsMTA2OTczMTc4NCw4NDA5MDU5OTksLT
 EzMTA2MDAyNDQsMTAwMjQ3ODM3NiwtMTM5MjAwNTU1MiwtODI4
